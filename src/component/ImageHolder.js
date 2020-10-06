@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
+// for containing series of images that can be changed through clicking the underneath buttons
+// accept an array of images sources as props, preferably handling 3 - 4 images
 
 const ImageHolder = ({images}) => {
     const [display, setDisplay] = useState(images[0]);
