@@ -1,9 +1,10 @@
 import React from 'react';
+import ImageHolder from './ImageHolder';
 
 const App = () => {
   return (
     <div>
-      This is our app
+      <ImageHolder />
     </div>
   );
 }
