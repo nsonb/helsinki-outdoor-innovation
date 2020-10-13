@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    height: 40vh;
+}
+
+.container img{
+    height: 100%;
+    transition: opacity 1s linear;
+}
+.bottom-row {
+    position: absolute;
+    bottom: 10px;
+    height: 20px;
+    display: flex;
+}
+
+.button {
+    display: block;
+    border-radius: 5px;
+    border: none;
+    margin: 10px;
+    padding: 3px;
+    background-color:white ;
+    opacity: 0.3;
+}
+
+.button:hover{
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.button:focus{
+    opacity: 0.8;
+}

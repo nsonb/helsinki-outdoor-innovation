@@ -2,7 +2,7 @@ import React from 'react';
 
 const MiniWeather = () => {
     return (
-        <div>Search</div>
+        <div>MiniWeather</div>
     )
 }
 
