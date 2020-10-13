@@ -5,10 +5,13 @@
     overflow: hidden;
     position: relative;
     height: 40vh;
+    width: 100vw;
+    top: 0px;
+    margin: 0;
 }
 
 .container img{
-    height: 100%;
+    width: 100vw;
     transition: opacity 1s linear;
 }
 .bottom-row {
