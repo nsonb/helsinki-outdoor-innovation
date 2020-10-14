@@ -12,7 +12,7 @@ import './landing-page.css';
 
 const LandingPage = () => {
     return (
-        <div class='landing-page'>  
+        <div className='landing-page'>  
             <ImageHolder images = {[spring, summer, fall, winter]} />     
             <div>
                 <Search />

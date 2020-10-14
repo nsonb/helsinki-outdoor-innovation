@@ -10,10 +10,8 @@ const Search = () => {
     return (
         <div>
             <label>Search for location</label>
-            <form onSubmit={onSubmit}>
-                <input type='text' value={term} onChange = {(e)=> setTerm(e.target.value) }/>
-            </form>
-            
+            <input type='text' value={term} onChange = {(e)=> setTerm(e.target.value) }/>
+            <div className='submit' onClick = {onSubmit}>o</div> 
         </div>
     )
 }
