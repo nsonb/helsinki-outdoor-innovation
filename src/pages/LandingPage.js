@@ -13,10 +13,11 @@ import './landing-page.css';
 const LandingPage = () => {
     return (
         <div className='landing-page'>  
-            <ImageHolder images = {[spring, summer, fall, winter]} />     
+            <ImageHolder images = {[spring, summer, fall, winter]} />
+            <h2>Discover Helsinki Outdoor Sports</h2>  
             <div>
-                <Search />
                 <MiniWeather />
+                <Search />
             </div>
         </div>
         

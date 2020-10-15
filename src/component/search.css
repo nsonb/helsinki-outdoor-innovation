@@ -4,17 +4,10 @@
     align-items: center;
     overflow: hidden;
     position: relative;
-    height: 40vh;
     width: 100vw;
     top: 0px;
     margin: 0;
-}
-
-h2 {
-    justify-self: center;
-    text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color:  #FFF9E3;
+    box-shadow: saddlebrown 2px ;
 }
 
 .search-bar {
@@ -37,7 +30,7 @@ h2 {
     border: none;
     padding: 10px 50px 10px 10px;
     outline: none;
-    font-family: sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #FFF9E3;
 }
 
@@ -45,7 +38,7 @@ h2 {
     -webkit-appearance: none;
     outline: burlywood;
     border: none;
-    border-radius: 10px;
+    border-radius: 0px 20px 20px 0px;
 }
 
 .submit {
@@ -62,14 +55,15 @@ h2 {
 .filter {
     width: 80px;
     background: none;
-    padding: 10px 20px;
+    padding: 10px 10px;
     margin: 0;
     opacity: 90%;
     background-color: #502619;
     color: #FFF9E3;
     border-radius: 20px 0 0 20px;
     text-align: left;
-    font-family: sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
     justify-content: center;
     align-items: center;
 }

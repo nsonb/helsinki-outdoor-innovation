@@ -1,0 +1,13 @@
+.weather-container {
+    margin: auto;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    
+    min-width: 360px;
+    width: 60%;
+    left: 0;
+    right: 0;
+    background-color: #E9EEE7;
+}
