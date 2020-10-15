@@ -3,3 +3,9 @@
     max-height: 300px;
     display: block;
 }
+
+.landing-page {
+    background-color: #61483D;
+    height: 100vh;
+    width: 100vw;
+}

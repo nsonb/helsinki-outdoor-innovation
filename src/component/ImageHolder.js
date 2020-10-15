@@ -20,7 +20,7 @@ const ImageHolder = ({images}) => {
     return (
         <div className = 'container'>
             <div>
-                <img src = {display} alt='depicting season'/>
+                <img className = 'top-img'src = {display} alt='depicting season'/>
             </div>
             <div className = 'bottom-row'>
                 {renderedButtons}
