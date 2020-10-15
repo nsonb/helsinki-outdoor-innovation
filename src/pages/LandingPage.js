@@ -16,8 +16,8 @@ const LandingPage = () => {
             <ImageHolder images = {[spring, summer, fall, winter]} />
             <h2>Discover Helsinki Outdoor Sports</h2>  
             <div>
-                <MiniWeather />
                 <Search />
+                <MiniWeather />
             </div>
         </div>
         
