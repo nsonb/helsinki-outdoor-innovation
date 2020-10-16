@@ -14,7 +14,7 @@ const LandingPage = () => {
     }, []);
 
     return (
-      <div className='landing'>
+      <div className='testingPage'>
             <div>Landing page</div>
             <div>This is a test information from context API: a name of a kiosk. {services.commercial[3] ? services.commercial[3].name_fi : ''}</div>
       </div>

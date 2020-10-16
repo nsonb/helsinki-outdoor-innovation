@@ -6,7 +6,7 @@ import React, { useContext, useEffect } from 'react';
 } from 'react-router-dom';*/
 import { ServiceContextProvider } from './Contexts/ServiceContext';
 import { SportsContextProvider } from './Contexts/SportsContexts';
-import LandingPage from './pages/LandingPage';
+import TestingPage from './pages/TestingPage';
 
 const App = () => {
 
@@ -16,7 +16,7 @@ const App = () => {
           <SportsContextProvider>
             <div>This is our app</div>
             <div>Contents go here, so they can access the wrapper context</div>
-            <LandingPage/>
+            <TestingPage/>
           </SportsContextProvider>
         </ServiceContextProvider>
     </div>
