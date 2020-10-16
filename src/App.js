@@ -4,7 +4,8 @@ import React, { useContext, useEffect } from 'react';
   Route,
   Switch,
 } from 'react-router-dom';*/
-import { ServiceContextProvider } from './Contexts/ServiceContexts';
+import { ServiceContextProvider } from './Contexts/ServiceContext';
+import { SportsContextProvider } from './Contexts/SportsContexts';
 import LandingPage from './pages/LandingPage';
 
 const App = () => {
@@ -12,9 +13,11 @@ const App = () => {
   return (
     <div className='App'>
         <ServiceContextProvider>
-          <div>This is our app</div>
-          <div>Contents go here, so they can access the wrapper context</div>
-          <LandingPage/>
+          <SportsContextProvider>
+            <div>This is our app</div>
+            <div>Contents go here, so they can access the wrapper context</div>
+            <LandingPage/>
+          </SportsContextProvider>
         </ServiceContextProvider>
     </div>
   );

@@ -21,12 +21,20 @@ export const getDogActivities = () => {
     .then(res => {
         return res.data;
     })
+    .catch(err => {
+        console.log(err);
+        return []
+    })
 }
 
 export const getToilets = () => {
     return Axios.get(baseURL + 'unit/?ontologyword=819')
     .then(res => {
         return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return []
     })
 }
 
@@ -35,11 +43,19 @@ export const getPlaygrounds = () => {
     .then(res => {
         return res.data;
     })
+    .catch(err => {
+        console.log(err);
+        return []
+    })
 }
 export const getParks = () => {
-    return Axios.get(baseURL + '?ontologyword=786+438+158+243+442+458++581+733+743+791')
+    return Axios.get(baseURL + 'unit/?ontologyword=786+438+158+243+442+458++581+733+743+791')
     .then(res => {
         return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return []
     })
 }
 
@@ -48,12 +64,20 @@ export const getSkating = () => {
     .then(res => {
         return res.data;
     })
+    .catch(err => {
+        console.log(err);
+        return []
+    })
 }
 
 export const getArchery = () => {
     return Axios.get(baseURL + 'unit/?ontologyword=212+213')
     .then(res => {
         return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return []
     })
 }
 
@@ -62,6 +86,10 @@ export const getClimbing = () => {
     .then(res => {
         return res.data;
     })
+    .catch(err => {
+        console.log(err);
+        return []
+    })
 }
 
 export const getDownhillSki = () => {
@@ -69,12 +97,20 @@ export const getDownhillSki = () => {
     .then(res => {
         return res.data;
     })
+    .catch(err => {
+        console.log(err);
+        return []
+    })
 }
 
 export const getSki = () => {
     return Axios.get(baseURL + 'unit/?ontologyword=318+191+192+307+193')
     .then(res => {
         return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return []
     })
 }
 
@@ -84,11 +120,19 @@ export const getTrailsAndTracks = () => {
     .then(res => {
         return res.data;
     })
+    .catch(err => {
+        console.log(err);
+        return []
+    })
 }
 export const getCampingAndLodges = () => {
     return Axios.get(baseURL + 'unit/?ontologyword=365+698+721+734+414')
     .then(res => {
         return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return []
     })
 }
 
@@ -97,12 +141,20 @@ export const getBiking = () => {
     .then(res => {
         return res.data;
     })
+    .catch(err => {
+        console.log(err);
+        return []
+    })
 }
 
-export const getBoatsports = () => {
+export const getBoatSports = () => {
     return Axios.get(baseURL + 'unit/?ontologyword=434+783+677+451+530+643+769')
     .then(res => {
         return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return []
     })
 }
 
@@ -111,12 +163,20 @@ export const getOrienteering = () => {
     .then(res => {
         return res.data;
     })
+    .catch(err => {
+        console.log(err);
+        return []
+    })
 }
 
 export const getAthletics = () => {
     return Axios.get(baseURL + 'unit/?ontologyword=810+817+818')
     .then(res => {
         return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return []
     })
 }
 
@@ -125,12 +185,20 @@ export const getGolf = () => {
     .then(res => {
         return res.data;
     })
+    .catch(err => {
+        console.log(err);
+        return []
+    })
 }
 
 export const getIceSkate = () => {
     return Axios.get(baseURL + 'unit/?ontologyword=47+235+406+407+514+695')
     .then(res => {
         return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return []
     })
 }
 
@@ -139,12 +207,20 @@ export const getDiscGolf = () => {
     .then(res => {
         return res.data;
     })
+    .catch(err => {
+        console.log(err);
+        return []
+    })
 }
 
 export const getOutdoorGyms = () => {
     return Axios.get(baseURL + 'unit/?ontologyword=401+415+737')
     .then(res => {
         return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return []
     })
 }
 
@@ -153,6 +229,10 @@ export const getParkour = () => {
     .then(res => {
         return res.data;
     })
+    .catch(err => {
+        console.log(err);
+        return []
+    })
 }
  //Attention! THIS THEME NEEDS MORE WORK!!
 export const getAllBallgameCourts = () => {
@@ -160,12 +240,20 @@ export const getAllBallgameCourts = () => {
     .then(res => {
         return res.data;
     })
+    .catch(err => {
+        console.log(err);
+        return []
+    })
 }
 
-export const getRollerhockey = () => {
+export const getRollerHockey = () => {
     return Axios.get(baseURL + 'unit/?ontologyword=585')
     .then(res => {
         return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return []
     })
 }
 
@@ -174,12 +262,31 @@ export const getSwimming = () => {
     .then(res => {
         return res.data;
     })
+    .catch(err => {
+        console.log(err);
+        return []
+    })
+}
+
+export const getWaterSki = () => {
+    return Axios.get(baseURL + 'unit/?ontologyword=777')
+    .then(res => {
+        return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return []
+    })
 }
 
 export const getFishing = () => {
     return Axios.get(baseURL + 'unit/?ontologyword=240')
     .then(res => {
         return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return []
     })
 }
 
@@ -188,6 +295,10 @@ export const getServices = () => {
     .then(res => {
         return res.data;
     })
+    .catch(err => {
+        console.log(err);
+        return []
+    })
 }
 
 export const getTransport = () => {
@@ -195,11 +306,19 @@ export const getTransport = () => {
     .then(res => {
         return res.data;
     })
+    .catch(err => {
+        console.log(err);
+        return []
+    })
 }
 
 export const getParking = () => {
     return Axios.get(baseURL + 'unit/?ontologyword=887+537+814')
     .then(res => {
         return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return []
     })
 }

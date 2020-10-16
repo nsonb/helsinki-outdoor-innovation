@@ -3,7 +3,8 @@ import {
     getToilets,
     getServices,
     getParking, 
-    getTransport
+    getTransport,
+    getPlaygrounds
  } from '../Scripts/outdoorAPI';
 
 //services that cannot be searched but will show on toggle
@@ -14,17 +15,23 @@ export const ServiceContextProvider = (props) => {
         toilets: [],
         transports: [],
         commercial: [],
-        parking: []
+        parking: [],
+        playgrounds: []
     });
-
+//-getToilets().then(res => {return {toilets: res}}),
     const updateServices = () => {
         Promise.all([
-            getToilets().then(res => {return {toilets: res}}), 
+            getToilets().then(res => {return {toilets: res}}),
             getTransport().then(res => {return {transports: res}}), 
             getParking().then(res => {return {parking: res}}), 
-            getServices().then(res => {return {commercial: res}})])
+            getServices().then(res => {return {commercial: res}}),
+            getPlaygrounds().then(res => {return {playgrounds: res}})])
         .then(values => {
-            setServices({...services, ...values[0], ...values[1], ...values[2], ...values[3]});
+            let updated = {};
+            values.forEach(e => {
+                updated = {...updated, ...e};
+            })
+            setServices(updated);
         })
     }
 
