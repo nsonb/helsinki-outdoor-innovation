@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+/*import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from 'react-router-dom';*/
+import { ServiceContextProvider } from './Contexts/ServiceContext';
+import { SportsContextProvider } from './Contexts/SportsContexts';
+import TestingPage from './pages/TestingPage';
 import LandingPage from './pages/LandingPage'
 
-
-
 const App = () => {
+
   return (
-    <div>
-      <LandingPage />
+    <div className='App'>
+        <ServiceContextProvider>
+          <SportsContextProvider>
+            <div>This is our app</div>
+            <div>Contents go here, so they can access the wrapper context</div>
+            <TestingPage/>
+            <LandingPage/>
+          </SportsContextProvider>
+        </ServiceContextProvider>
     </div>
   );
 }
