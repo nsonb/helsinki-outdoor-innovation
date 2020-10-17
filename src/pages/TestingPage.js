@@ -13,7 +13,7 @@ const LandingPage = () => {
 
     const handleClick = (e) => {
       e.preventDefault();
-      searchOneSport('tennis');
+      searchOneSport('Winter sports');
       console.log(sorted);
     }
 
@@ -33,7 +33,7 @@ const LandingPage = () => {
       <div className='testingPage'>
             <div>Landing page</div>
             <div>This is a test information from context API: a name of a kiosk. {services.commercial[3] ? services.commercial[3].name_fi : ''}</div>
-            <button onClick={handleClick}>Search 'tennis'</button>
+            <button onClick={handleClick}>Search 'ice'</button>
             <button onClick={handleClick2}>Search by tag 'ballgames'</button>
       </div>
     );

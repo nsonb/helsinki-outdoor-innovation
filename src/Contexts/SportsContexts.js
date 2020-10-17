@@ -22,7 +22,7 @@ export const SportsContextProvider = (props) => {
         golf: {data: [], tags: ['land', 'ballgames'], displayname_fi: '', displayname_en: 'Golf and minigolf'},
         iceSkate: {data: [], tags: ['land', 'winter'], displayname_fi: '', displayname_en: 'Ice skating'},
         orienteering: {data: [], tags: ['land', 'nature'], displayname_fi: '', displayname_en: 'Orienteering'},
-        outdoorGyms: {data: [], tags: ['land'], displayname_fi: '', displayname_en: 'Outdoor gyms and sports parks'},
+        outdoorGyms: {data: [], tags: ['land'], displayname_fi: 'Ulkokuntosalit ja liikuntapuistot', displayname_en: 'Outdoor gyms and sports parks'},
         parkour: {data: [], tags: ['land'], displayname_fi: '', displayname_en: 'Parkour'},
         parks: {data: [], tags: ['land', 'nature'], displayname_fi: '', displayname_en: 'Parks'},
         rollerHockey: {data: [], tags: ['land'], displayname_fi: '', displayname_en: 'Roller hockey'},
@@ -81,14 +81,26 @@ export const SportsContextProvider = (props) => {
         })
     }
 
+    //-- Problem: if we include 'sports' in the search like this, 'winter sports' will also
+    // return boat sports etc. if there's 'sports' in the name.
+    //-- If we exclude that, what happens when you search 'sports parks'?
+    //-- If we limit search to tags only... users will not see those, they will only
+    // remember the names of the sites.
+    //-- This search does not include individual site information!!
     const searchOneSport = (name) => {
-        //name search word and the key should be lowercased and spaces removed
-        //i.e. currently only works with tennis, maybe something else. Very WIP
+        const nameList = name.replace(',', '').replace('.', '').toLowerCase().split(' ');
         let newList = {}, key;
         for (key in sports) {
-            if (key === name) {
-               newList[key] = sports[key]
-            }
+            const name_en = sports[key].displayname_en.toLowerCase().split(' ');
+            const name_fi = sports[key].displayname_fi.toLowerCase().split(' ');
+            const list = [...sports[key].tags, ...name_en, ...name_fi];
+            const keywords = list.filter(e => e !== 'and' && e !== '' && e!== 'ja');
+            for (let i = 0; i < nameList.length; i++) {
+                if (keywords.includes(nameList[i])) {
+                    console.log(sports[key])
+                    newList[key] = sports[key];
+                 }
+            }          
         }
         setSorted(newList);      
     }
