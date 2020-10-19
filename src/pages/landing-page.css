@@ -1,0 +1,18 @@
+.topbar {
+    overflow: hidden;
+    max-height: 300px;
+    display: block;
+}
+
+.landing-page {
+    background-color: #61483D;
+    height: 100vh;
+    width: 100vw;
+}
+
+h2 {
+    justify-self: center;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color:  #FFF9E3;
+}
