@@ -1,14 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import './search.css';
 import searchglass from '../default-img/magnifying-glass 1.png';
+import { SportsContext } from '../Contexts/SportsContexts';
 
 const Search = () => {
+    const { searchOneSport } = useContext(SportsContext);
+
     const [term, setTerm] = useState('search');
     const onSubmit = (event) => {
         event.preventDefault();
-        console.log(term);
+        //console.log(term);
+        searchOneSport(term);
     }
-
+    
     return (
         <div className='container-search'>
             
