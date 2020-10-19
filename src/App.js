@@ -9,15 +9,15 @@ import { SportsContextProvider } from './Contexts/SportsContexts';
 import TestingPage from './pages/TestingPage';
 import LandingPage from './pages/LandingPage'
 
+// <div>This is our app</div>
+// <div>Contents go here, so they can access the wrapper context</div>
+// <TestingPage/>
 const App = () => {
 
   return (
     <div className='App'>
         <ServiceContextProvider>
-          <SportsContextProvider>
-            <div>This is our app</div>
-            <div>Contents go here, so they can access the wrapper context</div>
-            <TestingPage/>
+          <SportsContextProvider>  
             <LandingPage/>
           </SportsContextProvider>
         </ServiceContextProvider>
