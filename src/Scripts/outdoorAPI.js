@@ -234,7 +234,7 @@ export const getParkour = () => {
         return []
     })
 }
- //Attention! THIS THEME NEEDS MORE WORK!!
+
 export const getAllBallgameCourts = () => {
     return Axios.get(baseURL + 'unit/?ontologyword=125+205+331+392+495+511+700')
     .then(res => {
@@ -242,7 +242,84 @@ export const getAllBallgameCourts = () => {
     })
     .catch(err => {
         console.log(err);
-        return []
+        return [];
+    })
+}
+
+export const getBeachVolley = () => {
+    return Axios.get(baseURL + 'unit/?ontologyword=125')
+    .then(res => {
+        return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return [];
+    })
+}
+
+export const getFootball = () => {
+    return Axios.get(baseURL + 'unit/?ontologyword=205')
+    .then(res => {
+        return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return [];
+    })
+}
+
+export const getBasketball = () => {
+    return Axios.get(baseURL + 'unit/?ontologyword=331')
+    .then(res => {
+        return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return [];
+    })
+}
+
+export const getVolleyball = () => {
+    return Axios.get(baseURL + 'unit/?ontologyword=392')
+    .then(res => {
+        return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return [];
+    })
+}
+
+export const getBallFields = () => {
+    return Axios.get(baseURL + 'unit/?ontologyword=495')
+    .then(res => {
+        return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return [];
+    })
+}
+
+export const getBaseball = () => {
+    return Axios.get(baseURL + 'unit/?ontologyword=511')
+    .then(res => {
+        return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return [];
+    })
+}
+
+export const getTennis = () => {
+    return Axios.get(baseURL + 'unit/?ontologyword=700')
+    .then(res => {
+        return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+        return [];
     })
 }
 
