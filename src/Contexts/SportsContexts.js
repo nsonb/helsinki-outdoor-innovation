@@ -87,7 +87,7 @@ export const SportsContextProvider = (props) => {
     //-- If we limit search to tags only... users will not see those, they will only
     // remember the names of the sites.
     //-- This search does not include individual site information!!
-    const searchOneSport = (name) => {
+    /*const searchOneSport = (name) => {
         const nameList = name.replace(',', '').replace('.', '').toLowerCase().split(' ');
         let newList = {}, key;
         for (key in sports) {
@@ -103,6 +103,14 @@ export const SportsContextProvider = (props) => {
             }          
         }
         setSorted(newList);      
+    }*/
+
+    const searchOneSport = (name) => {
+        const cleanString = name.replace(',', '').replace('.', '').toLowerCase();
+        const mustHave = cleanString.substring(
+            cleanString.lastIndexOf('"') + 1, 
+            cleanString.lastIndexOf('"')
+        );
     }
 
     const sortTheSports = (tag) => {
