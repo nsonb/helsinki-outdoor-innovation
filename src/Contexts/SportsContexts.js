@@ -81,38 +81,75 @@ export const SportsContextProvider = (props) => {
         })
     }
 
-    //-- Problem: if we include 'sports' in the search like this, 'winter sports' will also
-    // return boat sports etc. if there's 'sports' in the name.
-    //-- If we exclude that, what happens when you search 'sports parks'?
-    //-- If we limit search to tags only... users will not see those, they will only
-    // remember the names of the sites.
-    //-- This search does not include individual site information!!
-    /*const searchOneSport = (name) => {
-        const nameList = name.replace(',', '').replace('.', '').toLowerCase().split(' ');
+    //name = search words
+    const searchOneSport = (name) => {
+        //clean up the search words and separate "must have"
+        const cleanString = name.replace(',', '').replace('.', '').toLowerCase();
+        let nameList = [];
+        let mustHave = cleanString.match(/"([^"]+)"/);
+        if (mustHave) {
+            mustHave = mustHave[1].split(' ');
+            nameList = cleanString.replace('"' + mustHave + '"', '').split(' ').filter(e => e !== '');
+        } else {
+            mustHave = [];
+            nameList = cleanString.split(' ');
+        }
+
         let newList = {}, key;
         for (key in sports) {
+            //create keywords from tags and displayname (from front end)
             const name_en = sports[key].displayname_en.toLowerCase().split(' ');
             const name_fi = sports[key].displayname_fi.toLowerCase().split(' ');
-            const list = [...sports[key].tags, ...name_en, ...name_fi];
-            const keywords = list.filter(e => e !== 'and' && e !== '' && e!== 'ja');
-            for (let i = 0; i < nameList.length; i++) {
-                if (keywords.includes(nameList[i])) {
-                    console.log(sports[key])
-                    newList[key] = sports[key];
-                 }
-            }          
-        }
-        setSorted(newList);      
-    }*/
+            let list = [...sports[key].tags, ...name_en, ...name_fi];
+            let keywords = list.filter(e => e !== 'and' && e !== '' && e!== 'ja');
+                
+            let matchingData = [];
+            for (let i = 0; i < sports[key].data.length; i++) {
+                const e = sports[key].data[i];
+                //new keywords from the data from the DB
+                const nameData = [
+                    e.name_fi || '', 
+                    e.name_sv || '', 
+                    e.name_en || ''];
+                const locationNames = [
+                    e.street_address_fi || '', 
+                    e.street_address_sv || '', 
+                    e.street_address_en || '', 
+                    e.address_city_fi || '',
+                    e.address_city_sv ||'',
+                    e.address_city_en || ''];
+                list = [...nameData, ...locationNames];
+                let uniqueWords = list.toString().toLowerCase().split(/(?:,| )+/);
+                uniqueWords = uniqueWords.filter(e => e !== 'and' && e !== '' && e!== 'ja' && 'och' && '/');
 
-    const searchOneSport = (name) => {
-        const cleanString = name.replace(',', '').replace('.', '').toLowerCase();
-        const mustHave = cleanString.substring(
-            cleanString.lastIndexOf('"') + 1, 
-            cleanString.lastIndexOf('"')
-        );
+                //if there is "must have" -words, only accept those that have ALL of them
+                if (mustHave.length > 0) {
+                    const dataMatches = mustHave.filter(e => [...uniqueWords, ...keywords].includes(e));
+                    if (arrayEquals(dataMatches, mustHave)) {
+                        matchingData = [...matchingData, e]
+                        console.log(dataMatches)
+                    }
+                //else, accept anything with at least 1 word from the search
+                } else {
+                    const dataMatches = nameList.filter(e => [...uniqueWords, ...keywords].includes(e));
+                    if (dataMatches.length > 0) {
+                        matchingData = [...matchingData, e]
+                        console.log(dataMatches)
+                    }
+                }   
+            }
+            //place matching location items into the data slots of the sport category
+            if (matchingData.length > 0) {
+                newList[key] = sports[key];
+                newList[key].data = matchingData;
+            }
+                    
+        }
+        //put all this into "sorted" -hook
+        setSorted(newList);
     }
 
+    //tags = labels we add ourselves in the app
     const sortTheSports = (tag) => {
         let newList = {}, key;
         for (key in sports) {
@@ -122,6 +159,14 @@ export const SportsContextProvider = (props) => {
         }
         setSorted(newList);      
     }
+
+    //https://masteringjs.io/tutorials/fundamentals/compare-arrays
+    const arrayEquals = (a, b) => {
+        return Array.isArray(a) &&
+          Array.isArray(b) &&
+          a.length === b.length &&
+          a.every((val, index) => val === b[index]);
+      }
 
     return (
         <SportsContext.Provider value={{sports, updateSports, sorted, searchOneSport, sortTheSports}}>
