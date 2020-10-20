@@ -3,10 +3,12 @@ import Search from '../component/Search';
 import ResultList from '../component/ResultList';
 
 
-const ResultPage = () => {
+
+const ResultPage = (props) => {
+    
     return (
         <div>
-            <Search />
+            <Search onTermChange={props.onTermChange}/>
             <ResultList />
         </div>
     )

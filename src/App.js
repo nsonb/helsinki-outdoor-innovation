@@ -15,7 +15,7 @@ import { CurrentTermContext } from './Contexts/CurrentSearchTermContext';
 
 // <TestingPage/>
 const App = () => {
-  const [currentSearchTerm, setCurrentSearchTerm] = useState('search');
+  const [currentSearchTerm, setCurrentSearchTerm] = useState('');
 
   useEffect(() =>{
     // update current search term into context
@@ -29,9 +29,8 @@ const App = () => {
     <div className='App'>
       <ServiceContextProvider>
           <SportsContextProvider>
-            <CurrentTermContext.Provider value={currentSearchTerm}>
-              <LandingPage onTermChange = {updateSearchTerm}/>
-              
+            <CurrentTermContext.Provider value={currentSearchTerm}>   
+              <ResultPage onTermChange = {updateSearchTerm}/>
             </CurrentTermContext.Provider>
           </SportsContextProvider>
         </ServiceContextProvider>
@@ -40,6 +39,6 @@ const App = () => {
   );
 }
 
-//<ResultPage onTermChange = {updateSearchTerm}/>
+//<LandingPage onTermChange = {updateSearchTerm}/>
 
 export default App;
