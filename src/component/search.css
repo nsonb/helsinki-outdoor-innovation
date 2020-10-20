@@ -15,8 +15,9 @@
     flex-direction: row;
     overflow: hidden;
     margin: auto;
+    margin-top: 20px;
     min-width: 320px;
-    width: 60%;
+    width: 80%;
     left: 0;
     right: 0;
 }

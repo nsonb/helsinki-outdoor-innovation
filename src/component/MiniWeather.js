@@ -1,5 +1,5 @@
 import React from 'react';
-import './miniweather.css'
+import './Miniweather.css';
 
 const MiniWeather = () => {
     return (
