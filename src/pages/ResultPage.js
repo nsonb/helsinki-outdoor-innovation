@@ -2,8 +2,6 @@ import React from 'react';
 import Search from '../component/Search';
 import ResultList from '../component/ResultList';
 
-
-
 const ResultPage = (props) => {
     
     return (
