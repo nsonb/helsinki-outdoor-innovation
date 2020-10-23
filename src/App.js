@@ -6,8 +6,9 @@ import React, { useContext, useEffect, useState } from 'react';
 } from 'react-router-dom';*/
 import { ServiceContextProvider } from './Contexts/ServiceContext';
 import { SportsContextProvider } from './Contexts/SportsContexts';
+import { WeatherContextProvider } from './Contexts/WeatherContext';
 
-// pages in the app
+// pages
 import TestingPage from './pages/TestingPage';
 import LandingPage from './pages/LandingPage';
 import ResultPage from './pages/ResultPage';
@@ -27,19 +28,18 @@ const App = () => {
 
   return (
     <div className='App'>
-      <ServiceContextProvider>
-          <SportsContextProvider>
-            <CurrentTermContext.Provider value={currentSearchTerm}>   
-              
-              <ResultPage onTermChange = {updateSearchTerm}/> 
-            </CurrentTermContext.Provider>
-          </SportsContextProvider>
+        <ServiceContextProvider>
+          <WeatherContextProvider>
+            <SportsContextProvider> 
+              <LandingPage onTermChange = {updateSearchTerm}/> 
+            </SportsContextProvider>
+          </WeatherContextProvider>
         </ServiceContextProvider>
         
     </div>
   );
 }
-
-//   <LandingPage onTermChange = {updateSearchTerm}/> 
+//   <ResultPage onTermChange = {updateSearchTerm}/> 
+//   
 
 export default App;
