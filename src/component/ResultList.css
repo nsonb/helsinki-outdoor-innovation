@@ -1,0 +1,44 @@
+.result-container {
+    position: absolute;
+    bottom: 16px;
+    height: 40vh;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 20px;
+    min-width: 320px;
+    width: 80%;
+    left: 0;
+    right: 0;
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.scrollable {
+    height: 100%;
+    overflow: auto;
+    background: transparent;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.more-button {
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+    width: 100%;
+    outline: none;
+    opacity: 0.6;
+    margin-bottom: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.more-button:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.more-button:focus {
+    border: none;
+}

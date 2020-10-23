@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import ResultItem from './ResultItem';
+import './ResultList.css';
 
 
 import { SportsContext } from '../Contexts/SportsContexts';
@@ -7,7 +8,9 @@ import { SportsContext } from '../Contexts/SportsContexts';
 const ResultList = () => {
     const { updateSports } = useContext(SportsContext);
     const { sorted } = useContext(SportsContext);
-    const [detailed, setDetailed ] = useState(false);
+    const [ detailed, setDetailed ] = useState(false);
+    const [ more, setMore ] = useState('more');
+    const [ height, setHeight] = useState('40vh');
 
     const renderedItems = Object.keys(sorted).map(e => sorted[e].data.map(d => {
         return (
@@ -17,14 +20,26 @@ const ResultList = () => {
         )
     }));
 
+    const changeMore = () => {
+        if(more === 'more') {
+            setMore('less');
+            setHeight('50vh');
+        } else {
+            setHeight('30vh');
+            setMore('more');
+        }
+    }
+
     useEffect(() => {
         updateSports();
-    }, [detailed]);
+    }, [detailed, more]);
 
     return (
-        <div>
-            <button onClick={() => {setDetailed(!detailed)}}>more</button>
-            {renderedItems}
+        <div className='result-container' style={{height: height}}>
+            <button className='more-button' onClick={() => {setDetailed(!detailed);changeMore()}}>{more}</button>
+            <div className='scrollable'>
+                {renderedItems}
+            </div>
         </div>
     )
 }
