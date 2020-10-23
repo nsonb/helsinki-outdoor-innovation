@@ -2,19 +2,37 @@
     padding: 12px;
     margin: 5px;
     border-radius: 12px;
-    background-color: #FFF9E3;
+    background-color: rgba(255, 249, 229, 0.8);
 }
 
 .result-item-container:hover{
     cursor: pointer;
-    background-color: burlywood;
+    background-color: rgba(255, 249, 229, 1);
 }
 
 .location-name {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
+    color: #502619;
 }
+
 
 .detail {
     font-size: 12px;
+    font-weight: bold;
+}
+.tag-container {
+    display: flex;
+    flex-flow: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.tag {
+    display: block;
+    padding: 5px;
+    background-color:  #b1a7a450;
+    border-radius: 5px;
+    justify-content: center;
+    margin: 2px;
 }

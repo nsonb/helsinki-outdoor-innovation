@@ -69,9 +69,14 @@
     align-items: center;
 }
 
+.filter:hover{
+    opacity: 1;
+}
+
 .search-logo {
     display: block;
     height: 16px;
+    width: auto;
     margin: auto;
     padding: 6px;
 }

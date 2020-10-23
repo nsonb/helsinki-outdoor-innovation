@@ -2,20 +2,20 @@ import React, {useEffect} from 'react';
 import './ResultItem.css'
 
 const ResultItem = ({location, detailed}) => {
-    const renderedOntotree = location.ontologytree_ids.map(e => <div key={e}>{e}</div>)
-    const renderedOntoword = location.ontologyword_ids.map(e => <div key={e}>{e}</div>)
+    const renderedOntotree = location.ontologytree_ids.map(e => <div className='tag' key={e}>{e}</div>)
+    const renderedOntoword = location.ontologyword_ids.map(e => <div className='tag' key={e}>{e}</div>)
     
     const renderedDetail = (
         <div className='detail'>
             <div >
                 {location.street_address_en || location.street_address_sv}, {location.address_city_en}, {location.address_zip}
             </div>
-    <div>{location.desc_fi || location.desc_fi}</div>
-            <div>
+            <div>{location.desc_fi || location.desc_fi}</div>
+            <div className='tag-container'>
                 {renderedOntotree}
                 {renderedOntoword}
             </div>
-            <a href={location.www_en}>link</a>
+            
         </div>
     )
 
@@ -29,3 +29,5 @@ const ResultItem = ({location, detailed}) => {
 }
 
 export default ResultItem;
+
+// <a href={location.www_en}>link</a>

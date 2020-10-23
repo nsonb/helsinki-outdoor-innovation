@@ -31,7 +31,7 @@ const App = () => {
           <SportsContextProvider>
             <CurrentTermContext.Provider value={currentSearchTerm}>   
               
-              <ResultPage onTermChange = {updateSearchTerm}/>  
+              <ResultPage onTermChange = {updateSearchTerm}/> 
             </CurrentTermContext.Provider>
           </SportsContextProvider>
         </ServiceContextProvider>
@@ -40,6 +40,6 @@ const App = () => {
   );
 }
 
-//  <LandingPage onTermChange = {updateSearchTerm}/> 
+//   <LandingPage onTermChange = {updateSearchTerm}/> 
 
 export default App;
