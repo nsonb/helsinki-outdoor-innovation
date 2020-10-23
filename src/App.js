@@ -1,24 +1,32 @@
 import React, { useContext, useEffect } from 'react';
-/*import {
+import {
   BrowserRouter as Router,
-  Route,
-  Switch,
-} from 'react-router-dom';*/
+  Route
+} from 'react-router-dom';
 import { ServiceContextProvider } from './Contexts/ServiceContext';
 import { SportsContextProvider } from './Contexts/SportsContexts';
 import TestingPage from './pages/TestingPage';
 import LandingPage from './pages/LandingPage'
 
-// <TestingPage/>
 const App = () => {
 
   return (
     <div className='App'>
+      <Router basename={process.env.PUBLIC_URL}>
         <ServiceContextProvider>
-          <SportsContextProvider> 
-            <LandingPage/>
+          <SportsContextProvider>
+
+            <Route exact path="/">
+              <LandingPage/>
+            </Route>
+
+            <Route path="/test">
+              <TestingPage/>
+            </Route>
+
           </SportsContextProvider>
         </ServiceContextProvider>
+      </Router>
     </div>
   );
 }
