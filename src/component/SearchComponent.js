@@ -9,7 +9,6 @@ const Search = () => {
     const [term, setTerm] = useState('search');
     const onSubmit = (event) => {
         event.preventDefault();
-        //console.log(term);
         searchOneSport(term);
     }
     
