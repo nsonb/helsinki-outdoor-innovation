@@ -5,6 +5,7 @@
     overflow: hidden;
     margin: auto;
     margin-top: 20px;
+    margin-bottom: 20px;
     min-width: 320px;
     width: 80%;
     left: 0;
@@ -25,7 +26,7 @@
 
 .more-button {
     border: none;
-    border-radius: 3px;
+    border-radius: 12px;
     padding: 5px;
     width: 100%;
     outline: none;

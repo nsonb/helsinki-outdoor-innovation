@@ -20,13 +20,14 @@ const Search = (props) => {
     
     return (  
         <div className='container-search'>
-            <div className='search-bar'>
+            <form className='search-bar' onSubmit={onSubmit}>
+                
                 <div className='filter button'>Filter</div>
                 <input type='text' value={currentTerm} placeholder= 'search' onChange = {(e) => {updateTerm(e.target.value)}}/>
                 <div className='submit button' onClick = {onSubmit}>
                     <img className='search-logo' src={searchglass} alt='search'/>
                 </div> 
-            </div>       
+            </form>       
         </div>
     )
 }
