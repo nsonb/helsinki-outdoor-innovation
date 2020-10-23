@@ -14,21 +14,12 @@ import { SportsContext } from '../Contexts/SportsContexts';
 import { WeatherContext } from '../Contexts/WeatherContext';
 
 const LandingPage = () => {
-    const { updateSports } = useContext(SportsContext);
-    const { sorted } = useContext(SportsContext);
-
-
+    const { updateSports, sorted } = useContext(SportsContext);
     const {updateWeather} = useContext(WeatherContext);
-    const {weather} = useContext(WeatherContext);
-    const {currWeather} = useContext(WeatherContext);
-    const {miniWeather} = useContext(WeatherContext);
 
     useEffect(() => {
         updateSports();
-        updateWeather()
-        .then(miniWeather())
-        
-        
+        updateWeather();
     }, []);
 
     return (
@@ -40,7 +31,7 @@ const LandingPage = () => {
                 <div>Sample box for search results
                     <ul>
                         {Object.keys(sorted).map(e => sorted[e].data.map(d =>
-                            <li>{d.name_en || d.name_fi || 'No name'}</li>))}
+                            <li>{d.name_en || d.name_fi || 'No name'}</li>))}                     
                     </ul>
                 </div>
                 <MiniWeather />
