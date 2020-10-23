@@ -11,13 +11,24 @@ import winter from '../default-img/winter.png';
 import './landing-page.css';
 
 import { SportsContext } from '../Contexts/SportsContexts';
+import { WeatherContext } from '../Contexts/WeatherContext';
 
 const LandingPage = () => {
     const { updateSports } = useContext(SportsContext);
     const { sorted } = useContext(SportsContext);
 
+
+    const {updateWeather} = useContext(WeatherContext);
+    const {weather} = useContext(WeatherContext);
+    const {currWeather} = useContext(WeatherContext);
+    const {miniWeather} = useContext(WeatherContext);
+
     useEffect(() => {
         updateSports();
+        updateWeather()
+        .then(miniWeather())
+        
+        
     }, []);
 
     return (

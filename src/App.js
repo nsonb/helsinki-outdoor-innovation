@@ -6,6 +6,7 @@ import React, { useContext, useEffect } from 'react';
 } from 'react-router-dom';*/
 import { ServiceContextProvider } from './Contexts/ServiceContext';
 import { SportsContextProvider } from './Contexts/SportsContexts';
+import { WeatherContextProvider } from './Contexts/WeatherContext';
 import TestingPage from './pages/TestingPage';
 import LandingPage from './pages/LandingPage'
 
@@ -15,9 +16,11 @@ const App = () => {
   return (
     <div className='App'>
         <ServiceContextProvider>
+          <WeatherContextProvider>
           <SportsContextProvider> 
             <LandingPage/>
           </SportsContextProvider>
+          </WeatherContextProvider>
         </ServiceContextProvider>
     </div>
   );
