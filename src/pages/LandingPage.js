@@ -27,12 +27,7 @@ const LandingPage = (props) => {
             <h2>Discover Helsinki Outdoor Sports</h2>  
             <div>
                 <Search onTermChange = {props.onTermChange}/>
-                <div>Sample box for search results
-                    <ul>
-                        {Object.keys(sorted).map(e => sorted[e].data.map(d =>
-                            <li>{d.name_en || d.name_fi || 'No name'}</li>))}                     
-                    </ul>
-                </div>
+                
                 <MiniWeather />
             </div>
         </div>
@@ -41,3 +36,10 @@ const LandingPage = (props) => {
 }
 
 export default LandingPage;
+
+/*<div>Sample box for search results
+    <ul>
+        {Object.keys(sorted).map(e => sorted[e].data.map(d =>
+            <li>{d.name_en || d.name_fi || 'No name'}</li>))}                     
+    </ul>
+</div>*/
