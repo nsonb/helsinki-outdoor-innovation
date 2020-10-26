@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-/*import {
+import {
   BrowserRouter as Router,
   Route,
-  Switch,
-} from 'react-router-dom';*/
+  Switch
+} from 'react-router-dom';
+
 import { ServiceContextProvider } from './Contexts/ServiceContext';
 import { SportsContextProvider } from './Contexts/SportsContexts';
 import { WeatherContextProvider } from './Contexts/WeatherContext';
@@ -27,19 +28,38 @@ const App = () => {
   }
 
   return (
+    
     <div className='App'>
+      
         <ServiceContextProvider>
           <WeatherContextProvider>
-            <SportsContextProvider> 
-              <LandingPage onTermChange = {updateSearchTerm}/> 
+            <SportsContextProvider>
+              <CurrentTermContext.Provider value={currentSearchTerm}>
+                <Router>
+                  <Switch>
+                    <Route path ='/'> 
+                      <LandingPage onTermChange = {updateSearchTerm}/>
+                    </Route>
+                    <Route path ='/result'>
+                      <ResultPage onTermChange = {updateSearchTerm}/> 
+                    </Route>
+                  </Switch> 
+                </Router>
+              </CurrentTermContext.Provider>
             </SportsContextProvider>
           </WeatherContextProvider>
         </ServiceContextProvider>
-        
-    </div>
+          
+      </div>
+    
+    
   );
 }
 //   <ResultPage onTermChange = {updateSearchTerm}/> 
 //   
 
 export default App;
+
+//<Route path ='/'> 
+//<LandingPage onTermChange = {updateSearchTerm}/>
+//</Route>

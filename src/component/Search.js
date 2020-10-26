@@ -1,5 +1,5 @@
 import React, {useState, useContext, useEffect} from 'react';
-import './Search.css';
+import './search.css';
 import searchglass from '../default-img/magnifying-glass 1.png';
 import { SportsContext } from '../Contexts/SportsContexts';
 import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';
@@ -10,7 +10,9 @@ const Search = (props) => {
     
     const onSubmit = (event) => {
         event.preventDefault();
-        //console.log(term);     
+        if(props.onSubmit !== null) {
+            props.onSubmit();
+        }
         searchOneSport(currentTerm);
     }
 
