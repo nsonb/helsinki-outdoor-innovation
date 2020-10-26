@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom';
 import { ServiceContextProvider } from './Contexts/ServiceContext';
 import { SportsContextProvider } from './Contexts/SportsContexts';
@@ -29,20 +30,27 @@ const App = () => {
     <div className='App'>
       <Router basename={process.env.PUBLIC_URL}>
         <ServiceContextProvider>
-          <SportsContextProvider>
-
-            <Route exact path="/">
-              <LandingPage/>
-            </Route>
-
-            <Route path="/test">
-              <TestingPage/>
-            </Route>
-
-          </SportsContextProvider>
+          <WeatherContextProvider>
+            <SportsContextProvider>
+              <CurrentTermContext.Provider value={currentSearchTerm}>
+                
+                  <Switch>
+                    <Route exact path ='/'> 
+                      <LandingPage onTermChange = {updateSearchTerm}/>
+                    </Route>
+                    <Route path ='/result'>
+                      <ResultPage onTermChange = {updateSearchTerm}/> 
+                    </Route>
+                  </Switch> 
+                
+              </CurrentTermContext.Provider>
+            </SportsContextProvider>
+          </WeatherContextProvider>
         </ServiceContextProvider>
       </Router>
     </div>
+    
+    
   );
 }
 //   <ResultPage onTermChange = {updateSearchTerm}/> 
