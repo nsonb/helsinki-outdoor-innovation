@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import './miniweather.css'
+import './Miniweather.css'
 import { WeatherContext } from '../Contexts/WeatherContext';
 
 const MiniWeather = () => {
