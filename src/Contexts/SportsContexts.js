@@ -127,14 +127,12 @@ export const SportsContextProvider = (props) => {
                     const dataMatches = mustHave.filter(e => [...uniqueWords, ...keywords].includes(e));
                     if (arrayEquals(dataMatches, mustHave)) {
                         matchingData = [...matchingData, e]
-                        console.log(dataMatches)
                     }
                 //else, accept anything with at least 1 word from the search
                 } else {
                     const dataMatches = nameList.filter(e => [...uniqueWords, ...keywords].includes(e));
                     if (dataMatches.length > 0) {
                         matchingData = [...matchingData, e]
-                        console.log(dataMatches)
                     }
                 }   
             }
@@ -153,8 +151,19 @@ export const SportsContextProvider = (props) => {
     const sortTheSports = (tag) => {
         let newList = {}, key;
         for (key in sports) {
-            if (sports[key].tags && sports[key].tags.includes(tag)) {
+            if (sports[key].tags.includes(tag)) {
                newList[key] = sports[key]
+            }
+        }
+        setSorted(newList);      
+    }
+
+    const filterByTags = (tags) => {
+        let newList = {}, key;
+        for (key in sports) {
+            const sportTags = sports[key].tags
+            if (tags.every(e => sportTags.includes(e))) {
+                newList[key] = sports[key]
             }
         }
         setSorted(newList);      
@@ -169,7 +178,7 @@ export const SportsContextProvider = (props) => {
       }
 
     return (
-        <SportsContext.Provider value={{sports, updateSports, sorted, searchOneSport, sortTheSports}}>
+        <SportsContext.Provider value={{sports, updateSports, sorted, searchOneSport, sortTheSports, filterByTags}}>
             {props.children}
         </SportsContext.Provider>
     );
