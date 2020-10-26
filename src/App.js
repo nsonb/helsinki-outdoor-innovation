@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <div className='App'>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <ServiceContextProvider>
           <WeatherContextProvider>
             <SportsContextProvider>
@@ -42,7 +42,7 @@ const App = () => {
                   <Route path ='/result'>
                     <ResultPage onTermChange = {updateSearchTerm}/> 
                   </Route>
-                  <Route exact path ='/weather'>
+                  <Route path ='/weather'>
                     <WeatherPage />
                   </Route>   
                 </Switch>
@@ -50,8 +50,8 @@ const App = () => {
             </SportsContextProvider>
           </WeatherContextProvider>
         </ServiceContextProvider>
-      </Router>   
-      </div>
+      </Router>
+    </div>
     
     
   );
