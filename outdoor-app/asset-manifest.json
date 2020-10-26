@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/~lottalau/outdoor-app/static/css/main.b71e518c.chunk.css",
+    "main.js": "/~lottalau/outdoor-app/static/js/main.4e68c9e7.chunk.js",
+    "main.js.map": "/~lottalau/outdoor-app/static/js/main.4e68c9e7.chunk.js.map",
+    "runtime-main.js": "/~lottalau/outdoor-app/static/js/runtime-main.0bab0734.js",
+    "runtime-main.js.map": "/~lottalau/outdoor-app/static/js/runtime-main.0bab0734.js.map",
+    "static/js/2.7f29ee70.chunk.js": "/~lottalau/outdoor-app/static/js/2.7f29ee70.chunk.js",
+    "static/js/2.7f29ee70.chunk.js.map": "/~lottalau/outdoor-app/static/js/2.7f29ee70.chunk.js.map",
+    "index.html": "/~lottalau/outdoor-app/index.html",
+    "precache-manifest.e8e9b59b5ee60109da80f728858f8c73.js": "/~lottalau/outdoor-app/precache-manifest.e8e9b59b5ee60109da80f728858f8c73.js",
+    "service-worker.js": "/~lottalau/outdoor-app/service-worker.js",
+    "static/css/main.b71e518c.chunk.css.map": "/~lottalau/outdoor-app/static/css/main.b71e518c.chunk.css.map",
+    "static/js/2.7f29ee70.chunk.js.LICENSE.txt": "/~lottalau/outdoor-app/static/js/2.7f29ee70.chunk.js.LICENSE.txt",
+    "static/media/fall.png": "/~lottalau/outdoor-app/static/media/fall.3e583269.png",
+    "static/media/spring.jpg": "/~lottalau/outdoor-app/static/media/spring.697fcd37.jpg",
+    "static/media/summer.png": "/~lottalau/outdoor-app/static/media/summer.e41bd981.png",
+    "static/media/winter.png": "/~lottalau/outdoor-app/static/media/winter.6d8cd0e7.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0bab0734.js",
+    "static/js/2.7f29ee70.chunk.js",
+    "static/css/main.b71e518c.chunk.css",
+    "static/js/main.4e68c9e7.chunk.js"
+  ]
+}
