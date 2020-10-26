@@ -37,7 +37,7 @@ const App = () => {
               <CurrentTermContext.Provider value={currentSearchTerm}>
                 <Router>
                   <Switch>
-                    <Route path ='/'> 
+                    <Route exact path ='/'> 
                       <LandingPage onTermChange = {updateSearchTerm}/>
                     </Route>
                     <Route path ='/result'>
