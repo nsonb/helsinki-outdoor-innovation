@@ -15,8 +15,9 @@
     flex-direction: row;
     overflow: hidden;
     margin: auto;
+    margin-top: 20px;
     min-width: 320px;
-    width: 60%;
+    width: 80%;
     left: 0;
     right: 0;
 }
@@ -68,9 +69,14 @@
     align-items: center;
 }
 
+.filter:hover{
+    opacity: 1;
+}
+
 .search-logo {
     display: block;
     height: 16px;
+    width: auto;
     margin: auto;
     padding: 6px;
 }

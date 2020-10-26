@@ -2,28 +2,34 @@ import React, {useState, useContext, useEffect} from 'react';
 import './search.css';
 import searchglass from '../default-img/magnifying-glass 1.png';
 import { SportsContext } from '../Contexts/SportsContexts';
+import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';
 
-const Search = () => {
+const Search = (props) => {
     const { searchOneSport } = useContext(SportsContext);
-
-    const [term, setTerm] = useState('search');
+    const currentTerm = useContext(CurrentTermContext);
+    
     const onSubmit = (event) => {
         event.preventDefault();
-        //console.log(term);
-        searchOneSport(term);
+        if(props.onSubmit !== null) {
+            props.onSubmit();
+        }
+        searchOneSport(currentTerm);
+    }
+
+    const updateTerm = (value) => {
+        props.onTermChange(value)
     }
     
-    return (
+    return (  
         <div className='container-search'>
-            
-            <div className='search-bar'>
+            <form className='search-bar' onSubmit={onSubmit}>
+                
                 <div className='filter button'>Filter</div>
-                <input type='text' value={term} onChange = {(e)=> setTerm(e.target.value)} onClick = {(e)=>setTerm('')}/>
+                <input type='text' value={currentTerm} placeholder= 'search' onChange = {(e) => {updateTerm(e.target.value)}}/>
                 <div className='submit button' onClick = {onSubmit}>
                     <img className='search-logo' src={searchglass} alt='search'/>
                 </div> 
-            </div>
-            
+            </form>       
         </div>
     )
 }
