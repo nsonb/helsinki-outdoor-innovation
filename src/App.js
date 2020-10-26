@@ -30,12 +30,12 @@ const App = () => {
   return (
     
     <div className='App'>
-      
+      <Router basename={process.env.PUBLIC_URL}>
         <ServiceContextProvider>
           <WeatherContextProvider>
             <SportsContextProvider>
               <CurrentTermContext.Provider value={currentSearchTerm}>
-                <Router>
+                
                   <Switch>
                     <Route exact path ='/'> 
                       <LandingPage onTermChange = {updateSearchTerm}/>
@@ -44,13 +44,13 @@ const App = () => {
                       <ResultPage onTermChange = {updateSearchTerm}/> 
                     </Route>
                   </Switch> 
-                </Router>
+                
               </CurrentTermContext.Provider>
             </SportsContextProvider>
           </WeatherContextProvider>
         </ServiceContextProvider>
-          
-      </div>
+      </Router>
+    </div>
     
     
   );
