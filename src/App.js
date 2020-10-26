@@ -4,7 +4,6 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-
 import { ServiceContextProvider } from './Contexts/ServiceContext';
 import { SportsContextProvider } from './Contexts/SportsContexts';
 import { WeatherContextProvider } from './Contexts/WeatherContext';
@@ -15,7 +14,6 @@ import LandingPage from './pages/LandingPage';
 import ResultPage from './pages/ResultPage';
 import { CurrentTermContext } from './Contexts/CurrentSearchTermContext';
 
-// <TestingPage/>
 const App = () => {
   const [currentSearchTerm, setCurrentSearchTerm] = useState('');
 
