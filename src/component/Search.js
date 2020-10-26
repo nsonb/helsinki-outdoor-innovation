@@ -10,7 +10,9 @@ const Search = (props) => {
     
     const onSubmit = (event) => {
         event.preventDefault();
-        //console.log(term);     
+        if(props.onSubmit !== null) {
+            props.onSubmit();
+        }
         searchOneSport(currentTerm);
     }
 
