@@ -13,6 +13,7 @@ import { WeatherContextProvider } from './Contexts/WeatherContext';
 import TestingPage from './pages/TestingPage';
 import LandingPage from './pages/LandingPage';
 import ResultPage from './pages/ResultPage';
+import WeatherPage from './pages/WeatherPage';
 import { CurrentTermContext } from './Contexts/CurrentSearchTermContext';
 
 // <TestingPage/>
@@ -28,28 +29,28 @@ const App = () => {
   }
 
   return (
-    
     <div className='App'>
-      
+      <Router>
         <ServiceContextProvider>
           <WeatherContextProvider>
             <SportsContextProvider>
               <CurrentTermContext.Provider value={currentSearchTerm}>
-                <Router>
-                  <Switch>
-                    <Route exact path ='/'> 
-                      <LandingPage onTermChange = {updateSearchTerm}/>
-                    </Route>
-                    <Route path ='/result'>
-                      <ResultPage onTermChange = {updateSearchTerm}/> 
-                    </Route>
-                  </Switch> 
-                </Router>
+                <Switch>
+                  <Route exact path ='/'> 
+                    <LandingPage onTermChange = {updateSearchTerm}/>
+                  </Route>
+                  <Route path ='/result'>
+                    <ResultPage onTermChange = {updateSearchTerm}/> 
+                  </Route>
+                  <Route exact path ='/weather'>
+                    <WeatherPage />
+                  </Route>   
+                </Switch>
               </CurrentTermContext.Provider>
             </SportsContextProvider>
           </WeatherContextProvider>
         </ServiceContextProvider>
-          
+      </Router>   
       </div>
     
     
@@ -60,6 +61,3 @@ const App = () => {
 
 export default App;
 
-//<Route path ='/'> 
-//<LandingPage onTermChange = {updateSearchTerm}/>
-//</Route>

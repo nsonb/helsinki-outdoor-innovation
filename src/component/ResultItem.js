@@ -22,7 +22,7 @@ const ResultItem = ({location, detailed}) => {
     return (
         <div className='result-item-container'>
             <div className='location-name'>{location.name_en || location.name_fi || location.name_sv}</div>
-            { detailed == true ? renderedDetail : null}       
+            { detailed === true ? renderedDetail : null}       
         </div>
         
     )
