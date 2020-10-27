@@ -7,8 +7,6 @@ import './WeatherPage.css';
 const WeatherPage = () => {
     return (
     <div>
-        Weather Page
-        
         <CurrentWeather />
         <FutureWeatherHolder />
     </div>

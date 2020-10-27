@@ -1,7 +1,7 @@
 .current-weather-container {
     width: 80%;
-    min-width: 360px;
-    height: 360px;
+    min-width: 320px;
+    height: 320px;
     margin: auto;
     margin-top: 20px;
     left: 0;
@@ -54,7 +54,7 @@
 }
 
 .weather-desc {
-    height: 10%;
+    height: 5%;
     font-weight: lighter;
 }
 
