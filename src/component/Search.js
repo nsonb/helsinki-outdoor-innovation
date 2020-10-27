@@ -3,13 +3,15 @@ import React, {useState, useContext} from 'react';
 import searchglass from '../default-img/magnifying-glass 1.png';
 import { SportsContext } from '../Contexts/SportsContexts';
 import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';
+import Filter from './Filter';
 
 const Search = (props) => {
     const { searchOneSport } = useContext(SportsContext);
     const currentTerm = useContext(CurrentTermContext);
     const [state, setState] = useState({
         inputFocused: false,
-        filterHover: false
+        filterHover: false,
+        showFilter: false
     })
     
     const onSubmit = (event) => {
@@ -23,6 +25,11 @@ const Search = (props) => {
     const updateTerm = (value) => {
         props.onTermChange(value)
     }
+
+    const toggleFilterBox = (evt) => {
+        evt.preventDefault();
+        setState({...state, showFilter: !state.showFilter});
+    }
     
     return (  
         <div className='container-search' style={containerSearch}>
@@ -32,6 +39,7 @@ const Search = (props) => {
                     style={state.filterHover? {...filter, opacity: 1} : filter}
                     onMouseEnter={() => setState({...state, filterHover: true})}
                     onMouseLeave={() => setState({...state, filterHover: false})}
+                    onClick={toggleFilterBox}
                     >
                         Filter
                 </div>
@@ -47,7 +55,8 @@ const Search = (props) => {
                 <div className='submit button' style={submit} onClick = {onSubmit}>
                     <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
                 </div> 
-            </form>       
+            </form>
+            {state.showFilter ? <Filter/> : ''}
         </div>
     )
 }
