@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import './Miniweather.css';
+import './miniweather.css';
 import { WeatherContext } from '../Contexts/WeatherContext';
 import { useHistory } from 'react-router-dom';
 
