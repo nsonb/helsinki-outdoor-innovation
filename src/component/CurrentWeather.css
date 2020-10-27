@@ -42,16 +42,20 @@
 }
 
 .temp {
-    margin-top: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
+    font-size: 48px;
     font-weight: bolder;
-    height: 40%;
+    height: 30%;
     padding: auto;
     text-align: center;
     vertical-align: middle;
+}
+
+.weather-desc {
+    height: 10%;
+    font-weight: lighter;
 }
 
 .detail-box {
@@ -65,4 +69,11 @@
     align-items: center;
     width: 33%;
     height: 100%;
+}
+
+.locale {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
 }

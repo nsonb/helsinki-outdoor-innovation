@@ -11,13 +11,16 @@ const CurrentWeather = () => {
     <div className='current-weather-container'>
         <img className='background-img' src={cloudImg} alt = ''/>
         <div className='info'>
-    <div className='temp'>{currWeather.temp}<br/>{currWeather.weatherDesc}</div>
-            <div className='detail-box'>
-                <div className='detail-item'>{currWeather.humidity}</div>
-                <div className='detail-item'>{currWeather.weather}</div>
-                <div className='detail-item'>{currWeather.wind}</div>
+            <div className='locale'>Helsinki</div>
+            <div className='temp'>
+                {currWeather.temp}
             </div>
-            
+            <div className='weather-desc'>{currWeather.weatherDesc}</div>
+                <div className='detail-box'>
+                    <div className='detail-item'>{currWeather.humidity}</div>
+                    <div className='detail-item'>{currWeather.weather}</div>
+                    <div className='detail-item'>{currWeather.wind}</div>
+                </div>
         </div>
         
     </div>
