@@ -16,7 +16,7 @@ const MiniWeather = () => {
             <div className = 'weather-element'>temperature: {currWeather.temp}</div>
             <div className = 'weather-element'>wind: {currWeather.wind}</div>
             <div className = 'weather-element'>humidity: {currWeather.humidity}</div>
-            <div className = 'weather-element'>weather: {currWeather.clouds}</div>
+            <div className = 'weather-element'>weather: {currWeather.weather}</div>
         </div>
     )
 }

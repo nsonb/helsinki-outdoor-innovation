@@ -16,8 +16,11 @@ export const WeatherContextProvider = (props) => {
         temp: '',
         wind: '',
         humidity: '',
-        clouds: '',
-        iconNum: ''
+        weather: '',
+        weatherDesc: '',
+        iconNum: '',
+        feelsLike: '',
+        cloudiness: '',
     });
     const [sixHours, setSixHours] = useState([]);
 
@@ -27,12 +30,16 @@ export const WeatherContextProvider = (props) => {
             setWeather(result);
             //create miniweather content at the same time
             const now = result.list[0];
+            console.log(now);
             const returnable = {
                 temp: Math.round((now.main.temp-273.15 || currWeather.temp)* 10) / 10 + '° C',
+                feelsLike: Math.round((now.main.feels_like-273.15 || currWeather.feelsLike)* 10) / 10 + '° C',
                 wind: Math.round((now.wind.speed || currWeather.wind)* 10) / 10 + ' m/s',
                 humidity: Math.round((now.main.humidity || currWeather.humidity)* 10) / 10 + ' %',
-                clouds: now.weather[0].main || currWeather.clouds,
-                iconNum: now.weather[0].icon || currWeather.iconNum
+                weather: now.weather[0].main || currWeather.weather,
+                weatherDesc: now.weather[0].description || currWeather.weatherDesc,
+                iconNum: now.weather[0].icon || currWeather.iconNum,
+                cloudiness: now.clouds.all || now.cloudiness
             };
             setCurrWeather(returnable);
         });
