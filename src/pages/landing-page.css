@@ -6,8 +6,11 @@
 
 .landing-page {
     background-color: #61483D;
-    height: 100vh;
     width: 100vw;
+    height: 100vh;
+    min-height: 560px;
+    position: relative;
+    overflow-y: hidden;
 }
 
 h2 {
