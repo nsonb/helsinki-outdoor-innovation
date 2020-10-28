@@ -25,23 +25,28 @@ export const WeatherContextProvider = (props) => {
         getWeather()
         .then((result) => {
             setWeather(result);
-            //create miniweather content at the same time
-            const now = result.list[0];
-            const returnable = {
-                temp: Math.round((now.main.temp-273.15 || currWeather.temp)* 10) / 10 + '° C',
-                wind: Math.round((now.wind.speed || currWeather.wind)* 10) / 10 + ' m/s',
-                humidity: Math.round((now.main.humidity || currWeather.humidity)* 10) / 10 + ' %',
-                clouds: now.weather[0].main || currWeather.clouds,
-                iconNum: now.weather[0].icon || currWeather.iconNum
-            };
-            setCurrWeather(returnable);
+            createCurrentWeather(result);
+            updateSixHours(result);
         });
     }
 
-    const updateSixHours = () => {
+    const createCurrentWeather = (weatherData) => {
+        const now = weatherData.list[0];
+        //refactor weather item into a form you want
+        const returnable = {
+            temp: Math.round((now.main.temp-273.15 || currWeather.temp)* 10) / 10 + '° C',
+            wind: Math.round((now.wind.speed || currWeather.wind)* 10) / 10 + ' m/s',
+            humidity: Math.round((now.main.humidity || currWeather.humidity)* 10) / 10 + ' %',
+            clouds: now.weather[0].main || currWeather.clouds,
+            iconNum: now.weather[0].icon || currWeather.iconNum
+        };
+        setCurrWeather(returnable);
+    }
+
+    const updateSixHours = (weatherData) => {
         let newList = [];
-        for (let i = 0; i < 6; i++) {
-            let w = weather.list[i];
+        for (let i = 0; i < 3; i++) {
+            let w = weatherData.list[i];
             //refactor weather items into a form you want
             let weatherItem = {
                 time: w.dt_txt || '',
@@ -61,7 +66,7 @@ export const WeatherContextProvider = (props) => {
     }
 
     return (
-        <WeatherContext.Provider value={{weather, updateWeather, currWeather, updateSixHours, sixHours}}>
+        <WeatherContext.Provider value={{weather, updateWeather, currWeather, sixHours}}>
             {props.children}
         </WeatherContext.Provider>
     );

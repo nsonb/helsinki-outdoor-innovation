@@ -3,7 +3,7 @@ import './miniweather.css'
 import { WeatherContext } from '../Contexts/WeatherContext';
 
 const MiniWeather = () => {
-    const {currWeather} = useContext(WeatherContext);
+    const { currWeather } = useContext(WeatherContext);
 
     return (
         <div className='weather-container'>
