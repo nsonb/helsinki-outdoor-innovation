@@ -16,8 +16,11 @@ export const WeatherContextProvider = (props) => {
         temp: '',
         wind: '',
         humidity: '',
-        clouds: '',
-        iconNum: ''
+        weather: '',
+        weatherDesc: '',
+        iconNum: '',
+        feelsLike: '',
+        cloudiness: '',
     });
     const [sixHours, setSixHours] = useState([]);
 
@@ -62,6 +65,7 @@ export const WeatherContextProvider = (props) => {
             //add it to the list
             newList = [...newList, weatherItem]
         }
+        console.log(newList);
         setSixHours(newList);   
     }
 
