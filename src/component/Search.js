@@ -1,5 +1,5 @@
-import React, {useState, useContext, useEffect} from 'react';
-import './search.css';
+import React, {useState, useContext} from 'react';
+//import './search.css';
 import searchglass from '../default-img/magnifying-glass 1.png';
 import { SportsContext } from '../Contexts/SportsContexts';
 import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';

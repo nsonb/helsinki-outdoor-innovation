@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 import ImageHolder from '../component/ImageHolder';
 import MiniWeather from '../component/MiniWeather';
 import Search from '../component/Search';
@@ -14,7 +14,7 @@ import { SportsContext } from '../Contexts/SportsContexts';
 import { WeatherContext } from '../Contexts/WeatherContext';
 
 const LandingPage = (props) => {
-    const { updateSports, sorted } = useContext(SportsContext);
+    const { updateSports } = useContext(SportsContext);
     const { updateWeather } = useContext(WeatherContext);
     const history = useHistory()
 
@@ -23,7 +23,7 @@ const LandingPage = (props) => {
         updateWeather();
     }, []);
 
-    const searchClicked = (value) => {
+    const searchClicked = () => {
         history.push('/result');
     }
 
