@@ -23,7 +23,7 @@ const FutureWeather = ({weather}) => {
             <div>{weather.time.slice(0,10)}</div>
             <div>{weather.temp}</div>
             <div>{weather.feelsLike}</div>
-            <div>{weather.weather}</div>
+            <div>{weather.weatherDesc}</div>
         </div>
         
     </div>

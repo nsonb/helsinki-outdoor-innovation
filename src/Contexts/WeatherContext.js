@@ -67,7 +67,8 @@ export const WeatherContextProvider = (props) => {
                 humidity: Math.round((w.main.humidity || 0)* 10) / 10 + '%',
                 feelsLike: Math.round((w.main.feels_like -273.15|| 0)* 10) / 10 + '° C',
                 iconNum: w.weather[0].icon || '',
-                cloudiness: w.clouds.all || w.cloudiness + '%'
+                weatherDesc: w.weather[0].description || '',
+                cloudiness: w.clouds.all || '' + '%'
             }
             //add it to the list
             newList = [...newList, weatherItem]
