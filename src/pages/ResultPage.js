@@ -10,7 +10,7 @@ const ResultPage = (props) => {
     
     return (
         <div className='result-page-container'>
-            <img className = 'background-map' src={helsinkiMap}/>
+            <img className = 'background-map' src={helsinkiMap} alt=''/>
             <Search onTermChange={props.onTermChange} onSubmit={null}/>
             <ResultList />
         </div>
