@@ -4,6 +4,7 @@ import searchglass from '../default-img/magnifying-glass 1.png';
 import { SportsContext } from '../Contexts/SportsContexts';
 import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';
 import Filter from './Filter';
+import AutosuggestInput from './AutosuggestInput';
 
 const Search = (props) => {
     const { searchOneSport } = useContext(SportsContext);
@@ -43,7 +44,19 @@ const Search = (props) => {
                     >
                         Filter
                 </div>
-                <input 
+                <AutosuggestInput 
+                    onTermChange = {props.onTermChange}/>
+                <div className='submit button' style={submit} onClick = {onSubmit}>
+                    <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
+                </div> 
+            </form>
+            
+            {state.showFilter ? <Filter/> : ''}
+        </div>
+    )
+}
+
+/*<input 
                     type='text' 
                     style={state.inputFocused ? {...searchInput, ...focusedInput} : searchInput} 
                     value={currentTerm} 
@@ -51,15 +64,7 @@ const Search = (props) => {
                     onChange = {(e) => {updateTerm(e.target.value)}}
                     onFocus={() => setState({...state, inputFocused: true})}
                     onBlur={() => setState({...state, inputFocused: false})} 
-                />
-                <div className='submit button' style={submit} onClick = {onSubmit}>
-                    <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
-                </div> 
-            </form>
-            {state.showFilter ? <Filter/> : ''}
-        </div>
-    )
-}
+                /> */
 
 const containerSearch = {
     display: "block",

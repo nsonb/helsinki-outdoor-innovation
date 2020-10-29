@@ -118,7 +118,12 @@ export const SportsContextProvider = (props) => {
                     e.address_city_fi || '',
                     e.address_city_sv ||'',
                     e.address_city_en || ''];
-                list = [...nameData, ...locationNames];
+                const descriptions = [
+                    e.desc_fi || '',
+                    e.desc_sv || '',
+                    e.desc_en || ''
+                ]
+                list = [...nameData, ...locationNames, ...descriptions];
                 let uniqueWords = list.toString().toLowerCase().split(/(?:,| )+/);
                 uniqueWords = uniqueWords.filter(e => e !== 'and' && e !== '' && e!== 'ja' && 'och' && '/');
 

@@ -9,7 +9,7 @@ import { SportsContextProvider } from './Contexts/SportsContexts';
 import { WeatherContextProvider } from './Contexts/WeatherContext';
 
 // pages
-// import TestingPage from './pages/TestingPage';
+import TestingPage from './pages/TestingPage';
 import LandingPage from './pages/LandingPage';
 import ResultPage from './pages/ResultPage';
 import WeatherPage from './pages/WeatherPage';
@@ -43,6 +43,9 @@ const App = () => {
                   <Route path ='/weather'>
                     <WeatherPage />
                   </Route>   
+                  <Route path ='/test'>
+                    <TestingPage onTermChange = {updateSearchTerm}/>
+                  </Route>
                 </Switch>
               </CurrentTermContext.Provider>
             </SportsContextProvider>
