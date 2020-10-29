@@ -52,10 +52,11 @@ const DetailedInfoModal = ({location, closeModal}) => {
                     <div style={content}>
                         { closeButton() }
                         <h1 style={placeName}>{location.name_en || location.name_fi || location.name_sv}</h1>
-                        <img src={""} alt={"empty pic"}/>
-                        <p>Description</p>
+                        <p>{location.street_address_fi}</p>
+                        <img src={""} alt={""}/>
+                        <p>{location.short_desc_fi || location.short_desc_sv}</p>
                         <p>Information</p>
-                        <button onClick={() => console.log("route")}>Find route</button>
+                        <button onClick={() => console.log(location)}>Find route</button>
                     </div>
                 </div>
         );
