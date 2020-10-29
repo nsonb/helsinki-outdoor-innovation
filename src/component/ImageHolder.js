@@ -29,9 +29,7 @@ const ImageHolder = ({images}) => {
         <div className = 'container'>
             <div className='left-button' onClick={() => setImage(false)}></div>
             <div className='right-button' onClick={() => setImage(true)}></div>
-            <div>
-                <img className = 'top-img'src = {images[displayIndex]} alt='depicting season'/>
-            </div>
+            <img className = 'top-img'src = {images[displayIndex]} alt='depicting season'/>
             <div className = 'bottom-row'>
                 {renderedButtons}
             </div>

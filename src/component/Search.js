@@ -56,7 +56,9 @@ const Search = (props) => {
                     <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
                 </div> 
             </form>
-            {state.showFilter ? <Filter/> : ''}
+            <div>
+                {state.showFilter ? <Filter/> : null}
+            </div>   
         </div>
     )
 }
@@ -96,6 +98,7 @@ const searchInput = {
     outline: "none",
     fontFamily: "'Montserrat', sans-serif",
     backgroundColor: "#FFF9E3",
+    color: "#060D08"
 }
 
 const focusedInput = {
@@ -122,7 +125,7 @@ const filter = {
     padding: "10px 10px",
     margin: "0",
     opacity: "90%",
-    backgroundColor: "#502619",
+    backgroundColor: "#060D08",
     color: "#FFF9E3",
     borderRadius: "20px 0 0 20px",
     textAlign: "left",

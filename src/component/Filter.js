@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import './search.css';
 import { SportsContext } from '../Contexts/SportsContexts';
 
@@ -63,10 +63,13 @@ const Filter = () => {
 }
 
 const filterBox = {
-    width: "20vh",
+    width: "80%",
     height: "auto",
     backgroundColor: "#502619",
     color: "#FFF9E3",
+    display: "flex",
+    borderRadius: "20px",
+    margin: 'auto'
 }
 
 const filter = {
@@ -82,7 +85,8 @@ const filter = {
     fontFamily: "'Montserrat', sans-serif",
     fontSize: "12px",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    borderRadius: '20px'
 }
 
 export default Filter;
