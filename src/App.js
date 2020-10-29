@@ -7,6 +7,7 @@ import {
 import { ServiceContextProvider } from './Contexts/ServiceContext';
 import { SportsContextProvider } from './Contexts/SportsContexts';
 import { WeatherContextProvider } from './Contexts/WeatherContext';
+import { UIContextProvider } from './Contexts/UIContext';
 
 // pages
 import TestingPage from './pages/TestingPage';
@@ -29,28 +30,27 @@ const App = () => {
   return (
     <div className='App'>
       <Router basename={process.env.PUBLIC_URL}>
-        <ServiceContextProvider>
-          <WeatherContextProvider>
-            <SportsContextProvider>
-              <CurrentTermContext.Provider value={currentSearchTerm}>
-                <Switch>
-                  <Route exact path ='/'> 
-                    <LandingPage onTermChange = {updateSearchTerm}/>
-                  </Route>
-                  <Route path ='/result'>
-                    <ResultPage onTermChange = {updateSearchTerm}/> 
-                  </Route>
-                  <Route path ='/weather'>
-                    <WeatherPage />
-                  </Route>   
-                  <Route path ='/test'>
-                    <TestingPage onTermChange = {updateSearchTerm}/>
-                  </Route>
-                </Switch>
-              </CurrentTermContext.Provider>
-            </SportsContextProvider>
-          </WeatherContextProvider>
-        </ServiceContextProvider>
+        <UIContextProvider>
+          <ServiceContextProvider>
+            <WeatherContextProvider>
+              <SportsContextProvider>
+                <CurrentTermContext.Provider value={currentSearchTerm}>
+                  <Switch>
+                    <Route exact path ='/'> 
+                      <LandingPage onTermChange = {updateSearchTerm}/>
+                    </Route>
+                    <Route path ='/result'>
+                      <ResultPage onTermChange = {updateSearchTerm}/> 
+                    </Route>
+                    <Route path ='/weather'>
+                      <WeatherPage />
+                    </Route>   
+                  </Switch>
+                </CurrentTermContext.Provider>
+              </SportsContextProvider>
+            </WeatherContextProvider>
+          </ServiceContextProvider>
+        </UIContextProvider>
       </Router>
     </div>
     

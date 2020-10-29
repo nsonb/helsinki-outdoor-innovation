@@ -23,10 +23,6 @@ const Search = (props) => {
         searchOneSport(currentTerm);
     }
 
-    const updateTerm = (value) => {
-        props.onTermChange(value)
-    }
-
     const toggleFilterBox = (evt) => {
         evt.preventDefault();
         setState({...state, showFilter: !state.showFilter});
@@ -45,7 +41,7 @@ const Search = (props) => {
                         Filter
                 </div>
                 <AutosuggestInput 
-                    onTermChange = {props.onTermChange}/>
+                    onTermChange = {props.onTermChange} onSubmit = {onSubmit}/>
                 <div className='submit button' style={submit} onClick = {onSubmit}>
                     <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
                 </div> 
@@ -114,7 +110,7 @@ const submit = {
     width: "50px",
     height: "30px",
     background: "none",
-    margin: "auto",
+    margin: "0 auto auto -1vh",
     marginLeft: "-50px",
     alignItems: "center",
     justifyItems: "center",
@@ -123,6 +119,7 @@ const submit = {
 
 const filter = {
     width: "80px",
+    height: "2vh",
     background: "none",
     padding: "10px 10px",
     margin: "0",

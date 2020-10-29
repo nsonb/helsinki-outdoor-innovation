@@ -4,35 +4,35 @@ import * as s from '../Scripts/outdoorAPI';
 export const SportsContext = createContext();
 export const SportsContextProvider = (props) => {
     const [sports, setSports] = useState({
-        archery: {data: [], tags: ['land'], displayname_fi: 'Jousiammunta', displayname_en: 'Archery'},
-        athletics: {data: [], tags: ['land'], displayname_fi: 'Yleisurheilu', displayname_en: 'Athletics'},
-        ballFields: {data: [], tags: ['land', 'ballgames'], displayname_fi: 'Pallokentät', displayname_en: 'Ball fields'},
-        baseball: {data: [], tags: ['land', 'ballgames'], displayname_fi: 'Pesäpallo', displayname_en: 'Baseball'},
-        basketball: {data: [], tags: ['land', 'ballgames'], displayname_fi: 'Koripallo', displayname_en: 'Basketball'},
-        beachvolley: {data: [], tags: ['land', 'ballgames'], displayname_fi: 'Rantalentopallo', displayname_en: 'Beach volley'},
-        biking: {data: [], tags: ['land'], displayname_fi: 'Pyöräily', displayname_en: 'Biking'},
-        boatsports: {data: [], tags: ['water'], displayname_fi: 'Veneurheilu', displayname_en: 'Boat sports'},
-        campingLodges: {data: [], tags: ['land', 'nature', 'noEquipment'], displayname_fi: 'Patikointi ja levähdyspaikat', displayname_en: 'Hiking stops, camping and lodges'},
-        climbing: {data: [], tags: ['land'], displayname_fi: 'Kiipeily', displayname_en: 'Climbing'},
-        discGolf: {data: [], tags: ['land'], displayname_fi: 'Frisbeegolf', displayname_en: 'Disc golf'},
-        dogActivities: {data: [], tags: ['land', 'animals'], displayname_fi: 'Liikunta koiran kanssa', displayname_en: 'Sports to do with a dog'},
-        downhillSki: {data: [], tags: ['land', 'winter'], displayname_fi: 'Laskettelu', displayname_en: 'Downhill skiing'},
-        fishing: {data: [], tags: ['land', 'water', 'animals'], displayname_fi: 'Kalastus', displayname_en: 'Fishing'},
-        football: {data: [], tags: ['land', 'ballgames'], displayname_fi: 'Jalkapallo', displayname_en: 'Football'},
-        golf: {data: [], tags: ['land', 'ballgames'], displayname_fi: 'Golf ja minigolf', displayname_en: 'Golf and minigolf'},
-        iceSkate: {data: [], tags: ['land', 'winter'], displayname_fi: 'Luistelu', displayname_en: 'Ice skating'},
-        orienteering: {data: [], tags: ['land', 'nature', 'noEquipment'], displayname_fi: 'Suunnistus', displayname_en: 'Orienteering'},
-        outdoorGyms: {data: [], tags: ['land', 'noEquipment'], displayname_fi: 'Ulkokuntosalit ja liikuntapuistot', displayname_en: 'Outdoor gyms and sports parks'},
-        parkour: {data: [], tags: ['land', 'noEquipment'], displayname_fi: 'Parkour', displayname_en: 'Parkour'},
-        parks: {data: [], tags: ['land', 'nature', 'noEquipment'], displayname_fi: 'Puistot', displayname_en: 'Parks'},
-        rollerHockey: {data: [], tags: ['land'], displayname_fi: 'Rullakiekko', displayname_en: 'Roller hockey'},
-        skating: {data: [], tags: ['land'], displayname_fi: 'Skeittaus ja rullaluistelu', displayname_en: 'Skating'},
-        skiing: {data: [], tags: ['land', 'winter'], displayname_fi: 'Hiihto', displayname_en: 'Skiing'},
-        swimming: {data: [], tags: ['water', 'nature', 'noEquipment'], displayname_fi: 'Uinti', displayname_en: 'Swimming'},
-        tennis: {data: [], tags: ['land', 'ballgames'], displayname_fi: 'Tennis', displayname_en: 'Tennis'},
-        trailsTracks: {data: [], tags: ['land', 'nature', 'noEquipment'], displayname_fi: 'Reitit ja polut', displayname_en: 'Trails and tracks'},
-        volleyball: {data: [], tags: ['land', 'ballgames'], displayname_fi: 'Lentopallo', displayname_en: 'Volleyball'},
-        waterSkiing: {data: [], tags: ['water'], displayname_fi: 'Vesihiihto', displayname_en: 'Water skiing'}
+        archery: {data: [], tags: ['land'], displayname_fi: 'Jousiammunta', displayname_en: 'Archery', displayname_sv: ''},
+        athletics: {data: [], tags: ['land'], displayname_fi: 'Yleisurheilu', displayname_en: 'Athletics', displayname_sv: ''},
+        ballFields: {data: [], tags: ['land', 'ballgames'], displayname_fi: 'Pallokentät', displayname_en: 'Ball fields', displayname_sv: ''},
+        baseball: {data: [], tags: ['land', 'ballgames'], displayname_fi: 'Pesäpallo', displayname_en: 'Baseball', displayname_sv: ''},
+        basketball: {data: [], tags: ['land', 'ballgames'], displayname_fi: 'Koripallo', displayname_en: 'Basketball', displayname_sv: ''},
+        beachvolley: {data: [], tags: ['land', 'ballgames'], displayname_fi: 'Rantalentopallo', displayname_en: 'Beach volley', displayname_sv: ''},
+        biking: {data: [], tags: ['land'], displayname_fi: 'Pyöräily', displayname_en: 'Biking', displayname_sv: ''},
+        boatsports: {data: [], tags: ['water'], displayname_fi: 'Veneurheilu', displayname_en: 'Boat sports', displayname_sv: ''},
+        campingLodges: {data: [], tags: ['land', 'nature', 'noEquipment'], displayname_fi: 'Patikointi ja levähdyspaikat', displayname_en: 'Hiking stops, camping and lodges', displayname_sv: ''},
+        climbing: {data: [], tags: ['land'], displayname_fi: 'Kiipeily', displayname_en: 'Climbing', displayname_sv: ''},
+        discGolf: {data: [], tags: ['land'], displayname_fi: 'Frisbeegolf', displayname_en: 'Disc golf', displayname_sv: ''},
+        dogActivities: {data: [], tags: ['land', 'animals'], displayname_fi: 'Liikunta koiran kanssa', displayname_en: 'Sports to do with a dog', displayname_sv: ''},
+        downhillSki: {data: [], tags: ['land', 'winter'], displayname_fi: 'Laskettelu', displayname_en: 'Downhill skiing', displayname_sv: ''},
+        fishing: {data: [], tags: ['land', 'water', 'animals'], displayname_fi: 'Kalastus', displayname_en: 'Fishing', displayname_sv: ''},
+        football: {data: [], tags: ['land', 'ballgames'], displayname_fi: 'Jalkapallo', displayname_en: 'Football', displayname_sv: ''},
+        golf: {data: [], tags: ['land', 'ballgames'], displayname_fi: 'Golf ja minigolf', displayname_en: 'Golf and minigolf', displayname_sv: ''},
+        iceSkate: {data: [], tags: ['land', 'winter'], displayname_fi: 'Luistelu', displayname_en: 'Ice skating', displayname_sv: ''},
+        orienteering: {data: [], tags: ['land', 'nature', 'noEquipment'], displayname_fi: 'Suunnistus', displayname_en: 'Orienteering', displayname_sv: ''},
+        outdoorGyms: {data: [], tags: ['land', 'noEquipment'], displayname_fi: 'Ulkokuntosalit ja liikuntapuistot', displayname_en: 'Outdoor gyms and sports parks', displayname_sv: ''},
+        parkour: {data: [], tags: ['land', 'noEquipment'], displayname_fi: 'Parkour', displayname_en: 'Parkour', displayname_sv: ''},
+        parks: {data: [], tags: ['land', 'nature', 'noEquipment'], displayname_fi: 'Puistot', displayname_en: 'Parks', displayname_sv: ''},
+        rollerHockey: {data: [], tags: ['land'], displayname_fi: 'Rullakiekko', displayname_en: 'Roller hockey', displayname_sv: ''},
+        skating: {data: [], tags: ['land'], displayname_fi: 'Skeittaus ja rullaluistelu', displayname_en: 'Skating', displayname_sv: ''},
+        skiing: {data: [], tags: ['land', 'winter'], displayname_fi: 'Hiihto', displayname_en: 'Skiing', displayname_sv: ''},
+        swimming: {data: [], tags: ['water', 'nature', 'noEquipment'], displayname_fi: 'Uinti', displayname_en: 'Swimming', displayname_sv: ''},
+        tennis: {data: [], tags: ['land', 'ballgames'], displayname_fi: 'Tennis', displayname_en: 'Tennis', displayname_sv: ''},
+        trailsTracks: {data: [], tags: ['land', 'nature', 'noEquipment'], displayname_fi: 'Reitit ja polut', displayname_en: 'Trails and tracks', displayname_sv: ''},
+        volleyball: {data: [], tags: ['land', 'ballgames'], displayname_fi: 'Lentopallo', displayname_en: 'Volleyball', displayname_sv: ''},
+        waterSkiing: {data: [], tags: ['water'], displayname_fi: 'Vesihiihto', displayname_en: 'Water skiing', displayname_sv: ''}
     });
     const [sorted, setSorted] = useState({});
 
@@ -100,7 +100,8 @@ export const SportsContextProvider = (props) => {
             //create keywords from tags and displayname (from front end)
             const name_en = sports[key].displayname_en.toLowerCase().split(' ');
             const name_fi = sports[key].displayname_fi.toLowerCase().split(' ');
-            let list = [...sports[key].tags, ...name_en, ...name_fi];
+            const tags = sports[key].tags.map(t => {return t.toLowerCase()});
+            let list = [...tags, ...name_en, ...name_fi];
             let keywords = list.filter(e => e !== 'and' && e !== '' && e!== 'ja');
                 
             let matchingData = [];
@@ -123,7 +124,7 @@ export const SportsContextProvider = (props) => {
                     e.desc_sv || '',
                     e.desc_en || ''
                 ]
-                list = [...nameData, ...locationNames, ...descriptions];
+                list = [...nameData, ...locationNames, ...descriptions, e.id];
                 let uniqueWords = list.toString().toLowerCase().split(/(?:,| )+/);
                 uniqueWords = uniqueWords.filter(e => e !== 'and' && e !== '' && e!== 'ja' && 'och' && '/');
 
