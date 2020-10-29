@@ -6,8 +6,6 @@ import './ImageHolder.css';
 
 const ImageHolder = ({images}) => {
     const [displayIndex, setDisplayIndex] = useState(0);
-    console.log(images)
-
     useEffect(() => {
         
     }, [displayIndex]);

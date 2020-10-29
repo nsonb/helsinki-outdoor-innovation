@@ -1,17 +1,29 @@
 import React from 'react';
-import { WeatherContext } from '../Contexts/WeatherContext';
 import './FutureWeather.css';
 
+import tempCloud from '../default-img/cloud.png';
+import rain from '../default-img/rain.jpg';
 
-const FutureWeather = (props) => {
+
+const FutureWeather = ({weather}) => {
+    var img = tempCloud;
+    switch(weather.weather) {
+        case 'Clouds':
+            img=tempCloud;
+            break;
+        case 'Rain':
+            img=rain;
+            break;
+    }
+
     return (
     <div className='future-weather-item'>
-        <img className='background-img' src={props.img} alt = ''/>
+        <img className='background-img' src={img} alt = ''/>
         <div className='info-container'>
-            <div>Time</div>
-            <div>Temperature</div>
-            <div>Feels Like</div>
-            <div>Weather Condition</div>
+            <div>{weather.time.slice(0,10)}</div>
+            <div>{weather.temp}</div>
+            <div>{weather.feelsLike}</div>
+            <div>{weather.weather}</div>
         </div>
         
     </div>
