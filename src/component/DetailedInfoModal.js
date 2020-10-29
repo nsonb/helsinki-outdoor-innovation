@@ -3,8 +3,7 @@ import React from 'react';
 // For showing the user more detailed info about a single place
 // Accepts json format of information about the place that is then displayed
 
-const DetailedInfoModal = (props) => {
-    const {closeModal} = props;
+const DetailedInfoModal = ({location, closeModal}) => {
 
         // Styles for the page
         const modal = {
@@ -19,6 +18,7 @@ const DetailedInfoModal = (props) => {
             bottom: '0',
             backgroundColor: 'rgba(0,0,0,0.5)',
             zIndex: '999',
+            cursor: 'default',
 
         }
         const content = {
@@ -28,6 +28,9 @@ const DetailedInfoModal = (props) => {
             width: '50vw',
             padding: '2rem',
             position: 'relative',
+        }
+        const placeName = {
+            fontSize: '30px',
         }
     const closeButton = () => (
         <button
@@ -45,19 +48,16 @@ const DetailedInfoModal = (props) => {
         >Close</button>
     );
         return (
-            <React.Fragment>
                 <div style={modal}>
                     <div style={content}>
                         { closeButton() }
-                        <h1>Place name</h1>
-                        <icon>Icon here</icon>
+                        <h1 style={placeName}>{location.name_en || location.name_fi || location.name_sv}</h1>
                         <img src={""} alt={"empty pic"}/>
                         <p>Description</p>
                         <p>Information</p>
-                        <button>Find route</button>
+                        <button onClick={() => console.log("route")}>Find route</button>
                     </div>
                 </div>
-            </React.Fragment>
         );
     }
 export default DetailedInfoModal;

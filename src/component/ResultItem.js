@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './ResultItem.css'
+import DetailedInfoModal from "./DetailedInfoModal";
 
 const ResultItem = ({location, detailed}) => {
     const renderedOntotree = location.ontologytree_ids.map(e => <div className='tag' key={e}>{e}</div>)
     const renderedOntoword = location.ontologyword_ids.map(e => <div className='tag' key={e}>{e}</div>)
-    
+    const [status, setStatus] = useState(false);
     const renderedDetail = (
         <div className='detail'>
             <div >
@@ -20,9 +21,10 @@ const ResultItem = ({location, detailed}) => {
     )
 
     return (
-        <div className='result-item-container'>
+        <div className='result-item-container' onClick={() => status === false ? setStatus(true) : null }>
             <div className='location-name'>{location.name_en || location.name_fi || location.name_sv}</div>
-            { detailed === true ? renderedDetail : null}       
+            { status && (<DetailedInfoModal closeModal={() => setStatus(false)} location = {location}/>)}
+            { detailed === true ? renderedDetail : null}
         </div>
         
     )
