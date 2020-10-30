@@ -114,7 +114,7 @@ const submit = {
     background: "none",
     margin: "auto",
     marginTop: 0,
-    marginLeft: "-40px",
+    marginLeft: "-60px",
     alignItems: "center",
     justifyItems: "center",
     opacity: "90%",

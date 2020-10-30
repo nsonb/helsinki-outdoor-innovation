@@ -7,7 +7,10 @@ import './ImageHolder.css';
 const ImageHolder = ({images}) => {
     const [displayIndex, setDisplayIndex] = useState(0);
     useEffect(() => {
-        
+        const intervalId = setInterval(()=> {
+            setImage(true)
+        }, 8000);
+        return () => clearInterval(intervalId);
     }, [displayIndex]);
 
     const renderedButtons = images.map((img, index) => {

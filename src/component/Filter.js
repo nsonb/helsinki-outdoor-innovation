@@ -71,7 +71,8 @@ const filterBox = {
     display: "flex",
     borderRadius: "20px",
     margin: 'auto',
-    borderRadius: '20px'
+    borderRadius: '20px',
+    padding: '8px'
 }
 
 const filter = {
