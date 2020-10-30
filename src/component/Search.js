@@ -4,6 +4,7 @@ import searchglass from '../default-img/magnifying-glass 1.png';
 import { SportsContext } from '../Contexts/SportsContexts';
 import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';
 import Filter from './Filter';
+import AutosuggestInput from './AutosuggestInput';
 
 const Search = (props) => {
     const { searchOneSport } = useContext(SportsContext);
@@ -20,10 +21,6 @@ const Search = (props) => {
             props.onSubmit();
         }
         searchOneSport(currentTerm);
-    }
-
-    const updateTerm = (value) => {
-        props.onTermChange(value)
     }
 
     const toggleFilterBox = (evt) => {
@@ -43,15 +40,8 @@ const Search = (props) => {
                     >
                         Filter
                 </div>
-                <input 
-                    type='text' 
-                    style={state.inputFocused ? {...searchInput, ...focusedInput} : searchInput} 
-                    value={currentTerm} 
-                    placeholder= 'search' 
-                    onChange = {(e) => {updateTerm(e.target.value)}}
-                    onFocus={() => setState({...state, inputFocused: true})}
-                    onBlur={() => setState({...state, inputFocused: false})} 
-                />
+                <AutosuggestInput 
+                    onTermChange = {props.onTermChange} onSubmit = {onSubmit}/>
                 <div className='submit button' style={submit} onClick = {onSubmit}>
                     <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
                 </div> 
@@ -62,6 +52,16 @@ const Search = (props) => {
         </div>
     )
 }
+
+/*<input 
+                    type='text' 
+                    style={state.inputFocused ? {...searchInput, ...focusedInput} : searchInput} 
+                    value={currentTerm} 
+                    placeholder= 'search' 
+                    onChange = {(e) => {updateTerm(e.target.value)}}
+                    onFocus={() => setState({...state, inputFocused: true})}
+                    onBlur={() => setState({...state, inputFocused: false})} 
+                /> */
 
 const containerSearch = {
     display: "block",
@@ -112,7 +112,7 @@ const submit = {
     width: "50px",
     height: "30px",
     background: "none",
-    margin: "auto",
+    margin: "0 auto auto -1vh",
     marginLeft: "-50px",
     alignItems: "center",
     justifyItems: "center",
@@ -121,6 +121,7 @@ const submit = {
 
 const filter = {
     width: "80px",
+    height: "2vh",
     background: "none",
     padding: "10px 10px",
     margin: "0",

@@ -13,14 +13,17 @@ import garden from '../default-img/myhelsinki_Aarteenetsijänpuisto_0406_2020091
 import './landing-page.css';
 import { SportsContext } from '../Contexts/SportsContexts';
 import { WeatherContext } from '../Contexts/WeatherContext';
+import { ServiceContext, ServiceContextProvider } from '../Contexts/ServiceContext';
 
 const LandingPage = (props) => {
     const { updateSports } = useContext(SportsContext);
     const { updateWeather } = useContext(WeatherContext);
+    const { updateServices } = useContext(ServiceContext);
     const history = useHistory()
 
     useEffect(() => {
         updateSports();
+        updateServices();
         updateWeather();
     }, []);
 
