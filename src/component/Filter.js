@@ -70,7 +70,8 @@ const filterBox = {
     color: "#FFF9E3",
     display: "flex",
     borderRadius: "20px",
-    margin: 'auto'
+    margin: 'auto',
+    borderRadius: '20px'
 }
 
 const filter = {
@@ -88,7 +89,8 @@ const filter = {
     justifyContent: "center",
     alignItems: "center",
     borderRadius: '20px',
-    height: '100%'
+    height: '100%',
+    borderRadius: '20px'
 }
 
 export default Filter;

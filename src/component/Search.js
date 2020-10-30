@@ -72,14 +72,13 @@ const containerSearch = {
     position: "relative",
     width: "100vw",
     top: "0px",
-    margin: '5px',
+    margin: '0px',
     boxShadow: "saddlebrown 2px"
 }
 
 const searchBar = {
     display: "flex",
     flexDirection: "row",
-    overflow: "hidden",
     margin: "auto",
     marginTop: "20px",
     minWidth: "320px",
@@ -111,13 +110,15 @@ const focusedInput = {
 
 const submit = {
     width: "50px",
-    height: "30px",
+    height: "35px",
     background: "none",
     margin: "auto",
-    marginLeft: "-120px",
+    marginTop: 0,
+    marginLeft: "-40px",
     alignItems: "center",
     justifyItems: "center",
     opacity: "90%",
+    borderRadius: '20px'
 }
 
 const filter = {
