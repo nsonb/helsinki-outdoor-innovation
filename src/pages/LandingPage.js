@@ -7,7 +7,7 @@ import Search from '../component/Search';
 import fall from '../default-img/melonta_kauppatori_Maija_Astikainen-3.jpg';
 import spring from '../default-img/Lammassaari_island_Jussi+Hellsten.jpg';
 import summer from '../default-img/Finland_Helsinki_Vallisaari_highres_byJuliaKivela_9868.jpg';
-import winter from '../default-img/DSC02570.jpg';
+import winter from '../default-img/johanna_vilhunen_talvi_2013_4_2874.jpg';
 import garden from '../default-img/myhelsinki_Aarteenetsijänpuisto_0406_20200915.jpg';
 
 import './landing-page.css';

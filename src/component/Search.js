@@ -38,15 +38,16 @@ const Search = (props) => {
                     onMouseLeave={() => setState({...state, filterHover: false})}
                     onClick={toggleFilterBox}
                     >
-                        Filter
+                        {state.showFilter ? 'Search' : 'Filter'}
                 </div>
+                
                 <AutosuggestInput 
                     onTermChange = {props.onTermChange} onSubmit = {onSubmit}/>
                 <div className='submit button' style={submit} onClick = {onSubmit}>
                     <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
                 </div> 
             </form>
-            <div style={{margin:'12px'}}>
+            <div>
                 {state.showFilter ? <Filter/> : null}
             </div>   
         </div>
@@ -112,8 +113,8 @@ const submit = {
     width: "50px",
     height: "30px",
     background: "none",
-    margin: "0 auto auto -1vh",
-    marginLeft: "-50px",
+    margin: "auto",
+    marginLeft: "-120px",
     alignItems: "center",
     justifyItems: "center",
     opacity: "90%",
@@ -121,7 +122,7 @@ const submit = {
 
 const filter = {
     width: "80px",
-    height: "2vh",
+    height: "100%",
     background: "none",
     padding: "10px 10px",
     margin: "0",
@@ -141,6 +142,7 @@ const searchLogo = {
     height: "16px",
     width: "auto",
     margin: "auto",
+    marginLeft: '0px',
     padding: "6px"
 }
 
