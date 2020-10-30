@@ -63,9 +63,10 @@ const Filter = () => {
 }
 
 const filterBox = {
+    margin: '5px',
     width: "80%",
     height: "auto",
-    backgroundColor: "#502619",
+    backgroundColor: "rgb(6, 13, 8)",
     color: "#FFF9E3",
     display: "flex",
     borderRadius: "20px",
@@ -76,7 +77,7 @@ const filter = {
     width: "80px",
     background: "none",
     padding: "10px 10px",
-    margin: "0",
+    margin: "5px",
     opacity: "90%",
     backgroundColor: "#502619",
     color: "#FFF9E3",

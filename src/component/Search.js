@@ -56,7 +56,7 @@ const Search = (props) => {
                     <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
                 </div> 
             </form>
-            <div>
+            <div style={{margin:'12px'}}>
                 {state.showFilter ? <Filter/> : null}
             </div>   
         </div>
@@ -71,7 +71,7 @@ const containerSearch = {
     position: "relative",
     width: "100vw",
     top: "0px",
-    margin: 0,
+    margin: '5px',
     boxShadow: "saddlebrown 2px"
 }
 
