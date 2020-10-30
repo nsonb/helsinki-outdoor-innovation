@@ -4,7 +4,10 @@ import {
     getServices,
     getParking, 
     getTransport,
-    getPlaygrounds
+    getPlaygrounds,
+    getOntologyNames,
+    getEverything,
+    getOntologyTrees
  } from '../Scripts/outdoorAPI';
 
 //services that cannot be searched but will show on toggle
