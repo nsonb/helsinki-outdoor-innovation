@@ -10,6 +10,8 @@ import './AutosuggestInput.css';
 
 // https://codepen.io/moroshko/pen/LGNJMy
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
+
+// refer to https://github.com/moroshko/react-autosuggest#installation for css styling
 const AutosuggestInput = (props) => {
   const currentTerm = useContext(CurrentTermContext);
   const { searchSuggestions } = useContext(UIContext);
