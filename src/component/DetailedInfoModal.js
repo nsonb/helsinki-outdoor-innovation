@@ -47,16 +47,17 @@ const DetailedInfoModal = ({location, closeModal}) => {
             }}
         >Close</button>
     );
+    //TODO: Add functionality and styling to Find route button
     return (
         <div style={modal}>
             <div style={content}>
                 {closeButton()}
                 <h1 style={placeName}>{location.name_en || location.name_fi || location.name_sv}</h1>
-                <p>{location.street_address_fi}</p>
+                <p>{location.street_address_fi}, {location.address_city_en}, {location.address_zip}</p>
                 <img src={""} alt={""}/>
                 <p>{location.short_desc_fi || location.short_desc_sv}</p>
                 <p>Information</p>
-                <button onClick={() => console.log(location)}>Find route</button>
+                <button>Find route</button>
             </div>
         </div>
     );
