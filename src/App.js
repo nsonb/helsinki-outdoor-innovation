@@ -34,7 +34,7 @@ const App = () => {
           <ServiceContextProvider>
             <WeatherContextProvider>
               <SportsContextProvider>
-                <CurrentTermContext.Provider value={currentSearchTerm}>
+                <CurrentTermContext.Provider>
                   <Switch>
                     <Route exact path ='/'> 
                       <LandingPage onTermChange = {updateSearchTerm}/>

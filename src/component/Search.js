@@ -8,7 +8,7 @@ import AutosuggestInput from './AutosuggestInput';
 
 const Search = (props) => {
     const { searchOneSport } = useContext(SportsContext);
-    const currentTerm = useContext(CurrentTermContext);
+    const { currentTerm, updateTerm } = useContext(CurrentTermContext);
     const [state, setState] = useState({
         inputFocused: false,
         filterHover: false,
@@ -41,7 +41,7 @@ const Search = (props) => {
                         Filter
                 </div>
                 <AutosuggestInput 
-                    onTermChange = {props.onTermChange} onSubmit = {onSubmit}/>
+                    onTermChange = {(value) => updateTerm} onSubmit = {onSubmit}/>
                 <div className='submit button' style={submit} onClick = {onSubmit}>
                     <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
                 </div> 
