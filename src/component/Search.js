@@ -7,7 +7,7 @@ import Filter from './Filter';
 import AutosuggestInput from './AutosuggestInput';
 import { useHistory, useLocation } from 'react-router-dom';
 
-const Search = (props) => {
+const Search = () => {
     const { searchOneSport } = useContext(SportsContext);
     const { currentTerm, updateTerm } = useContext(CurrentTermContext);
     const [state, setState] = useState({
@@ -34,25 +34,32 @@ const Search = (props) => {
     
     return (  
         <div className='container-search' style={containerSearch}>
-            <form className='search-bar' style={searchBar} onSubmit={onSubmit}>                
+            <div className='search-bar' style={searchBar} >                
                 <div 
                     className='filter button' 
-                    style={state.filterHover? {...filter, opacity: 1} : filter}
+                    style={
+                        state.showFilter ? 
+                        (state.filterHover? {...reverseFilter, opacity: 1} : reverseFilter) :
+                        (state.filterHover? {...filter, opacity: 1} : filter)
+                    }
                     onMouseEnter={() => setState({...state, filterHover: true})}
                     onMouseLeave={() => setState({...state, filterHover: false})}
                     onClick={toggleFilterBox}
                     >
                         {state.showFilter ? 'Search' : 'Filter'}
                 </div>
-                
-                <AutosuggestInput 
-                    onTermChange = {(value) => updateTerm(value)} onSubmit = {onSubmit}/>
-                <div className='submit button' style={submit} onClick = {onSubmit}>
-                    <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
-                </div> 
-            </form>
+                {state.showFilter ? 
+                    <Filter/> : 
+                    <form onSubmit={onSubmit} style={searchForm}>
+                        <AutosuggestInput 
+                            onTermChange = {(value) => updateTerm(value)} onSubmit = {onSubmit}/>
+                        <div className='submit' style={submit} onClick = {onSubmit}>
+                            <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
+                        </div> 
+                    </form>}
+                </div>
             <div>
-                {state.showFilter ? <Filter/> : null}
+                
             </div>   
         </div>
     )
@@ -77,14 +84,16 @@ const containerSearch = {
     width: "100vw",
     top: "0px",
     margin: '0px',
+    marginTop: '16px',
     boxShadow: "saddlebrown 2px"
 }
 
 const searchBar = {
     display: "flex",
     flexDirection: "row",
+    alignItems: 'center',
+    justifyContent: 'center',
     margin: "auto",
-    marginTop: "20px",
     minWidth: "320px",
     width: "80%",
     left: 0,
@@ -142,13 +151,40 @@ const filter = {
     fontFamily: "'Montserrat', sans-serif",
     fontSize: "12px",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    zIndex: '1'
+}
+
+const reverseFilter = {
+    width: "80px",
+    height: "100%",
+    background: "none",
+    padding: "10px 10px",
+    margin: "0",
+    opacity: "90%",
+    backgroundColor: "#FFF9E3 ",
+    color: "#060D08",
+    borderRadius: "20px 0 0 20px",
+    textAlign: "left",
+    fontFamily: "'Montserrat', sans-serif",
+    fontSize: "12px",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: '1'
 }
 
 const searchLogo = {
     display: "block",
     width: "auto",
     height: '16px',
+}
+
+const searchForm = {
+    width: '100%',
+    height: '35px',
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'row'
 }
 
 export default Search;

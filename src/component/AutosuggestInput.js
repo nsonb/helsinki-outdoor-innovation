@@ -3,7 +3,6 @@ import Autosuggest from 'react-autosuggest';
 import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';
 import { UIContext } from '../Contexts/UIContext';
 import { SportsContext } from '../Contexts/SportsContexts';
-import Search from './Search';
 import './AutosuggestInput.css';
 //autosearch only works in result page, because there is no universal submit function yet!
 

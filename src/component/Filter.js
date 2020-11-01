@@ -46,21 +46,20 @@ const Filter = () => {
     }
 
     const makeFilterCheckbox = (tagname) => {
-        return  <div key={tagname}>
-                    <input type="checkbox" className='checkboxInput' onChange={saveValue} checked={state.tags[tagname].status} value={tagname} name={tagname} />
-                    <label>{state.tags[tagname].name_en}</label>
+        return  <div key={tagname} style={checkboxContainer}>
+                    <input type="checkbox" style={checkboxInput} onChange={saveValue} checked={state.tags[tagname].status} value={tagname} name={tagname} />
+                    <label style={{display: 'block'}}>{state.tags[tagname].name_en}</label>
                 </div>
     }
 
     return (  
         <div 
-            className='container-search' 
             style={filterBox}
             >
             {Object.keys(state.tags).map(key => makeFilterCheckbox(key))}
             <div 
                 className='filter button' 
-                style={state.filterHover? {...filter, opacity: 1} : filter}
+                style={state.filterHover? {...filterButton, opacity: 1} : filterButton}
                 onMouseEnter={() => setState({...state, filterHover: true})}
                 onMouseLeave={() => setState({...state, filterHover: false})}
                 onClick={filterSports}
@@ -73,25 +72,28 @@ const Filter = () => {
 
 const filterBox = {
     margin: '5px',
-    width: "80%",
+    width: "calc(100%-80px)",
     height: "100%",
     backgroundColor: "rgb(6, 13, 8)",
     color: "#FFF9E3",
     display: "flex",
     borderRadius: "20px",
     margin: 'auto',
-    borderRadius: '20px',
-    padding: '8px'
+    marginLeft: '0px',
+    paddingLeft: '5px',
+    borderRadius: '0 20px 20px 0',
+    fontFamily: "'Montserrat', sans-serif",
 }
 
-const filter = {
-    width: "80px",
+const filterButton = {
+    width: '60px',
+    height: '60%',
     background: "none",
-    padding: "10px 10px",
-    margin: "5px",
+    padding: "5px",
+    margin: "auto",
     opacity: "90%",
-    backgroundColor: "#502619",
-    color: "#FFF9E3",
+    backgroundColor: "#FFF9E3 ",
+    color: "#060D08",
     borderRadius: "20px 0 0 20px",
     textAlign: "left",
     fontFamily: "'Montserrat', sans-serif",
@@ -99,13 +101,27 @@ const filter = {
     justifyContent: "center",
     alignItems: "center",
     borderRadius: '20px',
-    height: '100%',
-    borderRadius: '20px'
+    textAlign: 'center'
+}
+
+const checkboxContainer = {
+    width: '14%',
+    fontSize: '12px',
+    display: 'flex',
+    marginRight: '5px',
+    padding: '5px',
+    alignItems: 'center',
+    justifyContent: 'center'
 }
 
 const checkboxInput ={
-    borderRadius: '5px'
-
+    margin: 0,
+    marginRight: '5px',
+    background: 'none',
+    borderRadius: '5px',
+    backgroundColor: 'red',
+    cursor: 'pointer',
+    userSelect: 'none',
 }
 
 export default Filter;
