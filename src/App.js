@@ -8,13 +8,14 @@ import { ServiceContextProvider } from './Contexts/ServiceContext';
 import { SportsContextProvider } from './Contexts/SportsContexts';
 import { WeatherContextProvider } from './Contexts/WeatherContext';
 import { UIContextProvider } from './Contexts/UIContext';
+import { CurrentTermContextProvider } from './Contexts/CurrentSearchTermContext';
 
 // pages
 import TestingPage from './pages/TestingPage';
 import LandingPage from './pages/LandingPage';
 import ResultPage from './pages/ResultPage';
 import WeatherPage from './pages/WeatherPage';
-import { CurrentTermContext } from './Contexts/CurrentSearchTermContext';
+
 
 const App = () => {
   const [currentSearchTerm, setCurrentSearchTerm] = useState('');
@@ -34,7 +35,7 @@ const App = () => {
           <ServiceContextProvider>
             <WeatherContextProvider>
               <SportsContextProvider>
-                <CurrentTermContext.Provider value={currentSearchTerm}>
+                <CurrentTermContextProvider>
                   <Switch>
                     <Route exact path ='/'> 
                       <LandingPage onTermChange = {updateSearchTerm}/>
@@ -46,7 +47,7 @@ const App = () => {
                       <WeatherPage />
                     </Route>   
                   </Switch>
-                </CurrentTermContext.Provider>
+                </CurrentTermContextProvider>
               </SportsContextProvider>
             </WeatherContextProvider>
           </ServiceContextProvider>

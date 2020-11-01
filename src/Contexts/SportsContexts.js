@@ -84,6 +84,7 @@ export const SportsContextProvider = (props) => {
     //name = search words
     const searchOneSport = (name) => {
         //clean up the search words and separate "must have"
+        console.log(name)
         const cleanString = name.replace(',', '').replace('.', '').toLowerCase();
         let nameList = [];
         let mustHave = cleanString.match(/"([^"]+)"/);

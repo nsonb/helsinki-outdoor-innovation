@@ -11,7 +11,7 @@ import './AutosuggestInput.css';
 // https://codepen.io/moroshko/pen/LGNJMy
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
 const AutosuggestInput = (props) => {
-  const currentTerm = useContext(CurrentTermContext);
+  const { currentTerm, updateTerm } = useContext(CurrentTermContext);
   const { searchSuggestions } = useContext(UIContext);
   const { sports, searchOneSport } = useContext(SportsContext);
   const [ state, setState ] = useState({
@@ -53,16 +53,17 @@ const AutosuggestInput = (props) => {
   }
 
   const getSuggestionValue = (suggestion) => {
-    let search = suggestion.name;
     if (suggestion.category === 'itemNames') {
-      search = '"' + suggestion.id + '"'
+      props.onSubmit(null, '"' + suggestion.id + '"');
+      return '"' + suggestion.name + '"';
+    } else {
+      props.onSubmit(null, suggestion.name);
+      return suggestion.name;
     }
-    return search;
   }
 
   const onValueChange = (event, { newValue, method }) => {
-    props.onTermChange(newValue);
-    searchOneSport(newValue);
+    updateTerm(newValue);
   };
   
   const onSuggestionsFetchRequested = ({ value }) => {
