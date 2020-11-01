@@ -4,15 +4,13 @@
     width: 100%;
     height: 100%;
     min-width: 320px;
-    left: 0;
-    right: 0;
     align-items: flex-start;
-    overflow: hidden;
 }
 
 .react-autosuggest__input {
     -webkit-appearance: none;
     width: 100%;
+    height: 35px;
     box-sizing: border-box;
     margin: 0px;
     border: none;
@@ -20,8 +18,7 @@
     padding: 10px 50px 10px 10px;
     outline: none;
     font-family: 'Montserrat', sans-serif;
-    background-color: #FFF9E3;
-    height: 35px;
+    background-color: #FFF9E3; 
 }
 
 .react-autosuggest__suggestions-container{
@@ -29,7 +26,6 @@
     overflow: scroll;
     max-height: 24vh;
     margin-top: 5px;
-    
     padding: 0;
     margin: 0;
     margin-top: 4px;

@@ -73,7 +73,7 @@ const Filter = () => {
 const filterBox = {
     margin: '5px',
     width: "calc(100%-80px)",
-    height: "100%",
+    height: "35px",
     backgroundColor: "rgb(6, 13, 8)",
     color: "#FFF9E3",
     display: "flex",
@@ -108,8 +108,8 @@ const checkboxContainer = {
     width: '14%',
     fontSize: '12px',
     display: 'flex',
-    marginRight: '5px',
-    padding: '5px',
+    marginRight: '2px',
+    padding: '2px',
     alignItems: 'center',
     justifyContent: 'center'
 }

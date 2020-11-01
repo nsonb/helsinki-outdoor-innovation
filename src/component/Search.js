@@ -91,8 +91,6 @@ const containerSearch = {
 const searchBar = {
     display: "flex",
     flexDirection: "row",
-    alignItems: 'center',
-    justifyContent: 'center',
     margin: "auto",
     minWidth: "320px",
     width: "80%",
@@ -181,7 +179,6 @@ const searchLogo = {
 
 const searchForm = {
     width: '100%',
-    height: '35px',
     position: 'relative',
     display: 'flex',
     flexDirection: 'row'
