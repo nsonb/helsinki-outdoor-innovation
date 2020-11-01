@@ -113,16 +113,19 @@ const focusedInput = {
 }
 
 const submit = {
-    width: "50px",
+    width: "48px",
     height: "35px",
     background: "none",
-    margin: "auto",
-    marginTop: 0,
-    marginLeft: "-60px",
+    marginLeft: "-48px",
+    marginTop: '0',
     alignItems: "center",
     justifyItems: "center",
     opacity: "90%",
-    borderRadius: '20px'
+    borderRadius: '20px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '0'
 }
 
 const filter = {
@@ -144,11 +147,8 @@ const filter = {
 
 const searchLogo = {
     display: "block",
-    height: "16px",
     width: "auto",
-    margin: "auto",
-    marginLeft: '0px',
-    padding: "6px"
+    height: '16px',
 }
 
 export default Search;

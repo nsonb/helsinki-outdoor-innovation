@@ -11,7 +11,7 @@ const Filter = () => {
     const { updateTerm } = useContext(CurrentTermContext);
     const [state, setState] = useState({
         tags: { 
-            land: {status: false, icon: '', name_fi: 'Kuivalla maalla', name_en: 'Sports on land', name_sv: ''},
+            land: {status: false, icon: '', name_fi: 'Kuivalla maalla', name_en: 'Land sports', name_sv: ''},
             water: {status: false, icon: '', name_fi: 'Vesiurheilu', name_en: 'Water sports', name_sv: ''},
             animals: {status: false, icon: '', name_fi: 'Eläinurheilu', name_en: 'Animal sports', name_sv: ''},
             ballgames: {status: false, icon: '', name_fi: 'Pallopelit', name_en: 'Ball games', name_sv: ''},
@@ -47,7 +47,7 @@ const Filter = () => {
 
     const makeFilterCheckbox = (tagname) => {
         return  <div key={tagname}>
-                    <input type="checkbox" onChange={saveValue} checked={state.tags[tagname].status} value={tagname} name={tagname} />
+                    <input type="checkbox" className='checkboxInput' onChange={saveValue} checked={state.tags[tagname].status} value={tagname} name={tagname} />
                     <label>{state.tags[tagname].name_en}</label>
                 </div>
     }
@@ -101,6 +101,11 @@ const filter = {
     borderRadius: '20px',
     height: '100%',
     borderRadius: '20px'
+}
+
+const checkboxInput ={
+    borderRadius: '5px'
+
 }
 
 export default Filter;

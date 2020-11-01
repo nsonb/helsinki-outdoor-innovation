@@ -32,8 +32,9 @@ const LandingPage = (props) => {
     return (
         <div className='landing-page'>  
             <ImageHolder images = {[spring, summer, fall, winter, garden]} />
-            <h2>Discover Helsinki Outdoor Sports</h2>  
-            <div>
+              
+            <div style={{position:'absolute', height:'73%', bottom: '0'}}>
+                <h2>Discover Helsinki Outdoor Sports</h2>
                 <Search onTermChange = {props.onTermChange} />
                 <MiniWeather />
             </div>
