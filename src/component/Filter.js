@@ -111,7 +111,7 @@ const checkboxContainer = {
     marginRight: '2px',
     padding: '2px',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
 }
 
 const checkboxInput ={
