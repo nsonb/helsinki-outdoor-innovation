@@ -1,4 +1,16 @@
-import React from 'react';
+import React, { createContext,  useState } from 'react';
 
-const CurrentTermContext = React.createContext('');
-export {CurrentTermContext};
+export const CurrentTermContext = createContext();
+export const CurrentTermContextProvider = (props) => {
+    const [ currentTerm, setCurrentTerm ] = useState('');
+
+    const updateTerm = (term) => {
+        setCurrentTerm(term);
+    }
+
+    return (
+        <CurrentTermContext.Provider value={{currentTerm, updateTerm}}>
+            {props.children}
+        </CurrentTermContext.Provider>
+    );
+}

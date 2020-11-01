@@ -1,9 +1,14 @@
 import React, {useState, useContext} from 'react';
 import './search.css';
 import { SportsContext } from '../Contexts/SportsContexts';
+import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const Filter = () => {
+    const history = useHistory();
+    const location = useLocation();
     const { filterByTags } = useContext(SportsContext);
+    const { updateTerm } = useContext(CurrentTermContext);
     const [state, setState] = useState({
         tags: { 
             land: {status: false, icon: '', name_fi: 'Kuivalla maalla', name_en: 'Sports on land', name_sv: ''},
@@ -32,8 +37,12 @@ const Filter = () => {
 
     const filterSports = (evt) => {
         evt.preventDefault();
+        updateTerm('')
         const tags = Object.keys(state.tags).filter(e => state.tags[e].status);
         filterByTags(tags);
+        if (location.pathname !== '/result') {
+            history.push('/result');
+        }
     }
 
     const makeFilterCheckbox = (tagname) => {

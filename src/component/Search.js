@@ -5,22 +5,26 @@ import { SportsContext } from '../Contexts/SportsContexts';
 import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';
 import Filter from './Filter';
 import AutosuggestInput from './AutosuggestInput';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const Search = (props) => {
     const { searchOneSport } = useContext(SportsContext);
-    const currentTerm = useContext(CurrentTermContext);
+    const { currentTerm, updateTerm } = useContext(CurrentTermContext);
     const [state, setState] = useState({
         inputFocused: false,
         filterHover: false,
         showFilter: false
     })
+    const history = useHistory();
+    const location = useLocation();
     
-    const onSubmit = (event) => {
-        event.preventDefault();
-        if(props.onSubmit !== null) {
-            props.onSubmit();
+    const onSubmit = (event, term) => {
+        if (event) event.preventDefault();
+        if (!term) term = currentTerm;
+        searchOneSport(term);
+        if (location.pathname !== '/result') {
+            history.push('/result');
         }
-        searchOneSport(currentTerm);
     }
 
     const toggleFilterBox = (evt) => {
@@ -42,7 +46,7 @@ const Search = (props) => {
                 </div>
                 
                 <AutosuggestInput 
-                    onTermChange = {props.onTermChange} onSubmit = {onSubmit}/>
+                    onTermChange = {(value) => updateTerm(value)} onSubmit = {onSubmit}/>
                 <div className='submit button' style={submit} onClick = {onSubmit}>
                     <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
                 </div> 
