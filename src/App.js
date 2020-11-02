@@ -16,6 +16,8 @@ import LandingPage from './pages/LandingPage';
 import ResultPage from './pages/ResultPage';
 import WeatherPage from './pages/WeatherPage';
 
+import './App.css';
+
 
 const App = () => {
   const [currentSearchTerm, setCurrentSearchTerm] = useState('');

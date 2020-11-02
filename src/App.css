@@ -1,0 +1,31 @@
+.App {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.main-background-color {
+    background-color: #060D08;
+    color:  #FFF9E3;
+}
+
+.secondary-background-color {
+    background-color: #FFF9E3;
+    color: #060D08;
+}
+
+.button {
+    display: block;
+    border-radius: 5px;
+    border: none;
+    margin: 10px;
+    padding: 3px;
+    opacity: 0.5;
+}
+
+.button:hover{
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.button:focus{
+    opacity: 0.8;
+}

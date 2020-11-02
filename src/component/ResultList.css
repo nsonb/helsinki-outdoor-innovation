@@ -1,7 +1,6 @@
 .result-container {
     position: absolute;
     bottom: 16px;
-    max-height: 40vh;
     height: fit-content;
     overflow: hidden;
     margin: auto;
@@ -12,13 +11,13 @@
     left: 0;
     right: 0;
     border-radius: 12px;
-    font-family: 'Montserrat', sans-serif;
     padding-bottom: 30px;
     
 }
 
 .scrollable {
-    height: 100%;
+    height: fit-content;
+    max-height: 40vh;
     overflow: auto;
     background: transparent;
 }
@@ -35,7 +34,6 @@
     outline: none;
     opacity: 0.8;
     margin-bottom: 5px;
-    font-family: 'Montserrat', sans-serif;
 }
 
 .more-button:hover{

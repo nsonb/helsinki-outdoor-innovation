@@ -29,24 +29,6 @@
     display: flex;
 }
 
-.button {
-    display: block;
-    border-radius: 5px;
-    border: none;
-    margin: 10px;
-    padding: 3px;
-    background-color:white ;
-    opacity: 0.5;
-}
-
-.button:hover{
-    cursor: pointer;
-    opacity: 0.6;
-}
-
-.button:focus{
-    opacity: 0.8;
-}
 .left-button {
     position: absolute;
     left: 0;
@@ -54,7 +36,6 @@
     border-radius: 5px;
     border: none;
     padding: 3px;
-    background-color:white ;
     opacity: 0;
     height: 100%;
     width: 20%;
@@ -71,7 +52,6 @@
     border-radius: 5px;
     border: none;
     padding: 3px;
-    background-color:white ;
     opacity: 0;
     height: 100%;
     width: 20%;

@@ -12,7 +12,7 @@ const MiniWeather = () => {
     }
 
     return (
-        <div className='weather-container' onClick={() => history.push('/weather')}>
+        <div className='weather-container secondary-background-color' onClick={() => history.push('/weather')}>
             <div className = 'weather-element'>temperature: {currWeather.temp}</div>
             <div className = 'weather-element'>wind: {currWeather.wind}</div>
             <div className = 'weather-element'>humidity: {currWeather.humidity}</div>

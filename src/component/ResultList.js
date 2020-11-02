@@ -42,7 +42,7 @@ const ResultList = () => {
     }, [detailed, more, renderedItems.length]);
 
     return (
-        <div className='result-container' style={{height: height, visibility: visibility}}>
+        <div className='result-container' style={{maxHeight: height, visibility: visibility}}>
             <button className='more-button' onClick={() => {setDetailed(!detailed);changeMore()}}>{more}</button>
             <div className='scrollable'>
                 {renderedItems}

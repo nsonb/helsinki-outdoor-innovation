@@ -66,7 +66,7 @@ const Filter = () => {
 
     return (  
         <div 
-            style={filterBox}
+            style={filterBox} className='main-background-color'
             >
             {Object.keys(state.tags).map(key => 
                 <div key={key} style={checkboxContainer}>
@@ -81,7 +81,7 @@ const Filter = () => {
                 </div>
                 )}
             <div 
-                className='filter button' 
+                className='filter button secondary-background-color' 
                 style={state.filterHover? {...filterButton, opacity: 1} : filterButton}
                 onMouseEnter={() => setState({...state, filterHover: true})}
                 onMouseLeave={() => setState({...state, filterHover: false})}
@@ -96,15 +96,12 @@ const Filter = () => {
 const filterBox = {
     margin: '5px',
     width: "calc(100%-80px)",
-    backgroundColor: "rgb(6, 13, 8)",
-    color: "#FFF9E3",
     display: "flex",
     borderRadius: "20px",
     margin: 'auto',
     marginLeft: '0px',
     paddingLeft: '5px',
     borderRadius: '0 20px 20px 0',
-    fontFamily: "'Montserrat', sans-serif",
 }
 
 const filterButton = {
@@ -114,11 +111,9 @@ const filterButton = {
     padding: "5px",
     margin: "auto",
     opacity: "90%",
-    backgroundColor: "#FFF9E3 ",
-    color: "#060D08",
+    color: "#FFF9E3",
     borderRadius: "20px 0 0 20px",
     textAlign: "left",
-    fontFamily: "'Montserrat', sans-serif",
     fontSize: "12px",
     justifyContent: "center",
     alignItems: "center",
