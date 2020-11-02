@@ -7,7 +7,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 const Filter = () => {
     const history = useHistory();
     const location = useLocation();
-    const { filterByTags } = useContext(SportsContext);
+    const { filterTagsAndCities } = useContext(SportsContext);
     const { updateTerm } = useContext(CurrentTermContext);
     const [state, setState] = useState({
         tags: { 
@@ -19,10 +19,15 @@ const Filter = () => {
             noEquipment: {status: false, icon: '', name_fi: 'Ei välineitä', name_en: 'No equipment', name_sv: ''},
             winter: {status: false, icon: '', name_fi: 'Talviurheilu', name_en: 'Winter sports', name_sv: ''},
         },
+        cities: {
+            helsinki: {status: false, icon: '', name_fi: 'Helsinki', name_en: 'Helsinki', name_sv: 'Helsingfors'},
+            espoo: {status: false, icon: '', name_fi: 'Espoo', name_en: 'Espoo', name_sv: 'Esbo'},
+            vantaa: {status: false, icon: '', name_fi: 'Vantaa', name_en: 'Vantaa', name_sv: 'Vanda'},
+        },
         filterHover: false
     })
     
-    const saveValue = (evt) => {
+    const saveTag = (evt) => {
         const name = evt.target.name;
         const item = {
             ...state.tags[name], 
@@ -35,28 +40,46 @@ const Filter = () => {
             });
     }
 
+    const saveCity = (evt) => {
+        const name = evt.target.name;
+        const item = {
+            ...state.cities[name], 
+            status: !state.cities[name].status
+        }
+        setState({
+            ...state, 
+            cities: {...state.cities, 
+                [name]: item}
+            });
+    }
+
     const filterSports = (evt) => {
         evt.preventDefault();
         updateTerm('')
         const tags = Object.keys(state.tags).filter(e => state.tags[e].status);
-        filterByTags(tags);
+        const cities = Object.keys(state.cities).filter(e => state.cities[e].status);
+        filterTagsAndCities({tags: tags, cities: cities});
         if (location.pathname !== '/result') {
             history.push('/result');
         }
-    }
-
-    const makeFilterCheckbox = (tagname) => {
-        return  <div key={tagname} style={checkboxContainer}>
-                    <input type="checkbox" style={checkboxInput} onChange={saveValue} checked={state.tags[tagname].status} value={tagname} name={tagname} />
-                    <label style={{display: 'block'}}>{state.tags[tagname].name_en}</label>
-                </div>
     }
 
     return (  
         <div 
             style={filterBox}
             >
-            {Object.keys(state.tags).map(key => makeFilterCheckbox(key))}
+            {Object.keys(state.tags).map(key => 
+                <div key={key} style={checkboxContainer}>
+                    <input type="checkbox" style={checkboxInput} onChange={saveTag} checked={state.tags[key].status} value={key} name={key} />
+                    <label style={{display: 'block'}}>{state.tags[key].name_en}</label>
+                </div>
+                )}
+            {Object.keys(state.cities).map(key => 
+                <div key={key} style={checkboxContainer}>
+                    <input type="checkbox" style={checkboxInput} onChange={saveCity} checked={state.cities[key].status} value={key} name={key} />
+                    <label style={{display: 'block'}}>{state.cities[key].name_en}</label>
+                </div>
+                )}
             <div 
                 className='filter button' 
                 style={state.filterHover? {...filterButton, opacity: 1} : filterButton}
