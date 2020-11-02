@@ -4,15 +4,18 @@ import ImageHolder from '../component/ImageHolder';
 import MiniWeather from '../component/MiniWeather';
 import Search from '../component/Search';
 
-import fall from '../default-img/fall.png';
-import spring from '../default-img/spring.jpg';
-import summer from '../default-img/summer.png';
-import winter from '../default-img/winter.png';
+// images
+import fall from '../default-img/melonta_kauppatori_Maija_Astikainen-3.jpg';
+import spring from '../default-img/Lammassaari_island_Jussi+Hellsten.jpg';
+import summer from '../default-img/Finland_Helsinki_Vallisaari_highres_byJuliaKivela_9868.jpg';
+import winter from '../default-img/johanna_vilhunen_talvi_2013_4_2874.jpg';
+import garden from '../default-img/myhelsinki_Aarteenetsijänpuisto_0406_20200915.jpg';
 
+//
 import './landing-page.css';
 import { SportsContext } from '../Contexts/SportsContexts';
 import { WeatherContext } from '../Contexts/WeatherContext';
-import { ServiceContext, ServiceContextProvider } from '../Contexts/ServiceContext';
+import { ServiceContext } from '../Contexts/ServiceContext';
 
 const LandingPage = (props) => {
     const { updateSports } = useContext(SportsContext);
@@ -28,9 +31,10 @@ const LandingPage = (props) => {
 
     return (
         <div className='landing-page'>  
-            <ImageHolder images = {[spring, summer, fall, winter]} />
-            <h2>Discover Helsinki Outdoor Sports</h2>  
-            <div>
+            <ImageHolder images = {[spring, summer, fall, winter, garden]} />
+              
+            <div style={{position:'absolute', height:'73%', bottom: '0'}}>
+                <h2>Discover Helsinki Outdoor Sports</h2>
                 <Search onTermChange = {props.onTermChange} />
                 <MiniWeather />
             </div>

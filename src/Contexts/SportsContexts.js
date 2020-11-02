@@ -176,6 +176,29 @@ export const SportsContextProvider = (props) => {
         setSorted(newList);      
     }
 
+    const filterTagsAndCities = (filterObj) => {
+        //first filter by tags
+        let newList = {}, key;
+        for (key in sports) {
+            const sportTags = sports[key].tags
+            if (filterObj.tags.every(e => sportTags.includes(e))) {
+                newList[key] = sports[key]
+            }
+        }
+        //then sort the left over items by location
+        for (key in newList) {
+            let matchingData = [];
+            for (let i = 0; i < sports[key].data.length; i++) {
+                const location = sports[key].data[i].address_city_fi || '';
+                if (filterObj.cities.includes(location.toLowerCase())) {
+                    matchingData.push(sports[key].data[i]);
+                }
+            }
+            newList[key].data = matchingData;
+        }
+        setSorted(newList); 
+    }
+
     //https://masteringjs.io/tutorials/fundamentals/compare-arrays
     const arrayEquals = (a, b) => {
         return Array.isArray(a) &&
@@ -185,7 +208,7 @@ export const SportsContextProvider = (props) => {
       }
 
     return (
-        <SportsContext.Provider value={{sports, updateSports, sorted, searchOneSport, sortTheSports, filterByTags}}>
+        <SportsContext.Provider value={{sports, updateSports, sorted, searchOneSport, sortTheSports, filterByTags, filterTagsAndCities}}>
             {props.children}
         </SportsContext.Provider>
     );
