@@ -24,8 +24,9 @@ export const WeatherContextProvider = (props) => {
     });
     const [sixHours, setSixHours] = useState([]);
 
-    const updateWeather = () => {
-        getWeather()
+    const updateWeather = (cityName) => {
+        if (!cityName) cityName = 'Helsinki'
+        getWeather(cityName)
         .then((result) => {
             setWeather(result);
             createCurrentWeather(result);
