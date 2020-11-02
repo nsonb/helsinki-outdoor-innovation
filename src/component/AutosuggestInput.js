@@ -37,6 +37,8 @@ const AutosuggestInput = (props) => {
       sports[sport].displayname_fi && sportlist.push({name: sports[sport].displayname_fi, category: 'Sports'});
       sports[sport].displayname_sv && sportlist.push({name: sports[sport].displayname_sv, category: 'Sports'});
       sports[sport].displayname_en && sportlist.push({name: sports[sport].displayname_en, category: 'Sports'});
+      //tags
+      sports[sport].tags.forEach(t => sportlist.push({name: t, category: 'Tags'}));
       //names of the locations from data items, e.g. individual locations
       sports[sport].data.forEach(item => {
         item.name_fi && sportlist.push({name: item.name_fi, category: 'itemNames', id: item.id});
@@ -44,8 +46,18 @@ const AutosuggestInput = (props) => {
         item.name_en && sportlist.push({name: item.name_en, category: 'itemNames', id: item.id});
       })
     })
-    return [...searchSuggestions, ...sportlist].filter(s => regex.test(s.name));
+    
+    const cleanSportlist = removeDuplicatesFromArrayByProperty(sportlist, 'name');
+    const list = [...cleanSportlist, ...searchSuggestions].filter(s => regex.test(s.name));
+    return list;
   }
+
+  const removeDuplicatesFromArrayByProperty = (arr, prop) => arr.reduce((accumulator, currentValue) => {
+    if(!accumulator.find(obj => obj[prop] === currentValue[prop])){
+      accumulator.push(currentValue);
+    }
+    return accumulator;
+  }, [])
 
   const renderSuggestion = (suggestion) => {
     return (
