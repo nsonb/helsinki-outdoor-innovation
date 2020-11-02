@@ -88,7 +88,8 @@ const AutosuggestInput = (props) => {
   };
 
   return (
-    <Autosuggest 
+    <Autosuggest
+      className='secondary-background-color'
       suggestions={state.suggestions}
       onSuggestionsFetchRequested={onSuggestionsFetchRequested}
       onSuggestionsClearRequested={onSuggestionsClearRequested}

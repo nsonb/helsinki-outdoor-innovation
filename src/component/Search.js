@@ -107,9 +107,6 @@ const searchInput = {
     border: "none",
     padding: "10px 50px 10px 10px",
     outline: "none",
-    fontFamily: "'Montserrat', sans-serif",
-    backgroundColor: "#FFF9E3",
-    color: "#060D08"
 }
 
 const focusedInput = {
@@ -146,7 +143,6 @@ const filter = {
     color: "#FFF9E3",
     borderRadius: "20px 0 0 20px",
     textAlign: "left",
-    fontFamily: "'Montserrat', sans-serif",
     fontSize: "12px",
     justifyContent: "center",
     alignItems: "center",
@@ -164,7 +160,6 @@ const reverseFilter = {
     color: "#060D08",
     borderRadius: "20px 0 0 20px",
     textAlign: "left",
-    fontFamily: "'Montserrat', sans-serif",
     fontSize: "12px",
     justifyContent: "center",
     alignItems: "center",
