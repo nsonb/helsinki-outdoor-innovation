@@ -16,7 +16,7 @@
     top:0;
     left:0;
     object-fit: cover;
-    opacity: 1;
+    opacity: 0.8;
 }
 
 .info-container {
@@ -34,13 +34,13 @@
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
-    font-weight: normal;
+    font-weight: bold;
     text-shadow: black;
     vertical-align: middle;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: whitesmoke;
+    color: black;
 }
 
 .info-container div:hover{

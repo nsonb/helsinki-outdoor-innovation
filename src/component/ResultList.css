@@ -1,7 +1,8 @@
 .result-container {
     position: absolute;
     bottom: 16px;
-    height: 40vh;
+    max-height: 40vh;
+    height: fit-content;
     overflow: hidden;
     margin: auto;
     margin-top: 20px;

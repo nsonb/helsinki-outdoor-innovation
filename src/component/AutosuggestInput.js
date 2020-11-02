@@ -3,13 +3,14 @@ import Autosuggest from 'react-autosuggest';
 import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';
 import { UIContext } from '../Contexts/UIContext';
 import { SportsContext } from '../Contexts/SportsContexts';
-import Search from './Search';
 import './AutosuggestInput.css';
 //autosearch only works in result page, because there is no universal submit function yet!
 
 
 // https://codepen.io/moroshko/pen/LGNJMy
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
+
+// refer to https://github.com/moroshko/react-autosuggest#installation for css styling
 const AutosuggestInput = (props) => {
   const { currentTerm, updateTerm } = useContext(CurrentTermContext);
   const { searchSuggestions } = useContext(UIContext);

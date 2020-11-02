@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import './search.css';
 import { SportsContext } from '../Contexts/SportsContexts';
 import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';
@@ -11,7 +11,7 @@ const Filter = () => {
     const { updateTerm } = useContext(CurrentTermContext);
     const [state, setState] = useState({
         tags: { 
-            land: {status: false, icon: '', name_fi: 'Kuivalla maalla', name_en: 'Sports on land', name_sv: ''},
+            land: {status: false, icon: '', name_fi: 'Kuivalla maalla', name_en: 'Land sports', name_sv: ''},
             water: {status: false, icon: '', name_fi: 'Vesiurheilu', name_en: 'Water sports', name_sv: ''},
             animals: {status: false, icon: '', name_fi: 'Eläinurheilu', name_en: 'Animal sports', name_sv: ''},
             ballgames: {status: false, icon: '', name_fi: 'Pallopelit', name_en: 'Ball games', name_sv: ''},
@@ -66,24 +66,23 @@ const Filter = () => {
 
     return (  
         <div 
-            className='container-search' 
             style={filterBox}
             >
             {Object.keys(state.tags).map(key => 
-                <div key={key}>
-                    <input type="checkbox" onChange={saveTag} checked={state.tags[key].status} value={key} name={key} />
-                    <label>{state.tags[key].name_en}</label>
+                <div key={key} style={checkboxContainer}>
+                    <input type="checkbox" style={checkboxInput} onChange={saveTag} checked={state.tags[key].status} value={key} name={key} />
+                    <label style={{display: 'block'}}>{state.tags[key].name_en}</label>
                 </div>
                 )}
             {Object.keys(state.cities).map(key => 
-                <div key={key}>
-                    <input type="checkbox" onChange={saveCity} checked={state.cities[key].status} value={key} name={key} />
-                    <label>{state.cities[key].name_en}</label>
+                <div key={key} style={checkboxContainer}>
+                    <input type="checkbox" style={checkboxInput} onChange={saveCity} checked={state.cities[key].status} value={key} name={key} />
+                    <label style={{display: 'block'}}>{state.cities[key].name_en}</label>
                 </div>
                 )}
             <div 
                 className='filter button' 
-                style={state.filterHover? {...filter, opacity: 1} : filter}
+                style={state.filterHover? {...filterButton, opacity: 1} : filterButton}
                 onMouseEnter={() => setState({...state, filterHover: true})}
                 onMouseLeave={() => setState({...state, filterHover: false})}
                 onClick={filterSports}
@@ -95,26 +94,56 @@ const Filter = () => {
 }
 
 const filterBox = {
-    width: "20vh",
-    height: "auto",
-    backgroundColor: "#502619",
+    margin: '5px',
+    width: "calc(100%-80px)",
+    backgroundColor: "rgb(6, 13, 8)",
     color: "#FFF9E3",
+    display: "flex",
+    borderRadius: "20px",
+    margin: 'auto',
+    marginLeft: '0px',
+    paddingLeft: '5px',
+    borderRadius: '0 20px 20px 0',
+    fontFamily: "'Montserrat', sans-serif",
 }
 
-const filter = {
-    width: "80px",
+const filterButton = {
+    width: '60px',
+    height: '60%',
     background: "none",
-    padding: "10px 10px",
-    margin: "0",
+    padding: "5px",
+    margin: "auto",
     opacity: "90%",
-    backgroundColor: "#502619",
-    color: "#FFF9E3",
+    backgroundColor: "#FFF9E3 ",
+    color: "#060D08",
     borderRadius: "20px 0 0 20px",
     textAlign: "left",
     fontFamily: "'Montserrat', sans-serif",
     fontSize: "12px",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    borderRadius: '20px',
+    textAlign: 'center'
+}
+
+const checkboxContainer = {
+    width: '14%',
+    fontSize: '12px',
+    display: 'flex',
+    marginRight: '2px',
+    padding: '2px',
+    alignItems: 'center',
+    justifyContent: 'center',
+}
+
+const checkboxInput ={
+    margin: 0,
+    marginRight: '5px',
+    background: 'none',
+    borderRadius: '5px',
+    backgroundColor: 'red',
+    cursor: 'pointer',
+    userSelect: 'none',
 }
 
 export default Filter;

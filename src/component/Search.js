@@ -7,7 +7,7 @@ import Filter from './Filter';
 import AutosuggestInput from './AutosuggestInput';
 import { useHistory, useLocation } from 'react-router-dom';
 
-const Search = (props) => {
+const Search = () => {
     const { searchOneSport } = useContext(SportsContext);
     const { currentTerm, updateTerm } = useContext(CurrentTermContext);
     const [state, setState] = useState({
@@ -34,24 +34,33 @@ const Search = (props) => {
     
     return (  
         <div className='container-search' style={containerSearch}>
-            <form className='search-bar' style={searchBar} onSubmit={onSubmit}>                
+            <div className='search-bar' style={searchBar} >                
                 <div 
                     className='filter button' 
-                    style={state.filterHover? {...filter, opacity: 1} : filter}
+                    style={
+                        state.showFilter ? 
+                        (state.filterHover? {...reverseFilter, opacity: 1} : reverseFilter) :
+                        (state.filterHover? {...filter, opacity: 1} : filter)
+                    }
                     onMouseEnter={() => setState({...state, filterHover: true})}
                     onMouseLeave={() => setState({...state, filterHover: false})}
                     onClick={toggleFilterBox}
                     >
-                        Filter
+                        {state.showFilter ? 'Search' : 'Filter'}
                 </div>
-                <AutosuggestInput 
-                    onTermChange = {(value) => updateTerm(value)} onSubmit = {onSubmit}/>
-                <div className='submit button' style={submit} onClick = {onSubmit}>
-                    <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
-                </div> 
-            </form>
-            
-            {state.showFilter ? <Filter/> : ''}
+                {state.showFilter ? 
+                    <Filter/> : 
+                    <form onSubmit={onSubmit} style={searchForm}>
+                        <AutosuggestInput 
+                            onTermChange = {(value) => updateTerm(value)} onSubmit = {onSubmit}/>
+                        <div className='submit' style={submit} onClick = {onSubmit}>
+                            <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
+                        </div> 
+                    </form>}
+                </div>
+            <div>
+                
+            </div>   
         </div>
     )
 }
@@ -74,16 +83,15 @@ const containerSearch = {
     position: "relative",
     width: "100vw",
     top: "0px",
-    margin: 0,
+    margin: '0px',
+    marginTop: '16px',
     boxShadow: "saddlebrown 2px"
 }
 
 const searchBar = {
     display: "flex",
     flexDirection: "row",
-    overflow: "hidden",
     margin: "auto",
-    marginTop: "20px",
     minWidth: "320px",
     width: "80%",
     left: 0,
@@ -101,6 +109,7 @@ const searchInput = {
     outline: "none",
     fontFamily: "'Montserrat', sans-serif",
     backgroundColor: "#FFF9E3",
+    color: "#060D08"
 }
 
 const focusedInput = {
@@ -111,39 +120,68 @@ const focusedInput = {
 }
 
 const submit = {
-    width: "50px",
-    height: "30px",
+    width: "48px",
+    height: "35px",
     background: "none",
-    margin: "0 auto auto -1vh",
-    marginLeft: "-50px",
+    marginLeft: "-48px",
+    marginTop: '0',
     alignItems: "center",
     justifyItems: "center",
     opacity: "90%",
+    borderRadius: '20px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '0'
 }
 
 const filter = {
     width: "80px",
-    height: "2vh",
+    height: "100%",
     background: "none",
     padding: "10px 10px",
     margin: "0",
     opacity: "90%",
-    backgroundColor: "#502619",
+    backgroundColor: "#060D08",
     color: "#FFF9E3",
     borderRadius: "20px 0 0 20px",
     textAlign: "left",
     fontFamily: "'Montserrat', sans-serif",
     fontSize: "12px",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    zIndex: '1'
+}
+
+const reverseFilter = {
+    width: "80px",
+    height: "100%",
+    background: "none",
+    padding: "10px 10px",
+    margin: "0",
+    opacity: "90%",
+    backgroundColor: "#FFF9E3 ",
+    color: "#060D08",
+    borderRadius: "20px 0 0 20px",
+    textAlign: "left",
+    fontFamily: "'Montserrat', sans-serif",
+    fontSize: "12px",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: '1'
 }
 
 const searchLogo = {
     display: "block",
-    height: "16px",
     width: "auto",
-    margin: "auto",
-    padding: "6px"
+    height: '16px',
+}
+
+const searchForm = {
+    width: '100%',
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'row'
 }
 
 export default Search;
