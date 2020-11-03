@@ -22,7 +22,13 @@ export const UIContextProvider = (props) => {
         {name: "animals",
         category: "Categories"},
         {name: "services",
-        category: "Categories"}
+        category: "Categories"},
+        {name: 'Espoo', 
+        category: 'city'}, 
+        {name: 'Helsinki', 
+        category: 'city'}, 
+        {name: 'Vantaa', 
+        category: 'city'}
     ])
 
     const toggleLang = (language) => {
