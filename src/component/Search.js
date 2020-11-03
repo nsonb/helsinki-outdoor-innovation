@@ -92,10 +92,8 @@ const searchBar = {
     display: "flex",
     flexDirection: "row",
     margin: "auto",
-    minWidth: "320px",
+    minWidth: "280px",
     width: "80%",
-    left: 0,
-    right: 0,
 }
 
 const searchInput = {

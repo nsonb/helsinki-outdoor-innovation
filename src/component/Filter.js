@@ -95,7 +95,7 @@ const Filter = () => {
 
 const filterBox = {
     margin: '5px',
-    width: "calc(100%-80px)",
+    width: "100%",
     display: "flex",
     borderRadius: "20px",
     margin: 'auto',
