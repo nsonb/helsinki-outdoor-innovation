@@ -94,10 +94,8 @@ const Filter = () => {
 }
 
 const filterBox = {
-    margin: '5px',
     width: "100%",
     display: "flex",
-    borderRadius: "20px",
     margin: 'auto',
     marginLeft: '0px',
     paddingLeft: '5px',
@@ -112,8 +110,6 @@ const filterButton = {
     margin: "auto",
     opacity: "90%",
     color: "#FFF9E3",
-    borderRadius: "20px 0 0 20px",
-    textAlign: "left",
     fontSize: "12px",
     justifyContent: "center",
     alignItems: "center",

@@ -72,7 +72,6 @@ export const WeatherContextProvider = (props) => {
             //add it to the list
             newList = [...newList, weatherItem]
         }
-        console.log(newList);
         setSixHours(newList);   
     }
 

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import ImageHolder from '../component/ImageHolder';
 import MiniWeather from '../component/MiniWeather';
 import Search from '../component/Search';
@@ -21,7 +20,6 @@ const LandingPage = (props) => {
     const { updateSports } = useContext(SportsContext);
     const { updateWeather } = useContext(WeatherContext);
     const { updateServices } = useContext(ServiceContext);
-    const history = useHistory()
 
     useEffect(() => {
         updateSports();

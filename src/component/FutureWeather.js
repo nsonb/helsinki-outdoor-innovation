@@ -14,6 +14,9 @@ const FutureWeather = ({weather}) => {
         case 'Rain':
             img=rain;
             break;
+        default:
+            img=rain;
+            break;
     }
     var d = new Date(weather.time.slice(0,10));
     var weekday = new Array(7);

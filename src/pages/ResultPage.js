@@ -1,14 +1,9 @@
-
 import React from 'react';
 import Search from '../component/Search';
 import ResultList from '../component/ResultList';
 import MapView from '../component/MapView';
 import 'leaflet/dist/leaflet.css';
-
-
 import './ResultPage.css';
-
-import helsinkiMap from '../default-img/helsinki-temp-map.jpg'
 
 const ResultPage = (props) => {
     

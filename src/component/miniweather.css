@@ -7,8 +7,8 @@
     right: 0;
     margin: auto;
     min-width: 320px;
-    border-radius: 5px;
     justify-content: center;
+    align-content: center;
     bottom: 0;
 }
 
@@ -20,7 +20,15 @@
 
 .weather-element {
     display: block;
-    padding: 10px;
+    padding: 5px;
     width: 20%;
+    height: fit-content;
+    min-height: 12px;
     text-align: center;
+}
+
+.weather-element img {
+    height: 12px;
+    margin: auto;
+    margin-right: 5px;
 }
