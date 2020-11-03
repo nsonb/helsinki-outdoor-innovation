@@ -35,7 +35,7 @@ const LandingPage = (props) => {
                 <Search onTermChange = {props.onTermChange} />
             </div>
             
-            <MiniWeather />
+            <MiniWeather location='top'/>
         </div>
         
     )

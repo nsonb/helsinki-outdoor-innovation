@@ -53,7 +53,7 @@ const Search = () => {
                     <form onSubmit={onSubmit} style={searchForm}>
                         <AutosuggestInput 
                             onTermChange = {(value) => updateTerm(value)} onSubmit = {onSubmit}/>
-                        <div className='submit' style={submit} onClick = {onSubmit}>
+                        <div className='submit button' style={submit} onClick = {onSubmit}>
                             <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
                         </div> 
                     </form>}
@@ -84,8 +84,9 @@ const containerSearch = {
     width: "100vw",
     top: "0px",
     margin: '0px',
-    marginTop: '5%',
-    boxShadow: "saddlebrown 2px"
+    marginTop: '8vh',
+    boxShadow: "saddlebrown 2px",
+    zIndex: 3
 }
 
 const searchBar = {
