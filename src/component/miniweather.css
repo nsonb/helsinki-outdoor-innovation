@@ -9,26 +9,36 @@
     min-width: 320px;
     justify-content: center;
     align-content: center;
-    bottom: 0;
-}
-
-.weather-container:hover{
-    background-color: rgba(233,238,231, 1);
-    cursor: pointer;
-    box-shadow: slategrey;
+    top: 0;
 }
 
 .weather-element {
     display: block;
     padding: 5px;
     width: 20%;
-    height: fit-content;
-    min-height: 12px;
+    height: 100%;
+    min-height: 18px;
     text-align: center;
 }
 
 .weather-element img {
-    height: 12px;
-    margin: auto;
+    height: 15px;
     margin-right: 5px;
+}
+
+.credit {
+    font-size: 8px;
+    margin: 5px;
+    position: absolute;
+    width: fit-content;
+    left: 0;
+    bottom: -20px;
+    color: #FFF9E3;
+}
+
+.credit a {
+    display: inline-block;
+    padding: 1px;
+    border-radius: 2px;
+    color: white;
 }

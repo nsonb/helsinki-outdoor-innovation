@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import './miniweather.css';
 import { WeatherContext } from '../Contexts/WeatherContext';
 import { useHistory } from 'react-router-dom';
+
+// images
 import icon01d from '../weather-icon/01d.png';
 import icon01n from '../weather-icon/01n.png';
 import icon02d from '../weather-icon/02d.png';
@@ -18,6 +20,8 @@ import icon11d from '../weather-icon/11d.png';
 import icon11n from '../weather-icon/11n.png';
 import icon13d from '../weather-icon/13d.png';
 import icon13n from '../weather-icon/13n.png';
+import temp from '../weather-icon/temp.png';
+import wind from '../weather-icon/wind02.png'
 
 const MiniWeather = () => {
     const history = useHistory();
@@ -77,13 +81,13 @@ const MiniWeather = () => {
             break;
     }
     return (
-        <div className='weather-container main-background-color-faded' onClick={() => history.push('/weather')}>
-            <div className = 'weather-element'> <img src={weatherIcon}/> {currWeather.weatherDesc} </div>
-            <div className = 'weather-element'>temp {currWeather.temp}</div>
-            <div className = 'weather-element'>feels like {currWeather.feelsLike}</div>
-            <div className = 'weather-element'>wind: {currWeather.wind}</div>
-            <div className = 'weather-element'>humidity: {currWeather.humidity}</div>
-            
+        <div className='weather-container'>
+            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={weatherIcon}/> {currWeather.weatherDesc} </div>
+            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={temp}/> {currWeather.temp}</div>
+            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> feels like {currWeather.feelsLike}</div>
+            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={wind}/> {currWeather.wind}</div>
+            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}>humidity: {currWeather.humidity}</div>
+            <div className = 'credit'> weather powered by <a href='https://openweathermap.org/'>Open Weather</a></div>
         </div>
     )
 }
