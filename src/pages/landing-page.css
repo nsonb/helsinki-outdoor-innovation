@@ -7,7 +7,8 @@
 .landing-page {
     background-color: #596C62;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
+    min-height: 768px;
     position: relative;
 }
 
