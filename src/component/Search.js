@@ -96,24 +96,6 @@ const searchBar = {
     width: "80%",
 }
 
-const searchInput = {
-    WebkitWppearance: "none",
-    width: "calc(100% - 80px)",
-    boxSizing: "border-box",
-    borderRadius: "0px 20px 20px 0px",
-    margin: "0px",
-    border: "none",
-    padding: "10px 50px 10px 10px",
-    outline: "none",
-}
-
-const focusedInput = {
-    WebkitAppearance: "none",
-    outline: "burlywood",
-    border: "none",
-    borderRadius: "0px 20px 20px 0px"
-}
-
 const submit = {
     width: "48px",
     height: "35px",
@@ -125,7 +107,6 @@ const submit = {
     opacity: "90%",
     borderRadius: '20px',
     display: 'flex',
-    alignItems: 'center',
     justifyContent: 'center',
     padding: '0'
 }
