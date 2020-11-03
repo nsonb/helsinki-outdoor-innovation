@@ -7,9 +7,6 @@ const MiniWeather = () => {
     const history = useHistory();
     const {currWeather} = useContext(WeatherContext);
 
-    const gotoWeather = () => {
-        history.push('/weather');
-    }
 
     return (
         <div className='weather-container main-background-color-faded' onClick={() => history.push('/weather')}>
