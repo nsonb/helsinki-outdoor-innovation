@@ -1,18 +1,15 @@
 .weather-container {
     position: absolute;
-    margin: auto;
-    margin-top: 10px;
     display: flex;
     flex-direction: row;
-    overflow: hidden;
-    font-size: small ;
-    min-width: 320px;
-    width: 60%;
+    font-size: 12px ;
     left: 0;
     right: 0;
+    margin: auto;
+    min-width: 320px;
     border-radius: 5px;
     justify-content: center;
-    bottom: 20px;
+    bottom: 0;
 }
 
 .weather-container:hover{
@@ -24,7 +21,6 @@
 .weather-element {
     display: block;
     padding: 10px;
-    width: 25%;
+    width: 20%;
     text-align: center;
-    color: black;
 }

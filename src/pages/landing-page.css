@@ -13,7 +13,7 @@
 
 .mid-bar{
     position: absolute;
-    top: 10%;
+    top: 20vh;
 }
 
 h2 {
@@ -22,5 +22,7 @@ h2 {
     font-weight: 900;
     color:  #FFF9E3;
     font-size: 48px;
+    margin: auto;
     margin-bottom: 0;
+    width: 80%;
 }
