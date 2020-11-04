@@ -52,12 +52,15 @@ const DetailedInfoModal = ({location, closeModal}) => {
         <div style={modal}>
             <div style={content}>
                 {closeButton()}
-                <h1 style={placeName}>{location.name_en || location.name_fi || location.name_sv}</h1>
+                <h1 style={placeName} onClick={console.log(location)}>{location.name_en || location.name_fi || location.name_sv}</h1>
                 <p>{location.street_address_fi}, {location.address_city_en}, {location.address_zip}</p>
-                <img src={""} alt={""}/>
-                <p>{location.short_desc_fi || location.short_desc_sv}</p>
+                <img src={location.picture_url} alt={""}/>
+                <p>{location.desc_fi || location.desc_sv}</p>
                 <p>Information</p>
-                <button>Find route</button>
+                <button onClick={() =>{
+                    window.open("//reittiopas.hsl.fi/reitti/ /" + location.street_address_fi + ", "
+                    + location.address_city_en + "::" +location.latitude + "," + location.longitude
+                    + "?locale=en", "_blank")}}>Find route</button>
             </div>
         </div>
     );
