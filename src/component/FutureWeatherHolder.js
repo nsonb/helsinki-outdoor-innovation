@@ -13,7 +13,6 @@ import snowImg from '../default-img/snow.jpg'
 const FutureWeatherHolder = () => {
     const {sixHours} = useContext(WeatherContext);
     const renderedFuture = sixHours.map((hour, index) => {
-        console.log(hour)
         if(hour.time.includes('12:00:00') ) {
             return <FutureWeather weather={hour} key={'futureweather' + index}/>
         }

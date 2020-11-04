@@ -40,6 +40,7 @@ const CurrentWeather = () => {
             break;
         case '04n':
             img=brokenCloud;
+            break;
         case '09d':
             img=heavyRain;
             break;
@@ -74,6 +75,8 @@ const CurrentWeather = () => {
             img=brokenCloud;
             break;
     }
+
+    console.log(img);
     return (
     <div className='current-weather-container'>
         <img className='background-img' src={img} alt = ''/>
