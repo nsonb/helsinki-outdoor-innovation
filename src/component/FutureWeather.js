@@ -75,6 +75,7 @@ const FutureWeather = ({weather}) => {
             img=brokenCloud;
             icon = icon04n;
             weatherBrightStyle = true;
+            break;
         case '09d':
             icon = icon09d;
             img=heavyRain;
