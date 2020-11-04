@@ -76,6 +76,7 @@ const CurrentWeather = () => {
     }
     return (
     <div className='current-weather-container'>
+        <img className='background-img' src={img} alt = ''/>
         <div className='info'>
             <div className='locale'>Helsinki</div>
             <div className='weather-desc'>{currWeather.weatherDesc}</div>
@@ -89,7 +90,7 @@ const CurrentWeather = () => {
                     <div className='detail-item'>{currWeather.wind}</div>
                 </div>
             </div>
-        <img className='background-img' src={img} alt = ''/>
+       
         
     </div>
     )

@@ -21,7 +21,7 @@ import icon11n from '../weather-icon/11n.png';
 import icon13d from '../weather-icon/13d.png';
 import icon13n from '../weather-icon/13n.png';
 import temp from '../weather-icon/temp.png';
-import wind from '../weather-icon/wind02.png'
+import wind from '../weather-icon/wind02.png';
 
 const MiniWeather = ({location}) => {
     const history = useHistory();
