@@ -48,13 +48,14 @@ const DetailedInfoModal = ({location, closeModal}) => {
         >Close</button>
     );
     //TODO: Add functionality and styling to Find route button
+    // TODO: Create styling for a photo to be displayed for each location
     return (
         <div style={modal}>
             <div style={content}>
                 {closeButton()}
                 <h1 style={placeName} onClick={console.log(location)}>{location.name_en || location.name_fi || location.name_sv}</h1>
                 <p>{location.street_address_fi}, {location.address_city_en}, {location.address_zip}</p>
-                <img src={location.picture_url} alt={""}/>
+                <img src={""} alt={""}/>
                 <p>{location.desc_fi || location.desc_sv}</p>
                 <p>Information</p>
                 <button onClick={() =>{
