@@ -144,9 +144,8 @@ const CurrentWeather = () => {
             </div>
             <div className='weather-desc'>feels like {currWeather.feelsLike}</div>
                 <div className='detail-box'>
-                    <div className='detail-item'>{currWeather.humidity}</div>
-                    <div className='detail-item'>{currWeather.weather}</div>
-                    <div className='detail-item'>{currWeather.wind}</div>
+                    <div className='detail-item'>humidity: {currWeather.humidity}</div>
+                    <div className='detail-item'>wind: {currWeather.wind}</div>
                 </div>
             </div>
        

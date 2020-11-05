@@ -20,8 +20,10 @@ import icon11d from '../weather-icon/11d.png';
 import icon11n from '../weather-icon/11n.png';
 import icon13d from '../weather-icon/13d.png';
 import icon13n from '../weather-icon/13n.png';
+//icon
 import temp from '../weather-icon/temp.png';
 import wind from '../weather-icon/wind02.png';
+import humid from '../weather-icon/humid02.png'
 
 const MiniWeather = ({location}) => {
     const history = useHistory();
@@ -88,7 +90,7 @@ const MiniWeather = ({location}) => {
             <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={temp}/> {currWeather.temp}</div>
             <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> feels like {currWeather.feelsLike}</div>
             <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={wind}/> {currWeather.wind}</div>
-            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}>humidity: {currWeather.humidity}</div>
+            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}><img src={humid}/> {currWeather.humidity}</div>
             <div className = 'credit' style={location === 'top' ? {bottom:'-20px'} : {top: '-20px'}}> weather powered by <a href='https://openweathermap.org/'>Open Weather</a></div>
         </div>
     )
