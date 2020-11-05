@@ -21,7 +21,7 @@ const ResultItem = ({location, detailed}) => {
     )
 
     return (
-        <div className='result-item-container' onClick={() => status === false ? setStatus(true) : null }>
+        <div className='result-item-container main-background-color-faded' onClick={() => status === false ? setStatus(true) : null }>
             <div className='location-name'>{location.name_en || location.name_fi || location.name_sv}</div>
             { status && (<DetailedInfoModal closeModal={() => setStatus(false)} location = {location}/>)}
             { detailed === true ? renderedDetail : null}

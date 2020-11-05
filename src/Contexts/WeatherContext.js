@@ -51,7 +51,6 @@ export const WeatherContextProvider = (props) => {
     }
 
     const updateSixHours = (weatherData) => {
-        console.log(weatherData);
         let newList = [];
         // 0 is now
         for (let i = 1; i < 40; i++) {
@@ -74,7 +73,6 @@ export const WeatherContextProvider = (props) => {
             //add it to the list
             newList = [...newList, weatherItem]
         }
-        console.log(newList);
         setSixHours(newList);   
     }
 

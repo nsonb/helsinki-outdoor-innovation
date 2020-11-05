@@ -1,5 +1,8 @@
 .App {
     font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: scroll;
 }
 
 .main-background-color {
@@ -7,7 +10,29 @@
     color:  #FFF9E3;
 }
 
+.main-background-color-faded{
+    background-color: #060d08b7;
+    color:  #FFF9E3;
+}
+
+.main-background-color-faded:hover{
+    cursor: pointer;
+    background-color: #060d08;
+    color:  #FFF9E3;
+}
+
 .secondary-background-color {
+    background-color: #FFF9E3;
+    color: #060D08;
+}
+
+.secondary-background-color-faded {
+    cursor: pointer;
+    background-color: #fff9e3d8;
+    color: #060D08;
+}
+
+.secondary-background-color-faded:hover {
     background-color: #FFF9E3;
     color: #060D08;
 }
