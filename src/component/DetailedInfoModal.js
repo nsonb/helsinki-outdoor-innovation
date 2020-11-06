@@ -23,7 +23,7 @@ const DetailedInfoModal = ({location, closeModal}) => {
     }
     const content = {
         margin: '15% auto',
-        backgroundColor: 'white',
+        backgroundColor: ' #060D08',
         borderRadius: '0.5rem',
         width: '50vw',
         padding: '2rem',
@@ -35,11 +35,10 @@ const DetailedInfoModal = ({location, closeModal}) => {
     const closeButton = () => (
         <button
             onClick={closeModal}
+            className='button  main-background-color'
             style={{
-                color: '#000000',
                 padding: '10px',
                 cursor: 'pointer',
-                backgroundColor: 'transparent',
                 border: '0',
                 position: 'absolute',
                 top: '0.3rem',
@@ -58,7 +57,7 @@ const DetailedInfoModal = ({location, closeModal}) => {
                 <img src={""} alt={""}/>
                 <p>{location.desc_fi || location.desc_sv}</p>
                 <p>Information</p>
-                <button onClick={() =>{
+                <button className='button secondary-background-color' onClick={() =>{
                     window.open("//reittiopas.hsl.fi/reitti/ /" + location.street_address_fi + ", "
                     + location.address_city_en + "::" +location.latitude + "," + location.longitude
                     + "?locale=en", "_blank")}}>Find route</button>

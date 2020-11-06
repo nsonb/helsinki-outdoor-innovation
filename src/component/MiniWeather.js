@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './miniweather.css';
-import { WeatherContext } from '../Contexts/WeatherContext';
 import { useHistory } from 'react-router-dom';
 
 // images
@@ -23,14 +22,28 @@ import icon13n from '../weather-icon/13n.png';
 //icon
 import temp from '../weather-icon/temp.png';
 import wind from '../weather-icon/wind02.png';
-import humid from '../weather-icon/humid02.png'
+import humid from '../weather-icon/humid02.png';
+
+//to get weather info
+import { SportsContext } from '../Contexts/SportsContexts';
+import { WeatherContext } from '../Contexts/WeatherContext';
+import { ServiceContext } from '../Contexts/ServiceContext';
 
 const MiniWeather = ({location}) => {
     const history = useHistory();
     const {currWeather} = useContext(WeatherContext);
-    var weatherIcon;
+    const { updateSports } = useContext(SportsContext);
+    const { updateWeather } = useContext(WeatherContext);
+    const { updateServices } = useContext(ServiceContext);
+
+    useEffect(() => {
+        updateSports();
+        updateServices();
+        updateWeather();
+    }, []);
 
     // set the weather icon
+    var weatherIcon;
     switch (currWeather.iconNum) {
         case '01d':
             weatherIcon = icon01d;
