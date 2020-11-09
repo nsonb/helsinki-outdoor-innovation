@@ -51,8 +51,7 @@ const Search = () => {
                 {state.showFilter ? 
                     <Filter/> : 
                     <form onSubmit={onSubmit} style={searchForm}>
-                        <AutosuggestInput 
-                            onTermChange = {(value) => updateTerm(value)} onSubmit = {onSubmit}/>
+                        <AutosuggestInput onSubmit = {onSubmit}/>
                         <div className='submit button' style={submit} onClick = {onSubmit}>
                             <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
                         </div> 

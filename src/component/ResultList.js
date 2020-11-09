@@ -6,7 +6,6 @@ import './ResultList.css';
 import { SportsContext } from '../Contexts/SportsContexts';
 
 const ResultList = () => {
-    const { updateSports } = useContext(SportsContext);
     const { sorted } = useContext(SportsContext);
     const [ detailed, setDetailed ] = useState(false);
     const [ more, setMore ] = useState('more');
@@ -32,7 +31,6 @@ const ResultList = () => {
     }
 
     useEffect(() => {
-        updateSports();
         console.log(renderedItems.length)
         if(renderedItems.length !== 0) {
             setVisible('visible');
