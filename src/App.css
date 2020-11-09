@@ -1,9 +1,23 @@
 .App {
     font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: scroll;
 }
 
 .main-background-color {
     background-color: #060D08;
+    color:  #FFF9E3;
+}
+
+.main-background-color-faded{
+    background-color: #060d08b7;
+    color:  #FFF9E3;
+}
+
+.main-background-color-faded:hover{
+    cursor: pointer;
+    background-color: #060d08;
     color:  #FFF9E3;
 }
 
@@ -12,11 +26,9 @@
     color: #060D08;
 }
 
-<<<<<<< Updated upstream
-=======
 .secondary-background-color-faded {
     cursor: pointer;
-    background-color: #fff9e308;
+    background-color: #fff9e3d8;
     color: #060D08;
 }
 
@@ -25,7 +37,6 @@
     color: #060D08;
 }
 
->>>>>>> Stashed changes
 .button {
     display: block;
     border-radius: 5px;

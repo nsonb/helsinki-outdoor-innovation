@@ -1,7 +1,7 @@
 .future-weather-holder-container{
     width: 80%;
     min-width: 320px;
-    height: 320px;
+    height: 50vh;
     margin: auto;
     margin-top: 20px;
     left: 0;

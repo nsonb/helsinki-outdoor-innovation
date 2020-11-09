@@ -11,7 +11,7 @@ import { UIContextProvider } from './Contexts/UIContext';
 import { CurrentTermContextProvider } from './Contexts/CurrentSearchTermContext';
 
 // pages
-import TestingPage from './pages/TestingPage';
+// import TestingPage from './pages/TestingPage';
 import LandingPage from './pages/LandingPage';
 import ResultPage from './pages/ResultPage';
 import WeatherPage from './pages/WeatherPage';

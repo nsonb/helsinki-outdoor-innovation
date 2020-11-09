@@ -7,18 +7,23 @@
 .landing-page {
     background-color: #596C62;
     width: 100vw;
-    height: 100vh;
-    min-height: 560px;
+    height: 100%;
+    min-height: 768px;
     position: relative;
-    overflow-y: hidden;
+}
+
+.mid-bar{
+    position: absolute;
+    top: 30vh;
 }
 
 h2 {
     justify-self: center;
     text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bolder;
+    font-weight: 900;
     color:  #FFF9E3;
     font-size: 48px;
+    margin: auto;
     margin-bottom: 0;
+    width: 80%;
 }

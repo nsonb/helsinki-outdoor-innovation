@@ -53,7 +53,7 @@ const Search = () => {
                     <form onSubmit={onSubmit} style={searchForm}>
                         <AutosuggestInput 
                             onTermChange = {(value) => updateTerm(value)} onSubmit = {onSubmit}/>
-                        <div className='submit' style={submit} onClick = {onSubmit}>
+                        <div className='submit button' style={submit} onClick = {onSubmit}>
                             <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
                         </div> 
                     </form>}
@@ -84,36 +84,17 @@ const containerSearch = {
     width: "100vw",
     top: "0px",
     margin: '0px',
-    marginTop: '16px',
-    boxShadow: "saddlebrown 2px"
+    marginTop: '8vh',
+    boxShadow: "saddlebrown 2px",
+    zIndex: 3
 }
 
 const searchBar = {
     display: "flex",
     flexDirection: "row",
     margin: "auto",
-    minWidth: "320px",
+    minWidth: "280px",
     width: "80%",
-    left: 0,
-    right: 0,
-}
-
-const searchInput = {
-    WebkitWppearance: "none",
-    width: "calc(100% - 80px)",
-    boxSizing: "border-box",
-    borderRadius: "0px 20px 20px 0px",
-    margin: "0px",
-    border: "none",
-    padding: "10px 50px 10px 10px",
-    outline: "none",
-}
-
-const focusedInput = {
-    WebkitAppearance: "none",
-    outline: "burlywood",
-    border: "none",
-    borderRadius: "0px 20px 20px 0px"
 }
 
 const submit = {
@@ -127,7 +108,6 @@ const submit = {
     opacity: "90%",
     borderRadius: '20px',
     display: 'flex',
-    alignItems: 'center',
     justifyContent: 'center',
     padding: '0'
 }
