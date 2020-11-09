@@ -6,6 +6,7 @@ import './ImageHolder.css';
 
 const ImageHolder = ({images}) => {
     const [displayIndex, setDisplayIndex] = useState(0);
+    console.log(images)
     useEffect(() => {
         const intervalId = setInterval(()=> {
             setImage(true)
@@ -30,12 +31,12 @@ const ImageHolder = ({images}) => {
 
     return (
         <div className = 'container'>
-            <div className='left-button' onClick={() => setImage(false)}></div>
-            <div className='right-button' onClick={() => setImage(true)}></div>
+            {images.length > 1 ? <div className='left-button' onClick={() => setImage(false)}></div> : null}
+            {images.length > 1 ? <div className='right-button' onClick={() => setImage(false)}></div> : null}
+            
             <img className = 'top-img'src = {images[displayIndex]} alt='depicting season'/>
-            <div className = 'bottom-row'>
-                {renderedButtons}
-            </div>
+            {images.length > 1 ? <div className = 'bottom-row'>{renderedButtons}</div> : null}
+            
         </div>
     )
 }

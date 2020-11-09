@@ -4,7 +4,7 @@
     overflow: hidden;
     justify-content: center;
     position: absolute;
-    top: -100px;
+    top: -120px;
     object-fit: cover;
 }
 
@@ -16,7 +16,7 @@
 
 .leaflet-container {
     position: absolute;
-    top: 23px;
+    top: 32px;
     width: 100%;
     height: 100vh;
     z-index: 1;

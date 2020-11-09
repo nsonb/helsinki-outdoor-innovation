@@ -13,17 +13,32 @@
 }
 
 .weather-element {
-    display: block;
+    display: flex;
+    align-content: center;
+    justify-content: center;
     padding: 5px;
-    width: 20%;
+    width: 23%;
     height: 100%;
     min-height: 18px;
-    text-align: center;
+    margin: 0;
+    
+}
+
+.weather-element:first-child{
+    width: 8%;
 }
 
 .weather-element img {
-    height: 15px;
-    margin-right: 5px;
+    display: block;
+    height: 12px;
+}
+
+.weather-element p {
+    display: block;
+    width: fit-content;
+    text-align: center;
+    margin: 0;
+    margin-left: 5px;
 }
 
 .credit {
