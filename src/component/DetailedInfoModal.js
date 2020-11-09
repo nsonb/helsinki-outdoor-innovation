@@ -47,7 +47,10 @@ const DetailedInfoModal = ({location, closeModal}) => {
             }}
         >Close</button>
     );
-    //TODO: Add functionality and styling to Find route button
+    const findRoute = {
+
+    }
+    //TODO: Add styling to Find route button
     // TODO: Create styling for a photo to be displayed for each location
     return (
         <div style={modal}>
@@ -58,7 +61,7 @@ const DetailedInfoModal = ({location, closeModal}) => {
                 <img src={""} alt={""}/>
                 <p>{location.desc_fi || location.desc_sv}</p>
                 <p>Information</p>
-                <button onClick={() =>{
+                <button style={findRoute} onClick={() =>{
                     window.open("//reittiopas.hsl.fi/reitti/ /" + location.street_address_fi + ", "
                     + location.address_city_en + "::" +location.latitude + "," + location.longitude
                     + "?locale=en", "_blank")}}>Find route</button>
