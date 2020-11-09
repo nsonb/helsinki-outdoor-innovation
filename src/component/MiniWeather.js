@@ -3,9 +3,6 @@ import './miniweather.css';
 import { WeatherContext } from '../Contexts/WeatherContext';
 import { useHistory } from 'react-router-dom';
 
-<<<<<<< Updated upstream
-const MiniWeather = () => {
-=======
 // images
 import icon01d from '../weather-icon/01d.png';
 import icon01n from '../weather-icon/01n.png';
@@ -27,7 +24,6 @@ import temp from '../weather-icon/temp.png';
 import wind from '../weather-icon/wind02.png';
 
 const MiniWeather = ({location}) => {
->>>>>>> Stashed changes
     const history = useHistory();
     const {currWeather} = useContext(WeatherContext);
 
@@ -36,13 +32,6 @@ const MiniWeather = ({location}) => {
     }
 
     return (
-<<<<<<< Updated upstream
-        <div className='weather-container secondary-background-color' onClick={() => history.push('/weather')}>
-            <div className = 'weather-element'>temperature: {currWeather.temp}</div>
-            <div className = 'weather-element'>wind: {currWeather.wind}</div>
-            <div className = 'weather-element'>humidity: {currWeather.humidity}</div>
-            <div className = 'weather-element'>weather: {currWeather.weather}</div>
-=======
         <div className='weather-container main-background-color' style={location === 'top' ? {top:'0'} : {bottom:'0'}}>
             <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={weatherIcon}/> {currWeather.weatherDesc} </div>
             <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={temp}/> {currWeather.temp}</div>
@@ -50,7 +39,6 @@ const MiniWeather = ({location}) => {
             <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={wind}/> {currWeather.wind}</div>
             <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}>humidity: {currWeather.humidity}</div>
             <div className = 'credit' style={location === 'top' ? {bottom:'-20px'} : {top: '-20px'}}> weather powered by <a href='https://openweathermap.org/'>Open Weather</a></div>
->>>>>>> Stashed changes
         </div>
     )
 }
