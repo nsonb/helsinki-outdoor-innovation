@@ -15,6 +15,7 @@
     height: 100%;
     margin-top: 0;
     object-fit: cover;
+    overflow: hidden;
     transition: visibility 0s 2s, opacity 2s linear;
 }
 .bottom-row {
