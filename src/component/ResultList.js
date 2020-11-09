@@ -33,7 +33,6 @@ const ResultList = () => {
 
     useEffect(() => {
         updateSports();
-        console.log(renderedItems.length)
         if(renderedItems.length !== 0) {
             setVisible('visible');
         } else {
@@ -43,7 +42,6 @@ const ResultList = () => {
 
     return (
         <div className='result-container' style={{maxHeight: height, visibility: visibility}}>
-            <button className='more-button' onClick={() => {setDetailed(!detailed);changeMore()}}>{more}</button>
             <div className='scrollable'>
                 {renderedItems}
             </div>

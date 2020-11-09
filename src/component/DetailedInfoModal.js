@@ -23,13 +23,12 @@ const DetailedInfoModal = ({location, closeModal}) => {
         left: '0',
         right: '0',
         bottom: '0',
-        backgroundColor: 'rgba(0,0,0,0.9)',
-        zIndex: '5',
         cursor: 'default',
 
     }
     const content = {
-        margin: '10% auto',
+        top: '10%',
+        margin: 'auto',
         borderRadius: '0.5rem',
         width: '50vw',
         padding: '2rem',
@@ -37,50 +36,69 @@ const DetailedInfoModal = ({location, closeModal}) => {
         zIndex: '6',
         height: '30rem'
     }
+
     const placeName = {
-        fontSize: '30px',
+        fontSize: '24px',
+        marginTop: '16px',
+        marginBottom: '16px'
     }
-    const closeButton = () => (
-        <button
-            onClick={closeModal}
-            className='button main-background-color'
-            style={{
-                padding: '10px',
-                cursor: 'pointer',
-                border: '0',
-                position: 'absolute',
-                top: '0.3rem',
-                right: '0.5rem',
-            }}
-        >Close</button>
-    );
+
+    const info = {
+        display: 'block',
+        position:'absolute', 
+        height: (location.picture_url? '59%': '89%'), 
+        left: '0', bottom: '11%', 
+        borderRadius: '0.5rem 0.5rem 0 0', 
+        overflow: 'hidden',
+        padding: '1rem'
+    }
+
+    const detail_info = {
+        width: '100%',
+        height: '100%'
+    }
+
+    const blurBackground = {
+        backgroundColor: 'rgba(0,0,0,0.9)',
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        top: '0',
+        left: '0',
+        zIndex: '5',
+    }
+
     //TODO: Add functionality and styling to Find route button
     // TODO: Create styling for a photo to be displayed for each location
     return (
         <div style={modal}>
+            <div style={blurBackground}  onClick={() => closeModal()}></div>
             <div style={content} className='secondary-background-color'>
-                {closeButton()}
+                {location.picture_url ? 
+                    <div style={{position:'absolute', width: '100%', height: '30%', left: '0', top: '0', borderRadius: '0.5rem 0.5rem 0 0', overflow: 'hidden', marginBottom: '16px'}}>
+                        <ImageHolder images={location.picture_url? [location.picture_url] : [default_img]}/>
+                    </div> : null}
                 
-                <div style={{position:'absolute', width: '100%', height: '40%', left: '0', top: '0', borderRadius: '0.5rem 0.5rem 0 0', overflow: 'hidden'}}>
-                    <ImageHolder images={location.picture_url? [location.picture_url] : [default_img]}/>
-                </div>
-                <div style={{position:'absolute', width: '100%', height: '60%', left: '0', bottom: '0', borderRadius: '0.5rem 0.5rem 0 0', overflow: 'scroll'}}>
-                    <h1 style={placeName} onClick={console.log(location)}>{location.name_en || location.name_fi || location.name_sv}</h1>
+                <div style={info}>
+                    <p style={placeName} onClick={console.log(location)}>{location.name_en || location.name_fi || location.name_sv}</p>
                     <p>{location.street_address_fi}, {location.address_city_en}, {location.address_zip}</p>
                     <p>Information</p>
-                    <p>{location.desc_fi || location.desc_sv}</p>
+                    <div className='scroll' style={detail_info}>
+                        <p>
+                            {location.desc_fi || location.desc_sv}
+                        </p>
+                    </div>
                     
-                    <button className='button main-background-color-faded' onClick={() =>{
-                        window.open("//reittiopas.hsl.fi/reitti/ /" + location.street_address_fi + ", "
-                        + location.address_city_en + "::" +location.latitude + "," + location.longitude
-                        + "?locale=en", "_blank")}}>
-                            Find route
-                    </button>
                 </div>
-                
-                
+                <button className='button main-background-color-faded' style={{position:'absolute', height: '5%', bottom: '3%', left: '0', right: '0', margin: 'auto', marginTop: '4%', padding: '10px', textAlign: 'center', justifyItems: 'center'}}onClick={() =>{
+                    window.open("//reittiopas.hsl.fi/reitti/ /" + location.street_address_fi + ", "
+                    + location.address_city_en + "::" +location.latitude + "," + location.longitude
+                    + "?locale=en", "_blank")}}>
+                        Find route
+                </button> 
             </div>
         </div>
     );
 }
 export default DetailedInfoModal;
+//
