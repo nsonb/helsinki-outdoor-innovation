@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Autosuggest from 'react-autosuggest';
 import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';
 import { UIContext } from '../Contexts/UIContext';
@@ -17,7 +17,8 @@ const AutosuggestInput = (props) => {
   const { sports, searchOneSport } = useContext(SportsContext);
   const [ state, setState ] = useState({
     value: '',
-    suggestions: []
+    suggestions: [],
+    allSuggestions: []
   }) 
 
   const escapeRegexCharacters = (str) => {
@@ -30,6 +31,11 @@ const AutosuggestInput = (props) => {
       return [];
     }
     const regex = new RegExp('^' + escapedValue, 'i');
+
+    return state.allSuggestions.filter(s => regex.test(s.name));
+  }
+
+  const allPossibleSuggestions = () => {
     let sportlist = [];
     //names of the sports from keys and display names
     Object.keys(sports).forEach(sport => {
@@ -48,8 +54,11 @@ const AutosuggestInput = (props) => {
     })
     
     const cleanSportlist = removeDuplicatesFromArrayByProperty(sportlist, 'name');
-    const list = [...cleanSportlist, ...searchSuggestions].filter(s => regex.test(s.name));
-    return list;
+    const list = [...cleanSportlist, ...searchSuggestions];
+    setState({
+      ...state,
+      allSuggestions: list
+    });
   }
 
   const removeDuplicatesFromArrayByProperty = (arr, prop) => arr.reduce((accumulator, currentValue) => {
@@ -98,6 +107,10 @@ const AutosuggestInput = (props) => {
     value: currentTerm,
     onChange: onValueChange
   };
+
+  useEffect(() => {
+    allPossibleSuggestions();
+  }, []);
 
   return (
     <Autosuggest
