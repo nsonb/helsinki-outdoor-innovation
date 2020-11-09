@@ -12,6 +12,20 @@
     color: #060D08;
 }
 
+<<<<<<< Updated upstream
+=======
+.secondary-background-color-faded {
+    cursor: pointer;
+    background-color: #fff9e308;
+    color: #060D08;
+}
+
+.secondary-background-color-faded:hover {
+    background-color: #FFF9E3;
+    color: #060D08;
+}
+
+>>>>>>> Stashed changes
 .button {
     display: block;
     border-radius: 5px;
