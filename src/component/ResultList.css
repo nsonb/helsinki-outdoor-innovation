@@ -16,7 +16,7 @@
 
 .scrollable {
     height: fit-content;
-    max-height: 40vh;
+    max-height: 30vh;
     overflow: auto;
     background: transparent;
 }
