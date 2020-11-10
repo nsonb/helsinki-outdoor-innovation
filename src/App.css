@@ -19,18 +19,18 @@
 }
 
 .secondary-background-color {
-    background-color: #FFF9E3;
+    background-color: #fcfaf3;
     color: #060D08;
 }
 
 .secondary-background-color-faded {
     cursor: pointer;
-    background-color: #fff9e3d8;
+    background-color: #fcfaf3f6;
     color: #060D08;
 }
 
 .secondary-background-color-faded:hover {
-    background-color: #FFF9E3;
+    background-color: #fcfaf3;
     color: #060D08;
 }
 

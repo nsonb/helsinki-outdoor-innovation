@@ -12,6 +12,7 @@ import winter from '../default-img/johanna_vilhunen_talvi_2013_4_2874.jpg';
 
 const DetailedInfoModal = ({location, closeModal}) => {
 
+    //TODO: Add functionality and styling to Find route button
     // Styles for the page
     const modal = {
         position: 'fixed',
@@ -47,7 +48,7 @@ const DetailedInfoModal = ({location, closeModal}) => {
         display: 'block',
         position:'absolute', 
         height: (location.picture_url? '49%': '79%'), 
-        left: '0', bottom: '11%', 
+        left: '0', bottom: '14%', 
         borderRadius: '0.5rem 0.5rem 0 0', 
         overflow: 'hidden',
         padding: '1rem'
@@ -68,12 +69,27 @@ const DetailedInfoModal = ({location, closeModal}) => {
         zIndex: '5',
     }
 
-    //TODO: Add functionality and styling to Find route button
-    // TODO: Create styling for a photo to be displayed for each location
+    const buttonStyle = {
+        position:'absolute', 
+        height: '8%',
+        width: '50%',
+        bottom: '3%', 
+        left: '0', 
+        right: '0', 
+        margin: 'auto', 
+        marginTop: '4%', 
+        padding: '10px', 
+        textAlign: 'center', 
+        justifyItems: 'center',
+        fontFamily: "'Montserrat', sans-serif",
+        fontSize: '16px',
+        textAlign: 'center'
+    }
+
     return (
         <div style={modal}>
             <div style={blurBackground}  onClick={() => closeModal()}></div>
-            <div style={content} className='secondary-background-color'>
+            <div style={content} className='main-background-color'>
                 {location.picture_url ? 
                     <div style={{position:'absolute', width: '100%', height: '30%', left: '0', top: '0', borderRadius: '0.5rem 0.5rem 0 0', overflow: 'hidden', marginBottom: '16px'}}>
                         <ImageHolder images={location.picture_url? [location.picture_url] : [default_img]}/>
@@ -90,7 +106,7 @@ const DetailedInfoModal = ({location, closeModal}) => {
                     </div>
                     
                 </div>
-                <button className='button main-background-color-faded' style={{position:'absolute', height: '5%', bottom: '3%', left: '0', right: '0', margin: 'auto', marginTop: '4%', padding: '10px', textAlign: 'center', justifyItems: 'center'}}onClick={() =>{
+                <button className='button secondary-background-color-faded' style={buttonStyle} onClick={() =>{
                     window.open("//reittiopas.hsl.fi/reitti/ /" + location.street_address_fi + ", "
                     + location.address_city_en + "::" +location.latitude + "," + location.longitude
                     + "?locale=en", "_blank")}}>
@@ -101,4 +117,4 @@ const DetailedInfoModal = ({location, closeModal}) => {
     );
 }
 export default DetailedInfoModal;
-//
+
