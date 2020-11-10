@@ -65,6 +65,7 @@ export const SportsContextProvider = (props) => {
             displayname_fi: 'Vesihiihto', displayname_en: 'Water skiing', displayname_sv: ''}
     });
     const [sorted, setSorted] = useState({});
+    const [allSuggestions, setSuggestions] = useState([]);
 
     const updateSports = () => {
         Promise.all([
@@ -108,23 +109,25 @@ export const SportsContextProvider = (props) => {
                 updated = {...updated, ...e};
             })
             setSports(updated);
+            allPossibleSuggestions(updated);
         })
     }
 
     //name = search words
     const searchOneSport = (name) => {
         //clean up the search words and separate "must have"
-        console.log(name)
         const cleanString = name.replace(',', '').replace('.', '').toLowerCase();
         let nameList = [];
         let mustHave = cleanString.match(/"([^"]+)"/);
         if (mustHave) {
-            mustHave = mustHave[1].split(' ');
-            nameList = cleanString.replace('"' + mustHave + '"', '').split(' ').filter(e => e !== '');
+            
+            mustHave = mustHave[1].split(' ').filter(e => e !== '' && e !== 'and' && e !== '' && e!== 'ja' && e !== 'och' && e !== '/');
+            nameList = cleanString.replace('"' + mustHave + '"', '').split(' ');
         } else {
             mustHave = [];
             nameList = cleanString.split(' ');
         }
+        nameList = nameList.filter(e => e !== '' && e !== 'and' && e !== '' && e!== 'ja' && e !== 'och' && e !== '/');
 
         let newList = {}, key;
         for (key in sports) {
@@ -157,7 +160,7 @@ export const SportsContextProvider = (props) => {
                 ]
                 list = [...nameData, ...locationNames, ...descriptions, e.id];
                 let uniqueWords = list.toString().toLowerCase().split(/(?:,| )+/);
-                uniqueWords = uniqueWords.filter(e => e !== 'and' && e !== '' && e!== 'ja' && 'och' && '/');
+                uniqueWords = uniqueWords.filter(e => e !== 'and' && e !== '' && e!== 'ja' && e !== 'och' && e !== '/');
 
                 //if there is "must have" -words, only accept those that have ALL of them
                 if (mustHave.length > 0) {
@@ -237,8 +240,37 @@ export const SportsContextProvider = (props) => {
           a.every((val, index) => val === b[index]);
       }
 
+      const allPossibleSuggestions = (sports) => {
+        let sportlist = [];
+        //names of the sports from keys and display names
+        Object.keys(sports).forEach(sport => {
+          sportlist.push({name: sport, category: 'Sports'});
+          sports[sport].displayname_fi && sportlist.push({name: sports[sport].displayname_fi, category: 'Sports'});
+          sports[sport].displayname_sv && sportlist.push({name: sports[sport].displayname_sv, category: 'Sports'});
+          sports[sport].displayname_en && sportlist.push({name: sports[sport].displayname_en, category: 'Sports'});
+          //tags
+          sports[sport].tags.forEach(t => sportlist.push({name: t, category: 'Tags'}));
+          //names of the locations from data items, e.g. individual locations
+          sports[sport].data.forEach(item => {
+            item.name_fi && sportlist.push({name: item.name_fi, category: 'itemNames', id: item.id});
+            item.name_sv && sportlist.push({name: item.name_sv, category: 'itemNames', id: item.id});
+            item.name_en && sportlist.push({name: item.name_en, category: 'itemNames', id: item.id});
+          })
+        })
+        
+        const cleanSportlist = removeDuplicatesFromArrayByProperty(sportlist, 'name');
+        setSuggestions(cleanSportlist);
+      }
+    
+      const removeDuplicatesFromArrayByProperty = (arr, prop) => arr.reduce((accumulator, currentValue) => {
+        if(!accumulator.find(obj => obj[prop] === currentValue[prop])){
+          accumulator.push(currentValue);
+        }
+        return accumulator;
+      }, [])
+
     return (
-        <SportsContext.Provider value={{sports, updateSports, sorted, searchOneSport, sortTheSports, filterByTags, filterTagsAndCities}}>
+        <SportsContext.Provider value={{sports, updateSports, sorted, searchOneSport, sortTheSports, filterByTags, filterTagsAndCities, allSuggestions, allPossibleSuggestions}}>
             {props.children}
         </SportsContext.Provider>
     );

@@ -20,7 +20,7 @@ const LandingPage = (props) => {
             <ImageHolder images = {[spring, summer, fall, winter, garden]} />
             <div className='mid-bar'>
                 <h2 className='main-background-color-faded' style={{padding: '10px', borderRadius: '20px'}}>Discover Helsinki Outdoor Sports</h2>
-                <Search onTermChange = {props.onTermChange} />
+                <Search/>
             </div>
             
             <MiniWeather location='top'/>

@@ -13,7 +13,7 @@ const ResultPage = (props) => {
         <div className='result-page-container'>
             <MapView className='leaflet-container'>
             </MapView>
-            <Search onTermChange={props.onTermChange} onSubmit={null}/>
+            <Search/>
             <ResultList />
             <MiniWeather location = 'top'/>
         </div>
