@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -18,17 +18,15 @@ import WeatherPage from './pages/WeatherPage';
 
 import './App.css';
 
+import { SportsContext } from './Contexts/SportsContexts';
+import { WeatherContext } from './Contexts/WeatherContext';
+import { ServiceContext } from './Contexts/ServiceContext';
 
 const App = () => {
-  const [currentSearchTerm, setCurrentSearchTerm] = useState('');
 
   useEffect(() =>{
-    // update current search term into context
-  }, [currentSearchTerm]) 
 
-  const updateSearchTerm = (value) => {
-    setCurrentSearchTerm(value)
-  }
+  }, []) 
 
   return (
     <div className='App'>
@@ -38,12 +36,13 @@ const App = () => {
             <WeatherContextProvider>
               <SportsContextProvider>
                 <CurrentTermContextProvider>
+                  <Loader/>
                   <Switch>
                     <Route exact path ='/'> 
-                      <LandingPage onTermChange = {updateSearchTerm}/>
+                      <LandingPage/>
                     </Route>
                     <Route path ='/result'>
-                      <ResultPage onTermChange = {updateSearchTerm}/> 
+                      <ResultPage/> 
                     </Route>
                     <Route path ='/weather'>
                       <WeatherPage />
@@ -60,8 +59,18 @@ const App = () => {
     
   );
 }
-//   <ResultPage onTermChange = {updateSearchTerm}/> 
-//   
+
+const Loader = () => {
+  const { updateSports } = useContext(SportsContext);
+  const { updateWeather } = useContext(WeatherContext);
+  const { updateServices } = useContext(ServiceContext);
+  useEffect(() => {
+      updateSports();
+      updateServices();
+      updateWeather();
+  }, []);
+  return null;
+}
 
 export default App;
 

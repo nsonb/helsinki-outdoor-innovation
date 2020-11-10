@@ -21,18 +21,18 @@ const LandingPage = (props) => {
     const { updateWeather } = useContext(WeatherContext);
     const { updateServices } = useContext(ServiceContext);
 
-    useEffect(() => {
+    /*useEffect(() => {
         updateSports();
         updateServices();
         updateWeather();
-    }, []);
+    }, []);*/
 
     return (
         <div className='landing-page'>  
             <ImageHolder images = {[spring, summer, fall, winter, garden]} />
             <div className='mid-bar'>
                 <h2>Discover Helsinki Outdoor Sports</h2>
-                <Search onTermChange = {props.onTermChange} />
+                <Search/>
             </div>
             
             <MiniWeather location='top'/>
