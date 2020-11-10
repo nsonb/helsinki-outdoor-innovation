@@ -46,7 +46,7 @@ const DetailedInfoModal = ({location, closeModal}) => {
     const info = {
         display: 'block',
         position:'absolute', 
-        height: (location.picture_url? '59%': '89%'), 
+        height: (location.picture_url? '49%': '79%'), 
         left: '0', bottom: '11%', 
         borderRadius: '0.5rem 0.5rem 0 0', 
         overflow: 'hidden',
