@@ -25,7 +25,7 @@ export const WeatherContextProvider = (props) => {
     const [sixHours, setSixHours] = useState([]);
 
     const updateWeather = (cityName) => {
-        if (!cityName) cityName = 'Helsinki'
+        if (!cityName) cityName = 'Espoo'
         getWeather(cityName)
         .then((result) => {
             setWeather(result);
@@ -35,6 +35,7 @@ export const WeatherContextProvider = (props) => {
     }
 
     const createCurrentWeather = (weatherData) => {
+        console.log(weatherData)
         const now = weatherData.list[0];
         //refactor weather item into a form you want
         const returnable = {

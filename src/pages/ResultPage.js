@@ -15,8 +15,9 @@ const ResultPage = () => {
             </MapView>
             <Search/>
             <ResultList />
-            <MiniWeather location = 'top'/>
+            
         </div>
     )
 }
 export default ResultPage;
+// <MiniWeather location = 'top'/>

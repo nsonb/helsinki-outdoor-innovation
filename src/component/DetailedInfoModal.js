@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import ImageHolder from './ImageHolder';
 import default_img from '../default-img/no-image.jpg';
 
@@ -8,12 +8,18 @@ import {getWeatherAt} from '../Scripts/weatherAPI';
 // Accepts json format of information about the place that is then displayed
 
 const DetailedInfoModal = ({location, closeModal}) => {
-
-    getWeatherAt(location.longitude, location.latitude)
+    const [weather, setWeather] = useState(null)
+    useEffect(() => {
+        getWeatherAt(location.longitude, location.latitude)
         .then(res => {
-            console.log(res)
+            console.log(res);
+            if(res.cod != 429) {
+                setWeather(res)
+            }
+        }).catch((err) => {
+            console.log(err);
         })
-
+    })
     //TODO: Add functionality and styling to Find route button
     // Styles for the page
     const modal = {
@@ -49,11 +55,12 @@ const DetailedInfoModal = ({location, closeModal}) => {
     const info = {
         display: 'block',
         position:'absolute', 
-        height: (location.picture_url? '49%': '79%'), 
+        height: (location.picture_url? '53%': '90%'), 
         left: '0', bottom: '14%', 
         borderRadius: '0.5rem 0.5rem 0 0', 
         overflow: 'hidden',
-        padding: '1rem'
+        padding: '1rem',
+        paddingTop: '0'
     }
 
     const detail_info = {
@@ -88,6 +95,9 @@ const DetailedInfoModal = ({location, closeModal}) => {
         textAlign: 'center'
     }
 
+    const weather_info = {
+    }
+
     return (
         <div style={modal}>
             <div style={blurBackground}  onClick={() => closeModal()}></div>
@@ -96,8 +106,11 @@ const DetailedInfoModal = ({location, closeModal}) => {
                     <div style={{position:'absolute', width: '100%', height: '30%', left: '0', top: '0', borderRadius: '0.5rem 0.5rem 0 0', overflow: 'hidden', marginBottom: '16px'}}>
                         <ImageHolder images={location.picture_url? [location.picture_url] : [default_img]}/>
                     </div> : null}
-                
                 <div style={info}>
+                    {weather === null? 'null' : 
+                        <div style = {weather_info}>
+                            <div>{weather.current.temp + '° C'}</div>
+                        </div>}
                     <p style={placeName}>{location.name_en || location.name_fi || location.name_sv}</p>
                     <p>{location.street_address_fi}, {location.address_city_en}, {location.address_zip}</p>
                     <p>Information</p>

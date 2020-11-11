@@ -67,7 +67,7 @@ const Loader = () => {
   useEffect(() => {
       updateSports();
       updateServices();
-      updateWeather();
+      //updateWeather();
   }, []);
   return null;
 }

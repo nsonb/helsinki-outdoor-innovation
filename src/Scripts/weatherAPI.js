@@ -20,7 +20,7 @@ export const getWeatherOLD = () => {
 }
 
 export const getWeatherAt = (long, lat) => {
-  const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=minutely,hourly,daily&appid=${APIkey}`;
+  const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=minutely&appid=${APIkey}&units=metric`;
   return fetch(apiUrl)
     .then((res) => res.json())
     .then((result) => {
