@@ -66,18 +66,20 @@ const Filter = () => {
 
     return (  
         <div style={filterBox} className='main-background-color'>
-            {Object.keys(state.tags).map(key => 
-                <div key={key} style={checkboxContainer}>
-                    <input type="checkbox" style={checkboxInput} onChange={saveTag} checked={state.tags[key].status} value={key} name={key} />
-                    <label style={{display: 'block'}}>{state.tags[key].name_en}</label>
-                </div>
-                )}
-            {Object.keys(state.cities).map(key => 
-                <div key={key} style={checkboxContainer}>
-                    <input type="checkbox" style={checkboxInput} onChange={saveCity} checked={state.cities[key].status} value={key} name={key} />
-                    <label style={{display: 'block'}}>{state.cities[key].name_en}</label>
-                </div>
-                )}
+            <div style={choiceBox}>
+                {Object.keys(state.tags).map(key => 
+                    <div key={key} style={checkboxContainer}>
+                        <input type="checkbox" style={checkboxInput} onChange={saveTag} checked={state.tags[key].status} value={key} name={key} />
+                        <label style={{display: 'block'}}>{state.tags[key].name_en}</label>
+                    </div>
+                    )}
+                {Object.keys(state.cities).map(key => 
+                    <div key={key} style={checkboxContainer}>
+                        <input type="checkbox" style={checkboxInput} onChange={saveCity} checked={state.cities[key].status} value={key} name={key} />
+                        <label style={{display: 'block'}}>{state.cities[key].name_en}</label>
+                    </div>
+                    )}
+            </div>
             <div 
                 className='filter button secondary-background-color' 
                 style={state.filterHover? {...filterButton, opacity: 1} : filterButton}
@@ -101,6 +103,14 @@ const filterBox = {
     paddingLeft: '5px',
     borderRadius: '0 20px 20px 0',
     height: 'fit-content'
+}
+
+const choiceBox = {
+    width: '100%',
+    height: 'fit-content',
+    maxHeight: '40vh',
+    overflowY: 'scroll',
+    overflowX: 'hidden'
 }
 
 const filterButton = {

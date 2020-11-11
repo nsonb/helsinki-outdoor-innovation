@@ -21,7 +21,8 @@
 
 .react-autosuggest__suggestions-container{
     width: 100%;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     max-height: 24vh;
     margin-top: 5px;
     padding: 0;
