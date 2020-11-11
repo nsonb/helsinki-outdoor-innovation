@@ -18,3 +18,12 @@ export const getWeatherOLD = () => {
       return result;
     });
 }
+
+export const getWeatherAt = (long, lat) => {
+  const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=minutely,hourly,daily&appid=${APIkey}`;
+  return fetch(apiUrl)
+    .then((res) => res.json())
+    .then((result) => {
+      return result;
+    })
+}

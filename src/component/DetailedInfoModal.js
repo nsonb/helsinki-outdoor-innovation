@@ -2,15 +2,17 @@ import React from 'react';
 import ImageHolder from './ImageHolder';
 import default_img from '../default-img/no-image.jpg';
 
-import fall from '../default-img/melonta_kauppatori_Maija_Astikainen-3.jpg';
-import spring from '../default-img/Lammassaari_island_Jussi+Hellsten.jpg';
-import summer from '../default-img/Finland_Helsinki_Vallisaari_highres_byJuliaKivela_9868.jpg';
-import winter from '../default-img/johanna_vilhunen_talvi_2013_4_2874.jpg';
+import {getWeatherAt} from '../Scripts/weatherAPI';
 
 // For showing the user more detailed info about a single place
 // Accepts json format of information about the place that is then displayed
 
 const DetailedInfoModal = ({location, closeModal}) => {
+
+    getWeatherAt(location.longitude, location.latitude)
+        .then(res => {
+            console.log(res)
+        })
 
     //TODO: Add functionality and styling to Find route button
     // Styles for the page
@@ -96,7 +98,7 @@ const DetailedInfoModal = ({location, closeModal}) => {
                     </div> : null}
                 
                 <div style={info}>
-                    <p style={placeName} onClick={console.log(location)}>{location.name_en || location.name_fi || location.name_sv}</p>
+                    <p style={placeName}>{location.name_en || location.name_fi || location.name_sv}</p>
                     <p>{location.street_address_fi}, {location.address_city_en}, {location.address_zip}</p>
                     <p>Information</p>
                     <div className='scroll' style={detail_info}>
