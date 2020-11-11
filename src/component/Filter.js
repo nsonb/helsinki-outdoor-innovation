@@ -9,6 +9,7 @@ const Filter = () => {
     const location = useLocation();
     const { filterTagsAndCities } = useContext(SportsContext);
     const { updateTerm } = useContext(CurrentTermContext);
+    //Move these to UIContext
     const [state, setState] = useState({
         tags: { 
             land: {status: false, icon: '', name_fi: 'Kuivalla maalla', name_en: 'Land sports', name_sv: ''},
