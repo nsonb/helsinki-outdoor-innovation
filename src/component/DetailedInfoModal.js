@@ -10,16 +10,19 @@ import {getWeatherAt} from '../Scripts/weatherAPI';
 const DetailedInfoModal = ({location, closeModal}) => {
     const [weather, setWeather] = useState(null)
     useEffect(() => {
+        let isMounted = true;
         getWeatherAt(location.longitude, location.latitude)
         .then(res => {
-            console.log(res);
-            if(res.cod != 429) {
+            console.log('called');
+            if(isMounted) {
                 setWeather(res)
             }
         }).catch((err) => {
             console.log(err);
         })
-    })
+        return () => {isMounted = false}
+    }, [location])
+    
     //TODO: Add functionality and styling to Find route button
     // Styles for the page
     const modal = {
