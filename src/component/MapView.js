@@ -1,5 +1,6 @@
 import React from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
+import LocationMarkers from "./LocationMarker";
 
 const MapView = () => {
   return (
@@ -11,6 +12,7 @@ const MapView = () => {
         id='mapbox/streets-v11'
         accessToken= 'pk.eyJ1IjoibWF0aWFzZWgiLCJhIjoiY2tncWRsend4MDQ1ODJycXdwMmJ4MzZ6dCJ9.mvbD4fDb8KGLjXhhLy0XSA'
       />
+        <LocationMarkers/>
     </MapContainer>
   );
 }
