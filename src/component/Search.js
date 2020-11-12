@@ -10,11 +10,16 @@ import { useHistory, useLocation } from 'react-router-dom';
 const Search = () => {
     const { searchOneSport } = useContext(SportsContext);
     const { currentTerm } = useContext(CurrentTermContext);
-    const { language } = useContext(UIContext);
+    const { currentLang } = useContext(UIContext);
     const [state, setState] = useState({
         inputFocused: false,
         filterHover: false,
         showFilter: false
+    })
+    const [ toggle ] = useState({
+        EN: ['Search', 'Filter'],
+        FI: ['Hae', 'Rajaa'],
+        SV: ['Sök', 'Filtrera']
     })
     const history = useHistory();
     const location = useLocation();
@@ -33,20 +38,7 @@ const Search = () => {
         setState({...state, showFilter: !state.showFilter});
     }
 
-    const textContent = language.map(l => {
-        if (l.langUsed) {
-            switch (l.lang) {
-                case 'EN':
-                    return state.showFilter ? 'Search' : 'Filter'
-                case 'SV':
-                    return state.showFilter ? 'Sök' : 'Filtrera'
-                case 'FI':
-                    return state.showFilter ? 'Hae' : 'Rajaa'
-                default:
-                    break;
-            }
-        }
-    })
+
     
     return (  
         <div className='container-search' style={containerSearch}>
@@ -62,7 +54,7 @@ const Search = () => {
                     onMouseLeave={() => setState({...state, filterHover: false})}
                     onClick={toggleFilterBox}
                     >
-                        {textContent}
+                        {state.showFilter ? toggle[currentLang][0] : toggle[currentLang][1]}
                 </div>
                 {state.showFilter ? 
                     <Filter/> : 

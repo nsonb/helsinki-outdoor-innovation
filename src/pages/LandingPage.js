@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ImageHolder from '../component/ImageHolder';
 import MiniWeather from '../component/MiniWeather';
 import Search from '../component/Search';
@@ -19,37 +19,21 @@ import { ServiceContext } from '../Contexts/ServiceContext';
 import { UIContext } from '../Contexts/UIContext';
 
 const LandingPage = (props) => {
-    const { updateSports } = useContext(SportsContext);
-    const { updateWeather } = useContext(WeatherContext);
-    const { updateServices } = useContext(ServiceContext);
-    const { language } = useContext(UIContext);
-
-    const textContent = language.map(l => {
-        if (l.langUsed) {
-            switch (l.lang) {
-                case 'EN':
-                    return "Discover Helsinki Outdoor Sports"
-                case 'SV':
-                    return "Helsingfors utemotionsplatser"  
-                case 'FI':
-                    return "Pääkaupunkiseudun ulkoliikuntapaikat"
-                default:
-                    break;
-            }
-        }
-    })
-    /*useEffect(() => {
-        updateSports();
-        updateServices();
-        updateWeather();
-    }, []);*/
+    const { currentLang } = useContext(UIContext);
+    const [ heading ] = useState({
+        FI: "Pääkaupunkiseudun ulkoliikuntapaikat",
+        EN: "Discover Helsinki Outdoor Sports",
+        SV: "Helsingfors utemotionsplatser"
+    });
 
     return (
         <div className='landing-page'>  
             <ImageHolder images = {[spring, summer, fall, winter, garden]} />
             <LangToggle/>
             <div className='mid-bar'>
-                <h2 className='main-background-color-faded' style={{padding: '10px', borderRadius: '20px'}}>{textContent}</h2>
+                <h2 className='main-background-color-faded' style={{padding: '10px', borderRadius: '20px'}}>
+                    {heading[currentLang]}
+                </h2>
                 <Search/>
             </div>
             

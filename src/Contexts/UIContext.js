@@ -12,6 +12,8 @@ export const UIContextProvider = (props) => {
         langUsed: false},
     ]);
 
+    const [ currentLang, setCurrent ] = useState('EN');
+
     const [ searchSuggestions, setSuggestions ] = useState([
         {name: "noEquipment",
         category: "Categories",},
@@ -39,14 +41,17 @@ export const UIContextProvider = (props) => {
 
     const toggleLang = (lang) => {
         let newLanguages = language.map(l => {        
-            l.lang === lang ? l.langUsed = true : l.langUsed = false;
+            if (l.lang === lang) {
+                l.langUsed = true;
+                setCurrent(l.lang);
+            } else { l.langUsed = false }
             return l
         });
         setLang(newLanguages)
     }
 
     return (
-        <UIContext.Provider value={{language, toggleLang, 
+        <UIContext.Provider value={{language, currentLang, toggleLang, 
                                     searchSuggestions}}>
             {props.children}
         </UIContext.Provider>
