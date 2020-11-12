@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './miniweather.css';
-import { WeatherContext } from '../Contexts/WeatherContext';
 import { useHistory } from 'react-router-dom';
 
 // images
@@ -22,15 +21,29 @@ import icon13d from '../weather-icon/13d.png';
 import icon13n from '../weather-icon/13n.png';
 //icon
 import temp from '../weather-icon/temp.png';
-import wind from '../weather-icon/wind02.png';
-import humid from '../weather-icon/humid02.png'
+import wind from '../weather-icon/wind03.png';
+import humid from '../weather-icon/humid02.png';
+
+//to get weather info
+import { SportsContext } from '../Contexts/SportsContexts';
+import { WeatherContext } from '../Contexts/WeatherContext';
+import { ServiceContext } from '../Contexts/ServiceContext';
 
 const MiniWeather = ({location}) => {
     const history = useHistory();
     const {currWeather} = useContext(WeatherContext);
-    var weatherIcon;
+    const { updateSports } = useContext(SportsContext);
+    const { updateWeather } = useContext(WeatherContext);
+    const { updateServices } = useContext(ServiceContext);
+
+    useEffect(() => {
+        updateSports();
+        updateServices();
+        updateWeather();
+    }, []);
 
     // set the weather icon
+    var weatherIcon;
     switch (currWeather.iconNum) {
         case '01d':
             weatherIcon = icon01d;
@@ -86,11 +99,11 @@ const MiniWeather = ({location}) => {
     }
     return (
         <div className='weather-container main-background-color' style={location === 'top' ? {top:'0'} : {bottom:'0'}}>
-            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={weatherIcon}/> {currWeather.weatherDesc} </div>
-            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={temp}/> {currWeather.temp}</div>
-            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> feels like {currWeather.feelsLike}</div>
-            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={wind}/> {currWeather.wind}</div>
-            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}><img src={humid}/> {currWeather.humidity}</div>
+            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={weatherIcon}/></div>
+            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={temp}/> <p>{currWeather.temp}</p> </div>
+            
+            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={wind}/> <p>{currWeather.wind}</p></div>
+            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}><img src={humid}/> <p>{currWeather.humidity}</p></div>
             <div className = 'credit' style={location === 'top' ? {bottom:'-20px'} : {top: '-20px'}}> weather powered by <a href='https://openweathermap.org/'>Open Weather</a></div>
         </div>
     )
@@ -99,4 +112,4 @@ const MiniWeather = ({location}) => {
 export default MiniWeather;
 
 
-
+// <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <p>feels</p> <p>{currWeather.feelsLike}</p></div>

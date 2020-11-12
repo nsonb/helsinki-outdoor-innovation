@@ -66,9 +66,7 @@ const Filter = () => {
     }
 
     return (  
-        <div 
-            style={filterBox} className='main-background-color'
-            >
+        <div style={filterBox} className='main-background-color'>
             {Object.keys(state.tags).map(key => 
                 <div key={key} style={checkboxContainer}>
                     <input type="checkbox" style={checkboxInput} onChange={saveTag} checked={state.tags[key].status} value={key} name={key} />
@@ -95,16 +93,19 @@ const Filter = () => {
 }
 
 const filterBox = {
-    width: "100%",
+    width: "80%",
+    minWidth: '120px',
     display: "flex",
+    flexWrap: 'wrap',
     margin: 'auto',
     marginLeft: '0px',
     paddingLeft: '5px',
     borderRadius: '0 20px 20px 0',
+    height: 'fit-content'
 }
 
 const filterButton = {
-    width: '60px',
+    width: '100%',
     height: '60%',
     background: "none",
     padding: "5px",
@@ -120,12 +121,15 @@ const filterButton = {
 
 const checkboxContainer = {
     width: '14%',
+    minWidth: '120px',
     fontSize: '12px',
     display: 'flex',
     marginRight: '2px',
-    padding: '2px',
+    padding: '3px',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'left',
+    textAlign: 'left',
+    height: '35px'
 }
 
 const checkboxInput ={

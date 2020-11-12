@@ -49,13 +49,12 @@ const LandingPage = (props) => {
             <ImageHolder images = {[spring, summer, fall, winter, garden]} />
             <LangToggle/>
             <div className='mid-bar'>
-                <h2>{textContent}</h2>
+                <h2 className='main-background-color-faded' style={{padding: '10px', borderRadius: '20px'}}>{textContent}</h2>
                 <Search/>
             </div>
             
             <MiniWeather location='top'/>
-        </div>
-        
+        </div>   
     )
 }
 
