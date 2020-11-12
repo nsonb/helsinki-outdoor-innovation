@@ -9,7 +9,7 @@ const TestingPage = (props) => {
     value: '',
     suggestions: []
   }) 
-  const [ testSuggestions, setSugg ] = useState([
+  const [ testSuggestions ] = useState([
     'land', 'nature', 'noEquipment', 'water', 'animals'
   ])
 

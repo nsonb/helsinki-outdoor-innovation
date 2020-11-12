@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Autosuggest from 'react-autosuggest';
 import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';
 import { UIContext } from '../Contexts/UIContext';
@@ -14,10 +14,11 @@ import './AutosuggestInput.css';
 const AutosuggestInput = (props) => {
   const { currentTerm, updateTerm } = useContext(CurrentTermContext);
   const { searchSuggestions } = useContext(UIContext);
-  const { sports, searchOneSport } = useContext(SportsContext);
+  const { sports, allPossibleSuggestions, allSuggestions } = useContext(SportsContext);
   const [ state, setState ] = useState({
     value: '',
-    suggestions: []
+    suggestions: [],
+    allSuggestions: []
   }) 
 
   const escapeRegexCharacters = (str) => {
@@ -30,34 +31,9 @@ const AutosuggestInput = (props) => {
       return [];
     }
     const regex = new RegExp('^' + escapedValue, 'i');
-    let sportlist = [];
-    //names of the sports from keys and display names
-    Object.keys(sports).forEach(sport => {
-      sportlist.push({name: sport, category: 'Sports'});
-      sports[sport].displayname_fi && sportlist.push({name: sports[sport].displayname_fi, category: 'Sports'});
-      sports[sport].displayname_sv && sportlist.push({name: sports[sport].displayname_sv, category: 'Sports'});
-      sports[sport].displayname_en && sportlist.push({name: sports[sport].displayname_en, category: 'Sports'});
-      //tags
-      sports[sport].tags.forEach(t => sportlist.push({name: t, category: 'Tags'}));
-      //names of the locations from data items, e.g. individual locations
-      sports[sport].data.forEach(item => {
-        item.name_fi && sportlist.push({name: item.name_fi, category: 'itemNames', id: item.id});
-        item.name_sv && sportlist.push({name: item.name_sv, category: 'itemNames', id: item.id});
-        item.name_en && sportlist.push({name: item.name_en, category: 'itemNames', id: item.id});
-      })
-    })
-    
-    const cleanSportlist = removeDuplicatesFromArrayByProperty(sportlist, 'name');
-    const list = [...cleanSportlist, ...searchSuggestions].filter(s => regex.test(s.name));
-    return list;
-  }
 
-  const removeDuplicatesFromArrayByProperty = (arr, prop) => arr.reduce((accumulator, currentValue) => {
-    if(!accumulator.find(obj => obj[prop] === currentValue[prop])){
-      accumulator.push(currentValue);
-    }
-    return accumulator;
-  }, [])
+    return allSuggestions.filter(s => regex.test(s.name));
+  }
 
   const renderSuggestion = (suggestion) => {
     return (
@@ -67,10 +43,10 @@ const AutosuggestInput = (props) => {
 
   const getSuggestionValue = (suggestion) => {
     if (suggestion.category === 'itemNames') {
-      props.onSubmit(null, '"' + suggestion.id + '"');
+      //props.onSubmit(null, '"' + suggestion.id + '"');
       return '"' + suggestion.name + '"';
     } else {
-      props.onSubmit(null, suggestion.name);
+      //props.onSubmit(null, suggestion.name);
       return suggestion.name;
     }
   }

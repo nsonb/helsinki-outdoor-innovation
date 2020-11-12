@@ -25,7 +25,7 @@ export const WeatherContextProvider = (props) => {
     const [sixHours, setSixHours] = useState([]);
 
     const updateWeather = (cityName) => {
-        if (!cityName) cityName = 'Helsinki'
+        if (!cityName) cityName = 'Espoo'
         getWeather(cityName)
         .then((result) => {
             const weatherObj = {...weather, ...result};
@@ -54,7 +54,6 @@ export const WeatherContextProvider = (props) => {
     }
 
     const updateSixHours = (weatherData) => {
-        console.log(weatherData);
         let newList = [];
         // 0 is now
         if (weatherData.list.length >= 40) {
@@ -80,7 +79,6 @@ export const WeatherContextProvider = (props) => {
                 newList = [...newList, weatherItem]
             }
         }
-        console.log(newList);
         setSixHours(newList);   
     }
 

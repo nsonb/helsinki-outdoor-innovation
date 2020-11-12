@@ -35,7 +35,6 @@ export const UIContextProvider = (props) => {
         setLang({useLanguage: language})
     }
 
-
     return (
         <UIContext.Provider value={{language, toggleLang, searchSuggestions}}>
             {props.children}

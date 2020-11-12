@@ -5,7 +5,7 @@
     overflow: hidden;
     position: absolute;
     height: 100%;
-    width: 100vw;
+    width: 100%;
     top: 0px;
     margin: 0;
 }
@@ -15,6 +15,7 @@
     height: 100%;
     margin-top: 0;
     object-fit: cover;
+    overflow: hidden;
     transition: visibility 0s 2s, opacity 2s linear;
 }
 .bottom-row {
@@ -24,7 +25,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 10px;
+    bottom: 10px;
     height: 20px;
     display: flex;
 }
