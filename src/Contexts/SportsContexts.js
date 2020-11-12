@@ -210,6 +210,7 @@ export const SportsContextProvider = (props) => {
     }
 
     const filterTagsAndCities = (filterObj) => {
+        console.log(filterObj)
         //first filter by tags
         let newList = {}, key;
         for (key in sports) {
