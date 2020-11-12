@@ -59,7 +59,7 @@ export const WeatherContextProvider = (props) => {
         if (weatherData.list.length >= 40) {
             for (let i = 1; i < 40; i++) {
                 let w = weatherData.list[i];
-                console.log(w)
+
                 //refactor weather items into a form you want
                 let weatherItem = {
                     time: w.dt_txt || '',
