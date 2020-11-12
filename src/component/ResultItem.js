@@ -1,14 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import './ResultItem.css'
 import DetailedInfoModal from "./DetailedInfoModal";
+import { UIContext } from '../Contexts/UIContext';
 
 const ResultItem = ({location, detailed}) => {
-    
+    const { currentLang } = useContext(UIContext);
     const [status, setStatus] = useState(false);
     const renderedDetail = (
         <div className='detail'>
             <div >
-                {location.street_address_en || location.street_address_sv}, {location.address_city_en}, {location.address_zip}
+                {currentLang === 'SV' ? location.street_address_sv || location.street_address_fi || '' : 
+                (currentLang === 'EN' ? location.street_address_en || location.street_address_fi || '' : 
+                location.street_address_fi || '')},  
+                {currentLang === 'SV' ? location.address_city_sv || location.address_city_fi || '' : 
+                (currentLang === 'EN' ? location.address_city_en || location.address_city_fi || '' : 
+                location.address_city_fi || '')},  
+                {location.address_zip || ''}
             </div>
         </div>
     )
