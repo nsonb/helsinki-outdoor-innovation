@@ -7,13 +7,13 @@ import MiniWeather from '../component/MiniWeather';
 import 'leaflet/dist/leaflet.css';
 import './ResultPage.css';
 
-const ResultPage = (props) => {
+const ResultPage = () => {
     
     return (
         <div className='result-page-container'>
             <MapView className='leaflet-container'>
             </MapView>
-            <Search onTermChange={props.onTermChange} onSubmit={null}/>
+            <Search/>
             <ResultList />
             <MiniWeather location = 'top'/>
         </div>
