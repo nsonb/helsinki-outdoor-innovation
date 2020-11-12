@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import ImageHolder from '../component/ImageHolder';
 import MiniWeather from '../component/MiniWeather';
 import Search from '../component/Search';
@@ -14,7 +14,7 @@ import garden from '../default-img/myhelsinki_Aarteenetsijänpuisto_0406_2020091
 import './landing-page.css';
 
 
-const LandingPage = (props) => {
+const LandingPage = () => {
     return (
         <div className='landing-page'>  
             <ImageHolder images = {[spring, summer, fall, winter, garden]} />

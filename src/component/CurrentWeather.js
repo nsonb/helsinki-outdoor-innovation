@@ -14,7 +14,7 @@ import snow from '../default-img/snow_EmiliaHoisko.jpg';
 import mist from '../default-img/fog_Carl_Bergman.jpg';
 
 // icon
-import icon01d from '../weather-icon/01d.png';
+/*import icon01d from '../weather-icon/01d.png';
 import icon01n from '../weather-icon/01n.png';
 import icon02d from '../weather-icon/02d.png';
 import icon02n from '../weather-icon/02n.png';
@@ -29,93 +29,94 @@ import icon10n from '../weather-icon/10n.png';
 import icon11d from '../weather-icon/11d.png';
 import icon11n from '../weather-icon/11n.png';
 import icon13d from '../weather-icon/13d.png';
-import icon13n from '../weather-icon/13n.png';
+import icon13n from '../weather-icon/13n.png';*/
 
 
 const CurrentWeather = () => {
     const {currWeather, weather} = useContext(WeatherContext);
     var img = thunderStorm;
     var weatherBrightStyle = false;
-    var icon = icon01d;
+    //var icon = icon01d;
+    
     switch(currWeather.iconNum) {
         case '01d':
             img=sun;
-            icon = icon01d;
+            //icon = icon01d;
             weatherBrightStyle = true;
             break;
         case '01n':
             img=sun;
-            icon = icon01n;
+            //icon = icon01n;
             weatherBrightStyle = true;
             break;
         case '02d':
             img=fewCloud;
-            icon = icon02d;
+            //icon = icon02d;
             weatherBrightStyle = false;
             break;
         case '02n':
             img=fewCloud;
-            icon = icon02n;
+            //icon = icon02n;
             weatherBrightStyle = false;
             break;
         case '03d':
             img=scatteredCloud;
-            icon = icon03d;
+            //icon = icon03d;
             weatherBrightStyle = true;
             break;
         case '03n':
             img=scatteredCloud;
-            icon = icon03n;
+            //icon = icon03n;
             weatherBrightStyle = true;
             break;
         case '04d':
             img=brokenCloud;
-            icon = icon04d;
+            //icon = icon04d;
             weatherBrightStyle = true;
             break;
         case '04n':
             img=brokenCloud;
-            icon = icon04n;
+            //icon = icon04n;
             weatherBrightStyle = true;
             break;
         case '09d':
-            icon = icon09d;
+            //icon = icon09d;
             img=heavyRain;
             weatherBrightStyle = false;
             break;
         case '09n':
             img=heavyRain;
-            icon = icon09n;
+            //icon = icon09n;
             weatherBrightStyle = false;
             break;
         case '10d':
             img=rain;
-            icon = icon10d;
+            //icon = icon10d;
             weatherBrightStyle = false;
             break;
         case '10n':
             img=rain;
-            icon = icon10n;
+            //icon = icon10n;
             weatherBrightStyle = false;
             break;
         case '11d':
-            icon = icon11d;
+            //icon = icon11d;
             img=thunderStorm;
             weatherBrightStyle = false;
             break;
         case '11n':
-            icon = icon11n;
+            //icon = icon11n;
             img=thunderStorm;
             weatherBrightStyle = false;
             break;
         case '13d':
             img=snow;
-            icon = icon13d;
+            //icon = icon13d;
             weatherBrightStyle = true;
             break;
         case '13n':
             img=snow;
-            icon = icon13n;
+            //icon = icon13n;
             weatherBrightStyle = true;
             break;
         case '14d':
@@ -127,7 +128,7 @@ const CurrentWeather = () => {
             weatherBrightStyle = true;
             break;
         default:
-            icon = icon01d;
+            //icon = icon01d;
             img=brokenCloud;
             break;
     }

@@ -1,7 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import Autosuggest from 'react-autosuggest';
 import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';
-import { UIContext } from '../Contexts/UIContext';
+//import { UIContext } from '../Contexts/UIContext';
 import { SportsContext } from '../Contexts/SportsContexts';
 import './AutosuggestInput.css';
 //autosearch only works in result page, because there is no universal submit function yet!
@@ -13,8 +13,8 @@ import './AutosuggestInput.css';
 // refer to https://github.com/moroshko/react-autosuggest#installation for css styling
 const AutosuggestInput = (props) => {
   const { currentTerm, updateTerm } = useContext(CurrentTermContext);
-  const { searchSuggestions } = useContext(UIContext);
-  const { sports, allPossibleSuggestions, allSuggestions } = useContext(SportsContext);
+  //const { searchSuggestions } = useContext(UIContext);
+  const {  allSuggestions } = useContext(SportsContext);
   const [ state, setState ] = useState({
     value: '',
     suggestions: [],

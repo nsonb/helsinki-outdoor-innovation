@@ -8,7 +8,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 const Search = () => {
     const { searchOneSport } = useContext(SportsContext);
-    const { currentTerm, updateTerm } = useContext(CurrentTermContext);
+    const { currentTerm } = useContext(CurrentTermContext);
     const [state, setState] = useState({
         inputFocused: false,
         filterHover: false,

@@ -22,7 +22,7 @@ const DetailedInfoModal = ({location, closeModal}) => {
         })
         return () => {isMounted = false}
     }, [location])
-    
+
     //TODO: Add functionality and styling to Find route button
     // Styles for the page
     const modal = {
@@ -99,6 +99,8 @@ const DetailedInfoModal = ({location, closeModal}) => {
     }
 
     const weather_info = {
+        display: 'flex',
+        width: '100%'
     }
 
     return (
@@ -113,6 +115,9 @@ const DetailedInfoModal = ({location, closeModal}) => {
                     {weather === null? 'null' : 
                         <div style = {weather_info}>
                             <div>{weather.current.temp + '° C'}</div>
+                            <div>{weather.current.humidity + '%'}</div>
+                            <div>{weather.current.uvi + 'UVI'}</div>
+                            <div>{weather.current.wind_speed + 'm/s'}</div>
                         </div>}
                     <p style={placeName}>{location.name_en || location.name_fi || location.name_sv}</p>
                     <p>{location.street_address_fi}, {location.address_city_en}, {location.address_zip}</p>
