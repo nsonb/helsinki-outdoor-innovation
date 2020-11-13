@@ -10,7 +10,7 @@ const Filter = () => {
     const location = useLocation();
     const { filterTagsAndCities } = useContext(SportsContext);
     const { updateTerm } = useContext(CurrentTermContext);
-    const { language, currentLang } = useContext(UIContext);
+    const { currentLang } = useContext(UIContext);
 
     const [state, setState] = useState({
         tags: { 
@@ -64,8 +64,9 @@ const Filter = () => {
     const filterSports = (evt) => {
         evt.preventDefault();
         updateTerm('')
-        const tags = Object.keys(state.tags).filter(e => state.tags[e].status);
-        const cities = Object.keys(state.cities).filter(e => state.cities[e].status);
+        let tags = Object.keys(state.tags).filter(e => state.tags[e].status);
+        let cities = Object.keys(state.cities).filter(e => state.cities[e].status);
+        if (!cities.length) cities = Object.keys(state.cities);
         filterTagsAndCities({tags: tags, cities: cities});
         if (location.pathname !== '/result') {
             history.push('/result');
@@ -92,8 +93,11 @@ const Filter = () => {
 
     return (  
         <div style={filterBox} className='main-background-color'>
-            {tagLabels}
-            {cityLabels}
+            <div style={choiceBox}>
+                {tagLabels}
+                {cityLabels}
+            </div>
+            
             <div 
                 className='filter button secondary-background-color' 
                 style={state.filterHover? {...filterButton, opacity: 1} : filterButton}
@@ -116,6 +120,16 @@ const filterBox = {
     paddingLeft: '5px',
     borderRadius: '0 20px 20px 0',
     height: 'fit-content'
+}
+
+const choiceBox = {
+    width: '100%',
+    height: 'fit-content',
+    maxHeight: '40vh',
+    overflowY: 'scroll',
+    overflowX: 'hidden',
+    display: 'flex',
+    flexWrap: 'wrap'
 }
 
 const filterButton = {
@@ -157,3 +171,18 @@ const checkboxInput ={
 }
 
 export default Filter;
+
+/*<div style={choiceBox}>
+                {Object.keys(state.tags).map(key => 
+                    <div key={key} style={checkboxContainer}>
+                        <input type="checkbox" style={checkboxInput} onChange={saveTag} checked={state.tags[key].status} value={key} name={key} />
+                        <label style={{display: 'block'}}>{state.tags[key].name_en}</label>
+                    </div>
+                    )}
+                {Object.keys(state.cities).map(key => 
+                    <div key={key} style={checkboxContainer}>
+                        <input type="checkbox" style={checkboxInput} onChange={saveCity} checked={state.cities[key].status} value={key} name={key} />
+                        <label style={{display: 'block'}}>{state.cities[key].name_en}</label>
+                    </div>
+                    )}
+            </div>*/

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import Autosuggest from 'react-autosuggest';
 import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';
 import { UIContext } from '../Contexts/UIContext';
