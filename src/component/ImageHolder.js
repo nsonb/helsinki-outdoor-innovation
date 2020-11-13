@@ -6,7 +6,6 @@ import './ImageHolder.css';
 
 const ImageHolder = ({images}) => {
     const [displayIndex, setDisplayIndex] = useState(0);
-    console.log(images)
     useEffect(() => {
         const intervalId = setInterval(()=> {
             setImage(true)
