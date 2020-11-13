@@ -1,16 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { UIContext } from '../Contexts/UIContext';
 import { SportsContext } from '../Contexts/SportsContexts';
 
 const LangToggle = () => {
-    const { language, toggleLang,  } = useContext(UIContext);
-    const { status, sports, allPossibleSuggestions } = useContext(SportsContext);
+    const { language, toggleLang, currentLang } = useContext(UIContext);
+    const { sports, allPossibleSuggestions } = useContext(SportsContext);
 
     const toggle = (lang) => {
         console.log(language);
         toggleLang(lang)
         allPossibleSuggestions(sports, lang);
     }
+
+    useEffect(() => {
+        toggle(currentLang)
+    }, [])
 
     return (
         <div className = 'button main-background-color-faded' style ={style}>
