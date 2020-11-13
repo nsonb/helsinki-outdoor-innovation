@@ -1,6 +1,7 @@
 import React, { createContext,  useState } from 'react';
 import { 
-    getWeather
+    getWeather,
+    getWeatherDEVMODE
  } from '../Scripts/weatherAPI';
 
 export const WeatherContext = createContext();
@@ -26,7 +27,8 @@ export const WeatherContextProvider = (props) => {
 
     const updateWeather = (cityName) => {
         if (!cityName) cityName = 'Espoo'
-        getWeather(cityName)
+        //getWeather(cityName)
+        getWeatherDEVMODE()
         .then((result) => {
             const weatherObj = {...weather, ...result};
             setWeather(weatherObj);
