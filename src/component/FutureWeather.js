@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import './FutureWeather.css';
+import { UIContext } from '../Contexts/UIContext';
 
 // images
 import scatteredCloud from '../default-img/scatterCloudCarl_Bergman.jpg';
@@ -32,6 +33,7 @@ import icon13n from '../weather-icon/13n.png';
 
 
 const FutureWeather = ({weather}) => {
+    const { currentLang, weatherDescriptions } = useContext(UIContext);
     var img = thunderStorm;
     var weatherBrightStyle = false;
     var icon = icon01d;
@@ -131,22 +133,22 @@ const FutureWeather = ({weather}) => {
     }
     var d = new Date(weather.time.slice(0,10));
     var weekday = new Array(7);
-    weekday[0] = "Sunday";
-    weekday[1] = "Monday";
-    weekday[2] = "Tuesday";
-    weekday[3] = "Wednesday";
-    weekday[4] = "Thursday";
-    weekday[5] = "Friday";
-    weekday[6] = "Saturday";
+    weekday[0] = {EN: "Sunday", FI: 'Sunnuntai', SV: 'Söndag'};
+    weekday[1] = {EN: "Monday", FI: 'Maanantai', SV: 'Mondag'};
+    weekday[2] = {EN: "Tuesday", FI: 'Tiistai', SV: 'Tisdag'};
+    weekday[3] = {EN: "Wednesday", FI: 'Keskiviikko', SV: 'Onsdag'};
+    weekday[4] = {EN: "Thursday", FI: 'Torstai', SV: 'Torsdag'};
+    weekday[5] = {EN: "Friday", FI: 'Perjantai', SV: 'Fridag'};
+    weekday[6] = {EN: "Saturday", FI: 'Lauantai', SV: 'Lördag'};
 
     return (
     <div className='future-weather-item' style={weatherBrightStyle ? {color: 'charcoal'} : {color: 'white'}}>
         <img className='background-img' src={img} alt = ''/>
         <div className='info-container'>
-            <div><img src = {icon} style= {{height:'30%', margin: '8px'}}/>{weekday[d.getDay()]}</div>
+            <div><img src = {icon} style= {{height:'30%', margin: '8px'}}/>{weekday[d.getDay()][currentLang]}</div>
             <div>{weather.temp}</div>
             <div>{weather.feelsLike}</div>
-            <div>{weather.weatherDesc}</div>
+            <div>{weatherDescriptions[weather.iconNum][currentLang]}</div>
         </div>
         
     </div>

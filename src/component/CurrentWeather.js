@@ -35,7 +35,7 @@ import icon13n from '../weather-icon/13n.png';
 
 const CurrentWeather = () => {
     const {currWeather, weather} = useContext(WeatherContext);
-    const { currentLang } = useContext(UIContext);
+    const { currentLang, weatherDescriptions } = useContext(UIContext);
     const [ textContent ] = useState({
         temp: {FI: 'Lämpötila', EN: 'Temperature', SV: 'Temperatur'},
         wind: {FI: 'Tuuli', EN: 'Wind', SV: 'Vind'},
@@ -43,26 +43,6 @@ const CurrentWeather = () => {
         weather: {FI: 'Sää', EN: 'Weather', SV: 'Väder'},
         feelsLike: {FI: 'Tuntuu kuin', EN: 'Feels like', SV: 'Känns som'},
         cloudiness: {FI: 'Pilvisyys', EN: 'Cloudiness', SV: 'Grumlighet'},
-    })
-    const [ weatherDescriptions ] = useState({
-        '01d': {FI: 'Selkeää', EN: 'Clear sky', SV: 'Klar himmel'},
-        '02d': {FI: 'Puolipilvistä', EN: 'Few clouds', SV: 'Få moln'},
-        '03d': {FI: 'Hajanaisia pilviä', EN: 'Scattered clouds', SV: 'Spridda moln'},
-        '04d': {FI: 'Rakoileva pilvipeite', EN: 'Broken clouds', SV: 'Trasiga moln'},
-        '09d': {FI: 'Kevyttä sadetta', EN: 'Shower rain', SV: 'Duschregn'},
-        '10d': {FI: 'Sadetta', EN: 'Rain', SV: 'Regn'},
-        '11d': {FI: 'Ukkosta', EN: 'Thunderstorm', SV: 'Åskvader'},
-        '13d': {FI: 'Lumisade', EN: 'Snow', SV: 'Snö'},
-        '50d': {FI: 'Sumua', EN: 'Mist', SV: 'Dimma'},
-        '01n': {FI: 'Selkeää', EN: 'Clear sky', SV: 'Klar himmel'},
-        '02n': {FI: 'Puolipilvistä', EN: 'Few clouds', SV: 'Få moln'},
-        '03n': {FI: 'Hajanaisia pilviä', EN: 'Scattered clouds', SV: 'Spridda moln'},
-        '04n': {FI: 'Rakoileva pilvipeite', EN: 'Broken clouds', SV: 'Trasiga moln'},
-        '09n': {FI: 'Kevyttä sadetta', EN: 'Shower rain', SV: 'Duschregn'},
-        '10n': {FI: 'Sadetta', EN: 'Rain', SV: 'Regn'},
-        '11n': {FI: 'Ukkosta', EN: 'Thunderstorm', SV: 'Åskvader'},
-        '13n': {FI: 'Lumisade', EN: 'Snow', SV: 'Snö'},
-        '50n': {FI: 'Sumua', EN: 'Mist', SV: 'Dimma'}
     })
     var img = thunderStorm;
     var weatherBrightStyle = false;
