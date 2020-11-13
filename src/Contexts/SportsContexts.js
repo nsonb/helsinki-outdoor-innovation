@@ -3,6 +3,9 @@ import * as s from '../Scripts/outdoorAPI';
 
 export const SportsContext = createContext();
 export const SportsContextProvider = (props) => {
+    const [status, setStatus] = useState({
+        downloading: false
+    });
     const [sports, setSports] = useState({
         archery: {data: [], tags: ['land', 'jousiammunta', 'archery', 'shooting'], 
             displayname_fi: 'Jousiammunta', displayname_en: 'Archery', displayname_sv: ''},
@@ -67,7 +70,8 @@ export const SportsContextProvider = (props) => {
     const [sorted, setSorted] = useState({});
     const [allSuggestions, setSuggestions] = useState([]);
 
-    const updateSports = () => {
+    const updateSports = async () => {
+        setStatus({downloading: true});
         Promise.all([
             s.getArchery().then(res => {return {archery: {data: res}}}), 
             s.getAthletics().then(res => {return {athletics: {data: res}}}), 
@@ -109,7 +113,9 @@ export const SportsContextProvider = (props) => {
                 updated = {...updated, ...e};
             })
             setSports(updated);
-            allPossibleSuggestions(updated);
+            setStatus({downloading: true});
+            allPossibleSuggestions(updated, 'EN');
+            return true;
         })
     }
 
@@ -239,29 +245,55 @@ export const SportsContextProvider = (props) => {
           a.length === b.length &&
           a.every((val, index) => val === b[index]);
       }
-
-      const allPossibleSuggestions = (sports) => {
+    
+      const allPossibleSuggestions = (sports, l) => {
+        if (!l) l = 'FI';
+        console.log(sports)
+        //const l = language.filter(e => e.langUsed)[0];
         let sportlist = [];
         //names of the sports from keys and display names
         Object.keys(sports).forEach(sport => {
           sportlist.push({name: sport, category: 'Sports'});
-          sports[sport].displayname_fi && sportlist.push({name: sports[sport].displayname_fi, category: 'Sports'});
-          sports[sport].displayname_sv && sportlist.push({name: sports[sport].displayname_sv, category: 'Sports'});
-          sports[sport].displayname_en && sportlist.push({name: sports[sport].displayname_en, category: 'Sports'});
+          switch (l) {
+            case 'EN':
+                sports[sport].displayname_en && sportlist.push({name: sports[sport].displayname_en, category: 'Sports'});
+                break;
+            case 'FI':
+                sports[sport].displayname_fi && sportlist.push({name: sports[sport].displayname_fi, category: 'Sports'});
+                break;
+            case 'SV':
+                sports[sport].displayname_sv && sportlist.push({name: sports[sport].displayname_sv, category: 'Sports'});
+                break;
+            default:
+                break;
+          }
           //tags
           sports[sport].tags.forEach(t => sportlist.push({name: t, category: 'Tags'}));
           //names of the locations from data items, e.g. individual locations
           sports[sport].data.forEach(item => {
-            item.name_fi && sportlist.push({name: item.name_fi, category: 'itemNames', id: item.id});
-            item.name_sv && sportlist.push({name: item.name_sv, category: 'itemNames', id: item.id});
-            item.name_en && sportlist.push({name: item.name_en, category: 'itemNames', id: item.id});
+            switch (l) {
+                case 'EN':
+                    item.name_en ? sportlist.push({name: item.name_en, category: 'itemNames', id: item.id})
+                        : sportlist.push({name: item.name_fi, category: 'itemNames', id: item.id});
+                    break;
+                case 'FI':
+                    item.name_fi && sportlist.push({name: item.name_fi, category: 'itemNames', id: item.id});
+                    break;
+                case 'SV':
+                    item.name_sv ? sportlist.push({name: item.name_sv, category: 'itemNames', id: item.id}) 
+                        : sportlist.push({name: item.name_fi, category: 'itemNames', id: item.id});
+                    break;
+                default:
+                    break;
+              }
           })
         })
         
         const cleanSportlist = removeDuplicatesFromArrayByProperty(sportlist, 'name');
+        console.log(cleanSportlist);
         setSuggestions(cleanSportlist);
       }
-    
+
       const removeDuplicatesFromArrayByProperty = (arr, prop) => arr.reduce((accumulator, currentValue) => {
         if(!accumulator.find(obj => obj[prop] === currentValue[prop])){
           accumulator.push(currentValue);
@@ -270,7 +302,10 @@ export const SportsContextProvider = (props) => {
       }, [])
 
     return (
-        <SportsContext.Provider value={{sports, updateSports, sorted, searchOneSport, sortTheSports, filterByTags, filterTagsAndCities, allSuggestions, allPossibleSuggestions}}>
+        <SportsContext.Provider value={{sports, updateSports, 
+                                        sorted, searchOneSport, sortTheSports, filterByTags, filterTagsAndCities, 
+                                        allSuggestions, allPossibleSuggestions,
+                                        status}}>
             {props.children}
         </SportsContext.Provider>
     );

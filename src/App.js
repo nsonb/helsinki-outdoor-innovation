@@ -61,7 +61,7 @@ const App = () => {
 }
 
 const Loader = () => {
-  const { updateSports } = useContext(SportsContext);
+  const { updateSports, sports, allPossibleSuggestions } = useContext(SportsContext);
   const { updateWeather } = useContext(WeatherContext);
   const { updateServices } = useContext(ServiceContext);
   useEffect(() => {

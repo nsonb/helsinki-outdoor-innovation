@@ -1,5 +1,6 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import { WeatherContext } from '../Contexts/WeatherContext';
+import { UIContext } from '../Contexts/UIContext';
 import './CurrentWeather.css';
 
 //img
@@ -34,6 +35,15 @@ import icon13n from '../weather-icon/13n.png';*/
 
 const CurrentWeather = () => {
     const {currWeather, weather} = useContext(WeatherContext);
+    const { currentLang } = useContext(UIContext);
+    const [ textContent ] = useState({
+        temp: {FI: 'Lämpötila', EN: 'Temperature', SV: 'Temperatur'},
+        wind: {FI: 'Tuuli', EN: 'Wind', SV: 'Vind'},
+        humidity: {FI: 'Ilmankosteus', EN: 'Humidity', SV: 'Fuktighet'},
+        weather: {FI: 'Sää', EN: 'Weather', SV: 'Väder'},
+        feelsLike: {FI: 'Tuntuu kuin', EN: 'Feels like', SV: 'Känns som'},
+        cloudiness: {FI: 'Pilvisyys', EN: 'Cloudiness', SV: 'Grumlighet'},
+    })
     var img = thunderStorm;
     var weatherBrightStyle = false;
     //var icon = icon01d;
@@ -143,10 +153,10 @@ const CurrentWeather = () => {
             <div className='temp'>
                 {currWeather.temp}
             </div>
-            <div className='weather-desc'>feels like {currWeather.feelsLike}</div>
+            <div className='weather-desc'>{textContent.feelsLike[currentLang]} {currWeather.feelsLike}</div>
                 <div className='detail-box'>
-                    <div className='detail-item'>humidity: {currWeather.humidity}</div>
-                    <div className='detail-item'>wind: {currWeather.wind}</div>
+                    <div className='detail-item'>{textContent.humidity[currentLang]}: {currWeather.humidity}</div>
+                    <div className='detail-item'>{textContent.wind[currentLang]} {currWeather.wind}</div>
                 </div>
             </div>
        

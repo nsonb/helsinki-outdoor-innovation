@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import ImageHolder from './ImageHolder';
 import default_img from '../default-img/no-image.jpg';
 
@@ -25,6 +25,8 @@ import icon13n from '../weather-icon/13n.png';
 import temp from '../weather-icon/temp.png';
 import wind from '../weather-icon/wind03.png';
 import humid from '../weather-icon/humid02.png';
+
+import { UIContext } from '../Contexts/UIContext';
 
 // For showing the user more detailed info about a single place
 // Accepts json format of information about the place that is then displayed
@@ -99,6 +101,12 @@ const DetailedInfoModal = ({location, closeModal}) => {
         return () => {isMounted = false}
     }, [location])
 
+    const { currentLang } = useContext(UIContext);
+    const [ buttonText ] = useState({
+        FI: 'Katso reitti',
+        EN: 'Find route',
+        SV: 'Hitta rutt'
+    })
     //TODO: Add functionality and styling to Find route button
     // Styles for the page
     const modal = {
@@ -226,12 +234,26 @@ const DetailedInfoModal = ({location, closeModal}) => {
                                 <p style={weather_detail}>{weather.current.wind_speed + 'm/s'}</p>
                             </div>
                         </div>}
-                    <p style={placeName}>{location.name_en || location.name_fi || location.name_sv}</p>
-                    <p>{location.street_address_fi}, {location.address_city_en}, {location.address_zip}</p>
+                    <p style={placeName}>{
+                        currentLang === 'SV' ? location.name_sv || location.name_fi || '' : 
+                        (currentLang === 'EN' ? location.name_en || location.name_fi || '' : 
+                        location.name_fi || '')
+                    }</p>
+                    <p>{
+                        currentLang === 'SV' ? location.street_address_sv || location.street_address_fi || '' : 
+                        (currentLang === 'EN' ? location.street_address_en || location.street_address_fi || '' : 
+                        location.street_address_fi || '')}, 
+                        {currentLang === 'SV' ? location.address_city_sv || location.address_city_fi || '' : 
+                        (currentLang === 'EN' ? location.address_city_en || location.address_city_fi || '' : 
+                        location.address_city_fi || '')}, 
+                        {location.address_zip
+                    }</p>
                     <p>Information</p>
                     <div style={detail_info}  className='scroll'>
                         <p >
-                            {location.desc_fi || location.desc_sv}
+                        {currentLang === 'SV' ? location.desc_sv || location.desc_fi || '' : 
+                            (currentLang === 'EN' ? location.desc_en || location.desc_fi || '' : 
+                            location.desc_fi || '')}
                         </p>
                     </div>
                     
@@ -240,7 +262,7 @@ const DetailedInfoModal = ({location, closeModal}) => {
                     window.open("//reittiopas.hsl.fi/reitti/ /" + location.street_address_fi + ", "
                     + location.address_city_en + "::" +location.latitude + "," + location.longitude
                     + "?locale=en", "_blank")}}>
-                        Find route
+                        {buttonText[currentLang]}
                 </button> 
             </div>
         </div>
