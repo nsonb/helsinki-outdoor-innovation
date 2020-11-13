@@ -10,7 +10,7 @@ const Filter = () => {
     const location = useLocation();
     const { filterTagsAndCities } = useContext(SportsContext);
     const { updateTerm } = useContext(CurrentTermContext);
-    const { language, currentLang } = useContext(UIContext);
+    const { currentLang } = useContext(UIContext);
 
     const [state, setState] = useState({
         tags: { 
