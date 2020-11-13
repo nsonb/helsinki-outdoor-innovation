@@ -168,7 +168,7 @@ const CurrentWeather = () => {
         <img className='background-img' src={img} alt = ''/>
         <div className='info'>
             <div className='locale'>{weather.city.name}</div>
-            <div className='weather-desc'>{weatherDescriptions[currWeather.iconNum]}</div>
+            <div className='weather-desc'>{weatherDescriptions[currWeather.iconNum] && weatherDescriptions[currWeather.iconNum][currentLang]}</div>
             <div className='temp'>
                 {currWeather.temp}
             </div>
