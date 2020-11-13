@@ -93,8 +93,11 @@ const Filter = () => {
 
     return (  
         <div style={filterBox} className='main-background-color'>
-            {tagLabels}
-            {cityLabels}
+            <div style={choiceBox}>
+                {tagLabels}
+                {cityLabels}
+            </div>
+            
             <div 
                 className='filter button secondary-background-color' 
                 style={state.filterHover? {...filterButton, opacity: 1} : filterButton}
