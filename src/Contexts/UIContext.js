@@ -12,7 +12,7 @@ export const UIContextProvider = (props) => {
         langUsed: false},
     ]);
 
-    const [ currentLang, setCurrent ] = useState('SV');
+    const [ currentLang, setCurrent ] = useState('FI');
 
     const [ searchSuggestions, setSuggestions ] = useState([
         {name: "noEquipment",
