@@ -127,7 +127,9 @@ const choiceBox = {
     height: 'fit-content',
     maxHeight: '40vh',
     overflowY: 'scroll',
-    overflowX: 'hidden'
+    overflowX: 'hidden',
+    display: 'flex',
+    flexWrap: 'wrap'
 }
 
 const filterButton = {
