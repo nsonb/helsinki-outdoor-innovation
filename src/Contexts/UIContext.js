@@ -3,9 +3,17 @@ import React, { createContext,  useState } from 'react';
 //languages, suggestion lists and icon reference here?
 export const UIContext = createContext();
 export const UIContextProvider = (props) => {
-    const [ language, setLang ] = useState({
-        useLanguage: 'EN'
-    });
+    const [ language, setLang ] = useState([
+        {lang: 'EN',
+        langUsed: true},
+        {lang: 'FI',
+        langUsed: false},
+        {lang: 'SV',
+        langUsed: false},
+    ]);
+
+    const [ currentLang, setCurrent ] = useState('EN');
+
     const [ searchSuggestions, setSuggestions ] = useState([
         {name: "noEquipment",
         category: "Categories",},
@@ -31,12 +39,20 @@ export const UIContextProvider = (props) => {
         category: 'city'}
     ])
 
-    const toggleLang = (language) => {
-        setLang({useLanguage: language})
+    const toggleLang = (lang) => {
+        let newLanguages = language.map(l => {        
+            if (l.lang === lang) {
+                l.langUsed = true;
+                setCurrent(l.lang);
+            } else { l.langUsed = false }
+            return l
+        });
+        setLang(newLanguages)
     }
 
     return (
-        <UIContext.Provider value={{language, toggleLang, searchSuggestions}}>
+        <UIContext.Provider value={{language, currentLang, toggleLang, 
+                                    searchSuggestions}}>
             {props.children}
         </UIContext.Provider>
     );

@@ -13,12 +13,17 @@ import './AutosuggestInput.css';
 // refer to https://github.com/moroshko/react-autosuggest#installation for css styling
 const AutosuggestInput = (props) => {
   const { currentTerm, updateTerm } = useContext(CurrentTermContext);
-  const { searchSuggestions } = useContext(UIContext);
-  const { sports, allPossibleSuggestions, allSuggestions } = useContext(SportsContext);
+  const { currentLang } = useContext(UIContext);
+  const { allSuggestions } = useContext(SportsContext);
   const [ state, setState ] = useState({
     value: '',
     suggestions: [],
-    allSuggestions: []
+    allSuggestions: [],
+    placeholders: {
+      FI: "Kirjoita tunniste tai liikuntapaikan nimi",
+      EN: "Type tag or location name",
+      SV: "Type en tagg eller utemotionsplats namn"  
+    }
   }) 
 
   const escapeRegexCharacters = (str) => {
@@ -69,8 +74,9 @@ const AutosuggestInput = (props) => {
     });
   };
 
+
   const inputProps = {
-    placeholder: "Type tag or location name",
+    placeholder: state.placeholders[currentLang],
     value: currentTerm,
     onChange: onValueChange
   };

@@ -2,17 +2,24 @@ import React, {useState, useContext} from 'react';
 import searchglass from '../default-img/magnifying-glass 1.png';
 import { SportsContext } from '../Contexts/SportsContexts';
 import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';
+import { UIContext } from '../Contexts/UIContext';
 import Filter from './Filter';
 import AutosuggestInput from './AutosuggestInput';
 import { useHistory, useLocation } from 'react-router-dom';
 
 const Search = () => {
     const { searchOneSport } = useContext(SportsContext);
-    const { currentTerm, updateTerm } = useContext(CurrentTermContext);
+    const { currentTerm } = useContext(CurrentTermContext);
+    const { currentLang } = useContext(UIContext);
     const [state, setState] = useState({
         inputFocused: false,
         filterHover: false,
         showFilter: false
+    })
+    const [ toggle ] = useState({
+        EN: ['Search', 'Filter'],
+        FI: ['Hae', 'Rajaa'],
+        SV: ['Sök', 'Filtrera']
     })
     const history = useHistory();
     const location = useLocation();
@@ -30,10 +37,12 @@ const Search = () => {
         evt.preventDefault();
         setState({...state, showFilter: !state.showFilter});
     }
+
+
     
     return (  
         <div className='container-search' style={containerSearch}>
-            <div className='search-bar' style={searchBar} >                
+            <div className='search-bar' style={searchBar} >               
                 <div 
                     className='filter button' 
                     style={
@@ -45,7 +54,7 @@ const Search = () => {
                     onMouseLeave={() => setState({...state, filterHover: false})}
                     onClick={toggleFilterBox}
                     >
-                        {state.showFilter ? 'Search' : 'Filter'}
+                        {state.showFilter ? toggle[currentLang][0] : toggle[currentLang][1]}
                 </div>
                 {state.showFilter ? 
                     <Filter/> : 
