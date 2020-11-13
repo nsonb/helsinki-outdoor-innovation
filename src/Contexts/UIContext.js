@@ -30,13 +30,23 @@ export const UIContextProvider = (props) => {
         {name: 'Vantaa', 
         category: 'city'}
     ])
+    const [ showModal, setModal ] = useState(false);
+    const [ modalContent, setModalContent ] = useState({});
 
     const toggleLang = (language) => {
         setLang({useLanguage: language})
     }
 
+    const toggleModal = () => {
+        setModal(!showModal);
+    }
+
+    const selectModalInformation = (object) => {
+        setModalContent(object);
+    }
+
     return (
-        <UIContext.Provider value={{language, toggleLang, searchSuggestions}}>
+        <UIContext.Provider value={{language, toggleLang, searchSuggestions, toggleModal, modalContent, selectModalInformation}}>
             {props.children}
         </UIContext.Provider>
     );
