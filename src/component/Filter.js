@@ -64,8 +64,9 @@ const Filter = () => {
     const filterSports = (evt) => {
         evt.preventDefault();
         updateTerm('')
-        const tags = Object.keys(state.tags).filter(e => state.tags[e].status);
-        const cities = Object.keys(state.cities).filter(e => state.cities[e].status);
+        let tags = Object.keys(state.tags).filter(e => state.tags[e].status);
+        let cities = Object.keys(state.cities).filter(e => state.cities[e].status);
+        if (!cities.length) cities = Object.keys(state.cities);
         filterTagsAndCities({tags: tags, cities: cities});
         if (location.pathname !== '/result') {
             history.push('/result');
