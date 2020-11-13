@@ -4,11 +4,11 @@ import { SportsContext } from '../Contexts/SportsContexts';
 
 const LangToggle = () => {
     const { language, toggleLang,  } = useContext(UIContext);
-    const { status, sports, allPossibleSuggestions } = useContext(SportsContext);
+    const { sports, allPossibleSuggestions } = useContext(SportsContext);
 
     const toggle = (lang) => {
         console.log(language);
-        toggleLang(lang)
+        toggleLang(lang);
         allPossibleSuggestions(sports, lang);
     }
 

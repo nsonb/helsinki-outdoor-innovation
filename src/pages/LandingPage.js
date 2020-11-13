@@ -13,12 +13,9 @@ import garden from '../default-img/myhelsinki_Aarteenetsijänpuisto_0406_2020091
 
 //
 import './landing-page.css';
-import { SportsContext } from '../Contexts/SportsContexts';
-import { WeatherContext } from '../Contexts/WeatherContext';
-import { ServiceContext } from '../Contexts/ServiceContext';
 import { UIContext } from '../Contexts/UIContext';
 
-const LandingPage = (props) => {
+const LandingPage = () => {
     const { currentLang } = useContext(UIContext);
     const [ heading ] = useState({
         FI: "Pääkaupunkiseudun ulkoliikuntapaikat",
