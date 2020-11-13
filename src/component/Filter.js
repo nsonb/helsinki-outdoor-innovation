@@ -92,20 +92,6 @@ const Filter = () => {
 
     return (  
         <div style={filterBox} className='main-background-color'>
-            <div style={choiceBox}>
-                {Object.keys(state.tags).map(key => 
-                    <div key={key} style={checkboxContainer}>
-                        <input type="checkbox" style={checkboxInput} onChange={saveTag} checked={state.tags[key].status} value={key} name={key} />
-                        <label style={{display: 'block'}}>{state.tags[key].name_en}</label>
-                    </div>
-                    )}
-                {Object.keys(state.cities).map(key => 
-                    <div key={key} style={checkboxContainer}>
-                        <input type="checkbox" style={checkboxInput} onChange={saveCity} checked={state.cities[key].status} value={key} name={key} />
-                        <label style={{display: 'block'}}>{state.cities[key].name_en}</label>
-                    </div>
-                    )}
-            </div>
             {tagLabels}
             {cityLabels}
             <div 
@@ -179,3 +165,18 @@ const checkboxInput ={
 }
 
 export default Filter;
+
+/*<div style={choiceBox}>
+                {Object.keys(state.tags).map(key => 
+                    <div key={key} style={checkboxContainer}>
+                        <input type="checkbox" style={checkboxInput} onChange={saveTag} checked={state.tags[key].status} value={key} name={key} />
+                        <label style={{display: 'block'}}>{state.tags[key].name_en}</label>
+                    </div>
+                    )}
+                {Object.keys(state.cities).map(key => 
+                    <div key={key} style={checkboxContainer}>
+                        <input type="checkbox" style={checkboxInput} onChange={saveCity} checked={state.cities[key].status} value={key} name={key} />
+                        <label style={{display: 'block'}}>{state.cities[key].name_en}</label>
+                    </div>
+                    )}
+            </div>*/

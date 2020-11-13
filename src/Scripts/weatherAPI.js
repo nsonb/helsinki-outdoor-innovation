@@ -31,6 +31,7 @@ export const getWeatherAt = (long, lat) => {
     .then((result) => {
       return result;
     })
+}
 
 //Let's delete this when the app is ready :D
 const dummyData = {
