@@ -145,7 +145,7 @@ const FutureWeather = ({weather}) => {
     <div className='future-weather-item' style={weatherBrightStyle ? {color: 'charcoal'} : {color: 'white'}}>
         <img className='background-img' src={img} alt = ''/>
         <div className='info-container'>
-            <div><img src = {icon} style= {{height:'30%', margin: '8px'}}/>{weekday[d.getDay()][currentLang]}</div>
+            <div><img src = {icon} style= {{height:'30%', margin: '8px'}} alt={'describing weather:' + weather.weatherDesc}/>{weekday[d.getDay()][currentLang]}</div>
             <div>{weather.temp}</div>
             <div>{weather.feelsLike}</div>
             <div>{weatherDescriptions[weather.iconNum][currentLang]}</div>

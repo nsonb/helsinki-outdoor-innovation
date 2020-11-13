@@ -21,10 +21,6 @@
     background: transparent;
 }
 
-::-webkit-scrollbar {
-    display: none;
-}
-
 .more-button {
     border: none;
     border-radius: 12px;

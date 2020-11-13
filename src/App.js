@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -67,7 +67,7 @@ const Loader = () => {
   useEffect(() => {
       updateSports();
       updateServices();
-      updateWeather();
+      //updateWeather();
   }, []);
   return null;
 }
