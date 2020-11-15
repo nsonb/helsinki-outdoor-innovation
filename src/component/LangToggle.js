@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { UIContext } from '../Contexts/UIContext';
 import { SportsContext } from '../Contexts/SportsContexts';
 
 const LangToggle = () => {
-    const { language, toggleLang,  } = useContext(UIContext);
+    const { language, toggleLang, currentLang } = useContext(UIContext);
     const { sports, allPossibleSuggestions } = useContext(SportsContext);
 
     const toggle = (lang) => {
@@ -11,6 +11,10 @@ const LangToggle = () => {
         toggleLang(lang);
         allPossibleSuggestions(sports, lang);
     }
+
+    useEffect(() => {
+        toggle(currentLang)
+    }, [])
 
     return (
         <div style ={style}>
