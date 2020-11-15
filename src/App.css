@@ -38,7 +38,6 @@
     display: block;
     border-radius: 5px;
     border: none;
-    margin: 10px;
     padding: 3px;
     opacity: 0.5;
 }
@@ -46,6 +45,10 @@
 .button:hover{
     cursor: pointer;
     opacity: 0.6;
+}
+
+.hover:hover {
+    cursor: pointer;
 }
 
 .button:focus{

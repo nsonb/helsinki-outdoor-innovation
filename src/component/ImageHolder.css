@@ -61,3 +61,11 @@
 .right-button:hover {
     cursor: pointer;
 }
+
+.image-button {
+    padding: 5px;
+    margin: 2%;
+    margin-bottom: 10px;
+    width: 0.5px;
+    height: 0.5px;
+}
