@@ -17,22 +17,25 @@ const ResultList = () => {
         )
     }));
 
-
-    useEffect(() => {
-        if(renderedItems.length !== 0) {
-            setVisible('visible');
-        } else {
-            setVisible('hidden');
-        }
-    }, [renderedItems]);
-
     return (
-        <div className='result-container' style={{visibility: visibility}}>
-            <div className='scrollable'>
-                {renderedItems}
-            </div>
+        <div className='result-container'>
+            {renderedItems.length !== 0 ? 
+                <div className='scrollable'>
+                    {renderedItems}
+                </div> :
+                <div className='scrollable main-background-color' style = {noMatchStyle}>
+                    No match found
+                </div>
+            }
+            
         </div>
     )
 }
 
 export default ResultList;
+
+const noMatchStyle = {
+    padding: '12px',
+    margin: '5px',
+    borderRadius: '12px'    
+}
