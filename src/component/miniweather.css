@@ -2,16 +2,14 @@
     position: absolute;
     display: flex;
     flex-direction: row;
-    font-size: 12px ;
     left: 0;
     right: 0;
-    margin: auto;
     width: 100%;
-    min-width: 280px;
-    height: 3%;
+    height: 1.5rem;
     justify-content: center;
     align-content: center;
     z-index: 2;
+    font-size: 0.6rem;
 }
 
 .weather-element {
@@ -19,7 +17,7 @@
     align-content: center;
     justify-content: center;
     padding: 5px;
-    width: 22.5%;
+    width: 20%;
     margin: 0;
     
 }
@@ -28,9 +26,13 @@
     width: 10%;
 }
 
+.weather-element:last-child{
+    width: 25%;
+}
+
 .weather-element img {
     display: block;
-    height: 12px;
+    height: 0.7rem;
 }
 
 .weather-element p {

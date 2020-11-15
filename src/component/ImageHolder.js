@@ -31,7 +31,7 @@ const ImageHolder = ({images}) => {
     return (
         <div className = 'container'>
             {images.length > 1 ? <div className='left-button' onClick={() => setImage(false)}></div> : null}
-            {images.length > 1 ? <div className='right-button' onClick={() => setImage(false)}></div> : null}
+            {images.length > 1 ? <div className='right-button' onClick={() => setImage(true)}></div> : null}
             
             <img className = 'top-img'src = {images[displayIndex]} alt='depicting season'/>
             {images.length > 1 ? <div className = 'bottom-row'>{renderedButtons}</div> : null}

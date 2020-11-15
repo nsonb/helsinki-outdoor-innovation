@@ -28,10 +28,11 @@ export default LangToggle;
 
 const style = {
     display: 'flex',
-    fontSize: '0.7rem',
+    fontSize: '0.5rem',
     textAlign: 'center',
     height: '100%',
-    alignItems: 'flex-end'
+    width: '100%',
+    flexDirection: 'center'
 }
 
 const langButton = {
