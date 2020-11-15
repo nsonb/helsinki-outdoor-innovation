@@ -35,7 +35,7 @@ import icon13n from '../weather-icon/13n.png';*/
 
 const CurrentWeather = () => {
     const {currWeather, weather} = useContext(WeatherContext);
-    const { currentLang } = useContext(UIContext);
+    const { currentLang, weatherDescriptions } = useContext(UIContext);
     const [ textContent ] = useState({
         temp: {FI: 'Lämpötila', EN: 'Temperature', SV: 'Temperatur'},
         wind: {FI: 'Tuuli', EN: 'Wind', SV: 'Vind'},
@@ -149,7 +149,7 @@ const CurrentWeather = () => {
         <img className='background-img' src={img} alt = ''/>
         <div className='info'>
             <div className='locale'>{weather.city.name}</div>
-            <div className='weather-desc'>{currWeather.weatherDesc}</div>
+            <div className='weather-desc'>{weatherDescriptions[currWeather.iconNum] && weatherDescriptions[currWeather.iconNum][currentLang]}</div>
             <div className='temp'>
                 {currWeather.temp}
             </div>

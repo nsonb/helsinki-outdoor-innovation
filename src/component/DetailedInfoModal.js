@@ -150,6 +150,7 @@ const DetailedInfoModal = ({location, closeModal}) => {
     }
     const detail_info = {
         width: '100%',
+        whiteSpace: 'pre-wrap',
         height: '45%',
         overflowX: 'hidden'
     }
@@ -240,27 +241,29 @@ const DetailedInfoModal = ({location, closeModal}) => {
                         location.name_fi || '')
                     }</p>
                     <p>{
-                        currentLang === 'SV' ? location.street_address_sv || location.street_address_fi || '' : 
-                        (currentLang === 'EN' ? location.street_address_en || location.street_address_fi || '' : 
-                        location.street_address_fi || '')}, 
-                        {currentLang === 'SV' ? location.address_city_sv || location.address_city_fi || '' : 
-                        (currentLang === 'EN' ? location.address_city_en || location.address_city_fi || '' : 
-                        location.address_city_fi || '')}, 
-                        {location.address_zip
+                        currentLang === 'SV' ? location.street_address_sv || location.street_address_fi || 'Tyvärr, vi har inte adress.' : 
+                        (currentLang === 'EN' ? location.street_address_en || location.street_address_fi || 'No address.' : 
+                        location.street_address_fi || 'Osoitetta ei löytynyt')}, 
+                        {currentLang === 'SV' ? location.address_city_sv || location.address_city_fi || 'Tyvärr, vi har inte en stad.' : 
+                        (currentLang === 'EN' ? location.address_city_en || location.address_city_fi || location.address_city_sv || 'No city.' : 
+                        location.address_city_fi || location.address_city_sv || location.address_city_en || 'Kaupunkia ei löytynyt')}, 
+                        {location.address_zip && location.address_zip
                     }</p>
                     <p>Information</p>
-                    <div style={detail_info}  className='scroll'>
-                        <p >
-                        {currentLang === 'SV' ? location.desc_sv || location.desc_fi || '' : 
-                            (currentLang === 'EN' ? location.desc_en || location.desc_fi || '' : 
-                            location.desc_fi || '')}
+                    <div className='scroll' style={detail_info}>
+                        <p>
+                            {currentLang === 'SV' ? 
+                            location.desc_sv || (location.desc_en && 'Tyvärr, vi har inte beskrivning på svenska.\n' + location.desc_en) || (location.desc_fi && 'Tyvärr, vi har inte beskrivning på svenska.\n' + location.desc_fi) || 'Tyvärr, vi har inte beskrivning om det här plats.' : 
+                            (currentLang === 'EN' ? 
+                            location.desc_en || (location.desc_fi && 'No descripton in English.\n' + location.desc_fi) || (location.desc_sv && 'No descripton in English.\n' + location.desc_sv) || 'No description.' : 
+                            location.desc_fi || (location.desc_en && 'Ei suomenkielistä kuvausta.\n' + location.desc_en) || (location.desc_sv && 'Ei suomenkielistä kuvausta.\n' + location.desc_sv) || 'Paikasta ei löydy kuvausta.')}
                         </p>
                     </div>
                     
                 </div>
                 <button className='button secondary-background-color-faded' style={buttonStyle} onClick={() =>{
-                    window.open("//reittiopas.hsl.fi/reitti/ /" + location.street_address_fi + ", "
-                    + location.address_city_en + "::" +location.latitude + "," + location.longitude
+                    window.open("//reittiopas.hsl.fi/reitti/ /" + location.street_address_fi || location.street_address_sv + ", "
+                    + location.address_city_en || location.address_city_fi + "::" +location.latitude + "," + location.longitude
                     + "?locale=en", "_blank")}}>
                         {buttonText[currentLang]}
                 </button> 
