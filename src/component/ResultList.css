@@ -30,6 +30,8 @@
     outline: none;
     opacity: 0.8;
     margin-bottom: 5px;
+    text-align: center;
+    font-size: small;
 }
 
 .more-button:hover{
