@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import './miniweather.css';
 import { useHistory } from 'react-router-dom';
+import LangToggle from './LangToggle'
 
 // images
 import icon01d from '../weather-icon/01d.png';
@@ -104,6 +105,7 @@ const MiniWeather = ({location}) => {
             
             <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={wind} alt='icon'/> <p>{currWeather.wind}</p></div>
             <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}><img src={humid} alt='icon'/> <p>{currWeather.humidity}</p></div>
+            <div className = 'weather-element'><LangToggle/></div>
             <div className = 'credit' style={location === 'top' ? {bottom:'-20px'} : {top: '-20px'}}> weather powered by <a href='https://openweathermap.org/'>Open Weather</a></div>
         </div>
     )

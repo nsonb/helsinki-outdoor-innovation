@@ -112,7 +112,6 @@ const DetailedInfoModal = ({location, closeModal}) => {
     const modal = {
         position: 'fixed',
         display: 'block',
-        overflow: 'auto',
         width: '100%',
         height: '100%',
         top: '0',
@@ -130,7 +129,7 @@ const DetailedInfoModal = ({location, closeModal}) => {
         padding: '2rem',
         position: 'relative',
         zIndex: '6',
-        height: '30rem',
+        height: '25rem',
         fontSize: '12px'
     }
     const placeName = {
@@ -167,6 +166,7 @@ const DetailedInfoModal = ({location, closeModal}) => {
         position:'absolute', 
         height: '8%',
         width: '50%',
+        minWidth: '120px',
         bottom: '3%', 
         left: '0', 
         right: '0', 
@@ -218,7 +218,7 @@ const DetailedInfoModal = ({location, closeModal}) => {
                 <div style={info}>
                     {weather === null? 'null' : 
                         <div style = {weather_info}>
-                            <div style = {{width: '20%', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', flexDirection: 'row',alignContent: 'flex-start'}}>
+                            <div style = {{width: '30%', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', flexDirection: 'row',alignContent: 'flex-start'}}>
                                 <img style = {weather_icon} src={weatherIcon} alt='icon'/>
                                 <p style={weather_detail}>{weather.current.weather[0].description}</p>
                             </div>

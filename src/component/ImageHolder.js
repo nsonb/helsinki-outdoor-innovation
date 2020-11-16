@@ -16,7 +16,7 @@ const ImageHolder = ({images}) => {
     const renderedButtons = images.map((img, index) => {
         const opacity = index === displayIndex? 0.8 : 0.3;
         return (
-            <div className='button secondary-background-color' key={img} onClick = {() => {setDisplayIndex(index)}} style={{opacity:opacity}}></div>
+            <div className='button secondary-background-color image-button' key={img} onClick = {() => {setDisplayIndex(index)}} style={{opacity:opacity}}></div>
         )
     })
 
@@ -31,7 +31,7 @@ const ImageHolder = ({images}) => {
     return (
         <div className = 'container'>
             {images.length > 1 ? <div className='left-button' onClick={() => setImage(false)}></div> : null}
-            {images.length > 1 ? <div className='right-button' onClick={() => setImage(false)}></div> : null}
+            {images.length > 1 ? <div className='right-button' onClick={() => setImage(true)}></div> : null}
             
             <img className = 'top-img'src = {images[displayIndex]} alt='depicting season'/>
             {images.length > 1 ? <div className = 'bottom-row'>{renderedButtons}</div> : null}
