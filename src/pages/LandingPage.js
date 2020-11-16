@@ -18,9 +18,9 @@ import { UIContext } from '../Contexts/UIContext';
 const LandingPage = () => {
     const { currentLang } = useContext(UIContext);
     const [ heading ] = useState({
-        FI: "Pääkau punkiseudun ulkolii kuntapaikat",
+        FI: "Pääkaupunkiseudun ulkoliikuntapaikat",
         EN: "Discover Helsinki Outdoor Sports",
-        SV: "Helsingfors utemotion splatser"
+        SV: "Helsingfors utemotionsplatser"
     });
 
     return (
