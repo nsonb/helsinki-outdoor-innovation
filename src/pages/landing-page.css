@@ -26,4 +26,11 @@ h2 {
     margin: auto;
     margin-bottom: 0;
     width: 80%;
+    min-width: 160px;
+}
+
+@media only screen and (max-width: 600px) {
+    h2 {
+        font-size: 7.5vw;
+    }
 }

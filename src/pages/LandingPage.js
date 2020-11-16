@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ImageHolder from '../component/ImageHolder';
 import MiniWeather from '../component/MiniWeather';
 import Search from '../component/Search';
@@ -13,12 +13,9 @@ import garden from '../default-img/myhelsinki_Aarteenetsijänpuisto_0406_2020091
 
 //
 import './landing-page.css';
-import { SportsContext } from '../Contexts/SportsContexts';
-import { WeatherContext } from '../Contexts/WeatherContext';
-import { ServiceContext } from '../Contexts/ServiceContext';
 import { UIContext } from '../Contexts/UIContext';
 
-const LandingPage = (props) => {
+const LandingPage = () => {
     const { currentLang } = useContext(UIContext);
     const [ heading ] = useState({
         FI: "Pääkaupunkiseudun ulkoliikuntapaikat",
@@ -29,9 +26,8 @@ const LandingPage = (props) => {
     return (
         <div className='landing-page'>  
             <ImageHolder images = {[spring, summer, fall, winter, garden]} />
-            <LangToggle/>
             <div className='mid-bar'>
-                <h2 className='main-background-color-faded' style={{padding: '10px', borderRadius: '20px'}}>
+                <h2 className='main-background-color' style={{padding: '10px', borderRadius: '20px'}}>
                     {heading[currentLang]}
                 </h2>
                 <Search/>
