@@ -5,7 +5,7 @@ import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';
 import { UIContext } from '../Contexts/UIContext';
 import { useHistory, useLocation } from 'react-router-dom';
 
-const Filter = () => {
+const Filter = (props) => {
     const history = useHistory();
     const location = useLocation();
     const { filterTagsAndCities } = useContext(SportsContext);
@@ -71,6 +71,7 @@ const Filter = () => {
         if (location.pathname !== '/result') {
             history.push('/result');
         }
+        props.hideFilter()
     }
 
     const tagLabels = Object.keys(state.tags).map(key => 
