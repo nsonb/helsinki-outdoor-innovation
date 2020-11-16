@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { UIContext } from '../Contexts/UIContext';
 
 
-const BackButton = () => {
+const HomeButton = () => {
     const { currentLang } = useContext(UIContext);
     const history = useHistory();
     return (
@@ -13,7 +13,7 @@ const BackButton = () => {
     )
 }
 
-export default BackButton;
+export default HomeButton;
 
 const style = {
     display: 'block',

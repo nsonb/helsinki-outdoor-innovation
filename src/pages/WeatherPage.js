@@ -1,7 +1,7 @@
 import React, {useEffect, useContext} from 'react';
 import CurrentWeather from '../component/CurrentWeather';
 import FutureWeatherHolder from '../component/FutureWeatherHolder';
-import BackButton from '../component/BackButton';
+import HomeButton from '../component/HomeButton';
 import './WeatherPage.css';
 
 import { SportsContext } from '../Contexts/SportsContexts';
@@ -23,7 +23,7 @@ const WeatherPage = () => {
 
     return (
     <div>
-        <BackButton />
+        <HomeButton />
         <CurrentWeather />
         <FutureWeatherHolder />
     </div>
