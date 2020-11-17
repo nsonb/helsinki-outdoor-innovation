@@ -18,8 +18,9 @@ export default HomeButton;
 const style = {
     display: 'block',
     position: 'absolute',
-    top: '2%',
+    top: '4vh',
     left: '2%',
     zIndex: '20',
-    padding: '10px'
+    padding: '5px',
+    fontSize: '0.5rem'
 }
