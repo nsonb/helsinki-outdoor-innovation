@@ -83,7 +83,7 @@ export const UIContextProvider = (props) => {
 
     return (
         <UIContext.Provider value={{language, currentLang, toggleLang,
-                                    searchSuggestions, weatherDescriptions}}>
+                                    searchSuggestions, weatherDescriptions, toggleModal, showModal, selectModalInformation, modalContent}}>
             {props.children}
         </UIContext.Provider>
     );

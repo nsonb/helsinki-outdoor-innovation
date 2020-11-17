@@ -1,11 +1,9 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext} from 'react';
 import './ResultItem.css'
-import DetailedInfoModal from "./DetailedInfoModal";
 import { UIContext } from '../Contexts/UIContext';
 
 const ResultItem = ({location, detailed}) => {
-    const { currentLang } = useContext(UIContext);
-    const [status, setStatus] = useState(false);
+    const { currentLang, toggleModal, selectModalInformation } = useContext(UIContext);
     const renderedDetail = (
         <div className='detail'>
             <div >
@@ -21,9 +19,10 @@ const ResultItem = ({location, detailed}) => {
     )
 
     return (
-        <div className='result-item-container main-background-color-faded' onClick={() => status === false ? setStatus(true) : null }>
-            <div className='location-name'>{location.name_en || location.name_fi || location.name_sv}</div>
-            { status && (<DetailedInfoModal closeModal={() => setStatus(false)} location = {location}/>)}
+        <div className='result-item-container main-background-color-faded' onClick={() => {toggleModal(); selectModalInformation(location)}}>
+            <div className='location-name'>{currentLang === 'SV' ? location.name_sv || location.name_fi || '':
+                (currentLang === 'EN' ? location.name_en || location.name_fi || '':
+                    location.name_fi|| '')}</div>
             { renderedDetail }
         </div>
         
