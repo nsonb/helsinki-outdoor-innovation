@@ -31,12 +31,13 @@ import { UIContext } from '../Contexts/UIContext';
 // For showing the user more detailed info about a single place
 // Accepts json format of information about the place that is then displayed
 
-const DetailedInfoModal = ({location, closeModal}) => {
+const DetailedInfoModal = () => {
     const [weather, setWeather] = useState(null)
+    const { toggleModal, modalContent } = useContext(UIContext)
     var weatherIcon = icon01d;
     useEffect(() => {
         let isMounted = true;
-        getWeatherAt(location.longitude, location.latitude)
+        getWeatherAt(modalContent.longitude, modalContent.latitude)
         .then(res => {
             console.log('called');
             if(isMounted) {
@@ -99,7 +100,7 @@ const DetailedInfoModal = ({location, closeModal}) => {
             console.log(err);
         })
         return () => {isMounted = false}
-    }, [location])
+    }, [modalContent])
 
     const { currentLang } = useContext(UIContext);
     const [ buttonText ] = useState({
@@ -119,6 +120,7 @@ const DetailedInfoModal = ({location, closeModal}) => {
         right: '0',
         bottom: '0',
         cursor: 'default',
+        zIndex: '4',
 
     }
     const content = {
@@ -140,7 +142,7 @@ const DetailedInfoModal = ({location, closeModal}) => {
     const info = {
         display: 'block',
         position:'absolute', 
-        height: (location.picture_url? '53%': '80%'), 
+        height: (modalContent.picture_url? '53%': '80%'), 
         left: '0', bottom: '16%', 
         borderRadius: '0.5rem 0.5rem 0 0', 
         overflow: 'hidden',
@@ -177,7 +179,6 @@ const DetailedInfoModal = ({location, closeModal}) => {
         justifyItems: 'center',
         fontFamily: "'Montserrat', sans-serif",
         fontSize: '16px',
-        textAlign: 'center'
     }
     const weather_info = {
         display: 'flex',
@@ -209,14 +210,14 @@ const DetailedInfoModal = ({location, closeModal}) => {
 
     return (
         <div style={modal}>
-            <div style={blurBackground}  onClick={() => closeModal()}></div>
+            <div style={blurBackground}  onClick={toggleModal}/>
             <div style={content} className='main-background-color'>
-                {location.picture_url ? 
+                {modalContent.picture_url ? 
                     <div style={{position:'absolute', width: '100%', height: '30%', left: '0', top: '0', borderRadius: '0.5rem 0.5rem 0 0', overflow: 'hidden', marginBottom: '16px'}}>
-                        <ImageHolder images={location.picture_url? [location.picture_url] : [default_img]}/>
-                    </div> : <div></div>}
+                        <ImageHolder images={modalContent.picture_url? [modalContent.picture_url] : [default_img]}/>
+                    </div> : <div/>}
                 <div style={info}>
-                    {weather === null? 'null' : 
+                    { weather === null? 'null' :
                         <div style = {weather_info}>
                             <div style = {{width: '30%', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', flexDirection: 'row',alignContent: 'flex-start'}}>
                                 <img style = {weather_icon} src={weatherIcon} alt='icon'/>
@@ -236,34 +237,34 @@ const DetailedInfoModal = ({location, closeModal}) => {
                             </div>
                         </div>}
                     <p style={placeName}>{
-                        currentLang === 'SV' ? location.name_sv || location.name_fi || '' : 
-                        (currentLang === 'EN' ? location.name_en || location.name_fi || '' : 
-                        location.name_fi || '')
+                        currentLang === 'SV' ? modalContent.name_sv || modalContent.name_fi || '' : 
+                        (currentLang === 'EN' ? modalContent.name_en || modalContent.name_fi || '' : 
+                        modalContent.name_fi || '')
                     }</p>
                     <p>{
-                        currentLang === 'SV' ? location.street_address_sv || location.street_address_fi || 'Tyvärr, vi har inte adress.' : 
-                        (currentLang === 'EN' ? location.street_address_en || location.street_address_fi || 'No address.' : 
-                        location.street_address_fi || 'Osoitetta ei löytynyt')}, 
-                        {currentLang === 'SV' ? location.address_city_sv || location.address_city_fi || 'Tyvärr, vi har inte en stad.' : 
-                        (currentLang === 'EN' ? location.address_city_en || location.address_city_fi || location.address_city_sv || 'No city.' : 
-                        location.address_city_fi || location.address_city_sv || location.address_city_en || 'Kaupunkia ei löytynyt')}, 
-                        {location.address_zip && location.address_zip
+                        currentLang === 'SV' ? modalContent.street_address_sv || modalContent.street_address_fi || 'Tyvärr, vi har inte adress.' : 
+                        (currentLang === 'EN' ? modalContent.street_address_en || modalContent.street_address_fi || 'No address.' : 
+                        modalContent.street_address_fi || 'Osoitetta ei löytynyt')}, 
+                        {currentLang === 'SV' ? modalContent.address_city_sv || modalContent.address_city_fi || 'Tyvärr, vi har inte en stad.' : 
+                        (currentLang === 'EN' ? modalContent.address_city_en || modalContent.address_city_fi || modalContent.address_city_sv || 'No city.' : 
+                        modalContent.address_city_fi || modalContent.address_city_sv || modalContent.address_city_en || 'Kaupunkia ei löytynyt')}, 
+                        {modalContent.address_zip && modalContent.address_zip
                     }</p>
                     <p>Information</p>
                     <div className='scroll' style={detail_info}>
                         <p>
                             {currentLang === 'SV' ? 
-                            location.desc_sv || (location.desc_en && 'Tyvärr, vi har inte beskrivning på svenska.\n' + location.desc_en) || (location.desc_fi && 'Tyvärr, vi har inte beskrivning på svenska.\n' + location.desc_fi) || 'Tyvärr, vi har inte beskrivning om det här plats.' : 
+                            modalContent.desc_sv || (modalContent.desc_en && 'Tyvärr, vi har inte beskrivning på svenska.\n' + modalContent.desc_en) || (modalContent.desc_fi && 'Tyvärr, vi har inte beskrivning på svenska.\n' + modalContent.desc_fi) || 'Tyvärr, vi har inte beskrivning om det här plats.' : 
                             (currentLang === 'EN' ? 
-                            location.desc_en || (location.desc_fi && 'No descripton in English.\n' + location.desc_fi) || (location.desc_sv && 'No descripton in English.\n' + location.desc_sv) || 'No description.' : 
-                            location.desc_fi || (location.desc_en && 'Ei suomenkielistä kuvausta.\n' + location.desc_en) || (location.desc_sv && 'Ei suomenkielistä kuvausta.\n' + location.desc_sv) || 'Paikasta ei löydy kuvausta.')}
+                            modalContent.desc_en || (modalContent.desc_fi && 'No descripton in English.\n' + modalContent.desc_fi) || (modalContent.desc_sv && 'No descripton in English.\n' + modalContent.desc_sv) || 'No description.' : 
+                            modalContent.desc_fi || (modalContent.desc_en && 'Ei suomenkielistä kuvausta.\n' + modalContent.desc_en) || (modalContent.desc_sv && 'Ei suomenkielistä kuvausta.\n' + modalContent.desc_sv) || 'Paikasta ei löydy kuvausta.')}
                         </p>
                     </div>
                     
                 </div>
                 <button className='button secondary-background-color-faded' style={buttonStyle} onClick={() =>{
-                    window.open("//reittiopas.hsl.fi/reitti/ /" + location.street_address_fi || location.street_address_sv + ", "
-                    + location.address_city_en || location.address_city_fi + "::" +location.latitude + "," + location.longitude
+                    window.open("//reittiopas.hsl.fi/reitti/ /" + modalContent.street_address_fi || modalContent.street_address_sv + ", "
+                    + modalContent.address_city_en || modalContent.address_city_fi + "::" +modalContent.latitude + "," + modalContent.longitude
                     + "?locale=en", "_blank")}}>
                         {buttonText[currentLang]}
                 </button> 
