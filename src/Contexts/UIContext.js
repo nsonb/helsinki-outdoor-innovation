@@ -31,13 +31,15 @@ export const UIContextProvider = (props) => {
         category: "Categories"},
         {name: "services",
         category: "Categories"},
-        {name: 'Espoo', 
-        category: 'city'}, 
-        {name: 'Helsinki', 
-        category: 'city'}, 
-        {name: 'Vantaa', 
+        {name: 'Espoo',
+        category: 'city'},
+        {name: 'Helsinki',
+        category: 'city'},
+        {name: 'Vantaa',
         category: 'city'}
     ])
+    const [ showModal, setModal ] = useState(false);
+    const [ modalContent, setModalContent ] = useState({});
 
     const [ weatherDescriptions ] = useState({
         '01d': {FI: 'Selkeää', EN: 'Clear sky', SV: 'Klar himmel'},
@@ -61,7 +63,7 @@ export const UIContextProvider = (props) => {
     })
 
     const toggleLang = (lang) => {
-        let newLanguages = language.map(l => {        
+        let newLanguages = language.map(l => {
             if (l.lang === lang) {
                 l.langUsed = true;
                 setCurrent(l.lang);
@@ -71,9 +73,17 @@ export const UIContextProvider = (props) => {
         setLang(newLanguages)
     }
 
+    const toggleModal = () => {
+        setModal(!showModal);
+    }
+
+    const selectModalInformation = (object) => {
+        setModalContent(object);
+    }
+
     return (
-        <UIContext.Provider value={{language, currentLang, toggleLang, 
-                                    searchSuggestions, weatherDescriptions}}>
+        <UIContext.Provider value={{language, currentLang, toggleLang,
+                                    searchSuggestions, weatherDescriptions, toggleModal, showModal, selectModalInformation, modalContent}}>
             {props.children}
         </UIContext.Provider>
     );
