@@ -309,9 +309,9 @@ export const SportsContextProvider = (props) => {
         setSorted(newList);      
     }
 
-    const filterTagsAndCities = (filterObj) => {
+    const filterTagsAndCities = (filterObj, mode) => {
         let sourceObj = sports;
-        if (Object.keys(sorted).length > 0) sourceObj = sorted;
+        if (mode === 'results' && Object.keys(sorted).length > 0) sourceObj = sorted;
         let newList = {};
         Object.entries(sourceObj).forEach(sport => {
             if (filterObj.tags.length > 0) {
