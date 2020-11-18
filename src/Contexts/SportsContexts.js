@@ -11,7 +11,7 @@ export const SportsContextProvider = (props) => {
             displayname_fi: 'Jousiammunta', displayname_en: 'Archery', displayname_sv: ''},
         athletics: {data: [], tags: ['land'], 
             displayname_fi: 'Yleisurheilu', displayname_en: 'Athletics', displayname_sv: ''},
-        ballFields: {data: [], tags: ['land', 'ballgames', 'tennis', 'jalkapallo', 'pesäpallo', 'koripallo', 'football', 'baseball', 'basketball', 'pallopelit'], 
+        ballFields: {data: [], tags: ['land', 'ballgames', 'jalkapallo', 'pesäpallo', 'football', 'baseball', 'pallopelit'], 
             displayname_fi: 'Pallokentät', displayname_en: 'Ball fields', displayname_sv: ''},
         baseball: {data: [], tags: ['land', 'ballgames', 'pesäpallo', 'baseball', 'pesis'], 
             displayname_fi: 'Pesäpallo', displayname_en: 'Baseball', displayname_sv: ''},
