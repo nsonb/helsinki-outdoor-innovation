@@ -1,11 +1,12 @@
 .future-weather-item{
-    height: 100%;
-    width: 18%;
-    margin:auto;
-    margin-bottom: 20px;
-    border-radius: 20px;
+    height: 64px;
+    width: 64px;
+    min-width: 64px;
+    margin: auto 5px;
+    border-radius: 5px;
     overflow: hidden;
     position: relative;
+    display: block;
 }
 
 .background-img {

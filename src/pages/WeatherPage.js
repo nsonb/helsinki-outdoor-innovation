@@ -22,7 +22,7 @@ const WeatherPage = () => {
     }, []);
 
     return (
-    <div>
+    <div style={{height: '100%', width: '100%', overflow: 'hidden', position: 'absolute'}}>
         <HomeButton />
         <CurrentWeather />
         <FutureWeatherHolder />
@@ -31,3 +31,8 @@ const WeatherPage = () => {
 }
 
 export default WeatherPage;
+
+const style = {
+    width: '100vh',
+    height: '100vh'
+}
