@@ -47,7 +47,7 @@ export const SportsContextProvider = (props) => {
             displayname_fi: 'Ulkokuntosalit ja liikuntapuistot', displayname_en: 'Outdoor gyms and sports parks', displayname_sv: ''},
         parkour: {data: [], tags: ['land', 'noEquipment'], 
             displayname_fi: 'Parkour', displayname_en: 'Parkour', displayname_sv: ''},
-        parks: {data: [], tags: ['land', 'nature', 'noEquipment', 'walking', 'running', 'jogging', 'yoga', 'parkyoga', 'juoksu', 'juokseminen', 'lenkkeily', 'lenkkeileminen', 'kävely', 'käveleminen puistojumppa', 'puistojooga', 'piknik'], 
+        parks: {data: [], tags: ['land', 'nature', 'noEquipment', 'puisto', 'walking', 'running', 'jogging', 'yoga', 'parkyoga', 'juoksu', 'juokseminen', 'lenkkeily', 'lenkkeileminen', 'kävely', 'käveleminen puistojumppa', 'puistojooga', 'piknik'], 
             displayname_fi: 'Puistot', displayname_en: 'Parks', displayname_sv: ''},
         rollerHockey: {data: [], tags: ['land'], 
             displayname_fi: 'Rullakiekko', displayname_en: 'Roller hockey', displayname_sv: ''},
@@ -119,8 +119,8 @@ export const SportsContextProvider = (props) => {
         })
     }
 
-    //name = search words
-    const searchOneSport = (name) => {
+    //DISCARDED FUNCTION; SAVED IN CASE OF REFERENCE NEEDS
+    /*const searchOneSportBETA = (name) => {
         //clean up the search words and separate "must have"
         const cleanString = name.replace(',', '').replace('.', '').toLowerCase();
         let nameList = [];
@@ -191,6 +191,100 @@ export const SportsContextProvider = (props) => {
         }
         //put all this into "sorted" -hook
         setSorted(newList);
+    }*/
+
+    const searchOneSport = (search) => {
+        //clean up the search words and separate "must have"
+        const cleanString = search.replace(',', '').replace('.', '').toLowerCase();
+        let searchArray = [];
+        let mustHave = cleanString.match(/"([^"]+)"/);
+        if (mustHave) {    
+            //mustHave 
+            searchArray = mustHave[1].split(' ');//.filter(e => e !== '' && e !== 'and' && e !== '' && e!== 'ja' && e !== 'och' && e !== '/');
+            //nameList = cleanString.replace('"' + mustHave + '"', '').split(' ');
+        } else {
+            searchArray = cleanString.split(' ');
+        }
+        searchArray = searchArray.filter(e => e !== '' && e !== 'and' && e !== '' && e!== 'ja' && e !== 'och' && e !== '/');
+        let newList = {};
+        let leftovers = {};
+        if (searchArray.length > 0) {    
+            //go through all data groups (sports) and divide sports object
+            Object.entries(sports).forEach(sport => {
+                const s = sport[1];
+                const tags = [
+                    ...s.tags, 
+                    ...(s.displayname_en || '').toLowerCase().split(' '),
+                    ...(s.displayname_fi || '').toLowerCase().split(' '),
+                    ...(s.displayname_sv || '').toLowerCase().split(' ')
+                ];
+                let matchingTags = searchArray.filter(word => {
+                    switch(tags.filter(t => t === word).length) {
+                        case 0:
+                            break;
+                        default:
+                            return word;
+                    }
+                })
+                switch(arrayEquals(matchingTags, searchArray)) {
+                    case true:
+                        newList = {...newList, [sport[0]]: sport[1]};
+                        break;
+                    default:
+                        leftovers = {...leftovers, [sport[0]]: sport[1]};
+                        break;
+                }
+            })
+            Object.entries(leftovers).forEach(sport => {
+                let dataGroup = sport[1].data.filter(e => {
+                    const nameData = [
+                        e.name_fi || '', 
+                        e.name_sv || '', 
+                        e.name_en || ''];
+                    const locationNames = [
+                        e.street_address_fi || '', 
+                        e.street_address_sv || '', 
+                        e.street_address_en || '', 
+                        e.address_city_fi || '',
+                        e.address_city_sv ||'',
+                        e.address_city_en || ''];
+                    const descriptions = [
+                        e.desc_fi || '',
+                        e.desc_sv || '',
+                        e.desc_en || ''
+                    ]
+                    let list = [...nameData, ...locationNames, ...descriptions, e.id].toString().toLowerCase().split(/(?:,| )+/);
+                    list = list.filter(e => e !== 'and' && e !== '' && e!== 'ja' && e !== 'och' && e !== '/');
+                    let matchingTags = searchArray.filter(word => {
+                        switch(list.filter(t => t === word).length) {
+                            case 0:
+                                break;
+                            default:
+                                return word;
+                        }
+                    })
+                    if (mustHave) {
+                        if (arrayEquals(matchingTags, searchArray)) {
+                            return e;
+                        } else {
+                            return false;
+                        }
+                    } else if (matchingTags.length > 0) {
+                        console.log(e)
+                        return e;
+                    } else {
+                        return false;
+                    }
+                })
+                if (dataGroup.length > 0) {
+                    newList = {...newList, [sport[0]]: {...sport[1], data: dataGroup}};
+                }
+            })
+            setSorted(newList);
+        } else {
+            //if search is empty, empty sorted-state
+            setSorted({});
+        } 
     }
 
     //tags = labels we add ourselves in the app
@@ -216,27 +310,42 @@ export const SportsContextProvider = (props) => {
     }
 
     const filterTagsAndCities = (filterObj) => {
-        console.log(filterObj)
-        //first filter by tags
-        let newList = {}, key;
-        for (key in sports) {
-            const sportTags = sports[key].tags
-            if (filterObj.tags.every(e => sportTags.includes(e))) {
-                newList[key] = sports[key]
-            }
-        }
-        //then sort the left over items by location
-        for (key in newList) {
-            let matchingData = [];
-            for (let i = 0; i < sports[key].data.length; i++) {
-                const location = sports[key].data[i].address_city_fi || '';
-                if (filterObj.cities.includes(location.toLowerCase())) {
-                    matchingData.push(sports[key].data[i]);
+        let sourceObj = sports;
+        if (Object.keys(sorted).length > 0) sourceObj = sorted;
+        let newList = {};
+        Object.entries(sourceObj).forEach(sport => {
+            if (filterObj.tags.length > 0) {
+                let matchingTags =  filterObj.tags.filter(tag => {
+                    switch(sport[1].tags.filter(t => t === tag).length) {
+                        case 0:
+                            break;
+                        default:
+                            return tag;
+                    }
+                })
+                if (arrayEquals(matchingTags, filterObj.tags)) {
+                    newList = {...newList, [sport[0]]: sport[1]};
                 }
+            } else {
+                newList = {...newList, [sport[0]]: sport[1]};
             }
-            newList[key].data = matchingData;
-        }
-        setSorted(newList); 
+        })
+        let sortedByCities = {};
+        Object.entries(newList).forEach(sport => {
+            if (filterObj.cities.length > 0) {
+                filterObj.cities.map(city => {
+                    console.log(city);
+                    let dataGroup = sport[1].data.filter(item => item.address_city_fi ? item.address_city_fi.toLowerCase() === city : false)
+                    if (dataGroup.length > 0) {
+                        sortedByCities = {...sortedByCities, [sport[0]]: {...sport[1], data: dataGroup}};
+                    }
+                })
+            } else {
+                sortedByCities = newList;
+            }
+        })
+        console.log(sortedByCities);
+        setSorted(sortedByCities)
     }
 
     //https://masteringjs.io/tutorials/fundamentals/compare-arrays
@@ -249,7 +358,6 @@ export const SportsContextProvider = (props) => {
     
       const allPossibleSuggestions = (sports, l) => {
         if (!l) l = 'FI';
-        console.log(sports)
         //const l = language.filter(e => e.langUsed)[0];
         let sportlist = [];
         //names of the sports from keys and display names
@@ -291,7 +399,6 @@ export const SportsContextProvider = (props) => {
         })
         
         const cleanSportlist = removeDuplicatesFromArrayByProperty(sportlist, 'name');
-        console.log(cleanSportlist);
         setSuggestions(cleanSportlist);
       }
 
