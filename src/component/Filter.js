@@ -5,88 +5,80 @@ import { CurrentTermContext } from '../Contexts/CurrentSearchTermContext';
 import { UIContext } from '../Contexts/UIContext';
 import { useHistory, useLocation } from 'react-router-dom';
 
-const Filter = () => {
+const Filter = (props) => {
     const history = useHistory();
     const location = useLocation();
-    const { filterTagsAndCities } = useContext(SportsContext);
+    const { filterTagsAndCities, searchOneSport } = useContext(SportsContext);
     const { updateTerm } = useContext(CurrentTermContext);
-    const { currentLang } = useContext(UIContext);
+    const { currentLang, filter, saveTag, saveCity, clearFilter } = useContext(UIContext);
 
     const [state, setState] = useState({
-        tags: { 
-            land: {status: false, icon: '', FI: 'Kuivalla maalla', EN: 'Land sports', SV: null},
-            water: {status: false, icon: '', FI: 'Vesiurheilu', EN: 'Water sports', SV: null},
-            animals: {status: false, icon: '', FI: 'Eläinurheilu', EN: 'Animal sports', SV: null},
-            ballgames: {status: false, icon: '', FI: 'Pallopelit', EN: 'Ball games', SV: null},
-            nature: {status: false, icon: '', FI: 'Luonto', EN: 'Nature', SV: null},
-            noEquipment: {status: false, icon: '', FI: 'Ei välineitä', EN: 'No equipment', SV: null},
-            winter: {status: false, icon: '', FI: 'Talviurheilu', EN: 'Winter sports', SV: null},
-        },
-        cities: {
-            helsinki: {status: false, icon: '', FI: 'Helsinki', EN: 'Helsinki', SV: 'Helsingfors'},
-            espoo: {status: false, icon: '', FI: 'Espoo', EN: 'Espoo', SV: 'Esbo'},
-            vantaa: {status: false, icon: '', FI: 'Vantaa', EN: 'Vantaa', SV: 'Vanda'},
-        },
         filterHover: false,
         buttonText: {
             SV: 'Filtrera',
             EN: 'Filter',
             FI: 'Rajaa'
+        },
+        resetButtonText: {
+            SV: 'Klar',
+            EN: 'Reset',
+            FI: 'Nollaa valinnat'
+        },
+        searchButtonText: {
+            SV: 'Sök',
+            EN: 'Search',
+            FI: 'Hae'
         }
     })
     
-    const saveTag = (evt) => {
-        const name = evt.target.name;
-        const item = {
-            ...state.tags[name], 
-            status: !state.tags[name].status
-        }
-        setState({
-            ...state, 
-            tags: {...state.tags, 
-                [name]: item}
-            });
-    }
-
-    const saveCity = (evt) => {
-        const name = evt.target.name;
-        const item = {
-            ...state.cities[name], 
-            status: !state.cities[name].status
-        }
-        setState({
-            ...state, 
-            cities: {...state.cities, 
-                [name]: item}
-            });
-    }
 
     const filterSports = (evt) => {
-        evt.preventDefault();
+        if (evt) evt.preventDefault();
         updateTerm('')
-        let tags = Object.keys(state.tags).filter(e => state.tags[e].status);
-        let cities = Object.keys(state.cities).filter(e => state.cities[e].status);
-        if (!cities.length) cities = Object.keys(state.cities);
-        filterTagsAndCities({tags: tags, cities: cities});
+        let tags = Object.keys(filter.tags).filter(e => filter.tags[e].status);
+        let cities = Object.keys(filter.cities).filter(e => filter.cities[e].status);
+        //if (!cities.length) cities = Object.keys(state.cities);
+        filterTagsAndCities({tags: tags, cities: cities}, 'all');
         if (location.pathname !== '/result') {
             history.push('/result');
         }
+        props.hideFilter();
     }
 
-    const tagLabels = Object.keys(state.tags).map(key => 
+    const filterResults = (evt) => {
+        if (evt) evt.preventDefault();
+        updateTerm('')
+        let tags = Object.keys(filter.tags).filter(e => filter.tags[e].status);
+        let cities = Object.keys(filter.cities).filter(e => filter.cities[e].status);
+        //if (!cities.length) cities = Object.keys(state.cities);
+        filterTagsAndCities({tags: tags, cities: cities}, 'results');
+        if (location.pathname !== '/result') {
+            history.push('/result');
+        }
+        props.hideFilter();
+    }
+
+    const resetFilter = (evt) => {
+        if (evt) evt.preventDefault();
+        console.log('this will reset filter options')
+        clearFilter();
+        searchOneSport('')
+    }
+
+    const tagLabels = Object.keys(filter.tags).map(key => 
         <div key={key} style={checkboxContainer}>
-            <input type="checkbox" style={checkboxInput} onChange={saveTag} checked={state.tags[key].status} value={key} name={key} />
+            <input type="checkbox" style={checkboxInput} onChange={e => saveTag(e)} checked={filter.tags[key].status} value={key} name={key} />
             <label style={{display: 'block'}}>{
-                state.tags[key][currentLang] || state.tags[key].FI
+                filter.tags[key][currentLang] || filter.tags[key].FI
             }</label>
         </div>
     )
     
-    const cityLabels = Object.keys(state.cities).map(key => 
+    const cityLabels = Object.keys(filter.cities).map(key => 
         <div key={key} style={checkboxContainer}>
-            <input type="checkbox" style={checkboxInput} onChange={saveCity} checked={state.cities[key].status} value={key} name={key} />
+            <input type="checkbox" style={checkboxInput} onChange={e => saveCity(e)} checked={filter.cities[key].status} value={key} name={key} />
             <label style={{display: 'block'}}>{
-                state.cities[key][currentLang] || state.cities[key].FI
+                filter.cities[key][currentLang] || filter.cities[key].FI
             }</label>
         </div>
     )
@@ -104,7 +96,23 @@ const Filter = () => {
                 onMouseEnter={() => setState({...state, filterHover: true})}
                 onMouseLeave={() => setState({...state, filterHover: false})}
                 onClick={filterSports}
+                >{state.searchButtonText[currentLang]}
+            </div>
+            <div 
+                className='filter button secondary-background-color' 
+                style={state.filterHover? {...filterButton, opacity: 1} : filterButton}
+                onMouseEnter={() => setState({...state, filterHover: true})}
+                onMouseLeave={() => setState({...state, filterHover: false})}
+                onClick={filterResults}
                 >{state.buttonText[currentLang]}
+            </div>
+            <div 
+                className='filter button secondary-background-color' 
+                style={state.filterHover? {...filterButton, opacity: 1} : filterButton}
+                onMouseEnter={() => setState({...state, filterHover: true})}
+                onMouseLeave={() => setState({...state, filterHover: false})}
+                onClick={resetFilter}
+                >{state.resetButtonText[currentLang]}
             </div>
         </div>
     )
