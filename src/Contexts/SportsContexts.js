@@ -56,7 +56,7 @@ export const SportsContextProvider = (props) => {
             displayname_fi: 'Skeittaus ja rullaluistelu', displayname_en: 'Skating', displayname_sv: ''},
         skiing: {data: [], tags: ['land', 'winter', 'cross-country', 'skiing', 'hiihto', 'hiihtäminen', 'murtomaahiihto', 'maastohiihto'], 
             displayname_fi: 'Hiihto', displayname_en: 'Skiing', displayname_sv: ''},
-        swimming: {data: [], tags: ['water', 'nature', 'noEquipment', 'beach', 'swim', 'swimming', 'ranta', 'uinti', 'uiminen'], 
+        swimming: {data: [], tags: ['water', 'nature', 'noEquipment', 'beach', 'swim', 'swimming', 'ranta', 'uinti', 'uiminen', 'uimaranta', 'avanto', 'avantouinti', 'iceswimming'], 
             displayname_fi: 'Uinti', displayname_en: 'Swimming', displayname_sv: ''},
         tennis: {data: [], tags: ['land', 'ballgames', 'tennis'], 
             displayname_fi: 'Tennis', displayname_en: 'Tennis', displayname_sv: ''},
