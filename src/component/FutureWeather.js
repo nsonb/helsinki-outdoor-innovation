@@ -142,15 +142,12 @@ const FutureWeather = ({weather, today = false}) => {
     weekday[6] = {EN: "Saturday", FI: 'Lauantai', SV: 'Lördag'};
 
     return (
-    <div className='future-weather-item' style={weatherBrightStyle ? {color: 'charcoal'} : {color: 'white'}}>
-        <img className='background-img' src={img} alt = ''/>
+    <div className='future-weather-item'>
+        <img className='background-img' src={img} alt = 'weather description'/>
         {today ? <div style= {timeStyle}>{weather.time.slice(10,16)}</div> : <div style= {timeStyle}>{weekday[d.getDay()][currentLang]}</div>}
         
         <div className='info-container'>
-            <div>
-                <img src = {icon} style= {{height:'30%', margin: '8px'}} alt={'describing weather:' + weather.weatherDesc}/>
-            </div>
-            <div>{weather.temp}</div>
+            <p className='main-background-color-faded'>{weather.temp}</p>
         </div>
         
     </div>

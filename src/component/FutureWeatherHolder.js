@@ -17,15 +17,15 @@ const FutureWeatherHolder = () => {
     })
     return (
     <div style={container}>
-        <div className='' style={weatherBox} className='secondary-background-color'>
+        <div className='' style={weatherBox1} className='main-background-color-faded'>
             <p style={weatherSegment} className='main-background-color'>Today's Weather</p>
             <div style={weatherContainer}>
                 {renderedTodayFuture}
             </div>
             
         </div>
-        <div className='' style={weatherBox} className='secondary-background-color'>
-            <p style={weatherSegment} className='main-background-color'>Week Weather</p>
+        <div className='' style={weatherBox2} className='main-background-color-faded'>
+            <p style={weatherSegment} className='main-background-color'>Week's Weather</p>
             <div style={weatherContainer}>
                 {renderedFuture}
             </div>
@@ -55,13 +55,26 @@ const container = {
     padding: '5px'
 }
 
-const weatherBox = {
+const weatherBox1 = {
     display: 'flex',
     height: '90px',
     width: '100%',
-    margin: '24px',
+    margin: '8%',
     alignItems: 'flex-start',
     position: 'relative',
+    paddingTop: '12px',
+    paddingLeft: '8px',
+    paddingRight: '8px',
+    borderRadius: '8px',
+}
+
+const weatherBox2 = {
+    display: 'flex',
+    height: '90px',
+    width: '100%',
+    alignItems: 'flex-start',
+    position: 'relative',
+    paddingTop: '12px',
     paddingLeft: '8px',
     paddingRight: '8px',
     borderRadius: '8px',
@@ -82,7 +95,7 @@ const weatherSegment = {
     display: 'block',
     position: 'absolute',
     height: '18px',
-    top: '-36px',
+    top: '-24px',
     left: '-5px',
     padding: '4px',
     fontSize: 'small'
