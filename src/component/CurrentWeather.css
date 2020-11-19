@@ -28,7 +28,7 @@
 
 .info {
     position: absolute;
-    top:10%;
+    top:8%;
     left: 0;
     right: 0;
     width: 60%;
@@ -81,11 +81,12 @@
 .detail-item p {
     display: block;
     height: 50%;
+    font-size: small;
 }
 
 .locale {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80px;
+    height: 20%;
 }

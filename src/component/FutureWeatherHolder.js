@@ -2,38 +2,31 @@ import React, {useContext} from 'react';
 import FutureWeather from './FutureWeather';
 import { WeatherContext } from '../Contexts/WeatherContext';
 
-// images
-import cloudImg from '../default-img/cloudy-weather-13.jpg';
-import sunImg from '../default-img/sun.jpg';
-import thunderImg from '../default-img/thunderstorm.jpeg';
-import rainImg from '../default-img/rain.jpg';
-import snowImg from '../default-img/snow.jpg'
-
 const FutureWeatherHolder = () => {
     const {sixHours} = useContext(WeatherContext);
     const renderedFuture = sixHours.map((hour, index) => {
         if(hour.time.includes('12:00:00') ) {
-            return <FutureWeather weather={hour} key={'futureweather' + index}/>
+            return <FutureWeather weather={hour} key={'futureweather' + index} today={false}/>
         }
     })
 
     const renderedTodayFuture = sixHours.map((hour, index) => {
         if(hour.time.slice(0,10) === sixHours[0].time.slice(0,10) ) {
-            return <FutureWeather weather={hour} key={'futureTodayWeather' + index}/>
+            return <FutureWeather weather={hour} key={'futureTodayWeather' + index} today={true}/>
         }
     })
     return (
     <div style={container}>
-        <div className='secondary-background-color-faded' style={weatherBox}>
+        <div className='' style={weatherBox} className='secondary-background-color'>
             <p style={weatherSegment} className='main-background-color'>Today's Weather</p>
-            <div style={weatherContainer} className='secondary-background-color'>
+            <div style={weatherContainer}>
                 {renderedTodayFuture}
             </div>
             
         </div>
-        <div className='secondary-background-color-faded' style={weatherBox}>
+        <div className='' style={weatherBox} className='secondary-background-color'>
             <p style={weatherSegment} className='main-background-color'>Week Weather</p>
-            <div style={weatherContainer} className='secondary-background-color'>
+            <div style={weatherContainer}>
                 {renderedFuture}
             </div>
             
@@ -53,7 +46,7 @@ const container = {
     marginTop: '20px',
     left: 0,
     right: 0,
-    bottom: '8px',
+    bottom: '5px',
     alignItems: 'center',
     justifyContent: 'flex-start',
     position: 'absolute',
@@ -64,29 +57,33 @@ const container = {
 
 const weatherBox = {
     display: 'flex',
-    height: '80px',
+    height: '90px',
     width: '100%',
-    margin: '12px',
-
+    margin: '24px',
     alignItems: 'flex-start',
     position: 'relative',
+    paddingLeft: '8px',
+    paddingRight: '8px',
+    borderRadius: '8px',
 }
 
 const weatherContainer = {
     display: 'flex',
-    height: '80px',
+    height: '90px',
     width: '100%',
-    margin: '5px',
-    borderRadius: '0px',
+    marginBottom: '16px',
+    borderRadius: '8px',
     alignItems: 'flex-start',
     position: 'relative',
-    overflow: 'scroll'
+    overflow: 'scroll',
 }
 
 const weatherSegment = {
     display: 'block',
     position: 'absolute',
-    top: '-20px',
-    left: '0',
-    margin: '0'
+    height: '18px',
+    top: '-36px',
+    left: '-5px',
+    padding: '4px',
+    fontSize: 'small'
 }

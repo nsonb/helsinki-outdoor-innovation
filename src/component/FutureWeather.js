@@ -32,8 +32,8 @@ import icon13d from '../weather-icon/13d.png';
 import icon13n from '../weather-icon/13n.png';
 
 
-const FutureWeather = ({weather}) => {
-    const { currentLang, weatherDescriptions } = useContext(UIContext);
+const FutureWeather = ({weather, today = false}) => {
+    const { currentLang } = useContext(UIContext);
     var img = thunderStorm;
     var weatherBrightStyle = false;
     var icon = icon01d;
@@ -144,8 +144,12 @@ const FutureWeather = ({weather}) => {
     return (
     <div className='future-weather-item' style={weatherBrightStyle ? {color: 'charcoal'} : {color: 'white'}}>
         <img className='background-img' src={img} alt = ''/>
+        {today ? <div style= {timeStyle}>{weather.time.slice(10,16)}</div> : <div style= {timeStyle}>{weekday[d.getDay()][currentLang]}</div>}
+        
         <div className='info-container'>
-            <div><img src = {icon} style= {{height:'30%', margin: '8px'}} alt={'describing weather:' + weather.weatherDesc}/>{weekday[d.getDay()][currentLang]}</div>
+            <div>
+                <img src = {icon} style= {{height:'30%', margin: '8px'}} alt={'describing weather:' + weather.weatherDesc}/>
+            </div>
             <div>{weather.temp}</div>
         </div>
         
@@ -154,3 +158,10 @@ const FutureWeather = ({weather}) => {
 }
 
 export default FutureWeather;
+
+const timeStyle = {
+    position: 'absolute',
+    left: '0',
+    top: '-0.9rem',
+    fontSize: '0.8rem'
+}
