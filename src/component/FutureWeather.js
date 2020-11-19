@@ -147,8 +147,6 @@ const FutureWeather = ({weather}) => {
         <div className='info-container'>
             <div><img src = {icon} style= {{height:'30%', margin: '8px'}} alt={'describing weather:' + weather.weatherDesc}/>{weekday[d.getDay()][currentLang]}</div>
             <div>{weather.temp}</div>
-            <div>{weather.feelsLike}</div>
-            <div>{weatherDescriptions[weather.iconNum][currentLang]}</div>
         </div>
         
     </div>

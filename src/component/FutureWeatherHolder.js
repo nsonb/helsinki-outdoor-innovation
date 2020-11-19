@@ -53,7 +53,7 @@ const container = {
     marginTop: '20px',
     left: 0,
     right: 0,
-    bottom: '12px',
+    bottom: '8px',
     alignItems: 'center',
     justifyContent: 'flex-start',
     position: 'absolute',
