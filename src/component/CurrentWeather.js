@@ -143,7 +143,7 @@ const CurrentWeather = () => {
             break;
     }
 
-    console.log(img);
+    //console.log(img);
     return (
     <div className='current-weather-container' style={weatherBrightStyle ? {color: 'black'} : {color: 'white'}}>
         <img className='background-img' src={img} alt = ''/>

@@ -216,7 +216,7 @@ export const SportsContextProvider = (props) => {
     }
 
     const filterTagsAndCities = (filterObj) => {
-        console.log(filterObj)
+        //console.log(filterObj)
         //first filter by tags
         let newList = {}, key;
         for (key in sports) {
@@ -249,7 +249,7 @@ export const SportsContextProvider = (props) => {
     
       const allPossibleSuggestions = (sports, l) => {
         if (!l) l = 'FI';
-        console.log(sports)
+        // console.log(sports)
         //const l = language.filter(e => e.langUsed)[0];
         let sportlist = [];
         //names of the sports from keys and display names
@@ -291,7 +291,6 @@ export const SportsContextProvider = (props) => {
         })
         
         const cleanSportlist = removeDuplicatesFromArrayByProperty(sportlist, 'name');
-        console.log(cleanSportlist);
         setSuggestions(cleanSportlist);
       }
 

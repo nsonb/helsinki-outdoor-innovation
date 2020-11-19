@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import './FutureWeather.css';
 import { UIContext } from '../Contexts/UIContext';
 
