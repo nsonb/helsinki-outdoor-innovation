@@ -62,6 +62,69 @@ export const UIContextProvider = (props) => {
         '50n': {FI: 'Sumua', EN: 'Mist', SV: 'Dimma'}
     })
 
+    const [ filter, setFilter ] = useState({
+        tags: { 
+            land: {status: false, icon: '', FI: 'Kuivalla maalla', EN: 'Land sports', SV: null},
+            water: {status: false, icon: '', FI: 'Vesiurheilu', EN: 'Water sports', SV: null},
+            animals: {status: false, icon: '', FI: 'Eläinurheilu', EN: 'Animal sports', SV: null},
+            ballgames: {status: false, icon: '', FI: 'Pallopelit', EN: 'Ball games', SV: null},
+            nature: {status: false, icon: '', FI: 'Luonto', EN: 'Nature', SV: null},
+            noEquipment: {status: false, icon: '', FI: 'Ei välineitä', EN: 'No equipment', SV: null},
+            winter: {status: false, icon: '', FI: 'Talviurheilu', EN: 'Winter sports', SV: null},
+        },
+        cities: {
+            helsinki: {status: false, icon: '', FI: 'Helsinki', EN: 'Helsinki', SV: 'Helsingfors'},
+            espoo: {status: false, icon: '', FI: 'Espoo', EN: 'Espoo', SV: 'Esbo'},
+            vantaa: {status: false, icon: '', FI: 'Vantaa', EN: 'Vantaa', SV: 'Vanda'},
+        },
+    })
+
+    const clearFilter = () => {
+        let newState = {
+            tags: { 
+                land: {status: false, icon: '', FI: 'Kuivalla maalla', EN: 'Land sports', SV: null},
+                water: {status: false, icon: '', FI: 'Vesiurheilu', EN: 'Water sports', SV: null},
+                animals: {status: false, icon: '', FI: 'Eläinurheilu', EN: 'Animal sports', SV: null},
+                ballgames: {status: false, icon: '', FI: 'Pallopelit', EN: 'Ball games', SV: null},
+                nature: {status: false, icon: '', FI: 'Luonto', EN: 'Nature', SV: null},
+                noEquipment: {status: false, icon: '', FI: 'Ei välineitä', EN: 'No equipment', SV: null},
+                winter: {status: false, icon: '', FI: 'Talviurheilu', EN: 'Winter sports', SV: null},
+            },
+            cities: {
+                helsinki: {status: false, icon: '', FI: 'Helsinki', EN: 'Helsinki', SV: 'Helsingfors'},
+                espoo: {status: false, icon: '', FI: 'Espoo', EN: 'Espoo', SV: 'Esbo'},
+                vantaa: {status: false, icon: '', FI: 'Vantaa', EN: 'Vantaa', SV: 'Vanda'},
+            }
+        }
+        setFilter(newState)
+    }
+
+    const saveTag = (evt) => {
+        const name = evt.target.name;
+        const item = {
+            ...filter.tags[name], 
+            status: !filter.tags[name].status
+        }
+        setFilter({
+            ...filter, 
+            tags: {...filter.tags, 
+                [name]: item}
+            });
+    }
+
+    const saveCity = (evt) => {
+        const name = evt.target.name;
+        const item = {
+            ...filter.cities[name], 
+            status: !filter.cities[name].status
+        }
+        setFilter({
+            ...filter, 
+            cities: {...filter.cities, 
+                [name]: item}
+            });
+    }
+
     const toggleLang = (lang) => {
         let newLanguages = language.map(l => {
             if (l.lang === lang) {
@@ -83,7 +146,8 @@ export const UIContextProvider = (props) => {
 
     return (
         <UIContext.Provider value={{language, currentLang, toggleLang,
-                                    searchSuggestions, weatherDescriptions, toggleModal, showModal, selectModalInformation, modalContent}}>
+                                    searchSuggestions, weatherDescriptions, toggleModal, showModal, selectModalInformation, modalContent,
+                                    saveCity, saveTag, filter, clearFilter}}>
             {props.children}
         </UIContext.Provider>
     );

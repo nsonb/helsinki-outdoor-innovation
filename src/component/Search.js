@@ -34,7 +34,7 @@ const Search = () => {
     }
 
     const toggleFilterBox = (evt) => {
-        evt.preventDefault();
+        if (evt) evt.preventDefault();
         setState({...state, showFilter: !state.showFilter});
     }
 
@@ -57,7 +57,7 @@ const Search = () => {
                         {state.showFilter ? toggle[currentLang][0] : toggle[currentLang][1]}
                 </div>
                 {state.showFilter ? 
-                    <Filter/> : 
+                    <Filter hideFilter={toggleFilterBox}/> : 
                     <form onSubmit={onSubmit} style={searchForm}>
                         <AutosuggestInput onSubmit = {onSubmit}/>
                         <div className='submit button' style={submit} onClick = {onSubmit}>
