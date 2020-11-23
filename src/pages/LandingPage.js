@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import ImageHolder from '../component/ImageHolder';
 import MiniWeather from '../component/MiniWeather';
 import Search from '../component/Search';
-import LangToggle from '../component/LangToggle';
 
 // images
 import fall from '../default-img/melonta_kauppatori_Maija_Astikainen-3.jpg';
@@ -25,7 +24,7 @@ const LandingPage = () => {
 
     return (
         <div className='landing-page'>  
-            <ImageHolder images = {[spring, summer, fall, winter, garden]} />
+            <ImageHolder images = {[spring, summer, fall, winter, garden]} names={['Jussi Hellsten', 'Julia Kivela', 'Maija Astikainen', 'Johanna Vilhunen', 'Sasa Tkalcan']}/>
             <div className='mid-bar'>
                 <h2 className='main-background-color' style={{padding: '10px', borderRadius: '20px'}}>
                     {heading[currentLang]}

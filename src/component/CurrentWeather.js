@@ -34,7 +34,7 @@ import icon13n from '../weather-icon/13n.png';*/
 
 
 const CurrentWeather = () => {
-    const {currWeather, weather} = useContext(WeatherContext);
+    const { currWeather, weather } = useContext(WeatherContext);
     const { currentLang, weatherDescriptions } = useContext(UIContext);
     const [ textContent ] = useState({
         temp: {FI: 'Lämpötila', EN: 'Temperature', SV: 'Temperatur'},
@@ -143,22 +143,31 @@ const CurrentWeather = () => {
             break;
     }
 
-    console.log(img);
+    //console.log(img);
     return (
     <div className='current-weather-container' style={weatherBrightStyle ? {color: 'black'} : {color: 'white'}}>
         <img className='background-img' src={img} alt = ''/>
-        <div className='info'>
+        <div className='info main-background-color-faded'>
             <div className='locale'>{weather.city.name}</div>
             <div className='weather-desc'>{weatherDescriptions[currWeather.iconNum] && weatherDescriptions[currWeather.iconNum][currentLang]}</div>
             <div className='temp'>
                 {currWeather.temp}
             </div>
-            <div className='weather-desc'>{textContent.feelsLike[currentLang]} {currWeather.feelsLike}</div>
-                <div className='detail-box'>
-                    <div className='detail-item'>{textContent.humidity[currentLang]}: {currWeather.humidity}</div>
-                    <div className='detail-item'>{textContent.wind[currentLang]} {currWeather.wind}</div>
+            <div className='detail-box'>
+                <div className='detail-item'>
+                    <p>{textContent.feelsLike[currentLang]}</p> 
+                    <p>{currWeather.feelsLike}</p>
+                </div>
+                <div className='detail-item'>
+                    <p>{textContent.humidity[currentLang]}</p> 
+                    <p>{currWeather.humidity}</p>
+                </div>
+                <div className='detail-item'>
+                    <p>{textContent.wind[currentLang]}</p> 
+                    <p>{currWeather.wind}</p>
                 </div>
             </div>
+        </div>
        
         
     </div>

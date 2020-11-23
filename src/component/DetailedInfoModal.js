@@ -32,7 +32,7 @@ import { UIContext } from '../Contexts/UIContext';
 // Accepts json format of information about the place that is then displayed
 
 const DetailedInfoModal = () => {
-    const [weather, setWeather] = useState(null)
+    const [ weather, setWeather ] = useState(null)
     const { toggleModal, modalContent } = useContext(UIContext)
     var weatherIcon = icon01d;
     useEffect(() => {
