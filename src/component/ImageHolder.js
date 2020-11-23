@@ -35,6 +35,15 @@ const ImageHolder = ({images}) => {
             
             <img className = 'top-img'src = {images[displayIndex]} alt='depicting season'/>
             {images.length > 1 ? <div className = 'bottom-row'>{renderedButtons}</div> : null}
+<<<<<<< Updated upstream
+=======
+            {names.length !== 0 ? <a 
+                href={`http://materialbank.myhelsinki.fi/search/1?query=${names[displayIndex].replace(/\s/g, '+')}`} 
+                style={nameCredit} className= 'hover main-background-color-faded'
+                target='_blank'>
+                    {names[displayIndex]}
+            </a> : <div></div>}
+>>>>>>> Stashed changes
             
         </div>
     )

@@ -214,7 +214,7 @@ const DetailedInfoModal = () => {
             <div style={content} className='main-background-color'>
                 {modalContent.picture_url ? 
                     <div style={{position:'absolute', width: '100%', height: '30%', left: '0', top: '0', borderRadius: '0.5rem 0.5rem 0 0', overflow: 'hidden', marginBottom: '16px'}}>
-                        <ImageHolder images={modalContent.picture_url? [modalContent.picture_url] : [default_img]}/>
+                        <ImageHolder images={modalContent.picture_url? [modalContent.picture_url] : [default_img]} names={[]}/>
                     </div> : <div/>}
                 <div style={info}>
                     { weather === null? 'null' :
