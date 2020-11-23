@@ -39,8 +39,9 @@ const FutureWeatherHolder = () => {
 export default FutureWeatherHolder;
 
 const container = {
-    width: '60%',
+    width: 'fit-content',
     minWidth: '280px',
+    maxWidth: '60%',
     margin: 'auto',
     height: 'fit-content',
     marginTop: '20px',

@@ -32,25 +32,28 @@ export default LangToggle;
 
 const style = {
     display: 'flex',
-    fontSize: '0.5rem',
-    textAlign: 'center',
+    fontSize: '0.7rem',
+    textAlign: 'right',
     height: '100%',
     width: '100%',
-    flexDirection: 'center'
+    flexDirection: 'row',
+    justifyContent: 'flex-end'
 }
 
 const langButton = {
     display: 'block',
-    marginLeft: '10%',
+    margin: 'auto',
+    marginRight: '5%',
     color: '#fcfaf3',
     width: 'fit-content',
-    borderRadius: '5px'
+    borderRadius: '5px',
 }
 
 const langButtonChosen = {
     display: 'block',
     textDecoration: 'underline',
-    marginLeft: '10%',
+    margin: 'auto',
+    marginRight: '5%',
     color: '#fcfaf3',
     width: 'fit-content',
     borderRadius: '5px'

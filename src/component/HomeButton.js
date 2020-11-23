@@ -7,7 +7,7 @@ const HomeButton = () => {
     const { currentLang } = useContext(UIContext);
     const history = useHistory();
     return (
-        <div className = 'button main-background-color-faded' style ={style} onClick={() => history.push('/')}>
+        <div className = 'button main-background-color' style ={style} onClick={() => history.push('/')}>
             {currentLang === 'SV' ? 'Tillbaka' : (currentLang === 'EN' ? 'Back' : 'Takaisin')}
         </div>
     )
@@ -19,8 +19,8 @@ const style = {
     display: 'block',
     position: 'absolute',
     top: '4vh',
-    left: '2%',
+    left: '5%',
     zIndex: '20',
-    padding: '5px',
-    fontSize: '0.5rem'
+    padding: '0.5rem',
+    fontSize: '0.8rem'
 }

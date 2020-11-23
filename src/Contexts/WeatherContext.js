@@ -43,9 +43,9 @@ export const WeatherContextProvider = (props) => {
             //refactor weather item into a form you want
             const returnable = {
                 temp: Math.round((now.main.temp-273.15 || currWeather.temp)* 10) / 10 + '° C',
-                feelsLike: Math.round((now.main.feels_like-273.15 || currWeather.feelsLike)* 10) / 10 + '° C',
-                wind: Math.round((now.wind.speed || currWeather.wind)* 10) / 10 + ' m/s',
-                humidity: Math.round((now.main.humidity || currWeather.humidity)* 10) / 10 + ' %',
+                feelsLike: Math.round((now.main.feels_like-273.15 || currWeather.feelsLike)* 10) / 10 + '°C',
+                wind: Math.round((now.wind.speed || currWeather.wind)* 10) / 10 + 'm/s',
+                humidity: Math.round((now.main.humidity || currWeather.humidity)* 10) / 10 + '%',
                 weather: now.weather[0].main || currWeather.weather,
                 weatherDesc: now.weather[0].description || currWeather.weatherDesc,
                 iconNum: now.weather[0].icon || currWeather.iconNum,
@@ -70,9 +70,9 @@ export const WeatherContextProvider = (props) => {
                         deg: w.wind.deg || ''
                     },
                     weather: w.weather[0].main,
-                    temp: Math.round((w.main.temp-273.15 || 0)* 10) / 10 + '° C',
+                    temp: Math.round((w.main.temp-273.15 || 0)* 10) / 10 + '°C',
                     humidity: Math.round((w.main.humidity || 0)* 10) / 10 + '%',
-                    feelsLike: Math.round((w.main.feels_like -273.15|| 0)* 10) / 10 + '° C',
+                    feelsLike: Math.round((w.main.feels_like -273.15|| 0)* 10) / 10 + '°C',
                     iconNum: w.weather[0].icon || '',
                     weatherDesc: w.weather[0].description || '',
                     cloudiness: w.clouds.all || '' + '%'

@@ -133,7 +133,7 @@ const DetailedInfoModal = () => {
         position: 'relative',
         zIndex: '6',
         height: '25rem',
-        fontSize: '12px'
+        fontSize: '1rem'
     }
     const placeName = {
         fontSize: '24px',
@@ -206,7 +206,7 @@ const DetailedInfoModal = () => {
         textAlign: 'center',
         margin: 0,
         marginLeft: '2px',
-        fontSize: '8px'
+        fontSize: '0.6rem'
     }
 
     return (

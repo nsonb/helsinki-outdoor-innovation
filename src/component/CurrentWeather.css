@@ -50,7 +50,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: bolder;
     height: 30%;
     padding: auto;
@@ -65,8 +65,8 @@
 
 .detail-box {
     display: flex;
-    margin-top: 10%;
-    height: 25%;
+    margin-top: 5%;
+    height: 35%;
 }
 
 .detail-item {
@@ -81,7 +81,7 @@
 .detail-item p {
     display: block;
     height: 50%;
-    font-size: small;
+    font-size: 1ren;
 }
 
 .locale {

@@ -148,7 +148,7 @@ const filterButton = {
     margin: "auto",
     opacity: "90%",
     color: "#FFF9E3",
-    fontSize: "12px",
+    fontSize: "0.8rem",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: '20px',
@@ -158,7 +158,7 @@ const filterButton = {
 const checkboxContainer = {
     width: '14%',
     minWidth: '120px',
-    fontSize: '12px',
+    fontSize: '0.8rem',
     display: 'flex',
     marginRight: '2px',
     padding: '3px',
