@@ -7,9 +7,9 @@ const HomeButton = () => {
     const { currentLang } = useContext(UIContext);
     const history = useHistory();
     return (
-        <div className = 'button main-background-color' style ={style} onClick={() => history.push('/')}>
-            {currentLang === 'SV' ? 'Tillbaka' : (currentLang === 'EN' ? 'Back' : 'Takaisin')}
-        </div>
+        <button className='hover' style ={style} onClick={() => history.push('/')}>
+            {currentLang === 'SV' ? 'Home' : (currentLang === 'EN' ? 'Home' : 'Home')}
+        </button>
     )
 }
 
@@ -17,10 +17,11 @@ export default HomeButton;
 
 const style = {
     display: 'block',
-    position: 'absolute',
-    top: '4vh',
-    left: '5%',
     zIndex: '20',
-    padding: '0.5rem',
-    fontSize: '0.8rem'
+    fontSize: '0.8rem',
+    color: 'white',
+    backgroundColor: 'black',
+    border: 'none',
+    fontFamily: "'Montserrat', sans-serif",
+    margin: 'auto'
 }

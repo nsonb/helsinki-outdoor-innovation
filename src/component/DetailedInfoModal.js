@@ -132,7 +132,7 @@ const DetailedInfoModal = () => {
         padding: '2rem',
         position: 'relative',
         zIndex: '6',
-        height: '25rem',
+        height: '80%',
         fontSize: '1rem'
     }
     const placeName = {
@@ -143,7 +143,7 @@ const DetailedInfoModal = () => {
     const info = {
         display: 'block',
         position:'absolute', 
-        height: (modalContent.picture_url? '53%': '80%'), 
+        height: (modalContent.picture_url? '43%': '80%'), 
         left: '0', bottom: '16%', 
         borderRadius: '0.5rem 0.5rem 0 0', 
         overflow: 'hidden',
@@ -214,7 +214,7 @@ const DetailedInfoModal = () => {
             <div style={blurBackground}  onClick={toggleModal}/>
             <div style={content} className='main-background-color'>
                 {modalContent.picture_url ? 
-                    <div style={{position:'absolute', width: '100%', height: '30%', left: '0', top: '0', borderRadius: '0.5rem 0.5rem 0 0', overflow: 'hidden', marginBottom: '16px'}}>
+                    <div style={{position:'absolute', width: '100%', height: '40%', left: '0', top: '0', borderRadius: '0.5rem 0.5rem 0 0', overflow: 'hidden', marginBottom: '16px'}}>
                         <ImageHolder images={modalContent.picture_url? [modalContent.picture_url] : [default_img]} names={[]}/>
                     </div> : <div/>}
                 <div style={info}>

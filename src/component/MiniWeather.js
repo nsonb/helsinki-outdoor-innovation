@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import './miniweather.css';
 import { useHistory } from 'react-router-dom';
-import LangToggle from './LangToggle'
+import LangToggle from './LangToggle';
+import HomeButton from './HomeButton';
 
 // images
 import icon01d from '../weather-icon/01d.png';
@@ -100,7 +101,7 @@ const MiniWeather = ({location}) => {
     }
     return (
         <div className='weather-container main-background-color' style={location === 'top' ? {top:'0'} : {bottom:'0'}} tabIndex='0'>
-            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={weatherIcon} alt='icon'/></div>
+            <div className = 'weather-element main-background-color-faded'> <HomeButton/></div>
             <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={temp} alt='icon'/> <p>{currWeather.temp}</p> </div>
             
             <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={wind} alt='icon'/> <p>{currWeather.wind}</p></div>
