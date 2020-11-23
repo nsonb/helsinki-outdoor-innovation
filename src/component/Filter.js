@@ -90,30 +90,31 @@ const Filter = (props) => {
                 {cityLabels}
             </div>
             
-            <div 
+            <button 
                 className='filter button secondary-background-color' 
                 style={state.filterHover? {...filterButton, opacity: 1} : filterButton}
                 onMouseEnter={() => setState({...state, filterHover: true})}
                 onMouseLeave={() => setState({...state, filterHover: false})}
                 onClick={filterSports}
                 >{state.searchButtonText[currentLang]}
-            </div>
-            <div 
+            </button>
+            <button 
                 className='filter button secondary-background-color' 
                 style={state.filterHover? {...filterButton, opacity: 1} : filterButton}
                 onMouseEnter={() => setState({...state, filterHover: true})}
                 onMouseLeave={() => setState({...state, filterHover: false})}
                 onClick={filterResults}
                 >{state.buttonText[currentLang]}
-            </div>
-            <div 
+            </button>
+            <button 
                 className='filter button secondary-background-color' 
                 style={state.filterHover? {...filterButton, opacity: 1} : filterButton}
                 onMouseEnter={() => setState({...state, filterHover: true})}
                 onMouseLeave={() => setState({...state, filterHover: false})}
                 onClick={resetFilter}
+                tabIndex='0'
                 >{state.resetButtonText[currentLang]}
-            </div>
+            </button>
         </div>
     )
 }

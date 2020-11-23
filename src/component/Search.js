@@ -43,7 +43,7 @@ const Search = () => {
     return (  
         <div className='container-search' style={containerSearch}>
             <div className='search-bar' style={searchBar} >               
-                <div 
+                <button
                     className='filter button' 
                     style={
                         state.showFilter ? 
@@ -55,14 +55,14 @@ const Search = () => {
                     onClick={toggleFilterBox}
                     >
                         {state.showFilter ? toggle[currentLang][0] : toggle[currentLang][1]}
-                </div>
+                </button>
                 {state.showFilter ? 
                     <Filter hideFilter={toggleFilterBox}/> : 
                     <form onSubmit={onSubmit} style={searchForm}>
-                        <AutosuggestInput onSubmit = {onSubmit}/>
-                        <div className='submit button' style={submit} onClick = {onSubmit}>
+                        <AutosuggestInput onSubmit = {onSubmit} tabindex='0'/>
+                        <button className='submit button' style={submit} onClick = {onSubmit}>
                             <img className='search-logo' style={searchLogo} src={searchglass} alt='search'/>
-                        </div> 
+                        </button> 
                     </form>}
                 </div>
             <div>

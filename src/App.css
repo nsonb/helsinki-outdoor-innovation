@@ -3,6 +3,10 @@
     font-size: 18px;
 }
 
+*:focus {
+    outline: gold 5px auto;
+}
+
 .main-background-color {
     background-color: #060D08;
     color:  #FFF9E3;
@@ -41,6 +45,7 @@
     border: none;
     padding: 3px;
     opacity: 0.5;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .button:hover{
