@@ -4,7 +4,7 @@ import './ImageHolder.css';
 // for containing series of images that can be changed through clicking the underneath buttons
 // accept an array of images sources as props, preferably handling 3 - 4 images
 
-const ImageHolder = ({images}) => {
+const ImageHolder = ({images, names}) => {
     const [displayIndex, setDisplayIndex] = useState(0);
     useEffect(() => {
         const intervalId = setInterval(()=> {
@@ -35,9 +35,24 @@ const ImageHolder = ({images}) => {
             
             <img className = 'top-img'src = {images[displayIndex]} alt='depicting season'/>
             {images.length > 1 ? <div className = 'bottom-row'>{renderedButtons}</div> : null}
-            
+            <a 
+                href={`http://materialbank.myhelsinki.fi/search/1?query=${names[displayIndex].replace(/\s/g, '+')}`} 
+                style={nameCredit} className= 'hover main-background-color-faded'
+                target='_blank'>
+                    {names[displayIndex]}
+            </a>
         </div>
     )
 }
 
 export default ImageHolder;
+
+const nameCredit = {
+    position: 'absolute',
+    bottom: '1%',
+    right: '1%',
+    fontSize: '0.5rem',
+    padding: '5px',
+    borderRadius: '5px',
+    textDecoration: 'none'
+}

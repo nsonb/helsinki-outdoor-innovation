@@ -1,6 +1,6 @@
 .result-container {
     position: absolute;
-    bottom: 0;
+    bottom: 2vh;
     height: fit-content;
     overflow: hidden;
     margin: auto;

@@ -1,25 +1,26 @@
-import React, { useContext, useState } from 'react';
-import {useHistory} from 'react-router-dom';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { UIContext } from '../Contexts/UIContext';
 
 
-const BackButton = () => {
+const HomeButton = () => {
     const { currentLang } = useContext(UIContext);
     const history = useHistory();
     return (
-        <div className = 'button main-background-color-faded' style ={style} onClick={() => history.goBack()}>
+        <div className = 'button main-background-color-faded' style ={style} onClick={() => history.push('/')}>
             {currentLang === 'SV' ? 'Tillbaka' : (currentLang === 'EN' ? 'Back' : 'Takaisin')}
         </div>
     )
 }
 
-export default BackButton;
+export default HomeButton;
 
 const style = {
     display: 'block',
     position: 'absolute',
-    top: '2%',
+    top: '4vh',
     left: '2%',
     zIndex: '20',
-    padding: '10px'
+    padding: '5px',
+    fontSize: '0.5rem'
 }
