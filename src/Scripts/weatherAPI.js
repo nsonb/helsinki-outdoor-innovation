@@ -33,6 +33,10 @@ export const getWeatherAt = (long, lat) => {
     })
 }
 
+export const getWeatherAtDEV = async (long, lat) => {
+  return localDummyData;
+}
+
 //Let's delete this when the app is ready :D
 const dummyData = {
   city: {
@@ -1217,4 +1221,666 @@ const dummyData = {
     }
     ],
   message: 0
+}
+
+const localDummyData = {
+  lat: 60.2,
+  lon: 24.83,
+  timezone: "Europe/Helsinki",
+  timezone_offset: 7200,
+  current: {  
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606138799,
+    feels_like: -0.94,
+    humidity: 80,
+    pressure: 997,
+    sunrise: 1606113619,
+    sunset: 1606138463,
+    temp: 4.78,
+    uvi: 0.2,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04n",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 250,
+    wind_speed: 5.7,
+  },
+  daily: [{
+    clouds: 81,
+    dew_point: 1.53,
+    dt: 1606125600,
+    feels_like: {
+      day: -0.15,
+      eve: -0.99,
+      morn: 0,
+      night: -0.48
+    },
+    humidity: 77,
+    pop: 0.17,
+    pressure: 996,
+    sunrise: 1606113619,
+    sunset: 1606138463,
+    temp: {
+      day: 5.12,
+      eve: 4.83,
+      max: 5.21,
+      min: 4.58,
+      morn: 5.21,
+      night: 4.67
+    },
+    uvi: 0.2,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 256,
+    wind_speed: 5
+  },
+  {
+    clouds: 81,
+    dew_point: 1.53,
+    dt: 1606125600,
+    feels_like: {
+      day: -0.15,
+      eve: -0.99,
+      morn: 0,
+      night: -0.48
+    },
+    humidity: 77,
+    pop: 0.17,
+    pressure: 996,
+    sunrise: 1606113619,
+    sunset: 1606138463,
+    temp: {
+      day: 5.12,
+      eve: 4.83,
+      max: 5.21,
+      min: 4.58,
+      morn: 5.21,
+      night: 4.67
+    },
+    uvi: 0.2,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 256,
+    wind_speed: 5
+  },
+  {
+    clouds: 81,
+    dew_point: 1.53,
+    dt: 1606125600,
+    feels_like: {
+      day: -0.15,
+      eve: -0.99,
+      morn: 0,
+      night: -0.48
+    },
+    humidity: 77,
+    pop: 0.17,
+    pressure: 996,
+    sunrise: 1606113619,
+    sunset: 1606138463,
+    temp: {
+      day: 5.12,
+      eve: 4.83,
+      max: 5.21,
+      min: 4.58,
+      morn: 5.21,
+      night: 4.67
+    },
+    uvi: 0.2,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 256,
+    wind_speed: 5
+  }, {
+    clouds: 81,
+    dew_point: 1.53,
+    dt: 1606125600,
+    feels_like: {
+      day: -0.15,
+      eve: -0.99,
+      morn: 0,
+      night: -0.48
+    },
+    humidity: 77,
+    pop: 0.17,
+    pressure: 996,
+    sunrise: 1606113619,
+    sunset: 1606138463,
+    temp: {
+      day: 5.12,
+      eve: 4.83,
+      max: 5.21,
+      min: 4.58,
+      morn: 5.21,
+      night: 4.67
+    },
+    uvi: 0.2,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 256,
+    wind_speed: 5
+  }, {
+    clouds: 81,
+    dew_point: 1.53,
+    dt: 1606125600,
+    feels_like: {
+      day: -0.15,
+      eve: -0.99,
+      morn: 0,
+      night: -0.48
+    },
+    humidity: 77,
+    pop: 0.17,
+    pressure: 996,
+    sunrise: 1606113619,
+    sunset: 1606138463,
+    temp: {
+      day: 5.12,
+      eve: 4.83,
+      max: 5.21,
+      min: 4.58,
+      morn: 5.21,
+      night: 4.67
+    },
+    uvi: 0.2,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 256,
+    wind_speed: 5
+  }, {
+    clouds: 81,
+    dew_point: 1.53,
+    dt: 1606125600,
+    feels_like: {
+      day: -0.15,
+      eve: -0.99,
+      morn: 0,
+      night: -0.48
+    },
+    humidity: 77,
+    pop: 0.17,
+    pressure: 996,
+    sunrise: 1606113619,
+    sunset: 1606138463,
+    temp: {
+      day: 5.12,
+      eve: 4.83,
+      max: 5.21,
+      min: 4.58,
+      morn: 5.21,
+      night: 4.67
+    },
+    uvi: 0.2,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 256,
+    wind_speed: 5
+  }, {
+    clouds: 81,
+    dew_point: 1.53,
+    dt: 1606125600,
+    feels_like: {
+      day: -0.15,
+      eve: -0.99,
+      morn: 0,
+      night: -0.48
+    },
+    humidity: 77,
+    pop: 0.17,
+    pressure: 996,
+    sunrise: 1606113619,
+    sunset: 1606138463,
+    temp: {
+      day: 5.12,
+      eve: 4.83,
+      max: 5.21,
+      min: 4.58,
+      morn: 5.21,
+      night: 4.67
+    },
+    uvi: 0.2,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 256,
+    wind_speed: 5
+  }, {
+    clouds: 81,
+    dew_point: 1.53,
+    dt: 1606125600,
+    feels_like: {
+      day: -0.15,
+      eve: -0.99,
+      morn: 0,
+      night: -0.48
+    },
+    humidity: 77,
+    pop: 0.17,
+    pressure: 996,
+    sunrise: 1606113619,
+    sunset: 1606138463,
+    temp: {
+      day: 5.12,
+      eve: 4.83,
+      max: 5.21,
+      min: 4.58,
+      morn: 5.21,
+      night: 4.67
+    },
+    uvi: 0.2,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 256,
+    wind_speed: 5
+  }, {
+    clouds: 81,
+    dew_point: 1.53,
+    dt: 1606125600,
+    feels_like: {
+      day: -0.15,
+      eve: -0.99,
+      morn: 0,
+      night: -0.48
+    },
+    humidity: 77,
+    pop: 0.17,
+    pressure: 996,
+    sunrise: 1606113619,
+    sunset: 1606138463,
+    temp: {
+      day: 5.12,
+      eve: 4.83,
+      max: 5.21,
+      min: 4.58,
+      morn: 5.21,
+      night: 4.67
+    },
+    uvi: 0.2,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 256,
+    wind_speed: 5
+  }],
+  hourly: [{
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  }, {
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  }, {
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  },{
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  },{
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  }, {
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  }, {
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  }, {
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  }, {
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  }, {
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  }, {
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  }, {
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  }, {
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  }, {
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  }, {
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  }, {
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  }, {
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  },{
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  }, {
+    clouds: 75,
+    dew_point: 1.63,
+    dt: 1606136400,
+    feels_like: -0.76,
+    humidity: 80,
+    pop: 0,
+    pressure: 997,
+    temp: 4.78,
+    visibility: 10000,
+    weather: [{
+      description: "broken clouds",
+      icon: "04d",
+      id: 803,
+      main: "Clouds"
+    }],
+    wind_deg: 263,  
+    wind_speed: 5.43
+  }]
 }

@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import ImageHolder from './ImageHolder';
 import default_img from '../default-img/no-image.jpg';
 
-import {getWeatherAt} from '../Scripts/weatherAPI';
+import {getWeatherAt, getWeatherAtDEV} from '../Scripts/weatherAPI';
 
 // images
 import icon01d from '../weather-icon/01d.png';
@@ -37,9 +37,10 @@ const DetailedInfoModal = () => {
     var weatherIcon = icon01d;
     useEffect(() => {
         let isMounted = true;
-        getWeatherAt(modalContent.longitude, modalContent.latitude)
+        //getWeatherAt(modalContent.longitude, modalContent.latitude)
+        getWeatherAtDEV(modalContent.longitude, modalContent.latitude)
         .then(res => {
-            console.log('called');
+            console.log(res);
             if(isMounted) {
                 setWeather(res)
                 switch (weather.currrent.iconNum) {
@@ -214,7 +215,7 @@ const DetailedInfoModal = () => {
             <div style={content} className='main-background-color'>
                 {modalContent.picture_url ? 
                     <div style={{position:'absolute', width: '100%', height: '30%', left: '0', top: '0', borderRadius: '0.5rem 0.5rem 0 0', overflow: 'hidden', marginBottom: '16px'}}>
-                        <ImageHolder images={modalContent.picture_url? [modalContent.picture_url] : [default_img]}/>
+                        <ImageHolder images={modalContent.picture_url? [modalContent.picture_url] : [default_img]} names={[]}/>
                     </div> : <div/>}
                 <div style={info}>
                     { weather === null? 'null' :
