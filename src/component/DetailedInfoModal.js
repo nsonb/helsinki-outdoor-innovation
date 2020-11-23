@@ -214,7 +214,7 @@ const DetailedInfoModal = () => {
             <div style={content} className='main-background-color'>
                 {modalContent.picture_url ? 
                     <div style={{position:'absolute', width: '100%', height: '30%', left: '0', top: '0', borderRadius: '0.5rem 0.5rem 0 0', overflow: 'hidden', marginBottom: '16px'}}>
-                        <ImageHolder images={modalContent.picture_url? [modalContent.picture_url] : [default_img]} names={[]}/>
+                        <ImageHolder images={modalContent.picture_url? [modalContent.picture_url] : [default_img]}/>
                     </div> : <div/>}
                 <div style={info}>
                     { weather === null? 'null' :
@@ -242,12 +242,12 @@ const DetailedInfoModal = () => {
                         modalContent.name_fi || '')
                     }</p>
                     <p>{
-                        currentLang === 'SV' ? modalContent.street_address_sv || modalContent.street_address_fi || 'Tyvärr, vi har inte adress.' : 
+                        currentLang === 'SV' ? modalContent.street_address_sv|| modalContent.street_address_fi || 'Tyvärr, vi har inte adress.' : 
                         (currentLang === 'EN' ? modalContent.street_address_en || modalContent.street_address_fi || 'No address.' : 
-                        modalContent.street_address_fi || 'Osoitetta ei löytynyt')}, 
+                    modalContent.street_address_fi || 'Osoitetta ei löytynyt')}<span>{', '}</span>
                         {currentLang === 'SV' ? modalContent.address_city_sv || modalContent.address_city_fi || 'Tyvärr, vi har inte en stad.' : 
                         (currentLang === 'EN' ? modalContent.address_city_en || modalContent.address_city_fi || modalContent.address_city_sv || 'No city.' : 
-                        modalContent.address_city_fi || modalContent.address_city_sv || modalContent.address_city_en || 'Kaupunkia ei löytynyt')}, 
+                        modalContent.address_city_fi || modalContent.address_city_sv || modalContent.address_city_en || 'Kaupunkia ei löytynyt')}<span>{', '}</span> 
                         {modalContent.address_zip && modalContent.address_zip
                     }</p>
                     <p>Information</p>
