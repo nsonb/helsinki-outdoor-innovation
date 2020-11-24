@@ -79,6 +79,11 @@ export const UIContextProvider = (props) => {
         },
     })
 
+    const [ mapSettings, setMap ] = useState({
+        coord: [60.19, 24.94],
+        zoom: 12
+    });
+
     const clearFilter = () => {
         let newState = {
             tags: { 
@@ -137,6 +142,7 @@ export const UIContextProvider = (props) => {
     }
 
     const toggleModal = () => {
+        console.log("toggle modal")
         setModal(!showModal);
     }
 
@@ -144,10 +150,26 @@ export const UIContextProvider = (props) => {
         setModalContent(object);
     }
 
+    const centerMap = (coordArr) => {
+        setMap({coord: coordArr, zoom: 13});
+    }
+
+    const resetMap = () => {
+        setMap({
+            coord: [60.19, 24.94],
+            zoom: 12
+        })
+    }
+
+    const centerToUser = (coordArr) => {
+        setMap({...mapSettings, coord: coordArr})
+    }
+
     return (
         <UIContext.Provider value={{language, currentLang, toggleLang,
                                     searchSuggestions, weatherDescriptions, toggleModal, showModal, selectModalInformation, modalContent,
-                                    saveCity, saveTag, filter, clearFilter}}>
+                                    saveCity, saveTag, filter, clearFilter,
+                                    mapSettings, centerMap, resetMap, centerToUser}}>
             {props.children}
         </UIContext.Provider>
     );

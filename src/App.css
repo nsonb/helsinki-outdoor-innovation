@@ -18,6 +18,12 @@
     color:  #FFF9E3;
 }
 
+.selected-field {
+    cursor: pointer;
+    background-color: #060d08;
+    color:  #FFF9E3;
+}
+
 .secondary-background-color {
     background-color: #fcfaf3;
     color: #060D08;
