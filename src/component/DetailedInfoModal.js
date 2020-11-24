@@ -43,7 +43,7 @@ const DetailedInfoModal = () => {
             console.log(res);
             if(isMounted) {
                 setWeather(res)
-                switch (weather.currrent.iconNum) {
+                switch (weather.current.iconNum) {
                     case '01d':
                         weatherIcon = icon01d;
                         break;

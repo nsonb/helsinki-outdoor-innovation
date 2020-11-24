@@ -1,11 +1,10 @@
 import React, {Fragment, useContext, useState} from 'react';
-import {Marker, Popup} from 'react-leaflet';
+import {Marker, Popup, useMapEvent} from 'react-leaflet';
 import { SportsContext } from '../Contexts/SportsContexts';
 import LocationIcon from './LocationIcon'
 import {UIContext} from "../Contexts/UIContext";
 
 const LocationMarker = () => {
-
     const { sorted } = useContext(SportsContext);
     const { currentLang, toggleModal, selectModalInformation } = useContext(UIContext)
 

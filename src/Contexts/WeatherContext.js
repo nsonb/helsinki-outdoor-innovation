@@ -27,8 +27,8 @@ export const WeatherContextProvider = (props) => {
 
     const updateWeather = (cityName) => {
         if (!cityName) cityName = 'Espoo'
-        getWeather(cityName)
-        //getWeatherDEVMODE()
+        //getWeather(cityName)
+        getWeatherDEVMODE()
         .then((result) => {
             const weatherObj = {...weather, ...result};
             setWeather(weatherObj);

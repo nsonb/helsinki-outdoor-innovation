@@ -3,7 +3,7 @@ import './ResultItem.css'
 import { UIContext } from '../Contexts/UIContext';
 
 const ResultItem = ({location, detailed}) => {
-    const { currentLang, toggleModal, selectModalInformation } = useContext(UIContext);
+    const { currentLang, toggleModal, selectModalInformation, centerMap, modalContent } = useContext(UIContext);
     const renderedDetail = (
         <div className='detail'>
             <div >
@@ -19,7 +19,9 @@ const ResultItem = ({location, detailed}) => {
     )
 
     return (
-        <div className='result-item-container main-background-color-faded' onClick={() => {toggleModal(); selectModalInformation(location)}}>
+        <div className={location.id === modalContent.id ?
+            'result-item-container selected-field' 
+             : 'result-item-container main-background-color-faded'} onClick={() => {toggleModal(); selectModalInformation(location);centerMap([location.latitude, location.longitude]);}}>
             <div className='location-name'>{currentLang === 'SV' ? location.name_sv || location.name_fi || '':
                 (currentLang === 'EN' ? location.name_en || location.name_fi || '':
                     location.name_fi|| '')}</div>
