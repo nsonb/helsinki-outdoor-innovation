@@ -84,6 +84,19 @@ export const UIContextProvider = (props) => {
         zoom: 12
     });
 
+    const [ showServices, setShowServices ] = useState({
+        toilets: {status: false, FI: 'WC:t', EN: 'Toilets', SV: 'Toaletter'},
+        transports: {status: false, FI: 'Pysäkit', EN: 'Public transport', SV: 'Hållplatser'},
+        commercial: {status: false, FI: 'Palvelut', EN: 'Services', SV: 'Servicer'},
+        parking: {status: false, FI: 'Pysäköinti', EN: 'Parking', SV: 'Parkering'},
+        playgrounds: {status: false, FI: 'Leikkipaikat', EN: 'Playgrounds', SV: 'Lekplatser'}
+    })
+
+    const toggleService = (service) => {
+        let newData = {...showServices, [service]: {...showServices[service], status: !showServices[service].status}};
+        setShowServices(newData);
+    }
+
     const clearFilter = () => {
         let newState = {
             tags: { 
@@ -169,7 +182,8 @@ export const UIContextProvider = (props) => {
         <UIContext.Provider value={{language, currentLang, toggleLang,
                                     searchSuggestions, weatherDescriptions, toggleModal, showModal, selectModalInformation, modalContent,
                                     saveCity, saveTag, filter, clearFilter,
-                                    mapSettings, centerMap, resetMap, centerToUser}}>
+                                    mapSettings, centerMap, resetMap, centerToUser,
+                                    showServices, toggleService}}>
             {props.children}
         </UIContext.Provider>
     );
