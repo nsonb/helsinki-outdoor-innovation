@@ -45,7 +45,7 @@ const MiniWeather = ({location}) => {
     }, []);
 
     // set the weather icon
-    var weatherIcon;
+    /*var weatherIcon = icon01d;
     switch (currWeather.iconNum) {
         case '01d':
             weatherIcon = icon01d;
@@ -98,7 +98,7 @@ const MiniWeather = ({location}) => {
         default:
             weatherIcon = icon13d;
             break;
-    }
+    }*/
     return (
         <div className='weather-container main-background-color' style={location === 'top' ? {top:'0'} : {bottom:'0'}} tabIndex='0'>
             <div className = 'weather-element main-background-color-faded'> <HomeButton/></div>

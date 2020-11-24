@@ -133,13 +133,13 @@ const FutureWeather = ({weather, today = false}) => {
     }
     var d = new Date(weather.time.slice(0,10));
     var weekday = new Array(7);
-    weekday[0] = {EN: "Sun", FI: 'Sunnuntai', SV: 'Söndag'};
-    weekday[1] = {EN: "Mon", FI: 'Maanantai', SV: 'Mondag'};
-    weekday[2] = {EN: "Tue", FI: 'Tiistai', SV: 'Tisdag'};
-    weekday[3] = {EN: "Wed", FI: 'Keskiviikko', SV: 'Onsdag'};
-    weekday[4] = {EN: "Thu", FI: 'Torstai', SV: 'Torsdag'};
-    weekday[5] = {EN: "Fri", FI: 'Perjantai', SV: 'Fridag'};
-    weekday[6] = {EN: "Sat", FI: 'Lauantai', SV: 'Lördag'};
+    weekday[0] = {EN: "Sunday", FI: 'Sunnuntai', SV: 'Söndag'};
+    weekday[1] = {EN: "Monday", FI: 'Maanantai', SV: 'Mondag'};
+    weekday[2] = {EN: "Tuesday", FI: 'Tiistai', SV: 'Tisdag'};
+    weekday[3] = {EN: "Wednesday", FI: 'Keskiviikko', SV: 'Onsdag'};
+    weekday[4] = {EN: "Thursday", FI: 'Torstai', SV: 'Torsdag'};
+    weekday[5] = {EN: "Friday", FI: 'Perjantai', SV: 'Fridag'};
+    weekday[6] = {EN: "Saturday", FI: 'Lauantai', SV: 'Lördag'};
 
     return (
     <div className='future-weather-item'>

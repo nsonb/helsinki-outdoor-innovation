@@ -34,7 +34,7 @@ import { UIContext } from '../Contexts/UIContext';
 const DetailedInfoModal = () => {
     const [ weather, setWeather ] = useState(null)
     const { toggleModal, modalContent } = useContext(UIContext)
-    var weatherIcon = icon01d;
+    const [ weatherIcon, setWeatherIcon ]  = useState(icon01d);
     useEffect(() => {
         let isMounted = true;
         //getWeatherAt(modalContent.longitude, modalContent.latitude)
@@ -45,55 +45,55 @@ const DetailedInfoModal = () => {
                 setWeather(res)
                 switch (weather.current.iconNum) {
                     case '01d':
-                        weatherIcon = icon01d;
+                        setWeatherIcon(icon01d);
                         break;
                     case '01n':
-                        weatherIcon = icon01n;
+                        setWeatherIcon(icon01n);
                         break;
                     case '02d':
-                        weatherIcon = icon02d;
+                        setWeatherIcon(icon02d);
                         break;
                     case '02n':
-                        weatherIcon = icon02n;
+                        setWeatherIcon(icon02n);
                         break;
                     case '03d':
-                        weatherIcon = icon03d;
+                        setWeatherIcon(icon03d);
                         break;
                     case '03n':
-                        weatherIcon = icon03n;
+                        setWeatherIcon(icon03n);
                         break;
                     case '04d':
-                        weatherIcon = icon04d;
+                        setWeatherIcon(icon04d);
                         break;
                     case '04n':
-                        weatherIcon = icon04n;
+                        setWeatherIcon(icon04n);
                         break;
                     case '09d':
-                        weatherIcon = icon09d;
+                        setWeatherIcon(icon09d);
                         break;
                     case '09d':
-                        weatherIcon = icon09n;
+                        setWeatherIcon(icon09n);
                         break;
                     case '10d':
-                        weatherIcon = icon10d;
+                        setWeatherIcon(icon10d);
                         break;
                     case '10n':
-                        weatherIcon = icon10n;
+                        setWeatherIcon(icon10n);
                         break;
                     case '11d':
-                        weatherIcon = icon11d;
+                        setWeatherIcon(icon11d);
                         break;
                     case '11n':
-                        weatherIcon = icon11n;
+                        setWeatherIcon(icon11n);
                         break;
                     case '13d':
-                        weatherIcon = icon13d;
+                        setWeatherIcon(icon13d);
                         break;
                     case '13n':
-                        weatherIcon = icon13n;
+                        setWeatherIcon(icon13n);
                         break;
                     default:
-                        weatherIcon = icon13d;
+                        setWeatherIcon(icon13d);
                         break;
                 }
             }

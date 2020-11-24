@@ -7,7 +7,6 @@ const LangToggle = () => {
     const { sports, allPossibleSuggestions } = useContext(SportsContext);
 
     const toggle = (lang) => {
-        console.log(language);
         toggleLang(lang);
         allPossibleSuggestions(sports, lang);
     }
@@ -20,9 +19,8 @@ const LangToggle = () => {
         <div style ={style}>
             {language.map(l => 
                 <button key={l.lang} 
-                    className = 'hover'
+                    className = 'hover main-background-color-faded'
                     style={l.langUsed ? langButtonChosen : langButton}
-                    className ='main-background-color-faded'
                     onClick={() => toggle(l.lang)}>{l.lang}
                 </button>)}
         </div>
