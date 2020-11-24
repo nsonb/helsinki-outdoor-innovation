@@ -90,30 +90,31 @@ const Filter = (props) => {
                 {cityLabels}
             </div>
             
-            <div 
+            <button 
                 className='filter button secondary-background-color' 
                 style={state.filterHover? {...filterButton, opacity: 1} : filterButton}
                 onMouseEnter={() => setState({...state, filterHover: true})}
                 onMouseLeave={() => setState({...state, filterHover: false})}
                 onClick={filterSports}
                 >{state.searchButtonText[currentLang]}
-            </div>
-            <div 
+            </button>
+            <button 
                 className='filter button secondary-background-color' 
                 style={state.filterHover? {...filterButton, opacity: 1} : filterButton}
                 onMouseEnter={() => setState({...state, filterHover: true})}
                 onMouseLeave={() => setState({...state, filterHover: false})}
                 onClick={filterResults}
                 >{state.buttonText[currentLang]}
-            </div>
-            <div 
+            </button>
+            <button 
                 className='filter button secondary-background-color' 
                 style={state.filterHover? {...filterButton, opacity: 1} : filterButton}
                 onMouseEnter={() => setState({...state, filterHover: true})}
                 onMouseLeave={() => setState({...state, filterHover: false})}
                 onClick={resetFilter}
+                tabIndex='0'
                 >{state.resetButtonText[currentLang]}
-            </div>
+            </button>
         </div>
     )
 }
@@ -148,7 +149,7 @@ const filterButton = {
     margin: "auto",
     opacity: "90%",
     color: "#FFF9E3",
-    fontSize: "12px",
+    fontSize: "0.8rem",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: '20px',
@@ -158,7 +159,7 @@ const filterButton = {
 const checkboxContainer = {
     width: '14%',
     minWidth: '120px',
-    fontSize: '12px',
+    fontSize: '0.8rem',
     display: 'flex',
     marginRight: '2px',
     padding: '3px',

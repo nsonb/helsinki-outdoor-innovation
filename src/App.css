@@ -1,5 +1,14 @@
 .App {
     font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
+*:focus{
+    outline: none;
+}
+
+*:focus-visible {
+    outline: gold 5px auto;
 }
 
 .main-background-color {
@@ -46,6 +55,7 @@
     border: none;
     padding: 3px;
     opacity: 0.5;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .button:hover{

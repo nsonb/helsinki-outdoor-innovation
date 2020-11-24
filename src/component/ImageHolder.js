@@ -38,7 +38,8 @@ const ImageHolder = ({images, names}) => {
             {names.length !== 0 ? <a 
                 href={`http://materialbank.myhelsinki.fi/search/1?query=${names[displayIndex].replace(/\s/g, '+')}`} 
                 style={nameCredit} className= 'hover main-background-color-faded'
-                target='_blank'>
+                target='_blank'
+                rel="noopener noreferrer">
                     {names[displayIndex]}
             </a>: <div></div>}
         </div>

@@ -19,7 +19,6 @@ import WeatherPage from './pages/WeatherPage';
 import './App.css';
 
 import { SportsContext } from './Contexts/SportsContexts';
-import { WeatherContext } from './Contexts/WeatherContext';
 import { ServiceContext } from './Contexts/ServiceContext';
 
 const App = () => {
@@ -61,8 +60,7 @@ const App = () => {
 }
 
 const Loader = () => {
-  const { updateSports, sports, allPossibleSuggestions } = useContext(SportsContext);
-  const { updateWeather } = useContext(WeatherContext);
+  const { updateSports } = useContext(SportsContext);
   const { updateServices } = useContext(ServiceContext);
   useEffect(() => {
       updateSports();

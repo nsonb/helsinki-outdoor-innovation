@@ -7,7 +7,6 @@ const LangToggle = () => {
     const { sports, allPossibleSuggestions } = useContext(SportsContext);
 
     const toggle = (lang) => {
-        console.log(language);
         toggleLang(lang);
         allPossibleSuggestions(sports, lang);
     }
@@ -19,11 +18,11 @@ const LangToggle = () => {
     return (
         <div style ={style}>
             {language.map(l => 
-                <div key={l.lang} 
-                    className = 'hover'
-                    style={l.langUsed ? langButtonChosen : langButton} 
+                <button key={l.lang} 
+                    className = 'hover main-background-color-faded'
+                    style={l.langUsed ? langButtonChosen : langButton}
                     onClick={() => toggle(l.lang)}>{l.lang}
-                </div>)}
+                </button>)}
         </div>
     )
 }
@@ -32,26 +31,36 @@ export default LangToggle;
 
 const style = {
     display: 'flex',
-    fontSize: '0.5rem',
-    textAlign: 'center',
+    fontSize: '0.6rem',
+    textAlign: 'right',
     height: '100%',
     width: '100%',
-    flexDirection: 'center'
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    
 }
 
 const langButton = {
     display: 'block',
-    marginLeft: '10%',
+    margin: 'auto',
+    marginRight: '3%',
     color: '#fcfaf3',
     width: 'fit-content',
-    borderRadius: '5px'
+    borderRadius: '5px',
+    border: 'none',
+    fontFamily: "'Montserrat', sans-serif",
+    padding: '0'
 }
 
 const langButtonChosen = {
     display: 'block',
     textDecoration: 'underline',
-    marginLeft: '10%',
+    margin: 'auto',
+    marginRight: '3%',
     color: '#fcfaf3',
     width: 'fit-content',
-    borderRadius: '5px'
+    borderRadius: '5px',
+    border: 'none',
+    fontFamily: "'Montserrat', sans-serif",
+    padding: '0'
 }

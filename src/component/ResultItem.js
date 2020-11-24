@@ -9,10 +9,10 @@ const ResultItem = ({location, detailed}) => {
             <div >
                 {currentLang === 'SV' ? location.street_address_sv || location.street_address_fi || '' : 
                 (currentLang === 'EN' ? location.street_address_en || location.street_address_fi || '' : 
-                location.street_address_fi || '')},  
+                location.street_address_fi || '')}<span>{', '}</span> 
                 {currentLang === 'SV' ? location.address_city_sv || location.address_city_fi || '' : 
                 (currentLang === 'EN' ? location.address_city_en || location.address_city_fi || '' : 
-                location.address_city_fi || '')},  
+                location.address_city_fi || '')}<span>{', '}</span>
                 {location.address_zip || ''}
             </div>
         </div>
