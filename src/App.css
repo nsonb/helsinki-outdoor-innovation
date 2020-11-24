@@ -3,7 +3,11 @@
     font-size: 18px;
 }
 
-*:focus {
+*:focus{
+    outline: none;
+}
+
+*:focus-visible {
     outline: gold 5px auto;
 }
 
