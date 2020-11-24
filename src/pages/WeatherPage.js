@@ -1,7 +1,7 @@
 import React, {useEffect, useContext} from 'react';
 import CurrentWeather from '../component/CurrentWeather';
 import FutureWeatherHolder from '../component/FutureWeatherHolder';
-import HomeButton from '../component/HomeButton';
+import MiniWeather from '../component/MiniWeather';
 import './WeatherPage.css';
 
 import { SportsContext } from '../Contexts/SportsContexts';
@@ -23,7 +23,7 @@ const WeatherPage = () => {
 
     return (
     <div style={{height: '100%', width: '100%', overflow: 'hidden', position: 'absolute'}}>
-        <HomeButton />
+        <MiniWeather location='top'/>
         <CurrentWeather />
         <FutureWeatherHolder />
     </div>
@@ -31,8 +31,3 @@ const WeatherPage = () => {
 }
 
 export default WeatherPage;
-
-const style = {
-    width: '100vh',
-    height: '100vh'
-}

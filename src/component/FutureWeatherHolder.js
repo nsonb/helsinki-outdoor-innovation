@@ -8,23 +8,25 @@ const FutureWeatherHolder = () => {
         if(hour.time.includes('12:00:00') ) {
             return <FutureWeather weather={hour} key={'futureweather' + index} today={false}/>
         }
+        return
     })
 
     const renderedTodayFuture = sixHours.map((hour, index) => {
         if(hour.time.slice(0,10) === sixHours[0].time.slice(0,10) ) {
             return <FutureWeather weather={hour} key={'futureTodayWeather' + index} today={true}/>
         }
+        return
     })
     return (
     <div style={container}>
-        <div className='' style={weatherBox1} className='main-background-color-faded'>
+        <div style={weatherBox1} className='main-background-color-faded'>
             <p style={weatherSegment} className='main-background-color'>Today's Weather</p>
             <div style={weatherContainer}>
                 {renderedTodayFuture}
             </div>
             
         </div>
-        <div className='' style={weatherBox2} className='main-background-color-faded'>
+        <div style={weatherBox2} className='main-background-color-faded'>
             <p style={weatherSegment} className='main-background-color'>Week's Weather</p>
             <div style={weatherContainer}>
                 {renderedFuture}
@@ -39,8 +41,9 @@ const FutureWeatherHolder = () => {
 export default FutureWeatherHolder;
 
 const container = {
-    width: '60%',
+    width: 'fit-content',
     minWidth: '280px',
+    maxWidth: '60%',
     margin: 'auto',
     height: 'fit-content',
     marginTop: '20px',

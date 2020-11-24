@@ -23,7 +23,7 @@ const LandingPage = () => {
     });
 
     return (
-        <div className='landing-page'>  
+        <div className='landing-page'> 
             <ImageHolder images = {[spring, summer, fall, winter, garden]} names={['Jussi Hellsten', 'Julia Kivela', 'Maija Astikainen', 'Johanna Vilhunen', 'Sasa Tkalcan']}/>
             <div className='mid-bar'>
                 <h2 className='main-background-color' style={{padding: '10px', borderRadius: '20px'}}>
@@ -31,7 +31,6 @@ const LandingPage = () => {
                 </h2>
                 <Search/>
             </div>
-            
             <MiniWeather location='top'/>
         </div>   
     )

@@ -15,7 +15,6 @@
     border: none;
     border-radius: 0px 20px 20px 0px;
     padding: 10px 50px 10px 10px;
-    outline: none;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -45,7 +44,7 @@
     border-radius: 20px;
     background-color: #060d08d2;
     color: white;
-    font-size: small;
+    font-size: 1rem;
 }
 
 .react-autosuggest__suggestion--highlighted{

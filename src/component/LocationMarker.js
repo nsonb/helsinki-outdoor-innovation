@@ -1,5 +1,5 @@
-import React, {Fragment, useContext, useState} from 'react';
-import {Marker, Popup, useMapEvent} from 'react-leaflet';
+import React, {Fragment, useContext} from 'react';
+import {Marker, Popup} from 'react-leaflet';
 import { SportsContext } from '../Contexts/SportsContexts';
 import LocationIcon from './LocationIcon'
 import {UIContext} from "../Contexts/UIContext";

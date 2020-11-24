@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import ImageHolder from './ImageHolder';
 import default_img from '../default-img/no-image.jpg';
 
-import {getWeatherAt} from '../Scripts/weatherAPI';
+import {getWeatherAt, getWeatherAtDEV} from '../Scripts/weatherAPI';
 
 // images
 import icon01d from '../weather-icon/01d.png';
@@ -34,65 +34,66 @@ import { UIContext } from '../Contexts/UIContext';
 const DetailedInfoModal = () => {
     const [ weather, setWeather ] = useState(null)
     const { toggleModal, modalContent } = useContext(UIContext)
-    var weatherIcon = icon01d;
+    const [ weatherIcon, setWeatherIcon ]  = useState(icon01d);
     useEffect(() => {
         let isMounted = true;
-        getWeatherAt(modalContent.longitude, modalContent.latitude)
+        //getWeatherAt(modalContent.longitude, modalContent.latitude)
+        getWeatherAtDEV(modalContent.longitude, modalContent.latitude)
         .then(res => {
-            console.log('called');
+            console.log(res);
             if(isMounted) {
                 setWeather(res)
                 switch (weather.current.iconNum) {
                     case '01d':
-                        weatherIcon = icon01d;
+                        setWeatherIcon(icon01d);
                         break;
                     case '01n':
-                        weatherIcon = icon01n;
+                        setWeatherIcon(icon01n);
                         break;
                     case '02d':
-                        weatherIcon = icon02d;
+                        setWeatherIcon(icon02d);
                         break;
                     case '02n':
-                        weatherIcon = icon02n;
+                        setWeatherIcon(icon02n);
                         break;
                     case '03d':
-                        weatherIcon = icon03d;
+                        setWeatherIcon(icon03d);
                         break;
                     case '03n':
-                        weatherIcon = icon03n;
+                        setWeatherIcon(icon03n);
                         break;
                     case '04d':
-                        weatherIcon = icon04d;
+                        setWeatherIcon(icon04d);
                         break;
                     case '04n':
-                        weatherIcon = icon04n;
+                        setWeatherIcon(icon04n);
                         break;
                     case '09d':
-                        weatherIcon = icon09d;
+                        setWeatherIcon(icon09d);
                         break;
                     case '09d':
-                        weatherIcon = icon09n;
+                        setWeatherIcon(icon09n);
                         break;
                     case '10d':
-                        weatherIcon = icon10d;
+                        setWeatherIcon(icon10d);
                         break;
                     case '10n':
-                        weatherIcon = icon10n;
+                        setWeatherIcon(icon10n);
                         break;
                     case '11d':
-                        weatherIcon = icon11d;
+                        setWeatherIcon(icon11d);
                         break;
                     case '11n':
-                        weatherIcon = icon11n;
+                        setWeatherIcon(icon11n);
                         break;
                     case '13d':
-                        weatherIcon = icon13d;
+                        setWeatherIcon(icon13d);
                         break;
                     case '13n':
-                        weatherIcon = icon13n;
+                        setWeatherIcon(icon13n);
                         break;
                     default:
-                        weatherIcon = icon13d;
+                        setWeatherIcon(icon13d);
                         break;
                 }
             }
@@ -131,8 +132,8 @@ const DetailedInfoModal = () => {
         padding: '2rem',
         position: 'relative',
         zIndex: '6',
-        height: '25rem',
-        fontSize: '12px'
+        height: '80%',
+        fontSize: '1rem'
     }
     const placeName = {
         fontSize: '24px',
@@ -142,7 +143,7 @@ const DetailedInfoModal = () => {
     const info = {
         display: 'block',
         position:'absolute', 
-        height: (modalContent.picture_url? '53%': '80%'), 
+        height: (modalContent.picture_url? '43%': '80%'), 
         left: '0', bottom: '16%', 
         borderRadius: '0.5rem 0.5rem 0 0', 
         overflow: 'hidden',
@@ -205,7 +206,7 @@ const DetailedInfoModal = () => {
         textAlign: 'center',
         margin: 0,
         marginLeft: '2px',
-        fontSize: '8px'
+        fontSize: '0.6rem'
     }
 
     return (
@@ -213,7 +214,7 @@ const DetailedInfoModal = () => {
             <div style={blurBackground}  onClick={toggleModal}/>
             <div style={content} className='main-background-color'>
                 {modalContent.picture_url ? 
-                    <div style={{position:'absolute', width: '100%', height: '30%', left: '0', top: '0', borderRadius: '0.5rem 0.5rem 0 0', overflow: 'hidden', marginBottom: '16px'}}>
+                    <div style={{position:'absolute', width: '100%', height: '40%', left: '0', top: '0', borderRadius: '0.5rem 0.5rem 0 0', overflow: 'hidden', marginBottom: '16px'}}>
                         <ImageHolder images={modalContent.picture_url? [modalContent.picture_url] : [default_img]} names={[]}/>
                     </div> : <div/>}
                 <div style={info}>
@@ -242,12 +243,12 @@ const DetailedInfoModal = () => {
                         modalContent.name_fi || '')
                     }</p>
                     <p>{
-                        currentLang === 'SV' ? modalContent.street_address_sv || modalContent.street_address_fi || 'Tyvärr, vi har inte adress.' : 
+                        currentLang === 'SV' ? modalContent.street_address_sv|| modalContent.street_address_fi || 'Tyvärr, vi har inte adress.' : 
                         (currentLang === 'EN' ? modalContent.street_address_en || modalContent.street_address_fi || 'No address.' : 
-                        modalContent.street_address_fi || 'Osoitetta ei löytynyt')}, 
+                    modalContent.street_address_fi || 'Osoitetta ei löytynyt')}<span>{', '}</span>
                         {currentLang === 'SV' ? modalContent.address_city_sv || modalContent.address_city_fi || 'Tyvärr, vi har inte en stad.' : 
                         (currentLang === 'EN' ? modalContent.address_city_en || modalContent.address_city_fi || modalContent.address_city_sv || 'No city.' : 
-                        modalContent.address_city_fi || modalContent.address_city_sv || modalContent.address_city_en || 'Kaupunkia ei löytynyt')}, 
+                        modalContent.address_city_fi || modalContent.address_city_sv || modalContent.address_city_en || 'Kaupunkia ei löytynyt')}<span>{', '}</span> 
                         {modalContent.address_zip && modalContent.address_zip
                     }</p>
                     <p>Information</p>
