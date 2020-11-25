@@ -5,6 +5,7 @@ import MapView from '../component/MapView';
 import MiniWeather from '../component/MiniWeather';
 import HomeButton from '../component/HomeButton'
 import DetailedInfoModal from "../component/DetailedInfoModal";
+import ServiceToggle from '../component/ServiceToggle';
 
 import 'leaflet/dist/leaflet.css';
 import './ResultPage.css';
@@ -16,6 +17,7 @@ const ResultPage = () => {
     return (
         <div className='result-page-container'>
             <HomeButton />
+            <ServiceToggle/>
             { showModal && <DetailedInfoModal/>}
             <MapView className='leaflet-container'>
             </MapView>
