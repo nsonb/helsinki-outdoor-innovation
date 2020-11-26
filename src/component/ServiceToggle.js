@@ -9,10 +9,10 @@ const ServiceToggle = () => {
     }, [])
 
     return (
-        <div style={style}>
+        <div style={style}  className='secondary-background-color'>
             {Object.keys(showServices).map(k => 
                 <div key={k} onClick={() => toggleService(k)} style={toggleBox}>
-                    {showServices[k][currentLang]}
+                    <p>{showServices[k][currentLang]}</p>
                     <div className='button toggleSwitch' 
                         style={showServices[k].status ? {...toggleSwitch, flexDirection: 'row-reverse'} : toggleSwitch}>
                         <div className='toggleButton' 
@@ -37,26 +37,28 @@ const toggleSwitch = {
     height: '2vh',
     borderRadius: '1vh',
     backgroundColor: 'grey',
-    margin: 'auto'
+    margin: 'auto',
+    marginRight: '5px'
 }
 
 const toggleBox = {
     display: 'flex',
     flexDirection: 'row',
-    marginLeft: '8px'
 }
 
 const style = {
     display: 'flex',
-    fontSize: '0.5rem',
-    textAlign: 'center',
-    width: '30%',
+    fontSize: '0.7rem',
+    textAlign: 'left',
+    width: '10%',
+    minWidth: '120px',
     flexDirection: 'column',
     position: 'absolute',
-    top: '50%',
+    top: '30%',
     left: '0',
     zIndex: '20',
-    padding: '5px'
+    padding: '3px',
+    borderRadius: '5px'
 }
 
 const langButton = {
