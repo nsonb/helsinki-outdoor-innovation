@@ -26,6 +26,10 @@ const LocationMarker = (props) => {
                     return markers.ParkingIcon;
                 case 'playgrounds':
                     return markers.PlaygroundIcon;
+                case 'transports':
+                    return markers.TrainStopIcon;
+                case 'commercial':
+                    return markers.ServicesIcon;
                 default:
                     return markers.LocationIcon;
             }
