@@ -155,16 +155,13 @@ const CurrentWeather = () => {
             </div>
             <div className='detail-box'>
                 <div className='detail-item'>
-                    <p>{textContent.feelsLike[currentLang]}</p> 
-                    <p>{currWeather.feelsLike}</p>
+                    <p>{textContent.feelsLike[currentLang]}: {currWeather.feelsLike}</p> 
                 </div>
                 <div className='detail-item'>
-                    <p>{textContent.humidity[currentLang]}</p> 
-                    <p>{currWeather.humidity}</p>
+                    <p>{textContent.humidity[currentLang]}: {currWeather.humidity}</p> 
                 </div>
                 <div className='detail-item'>
-                    <p>{textContent.wind[currentLang]}</p> 
-                    <p>{currWeather.wind}</p>
+                    <p>{textContent.wind[currentLang]}: {currWeather.wind}</p> 
                 </div>
             </div>
         </div>
