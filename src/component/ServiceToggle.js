@@ -1,8 +1,23 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { UIContext } from '../Contexts/UIContext';
 
 const ServiceToggle = () => {
     const { showServices, toggleService, currentLang } = useContext(UIContext);
+    const [ hide, setHide] = useState(false);
+    const style = {
+        position: 'relative',
+        fontSize: '0.7rem',
+        textAlign: 'left',
+        width: '10%',
+        minWidth: '120px',
+        flexDirection: 'column',
+        position: 'absolute',
+        top: '30%',
+        left: hide? '0': '-125px',
+        zIndex: '20',
+        padding: '3px',
+        borderRadius: '5px'
+    }
 
     useEffect(() => {
         Object.keys(showServices).map(k => console.log(k))
@@ -19,11 +34,25 @@ const ServiceToggle = () => {
                             style={showServices[k].status ? {...toggleButton, backgroundColor: 'green'} : toggleButton}></div>
                     </div>
                 </div>)}
+            <button style={toggleClick} className='hover main-background-color-faded' onClick={() => {setHide(!hide)}}>{hide? '>': '<'}</button>
         </div>
     )
 }
 
 export default ServiceToggle;
+
+const toggleClick = {
+    position: 'absolute',
+    right: '-18px',
+    top: '0',
+    height: '100%',
+    width:'18px',
+    padding: '2px',
+    paddingRight: '4px',
+    fontFamily: "'Montserrat', sans-serif",
+    border: 'none',
+    borderRadius: '5px'
+}
 
 const toggleButton = {
     width: '1vh',
@@ -44,21 +73,6 @@ const toggleSwitch = {
 const toggleBox = {
     display: 'flex',
     flexDirection: 'row',
-}
-
-const style = {
-    display: 'flex',
-    fontSize: '0.7rem',
-    textAlign: 'left',
-    width: '10%',
-    minWidth: '120px',
-    flexDirection: 'column',
-    position: 'absolute',
-    top: '30%',
-    left: '0',
-    zIndex: '20',
-    padding: '3px',
-    borderRadius: '5px'
 }
 
 const langButton = {
