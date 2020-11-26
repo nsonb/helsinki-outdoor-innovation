@@ -10,7 +10,7 @@
 *:focus-visible {
     outline: gold 5px auto;
 }
-
+/* colors and background*/
 .main-background-color {
     background-color: #060D08;
     color:  #FFF9E3;
@@ -73,15 +73,21 @@
 
 .scroll {
     overflow: scroll;
+    
+}
+
+* {
+    scrollbar-width: thin;
 }
 
 p {
     margin: 8px
 }
 
+/*scrollbar*/
 ::-webkit-scrollbar {
-    width: 3px;
-    height: 3px;
+    width: 5px;
+    height: 5px;
   }
 /* Track */
 ::-webkit-scrollbar-track {
