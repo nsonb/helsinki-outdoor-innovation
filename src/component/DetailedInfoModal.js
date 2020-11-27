@@ -33,7 +33,7 @@ import { UIContext } from '../Contexts/UIContext';
 
 const DetailedInfoModal = () => {
     const [ weather, setWeather ] = useState(null)
-    const { toggleModal, modalContent } = useContext(UIContext)
+    const { toggleModal, modalContent, currentLang, weatherDescriptions } = useContext(UIContext)
     const [ weatherIcon, setWeatherIcon ]  = useState(icon01d);
     useEffect(() => {
         let isMounted = true;
@@ -71,7 +71,7 @@ const DetailedInfoModal = () => {
                     case '09d':
                         setWeatherIcon(icon09d);
                         break;
-                    case '09d':
+                    case '09n':
                         setWeatherIcon(icon09n);
                         break;
                     case '10d':
@@ -103,7 +103,6 @@ const DetailedInfoModal = () => {
         return () => {isMounted = false}
     }, [modalContent])
 
-    const { currentLang } = useContext(UIContext);
     const [ buttonText ] = useState({
         FI: 'Katso reitti',
         EN: 'Find route',
@@ -231,6 +230,15 @@ const DetailedInfoModal = () => {
         borderRadius: '0.5rem',
     }
 
+    const openHSL = () => {
+        const prompt = currentLang === 'EN' ? "Opening HSL Reittiopas in a new tab" : (currentLang === 'SV' ? 'Öppnar HRT Reseplanerare i en ny tab' : 'Avataan HSL Reittiopas uuteen välilehteen')
+        if (window.confirm(prompt)) {
+            window.open("//reittiopas.hsl.fi/reitti/ /" + modalContent.street_address_fi || modalContent.street_address_sv + ", "
+                    + modalContent.address_city_en || modalContent.address_city_fi + "::" +modalContent.latitude + "," + modalContent.longitude
+                    + "?locale=en", "_blank")
+        }  
+    }
+
     return (
         <div style={modal}>
             <div style={blurBackground}  onClick={toggleModal}/>
@@ -244,7 +252,7 @@ const DetailedInfoModal = () => {
                         <div style = {weather_info}>
                             <div style = {{width: '30%', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', flexDirection: 'row',alignContent: 'flex-start'}}>
                                 <img style = {weather_icon} src={weatherIcon} alt='icon'/>
-                                <p style={weather_detail}>{weather.current.weather[0].description}</p>
+                                <p style={weather_detail}>{weatherDescriptions[weather.current.weather[0].icon] && weatherDescriptions[weather.current.weather[0].icon][currentLang]}</p>
                             </div>
                             <div style = {weather_info_box}>
                                 <img style = {weather_icon} src={temp} alt='icon'/>
@@ -273,7 +281,6 @@ const DetailedInfoModal = () => {
                         modalContent.address_city_fi || modalContent.address_city_sv || modalContent.address_city_en || 'Kaupunkia ei löytynyt')}<span>{', '}</span> 
                         {modalContent.address_zip && modalContent.address_zip
                     }</p>
-                    <p>Information</p>
                     <div className='scroll' style={detail_info}>
                         <p>
                             {currentLang === 'SV' ? 
@@ -286,10 +293,7 @@ const DetailedInfoModal = () => {
                     </div>
                     
                 </div>
-                <button className='button secondary-background-color-faded' style={buttonStyle} onClick={() =>{
-                    window.open("//reittiopas.hsl.fi/reitti/ /" + modalContent.street_address_fi || modalContent.street_address_sv + ", "
-                    + modalContent.address_city_en || modalContent.address_city_fi + "::" +modalContent.latitude + "," + modalContent.longitude
-                    + "?locale=en", "_blank")}}>
+                <button className='button secondary-background-color-faded' style={buttonStyle} onClick={openHSL}>
                         {buttonText[currentLang]}
                 </button> 
             </div>

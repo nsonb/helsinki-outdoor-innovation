@@ -5,7 +5,6 @@ const ServiceToggle = () => {
     const { showServices, toggleService, currentLang } = useContext(UIContext);
     const [ hide, setHide] = useState(false);
     const style = {
-        position: 'relative',
         fontSize: '0.7rem',
         textAlign: 'left',
         width: '10%',

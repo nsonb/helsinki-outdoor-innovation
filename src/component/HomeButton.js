@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { UIContext } from '../Contexts/UIContext';
-
+import home from '../default-img/home.png';
 
 const HomeButton = () => {
     const { currentLang } = useContext(UIContext);
     const history = useHistory();
     return (
         <button className='hover' style ={style} onClick={() => history.push('/')}>
-            {currentLang === 'SV' ? 'Home' : (currentLang === 'EN' ? 'Home' : 'Home')}
+            <img src={home} alt='home icon' style={{margin: 0, height: '2vh'}}/>
+            {/*currentLang === 'SV' ? 'Till hem' : (currentLang === 'EN' ? 'Home' : 'Etusivulle')*/}
         </button>
     )
 }
