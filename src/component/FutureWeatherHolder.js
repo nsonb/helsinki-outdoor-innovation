@@ -60,7 +60,7 @@ const container = {
 
 const weatherBox1 = {
     display: 'flex',
-    height: '90px',
+    height: '100px',
     width: '100%',
     margin: '8%',
     alignItems: 'flex-start',
@@ -85,7 +85,7 @@ const weatherBox2 = {
 
 const weatherContainer = {
     display: 'flex',
-    height: '90px',
+    height: '100px',
     width: '100%',
     marginBottom: '16px',
     borderRadius: '8px',

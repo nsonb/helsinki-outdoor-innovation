@@ -143,7 +143,7 @@ const DetailedInfoModal = () => {
     const info = {
         display: 'block',
         position:'absolute', 
-        height: (modalContent.picture_url? '43%': '80%'), 
+        height: (modalContent.picture_url? (window.innerWidth >= 540? '43%' : '58%'): '80%'), 
         left: '0', bottom: '16%', 
         borderRadius: '0.5rem 0.5rem 0 0', 
         overflow: 'hidden',
@@ -209,12 +209,34 @@ const DetailedInfoModal = () => {
         fontSize: '0.6rem'
     }
 
+    const img_holder = {
+        position:'absolute',
+        width: '100%',
+        height: window.innerWidth >= 540? '40%': '25%',
+        left: '0',
+        top: '0',
+        borderRadius: '0.5rem 0.5rem 0 0',
+        overflow: 'hidden',
+        marginBottom: '16px'
+    }
+
+    const link = {
+        fontSize: '0.7rem',
+        textDecoration: 'none',
+        backgroundColor: 'white',
+        color: 'black',
+        fontFamily: "'Montserrat', sans-serif",
+        marginLeft: '8px',
+        padding: '5px',
+        borderRadius: '0.5rem',
+    }
+
     return (
         <div style={modal}>
             <div style={blurBackground}  onClick={toggleModal}/>
             <div style={content} className='main-background-color'>
                 {modalContent.picture_url ? 
-                    <div style={{position:'absolute', width: '100%', height: '40%', left: '0', top: '0', borderRadius: '0.5rem 0.5rem 0 0', overflow: 'hidden', marginBottom: '16px'}}>
+                    <div style={img_holder}>
                         <ImageHolder images={modalContent.picture_url? [modalContent.picture_url] : [default_img]} names={[]}/>
                     </div> : <div/>}
                 <div style={info}>
@@ -260,6 +282,7 @@ const DetailedInfoModal = () => {
                             modalContent.desc_en || (modalContent.desc_fi && 'No descripton in English.\n' + modalContent.desc_fi) || (modalContent.desc_sv && 'No descripton in English.\n' + modalContent.desc_sv) || 'No description.' : 
                             modalContent.desc_fi || (modalContent.desc_en && 'Ei suomenkielistä kuvausta.\n' + modalContent.desc_en) || (modalContent.desc_sv && 'Ei suomenkielistä kuvausta.\n' + modalContent.desc_sv) || 'Paikasta ei löydy kuvausta.')}
                         </p>
+                        <a style={link} href={modalContent.www_fi} target='_blank'>Link</a>
                     </div>
                     
                 </div>
