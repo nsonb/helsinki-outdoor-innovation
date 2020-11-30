@@ -1,9 +1,15 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import FutureWeather from './FutureWeather';
 import { WeatherContext } from '../Contexts/WeatherContext';
+import { UIContext } from '../Contexts/UIContext';
 
 const FutureWeatherHolder = () => {
     const {sixHours} = useContext(WeatherContext);
+    const { currentLang } = useContext(UIContext);
+    const [ textContent ] = useState({
+        today: {FI: 'Sää tänään', EN: "Today's weather", SV: 'Väder idag'},
+        week: {FI: 'Viikon sää', EN: "Week's weather", SV: 'Väder i veckan'}
+    })
     const renderedFuture = sixHours.map((hour, index) => {
         if(hour.time.includes('12:00:00') ) {
             return <FutureWeather weather={hour} key={'futureweather' + index} today={false}/>
@@ -20,14 +26,14 @@ const FutureWeatherHolder = () => {
     return (
     <div style={container}>
         <div style={weatherBox1} className='main-background-color-faded'>
-            <p style={weatherSegment} className='main-background-color'>Today's Weather</p>
+    <p style={weatherSegment} className='main-background-color'>{textContent.today[currentLang]}</p>
             <div style={weatherContainer}>
                 {renderedTodayFuture}
             </div>
             
         </div>
         <div style={weatherBox2} className='main-background-color-faded'>
-            <p style={weatherSegment} className='main-background-color'>Week's Weather</p>
+            <p style={weatherSegment} className='main-background-color'>{textContent.week[currentLang]}</p>
             <div style={weatherContainer}>
                 {renderedFuture}
             </div>
@@ -60,7 +66,7 @@ const container = {
 
 const weatherBox1 = {
     display: 'flex',
-    height: '90px',
+    height: '100px',
     width: '100%',
     margin: '8%',
     alignItems: 'flex-start',
@@ -85,7 +91,7 @@ const weatherBox2 = {
 
 const weatherContainer = {
     display: 'flex',
-    height: '90px',
+    height: '100px',
     width: '100%',
     marginBottom: '16px',
     borderRadius: '8px',

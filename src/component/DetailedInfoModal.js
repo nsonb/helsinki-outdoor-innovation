@@ -33,7 +33,7 @@ import { UIContext } from '../Contexts/UIContext';
 
 const DetailedInfoModal = () => {
     const [ weather, setWeather ] = useState(null)
-    const { toggleModal, modalContent } = useContext(UIContext)
+    const { toggleModal, modalContent, currentLang, weatherDescriptions } = useContext(UIContext)
     const [ weatherIcon, setWeatherIcon ]  = useState(icon01d);
     useEffect(() => {
         let isMounted = true;
@@ -71,7 +71,7 @@ const DetailedInfoModal = () => {
                     case '09d':
                         setWeatherIcon(icon09d);
                         break;
-                    case '09d':
+                    case '09n':
                         setWeatherIcon(icon09n);
                         break;
                     case '10d':
@@ -103,7 +103,6 @@ const DetailedInfoModal = () => {
         return () => {isMounted = false}
     }, [modalContent])
 
-    const { currentLang } = useContext(UIContext);
     const [ buttonText ] = useState({
         FI: 'Katso reitti',
         EN: 'Find route',
@@ -143,7 +142,7 @@ const DetailedInfoModal = () => {
     const info = {
         display: 'block',
         position:'absolute', 
-        height: (modalContent.picture_url? '43%': '80%'), 
+        height: (modalContent.picture_url? (window.innerWidth >= 540? '43%' : '58%'): '80%'), 
         left: '0', bottom: '16%', 
         borderRadius: '0.5rem 0.5rem 0 0', 
         overflow: 'hidden',
@@ -209,12 +208,43 @@ const DetailedInfoModal = () => {
         fontSize: '0.6rem'
     }
 
+    const img_holder = {
+        position:'absolute',
+        width: '100%',
+        height: window.innerWidth >= 540? '40%': '25%',
+        left: '0',
+        top: '0',
+        borderRadius: '0.5rem 0.5rem 0 0',
+        overflow: 'hidden',
+        marginBottom: '16px'
+    }
+
+    const link = {
+        fontSize: '0.7rem',
+        textDecoration: 'none',
+        backgroundColor: 'white',
+        color: 'black',
+        fontFamily: "'Montserrat', sans-serif",
+        marginLeft: '8px',
+        padding: '5px',
+        borderRadius: '0.5rem',
+    }
+
+    const openHSL = () => {
+        const prompt = currentLang === 'EN' ? "Opening HSL Reittiopas in a new tab" : (currentLang === 'SV' ? 'Öppnar HRT Reseplanerare i en ny tab' : 'Avataan HSL Reittiopas uuteen välilehteen')
+        if (window.confirm(prompt)) {
+            window.open("//reittiopas.hsl.fi/reitti/ /" + modalContent.street_address_fi || modalContent.street_address_sv + ", "
+                    + modalContent.address_city_en || modalContent.address_city_fi + "::" +modalContent.latitude + "," + modalContent.longitude
+                    + "?locale=en", "_blank")
+        }  
+    }
+
     return (
         <div style={modal}>
             <div style={blurBackground}  onClick={toggleModal}/>
             <div style={content} className='main-background-color'>
                 {modalContent.picture_url ? 
-                    <div style={{position:'absolute', width: '100%', height: '40%', left: '0', top: '0', borderRadius: '0.5rem 0.5rem 0 0', overflow: 'hidden', marginBottom: '16px'}}>
+                    <div style={img_holder}>
                         <ImageHolder images={modalContent.picture_url? [modalContent.picture_url] : [default_img]} names={[]}/>
                     </div> : <div/>}
                 <div style={info}>
@@ -222,7 +252,7 @@ const DetailedInfoModal = () => {
                         <div style = {weather_info}>
                             <div style = {{width: '30%', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', flexDirection: 'row',alignContent: 'flex-start'}}>
                                 <img style = {weather_icon} src={weatherIcon} alt='icon'/>
-                                <p style={weather_detail}>{weather.current.weather[0].description}</p>
+                                <p style={weather_detail}>{weatherDescriptions[weather.current.weather[0].icon] && weatherDescriptions[weather.current.weather[0].icon][currentLang]}</p>
                             </div>
                             <div style = {weather_info_box}>
                                 <img style = {weather_icon} src={temp} alt='icon'/>
@@ -251,7 +281,6 @@ const DetailedInfoModal = () => {
                         modalContent.address_city_fi || modalContent.address_city_sv || modalContent.address_city_en || 'Kaupunkia ei löytynyt')}<span>{', '}</span> 
                         {modalContent.address_zip && modalContent.address_zip
                     }</p>
-                    <p>Information</p>
                     <div className='scroll' style={detail_info}>
                         <p>
                             {currentLang === 'SV' ? 
@@ -260,13 +289,11 @@ const DetailedInfoModal = () => {
                             modalContent.desc_en || (modalContent.desc_fi && 'No descripton in English.\n' + modalContent.desc_fi) || (modalContent.desc_sv && 'No descripton in English.\n' + modalContent.desc_sv) || 'No description.' : 
                             modalContent.desc_fi || (modalContent.desc_en && 'Ei suomenkielistä kuvausta.\n' + modalContent.desc_en) || (modalContent.desc_sv && 'Ei suomenkielistä kuvausta.\n' + modalContent.desc_sv) || 'Paikasta ei löydy kuvausta.')}
                         </p>
+                        <a style={link} href={modalContent.www_fi} target='_blank'>Link</a>
                     </div>
                     
                 </div>
-                <button className='button secondary-background-color-faded' style={buttonStyle} onClick={() =>{
-                    window.open("//reittiopas.hsl.fi/reitti/ /" + modalContent.street_address_fi || modalContent.street_address_sv + ", "
-                    + modalContent.address_city_en || modalContent.address_city_fi + "::" +modalContent.latitude + "," + modalContent.longitude
-                    + "?locale=en", "_blank")}}>
+                <button className='button secondary-background-color-faded' style={buttonStyle} onClick={openHSL}>
                         {buttonText[currentLang]}
                 </button> 
             </div>

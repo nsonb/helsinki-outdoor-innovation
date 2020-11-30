@@ -4,9 +4,11 @@ import './ResultList.css';
 
 
 import { SportsContext } from '../Contexts/SportsContexts';
+import { UIContext } from '../Contexts/UIContext';
 
 const ResultList = () => {
     const { sorted } = useContext(SportsContext);
+    const { currentLang } = useContext(UIContext);
     const [collapse, setCollapse] = useState(false)
     const renderedItems = Object.keys(sorted).map(e => sorted[e].data.map(d => {
         return (
@@ -31,7 +33,7 @@ const ResultList = () => {
                 </div>
                  :
                 <div className='scrollable main-background-color' style = {noMatchStyle}>
-                    No match found
+                    {currentLang === 'EN' ? 'No match found' : (currentLang === 'SV' ? 'Ingen resultat' : 'Ei hakutuloksia')}
                 </div>
             }
             
