@@ -7,12 +7,11 @@ const ServiceToggle = () => {
     const style = {
         fontSize: '0.7rem',
         textAlign: 'left',
-        width: '10%',
-        minWidth: '120px',
+        width: '120px',
         flexDirection: 'column',
         position: 'absolute',
         top: '30%',
-        left: hide? '0': '-125px',
+        left: hide? '0': '-123px',
         zIndex: '20',
         padding: '3px',
         borderRadius: '5px'
@@ -33,19 +32,32 @@ const ServiceToggle = () => {
                             style={showServices[k].status ? {...toggleButton, backgroundColor: 'green'} : toggleButton}></div>
                     </div>
                 </div>)}
-            <button style={toggleClick} className='hover main-background-color-faded' onClick={() => {setHide(!hide)}}>{hide? '>': '<'}</button>
+            <button style={ hide? toggleOpen: toggleClose} className='hover main-background-color-faded' onClick={() => {setHide(!hide)}}>{hide? '<': '>'}</button>
         </div>
     )
 }
 
 export default ServiceToggle;
 
-const toggleClick = {
+const toggleOpen = {
     position: 'absolute',
     right: '-18px',
     top: '0',
     height: '100%',
     width:'18px',
+    padding: '2px',
+    paddingRight: '4px',
+    fontFamily: "'Montserrat', sans-serif",
+    border: 'none',
+    borderRadius: '5px'
+}
+
+const toggleClose = {
+    position: 'absolute',
+    right: '-24px',
+    top: '0',
+    height: '100%',
+    width:'24px',
     padding: '2px',
     paddingRight: '4px',
     fontFamily: "'Montserrat', sans-serif",

@@ -8,7 +8,7 @@ const HomeButton = () => {
     const history = useHistory();
     return (
         <button className='hover' style ={style} onClick={() => history.push('/')}>
-            <img src={home} alt='home icon' style={{margin: 0}}/>
+            <img src={home} alt='Home button. Click to go back to home' style={{margin: 0, height: '2vh'}}/>
             {/*currentLang === 'SV' ? 'Till hem' : (currentLang === 'EN' ? 'Home' : 'Etusivulle')*/}
         </button>
     )
