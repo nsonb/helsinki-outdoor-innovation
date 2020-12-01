@@ -230,6 +230,16 @@ const DetailedInfoModal = () => {
         borderRadius: '0.5rem',
     }
 
+    const closeButton = {
+        position: 'absolute',
+        right: '5px',
+        top: '5px',
+        padding: '5px',
+        zIndex: '20',
+        border: 'none',
+        borderRadius: '5px'
+    }
+
     const openHSL = () => {
         const prompt = currentLang === 'EN' ? "Opening HSL Reittiopas in a new tab" : (currentLang === 'SV' ? 'Öppnar HRT Reseplanerare i en ny tab' : 'Avataan HSL Reittiopas uuteen välilehteen')
         if (window.confirm(prompt)) {
@@ -241,8 +251,10 @@ const DetailedInfoModal = () => {
 
     return (
         <div style={modal}>
-            <div style={blurBackground}  onClick={toggleModal}/>
-            <div style={content} className='main-background-color'>
+            <div style={blurBackground} onClick={toggleModal}/>
+            
+            <div style={content} className='main-background-color' onClick={toggleModal}>
+            <button style={closeButton} className='main-background-color-faded'>x</button>
                 {modalContent.picture_url ? 
                     <div style={img_holder}>
                         <ImageHolder images={modalContent.picture_url? [modalContent.picture_url] : [default_img]} names={[]}/>
