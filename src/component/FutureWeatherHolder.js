@@ -26,7 +26,7 @@ const FutureWeatherHolder = () => {
     return (
     <div style={container}>
         <div style={weatherBox1} className='main-background-color-shade'>
-    <p style={weatherSegment} className='main-background-color'>{textContent.today[currentLang]}</p>
+            <p style={weatherSegment} className='main-background-color'>{textContent.today[currentLang]}</p>
             <div style={weatherContainer}>
                 {renderedTodayFuture}
             </div>
@@ -51,15 +51,17 @@ const container = {
     minWidth: '280px',
     maxWidth: '60%',
     margin: 'auto',
-    height: 'fit-content',
+    height: "47vh",//'fit-content',
     marginTop: '20px',
     left: 0,
     right: 0,
-    bottom: '5px',
+    top: "53vh",
+    //bottom: '5px',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    //justifyContent: 'flex-start',
     position: 'absolute',
     display: 'flex',
+    justifyContent: "space-evenly",
     flexDirection: 'column',
     padding: '5px'
 }
@@ -68,7 +70,7 @@ const weatherBox1 = {
     display: 'flex',
     height: '100px',
     width: '100%',
-    margin: '8%',
+    //margin: '8%',
     alignItems: 'flex-start',
     position: 'relative',
     paddingTop: '12px',
