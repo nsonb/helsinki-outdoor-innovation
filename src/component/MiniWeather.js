@@ -30,6 +30,7 @@ import humid from '../weather-icon/humid02.png';
 import { SportsContext } from '../Contexts/SportsContexts';
 import { WeatherContext } from '../Contexts/WeatherContext';
 import { ServiceContext } from '../Contexts/ServiceContext';
+import { UIContext } from '../Contexts/UIContext';
 
 const MiniWeather = ({location}) => {
     const history = useHistory();
@@ -37,6 +38,7 @@ const MiniWeather = ({location}) => {
     const { updateSports } = useContext(SportsContext);
     const { updateWeather } = useContext(WeatherContext);
     const { updateServices } = useContext(ServiceContext);
+    const { screenSize } = useContext(UIContext);
 
     useEffect(() => {
         updateSports();
@@ -101,14 +103,14 @@ const MiniWeather = ({location}) => {
     }*/
     //location === 'top' ? {top:'0'} : {bottom:'0'}
     return (
-        <div className='main-background-color' style={container} tabIndex='0'>
+        <div className='main-background-color' style={screenSize[0] > 425 ? container : {...container, fontSize: "70%"}} tabIndex='0'>
             <div className = 'weather-element main-background-color-faded'> <HomeButton/></div>
             <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={temp} alt='icon'/> <p>{currWeather.temp}</p> </div>
             
             <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={wind} alt='icon'/> <p>{currWeather.wind}</p></div>
             <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}><img src={humid} alt='icon'/> <p>{currWeather.humidity}</p></div>
             <div className = 'weather-element'><LangToggle/></div>
-            <div className = 'credit' style={location === 'top' ? {bottom:'-20px'} : {top: '-20px'}}> weather powered by <a href='https://openweathermap.org/'>Open Weather</a></div>
+            <div className = 'credit' style={credit}> weather powered by <a href='https://openweathermap.org/' style={creditlink}>Open Weather</a></div>
         </div>
     )
 }
@@ -118,6 +120,7 @@ export default MiniWeather;
 
 const container = {
     position: "absolute",
+    top: 0,
     display: "flex",
     flexDirection: "row",
     left: 0,
@@ -126,5 +129,21 @@ const container = {
     justifyContent: "center",
     alignContent: "center",
     zIndex: 2,
-    fontSize: "2vh"
+    fontSize: "75%"
+}
+
+const credit = {
+    bottom:'-20px',
+    fontSize: "75%",
+    margin: "5px",
+    position: "absolute",
+    width: "fit-content",
+    right: 0,
+    color: "#FFF9E3"
+}
+const creditlink = {
+    display: "inline-block",
+    padding: "1px",
+    borderRadius: "2px",
+    color: "white",
 }

@@ -1,4 +1,4 @@
-.weather-container {
+/*.weather-container {
     position: absolute;
     display: flex;
     flex-direction: row;
@@ -10,7 +10,7 @@
     align-content: center;
     z-index: 2;
     font-size: 0.7rem;
-}
+}*/
 
 .weather-element {
     display: flex;
@@ -54,9 +54,9 @@
     color: #FFF9E3;
 }
 
-.credit a {
+/*.credit a {
     display: inline-block;
     padding: 1px;
     border-radius: 2px;
     color: white;
-}
+}*/
