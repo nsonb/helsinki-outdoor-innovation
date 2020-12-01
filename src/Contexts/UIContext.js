@@ -164,7 +164,7 @@ export const UIContextProvider = (props) => {
     }
 
     const centerMap = (coordArr) => {
-        setMap({coord: coordArr, zoom: 13});
+        if (coordArr[0] && coordArr[1]) setMap({coord: coordArr, zoom: 13});
     }
 
     const resetMap = () => {

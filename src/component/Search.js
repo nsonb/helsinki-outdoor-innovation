@@ -10,7 +10,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 const Search = () => {
     const { searchOneSport } = useContext(SportsContext);
     const { currentTerm } = useContext(CurrentTermContext);
-    const { currentLang } = useContext(UIContext);
+    const { currentLang, resetMap } = useContext(UIContext);
     const [state, setState] = useState({
         inputFocused: false,
         filterHover: false,
@@ -31,6 +31,7 @@ const Search = () => {
         if (location.pathname !== '/result') {
             history.push('/result');
         }
+        resetMap();
     }
 
     const toggleFilterBox = (evt) => {
