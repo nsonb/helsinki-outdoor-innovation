@@ -16,7 +16,6 @@ const MapView = () => {
       <LocationMarker key={d.id} d={d} servicename={service}/>)
     }
   }
-  console.log(mapSettings)
   return (
     
     <MapContainer center={mapSettings.coord} zoom={mapSettings.zoom} zoomControl={false}>

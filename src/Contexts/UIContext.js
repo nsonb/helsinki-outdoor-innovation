@@ -128,6 +128,7 @@ export const UIContextProvider = (props) => {
             tags: {...filter.tags, 
                 [name]: item}
             });
+        resetMap();
     }
 
     const saveCity = (evt) => {
@@ -141,6 +142,7 @@ export const UIContextProvider = (props) => {
             cities: {...filter.cities, 
                 [name]: item}
             });
+        resetMap();
     }
 
     const toggleLang = (lang) => {

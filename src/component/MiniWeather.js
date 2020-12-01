@@ -99,8 +99,9 @@ const MiniWeather = ({location}) => {
             weatherIcon = icon13d;
             break;
     }*/
+    //location === 'top' ? {top:'0'} : {bottom:'0'}
     return (
-        <div className='weather-container main-background-color' style={location === 'top' ? {top:'0'} : {bottom:'0'}} tabIndex='0'>
+        <div className='main-background-color' style={container} tabIndex='0'>
             <div className = 'weather-element main-background-color-faded'> <HomeButton/></div>
             <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={temp} alt='icon'/> <p>{currWeather.temp}</p> </div>
             
@@ -115,4 +116,15 @@ const MiniWeather = ({location}) => {
 export default MiniWeather;
 
 
-// <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <p>feels</p> <p>{currWeather.feelsLike}</p></div>
+const container = {
+    position: "absolute",
+    display: "flex",
+    flexDirection: "row",
+    left: 0,
+    right: 0,
+    width: "100%",
+    justifyContent: "center",
+    alignContent: "center",
+    zIndex: 2,
+    fontSize: "2vh"
+}
