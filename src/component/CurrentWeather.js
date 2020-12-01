@@ -3,7 +3,7 @@ import { WeatherContext } from '../Contexts/WeatherContext';
 import { UIContext } from '../Contexts/UIContext';
 import './CurrentWeather.css';
 
-//img
+//img -need to be replaced for copyright
 import scatteredCloud from '../default-img/scatterCloudCarl_Bergman.jpg';
 import rain from '../default-img/rainJussi_Hellsten.jpg';
 import sun from '../default-img/sunJussi_Hellsten.jpg';

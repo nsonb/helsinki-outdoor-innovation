@@ -40,13 +40,8 @@ const ImageHolder = ({images, names}) => {
                 style={nameCredit} className= 'hover main-background-color-faded'
                 target='_blank'
                 rel="noopener noreferrer">
-                    {names[displayIndex]}
+                    {names[displayIndex]} &#169; Helsinki Marketing
             </a>: <div></div>}
-            {names.length !== 0 ? <p 
-                style={marketCredit} className= 'main-background-color-shade'
-                >
-                    &#169; Helsinki Marketing
-            </p>: <div></div>}
         </div>
     )
 }
@@ -57,17 +52,6 @@ const nameCredit = {
     position: 'absolute',
     bottom: '1%',
     right: '1%',
-    fontSize: '0.5rem',
-    padding: '5px',
-    borderRadius: '5px',
-    textDecoration: 'none',
-    margin: '0'
-}
-
-const marketCredit = {
-    position: 'absolute',
-    bottom: '1%',
-    left: '1%',
     fontSize: '0.5rem',
     padding: '5px',
     borderRadius: '5px',
