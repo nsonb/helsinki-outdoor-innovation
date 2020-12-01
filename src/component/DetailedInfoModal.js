@@ -289,7 +289,7 @@ const DetailedInfoModal = () => {
                             modalContent.desc_en || (modalContent.desc_fi && 'No descripton in English.\n' + modalContent.desc_fi) || (modalContent.desc_sv && 'No descripton in English.\n' + modalContent.desc_sv) || 'No description.' : 
                             modalContent.desc_fi || (modalContent.desc_en && 'Ei suomenkielistä kuvausta.\n' + modalContent.desc_en) || (modalContent.desc_sv && 'Ei suomenkielistä kuvausta.\n' + modalContent.desc_sv) || 'Paikasta ei löydy kuvausta.')}
                         </p>
-                        <a style={link} href={modalContent.www_fi} target='_blank'>Link</a>
+                        <a style={link} href={modalContent.www_fi} target='_blank'>{modalContent.www_fi}</a>
                     </div>
                     
                 </div>
