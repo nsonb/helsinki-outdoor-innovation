@@ -250,8 +250,8 @@ const DetailedInfoModal = () => {
         <div style={modal}>
             <div style={blurBackground} onClick={toggleModal}/>
             
-            <div style={content} className='main-background-color' onClick={toggleModal}>
-            <button style={closeButton} className='main-background-color-faded'>x</button>
+            <div style={content} className='main-background-color'>
+            <button style={closeButton} className='main-background-color-faded'  onClick={toggleModal}>x</button>
                 {modalContent.picture_url ? 
                     <div style={img_holder}>
                         <ImageHolder images={modalContent.picture_url? [modalContent.picture_url] : [default_img]} names={[]}/>
@@ -297,7 +297,7 @@ const DetailedInfoModal = () => {
                             (currentLang === 'EN' ? 
                             modalContent.desc_en || (modalContent.desc_fi && 'No descripton in English.\n' + modalContent.desc_fi) || (modalContent.desc_sv && 'No descripton in English.\n' + modalContent.desc_sv) || 'No description.' : 
                             modalContent.desc_fi || (modalContent.desc_en && 'Ei suomenkielistä kuvausta.\n' + modalContent.desc_en) || (modalContent.desc_sv && 'Ei suomenkielistä kuvausta.\n' + modalContent.desc_sv) || 'Paikasta ei löydy kuvausta.')}
-                            <a style={link} href={modalContent.www_fi} target='_blank'>{' '+modalContent.www_fi}</a>
+                            {modalContent.www_fi !== null ?<a style={link} href={modalContent.www_fi} target='_blank'>{' '+modalContent.www_fi}</a> : <div></div>}
                         </p>
                         
                     </div>
