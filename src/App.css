@@ -21,6 +21,11 @@
     color:  #FFF9E3;
 }
 
+.main-background-color-shade{
+    background-color: #060d08b7;
+    color:  #FFF9E3;
+}
+
 .main-background-color-faded:hover{
     cursor: pointer;
     background-color: #060d08;

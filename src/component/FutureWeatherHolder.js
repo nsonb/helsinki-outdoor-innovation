@@ -25,14 +25,14 @@ const FutureWeatherHolder = () => {
     })
     return (
     <div style={container}>
-        <div style={weatherBox1} className='main-background-color-faded'>
+        <div style={weatherBox1} className='main-background-color-shade'>
     <p style={weatherSegment} className='main-background-color'>{textContent.today[currentLang]}</p>
             <div style={weatherContainer}>
                 {renderedTodayFuture}
             </div>
             
         </div>
-        <div style={weatherBox2} className='main-background-color-faded'>
+        <div style={weatherBox2} className='main-background-color-shade'>
             <p style={weatherSegment} className='main-background-color'>{textContent.week[currentLang]}</p>
             <div style={weatherContainer}>
                 {renderedFuture}

@@ -3,7 +3,7 @@ import { WeatherContext } from '../Contexts/WeatherContext';
 import { UIContext } from '../Contexts/UIContext';
 import './CurrentWeather.css';
 
-//img
+//img -need to be replaced for copyright
 import scatteredCloud from '../default-img/scatterCloudCarl_Bergman.jpg';
 import rain from '../default-img/rainJussi_Hellsten.jpg';
 import sun from '../default-img/sunJussi_Hellsten.jpg';
@@ -146,8 +146,8 @@ const CurrentWeather = () => {
     //console.log(img);
     return (
     <div className='current-weather-container' style={weatherBrightStyle ? {color: 'black'} : {color: 'white'}}>
-        <img className='background-img' src={img} alt = ''/>
-        <div className='info main-background-color-faded'>
+        <img className='background-img' src={img} alt = 'descriptive weather image'/>
+        <div className='info main-background-color-shade'>
             <div className='locale'>{weather.city.name}</div>
             <div className='weather-desc'>{weatherDescriptions[currWeather.iconNum] && weatherDescriptions[currWeather.iconNum][currentLang]}</div>
             <div className='temp'>
