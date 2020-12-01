@@ -126,5 +126,6 @@ const container = {
     justifyContent: "center",
     alignContent: "center",
     zIndex: 2,
-    fontSize: "2vh"
+    fontSize: "2vh",
+    top: "0"
 }
