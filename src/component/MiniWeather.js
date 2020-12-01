@@ -102,10 +102,10 @@ const MiniWeather = ({location}) => {
     return (
         <div className='weather-container main-background-color' style={location === 'top' ? {top:'0'} : {bottom:'0'}} tabIndex='0'>
             <div className = 'weather-element main-background-color-faded'> <HomeButton/></div>
-            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={temp} alt='icon'/> <p>{currWeather.temp}</p> </div>
+            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={temp} alt='temperature icon. Click to go the weather page'/> <p>{currWeather.temp}</p> </div>
             
-            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={wind} alt='icon'/> <p>{currWeather.wind}</p></div>
-            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}><img src={humid} alt='icon'/> <p>{currWeather.humidity}</p></div>
+            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}> <img src={wind} alt='wind icon. Click to go the weather page'/> <p>{currWeather.wind}</p></div>
+            <div className = 'weather-element main-background-color-faded' onClick={() => history.push('/weather')}><img src={humid} alt='humidity icon. Click to go the weather page'/> <p>{currWeather.humidity}</p></div>
             <div className = 'weather-element'><LangToggle/></div>
             <div className = 'credit' style={location === 'top' ? {bottom:'-20px'} : {top: '-20px'}}> weather powered by <a href='https://openweathermap.org/'>Open Weather</a></div>
         </div>

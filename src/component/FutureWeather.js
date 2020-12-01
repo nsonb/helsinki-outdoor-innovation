@@ -143,7 +143,7 @@ const FutureWeather = ({weather, today = false}) => {
 
     return (
     <div className='future-weather-item'>
-        <img className='background-img' src={img} alt = 'weather description'/>
+        <img className='background-img' src={img} alt = 'descriptive weather image'/>
         {today ? <div style= {timeStyle}>{weather.time.slice(10,16)}</div> : <div style= {timeStyle}>{weekday[d.getDay()][currentLang]}</div>}
         
         <div className='info-container'>

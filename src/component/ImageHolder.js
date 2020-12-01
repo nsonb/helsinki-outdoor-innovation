@@ -33,7 +33,7 @@ const ImageHolder = ({images, names}) => {
             {images.length > 1 ? <div className='left-button' onClick={() => setImage(false)}></div> : null}
             {images.length > 1 ? <div className='right-button' onClick={() => setImage(true)}></div> : null}
             
-            <img className = 'top-img'src = {images[displayIndex]} alt='depicting season'/>
+            <img className = 'top-img'src = {images[displayIndex]} alt='decorative'/>
             {images.length > 1 ? <div className = 'bottom-row'>{renderedButtons}</div> : null}
             {names.length !== 0 ? <a 
                 href={`http://materialbank.myhelsinki.fi/search/1?query=${names[displayIndex].replace(/\s/g, '+')}`} 
