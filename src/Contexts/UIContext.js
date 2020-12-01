@@ -92,6 +92,8 @@ export const UIContextProvider = (props) => {
         playgrounds: {status: false, FI: 'Leikkipaikat', EN: 'Playgrounds', SV: 'Lekplatser'}
     })
 
+    const [ screenSize, setScreenSize ] = useState([]);
+
     const toggleService = (service) => {
         let newData = {...showServices, [service]: {...showServices[service], status: !showServices[service].status}};
         setShowServices(newData);
@@ -185,7 +187,8 @@ export const UIContextProvider = (props) => {
                                     searchSuggestions, weatherDescriptions, toggleModal, showModal, selectModalInformation, modalContent,
                                     saveCity, saveTag, filter, clearFilter,
                                     mapSettings, centerMap, resetMap, centerToUser,
-                                    showServices, toggleService}}>
+                                    showServices, toggleService,
+                                    screenSize, setScreenSize}}>
             {props.children}
         </UIContext.Provider>
     );

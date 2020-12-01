@@ -35,7 +35,7 @@ import icon13n from '../weather-icon/13n.png';*/
 
 const CurrentWeather = () => {
     const { currWeather, weather } = useContext(WeatherContext);
-    const { currentLang, weatherDescriptions } = useContext(UIContext);
+    const { currentLang, weatherDescriptions, screenSize } = useContext(UIContext);
     const [ textContent ] = useState({
         temp: {FI: 'Lämpötila', EN: 'Temperature', SV: 'Temperatur'},
         wind: {FI: 'Tuuli', EN: 'Wind', SV: 'Vind'},
@@ -147,10 +147,10 @@ const CurrentWeather = () => {
     return (
     <div className='current-weather-container' style={weatherBrightStyle ? {color: 'black'} : {color: 'white'}}>
         <img className='background-img' src={img} alt = 'descriptive weather image'/>
-        <div className='info main-background-color-shade'>
+        <div className='info main-background-color-shade' style={screenSize[1] > 450 ? info : {...info, fontSize: "1rem"}}>
             <div className='locale'>{weather.city.name}</div>
             <div className='weather-desc'>{weatherDescriptions[currWeather.iconNum] && weatherDescriptions[currWeather.iconNum][currentLang]}</div>
-            <div className='temp'>
+            <div className='temp' style={screenSize[1] > 470 ? temp : (screenSize[1] < 410 ? {...temp, fontSize:"1.5rem"} :{...temp, fontSize: '2rem'})}>
                 {currWeather.temp}
             </div>
             <div className='detail-box'>
@@ -172,3 +172,31 @@ const CurrentWeather = () => {
 }
 
 export default CurrentWeather;
+
+const temp = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: "3rem",
+    fontWeight: "bolder",
+    padding: "auto",
+    textAlign: "center",
+    verticalAlign: "middle"
+}
+
+const info = {
+    position: "absolute",
+    display: "flex",
+    flexDirection: "column",
+    top:"8vh",
+    left: 0,
+    right: 0,
+    width: "60%",
+    minWidth: "280px",
+    height: "45vh",
+    alignContent: "center",
+    justifyContent: "space-around",
+    margin:"auto",
+    backgroundColor: "dimgray",
+    borderRadius: "8px"
+}

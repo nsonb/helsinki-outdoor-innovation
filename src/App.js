@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useLayoutEffect } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -7,7 +7,7 @@ import {
 import { ServiceContextProvider } from './Contexts/ServiceContext';
 import { SportsContextProvider } from './Contexts/SportsContexts';
 import { WeatherContextProvider } from './Contexts/WeatherContext';
-import { UIContextProvider } from './Contexts/UIContext';
+import { UIContext, UIContextProvider } from './Contexts/UIContext';
 import { CurrentTermContextProvider } from './Contexts/CurrentSearchTermContext';
 
 // pages
@@ -26,7 +26,7 @@ const App = () => {
   useEffect(() =>{
 
   }, []) 
-
+  
   return (
     <div className='App'>
       <Router basename={process.env.PUBLIC_URL}>
@@ -62,11 +62,27 @@ const App = () => {
 const Loader = () => {
   const { updateSports } = useContext(SportsContext);
   const { updateServices } = useContext(ServiceContext);
+  const { setScreenSize } = useContext(UIContext);
   useEffect(() => {
       updateSports();
       updateServices();
       //updateWeather();
   }, []);
+
+  //https://medium.com/@alexander_15201/react-screen-sizes-device-types-and-media-queries-ad304caad160
+  function useMediaQuery() { 
+    useLayoutEffect(() => {
+      function updateScreenSize() {
+        console.log([window.innerWidth, window.innerHeight])
+        setScreenSize([window.innerWidth, window.innerHeight]);
+      }
+      window.addEventListener("resize", updateScreenSize);
+      updateScreenSize();
+      return () => window.removeEventListener("resize", updateScreenSize);
+    }, []);
+  }
+  useMediaQuery();
+
   return null;
 }
 
