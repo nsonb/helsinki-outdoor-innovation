@@ -34,8 +34,8 @@ export const ToiletIcon = L.icon({
 });
 
 export const ParkingIcon = L.icon({
-    iconUrl: require('../default-img/defaultMarkerParking.png'),
-    iconRetinaUrl: require('../default-img/defaultMarkerParking.png'),
+    iconUrl: require('../default-img/parkingMarker.png'),
+    iconRetinaUrl: require('../default-img/parkingMarker.png'),
     iconAnchor: null,
     shadowUrl: null,
     shadowSize: null,
@@ -56,13 +56,13 @@ export const PlaygroundIcon = L.icon({
 });
 
 export const TrainStopIcon = L.icon({
-    iconUrl: require('../default-img/defaultMarkerHSL.png'),
-    iconRetinaUrl: require('../default-img/defaultMarkerHSL.png'),
+    iconUrl: require('../default-img/stopIcon.png'),
+    iconRetinaUrl: require('../default-img/stopIcon.png'),
     iconAnchor: null,
     shadowUrl: null,
     shadowSize: null,
     shadowAnchor: null,
-    iconSize: [25, 35],
+    iconSize: [17, 35],
     className: 'leaflet-venue-icon'
 });
 
