@@ -147,7 +147,7 @@ const CurrentWeather = () => {
     return (
     <div className='current-weather-container' style={weatherBrightStyle ? {color: 'black'} : {color: 'white'}}>
         <img className='background-img' src={img} alt = 'descriptive weather image'/>
-        <div className='info main-background-color-faded'>
+        <div className='info main-background-color-shade'>
             <div className='locale'>{weather.city.name}</div>
             <div className='weather-desc'>{weatherDescriptions[currWeather.iconNum] && weatherDescriptions[currWeather.iconNum][currentLang]}</div>
             <div className='temp'>

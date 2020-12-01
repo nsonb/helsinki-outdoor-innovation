@@ -147,7 +147,7 @@ const FutureWeather = ({weather, today = false}) => {
         {today ? <div style= {timeStyle}>{weather.time.slice(10,16)}</div> : <div style= {timeStyle}>{weekday[d.getDay()][currentLang]}</div>}
         
         <div className='info-container'>
-            <p className='main-background-color-faded'>{weather.temp}</p>
+            <p className='main-background-color-shade'>{weather.temp}</p>
         </div>
         
     </div>
