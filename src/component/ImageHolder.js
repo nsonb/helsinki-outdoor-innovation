@@ -33,14 +33,14 @@ const ImageHolder = ({images, names}) => {
             {images.length > 1 ? <div className='left-button' onClick={() => setImage(false)}></div> : null}
             {images.length > 1 ? <div className='right-button' onClick={() => setImage(true)}></div> : null}
             
-            <img className = 'top-img'src = {images[displayIndex]} alt='depicting season'/>
+            <img className = 'top-img'src = {images[displayIndex]} alt='decorative'/>
             {images.length > 1 ? <div className = 'bottom-row'>{renderedButtons}</div> : null}
             {names.length !== 0 ? <a 
                 href={`http://materialbank.myhelsinki.fi/search/1?query=${names[displayIndex].replace(/\s/g, '+')}`} 
                 style={nameCredit} className= 'hover main-background-color-faded'
                 target='_blank'
                 rel="noopener noreferrer">
-                    {names[displayIndex]}
+                    {names[displayIndex]} &#169; Helsinki Marketing
             </a>: <div></div>}
         </div>
     )
@@ -55,5 +55,6 @@ const nameCredit = {
     fontSize: '0.5rem',
     padding: '5px',
     borderRadius: '5px',
-    textDecoration: 'none'
+    textDecoration: 'none',
+    margin: '0'
 }
