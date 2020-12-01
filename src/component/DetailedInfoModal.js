@@ -21,6 +21,8 @@ import icon11d from '../weather-icon/11d.png';
 import icon11n from '../weather-icon/11n.png';
 import icon13d from '../weather-icon/13d.png';
 import icon13n from '../weather-icon/13n.png';
+import hslLogo from '../default-img/hsl_musta.png'
+
 //icon
 import temp from '../weather-icon/temp.png';
 import wind from '../weather-icon/wind03.png';
@@ -291,10 +293,10 @@ const DetailedInfoModal = () => {
                         </p>
                         <a style={link} href={modalContent.www_fi} target='_blank'>Link</a>
                     </div>
-                    
                 </div>
-                <button className='button secondary-background-color-faded' style={buttonStyle} onClick={openHSL}>
-                        {buttonText[currentLang]}
+                <button className='button' style={buttonStyle} onClick={openHSL}>
+                    <img style={{width: '5rem', height: '2rem'}} src={hslLogo} alt={''}/>
+                    {/*{buttonText[currentLang]}*/}
                 </button> 
             </div>
         </div>
