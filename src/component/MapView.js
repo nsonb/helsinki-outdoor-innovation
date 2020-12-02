@@ -7,7 +7,7 @@ import { ServiceContext } from '../Contexts/ServiceContext';
 
 const MapView = () => {
   const { sorted } = useContext(SportsContext);
-  const { mapSettings, showServices } = useContext(UIContext);
+  const { mapSettings, showServices} = useContext(UIContext);
   const { services } = useContext(ServiceContext);
 
   const renderService = (service) => {
@@ -16,6 +16,7 @@ const MapView = () => {
       <LocationMarker key={d.id} d={d} servicename={service}/>)
     }
   }
+  
   return (
     
     <MapContainer center={mapSettings.coord} zoom={mapSettings.zoom} zoomControl={false}>
