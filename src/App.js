@@ -62,11 +62,30 @@ const App = () => {
 const Loader = () => {
   const { updateSports } = useContext(SportsContext);
   const { updateServices } = useContext(ServiceContext);
-  const { setScreenSize } = useContext(UIContext);
+  const { setScreenSize, setUserCoord } = useContext(UIContext);
   useEffect(() => {
       updateSports();
       updateServices();
       //updateWeather();
+      const geo = navigator.geolocation;
+      if (!geo) {
+        setUserCoord([]);
+        console.log('Geolocation is not supported');
+        return;
+      }
+      const onChange = ({coords}) => {
+        setUserCoord([
+          coords.latitude,
+          coords.longitude,
+        ]);
+      };
+      const onError = (error) => {
+        setUserCoord([]);
+        console.log(error.message)
+      };
+
+      let watcher = geo.watchPosition(onChange, onError);
+      return () => geo.clearWatch(watcher);
   }, []);
 
   //https://medium.com/@alexander_15201/react-screen-sizes-device-types-and-media-queries-ad304caad160

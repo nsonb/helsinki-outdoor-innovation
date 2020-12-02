@@ -80,6 +80,7 @@ export const UIContextProvider = (props) => {
     })
 
     const [ mapSettings, setMap ] = useState({
+        centerUser: true,
         coord: [60.19, 24.94],
         zoom: 12
     });
@@ -93,6 +94,13 @@ export const UIContextProvider = (props) => {
     })
 
     const [ screenSize, setScreenSize ] = useState([]);
+
+    const [ userCoord, setUserCoordState ] = useState([]);
+
+    const setUserCoord = (coordArr) => {
+        setUserCoordState(coordArr);
+        if (mapSettings.centerUser) setMap({...mapSettings, coord: coordArr})
+    }
 
     const toggleService = (service) => {
         let newData = {...showServices, [service]: {...showServices[service], status: !showServices[service].status}};
@@ -168,18 +176,26 @@ export const UIContextProvider = (props) => {
     }
 
     const centerMap = (coordArr) => {
-        if (coordArr[0] && coordArr[1]) setMap({coord: coordArr, zoom: 13});
+        if (coordArr[0] && coordArr[1]) setMap({...mapSettings, coord: coordArr, zoom: 13});
     }
 
     const resetMap = () => {
+        console.log(userCoord.length > 1 && mapSettings.centerUser)
+        userCoord.length > 1 && mapSettings.centerUser ? 
         setMap({
+            ...mapSettings,
+            coord: userCoord,
+            zoom: 12
+        })
+         : setMap({
+            ...mapSettings,
             coord: [60.19, 24.94],
             zoom: 12
         })
     }
 
-    const centerToUser = (coordArr) => {
-        setMap({...mapSettings, coord: coordArr})
+    const centerToUser = () => {
+        if (userCoord.length > 1) setMap({...mapSettings, coord: userCoord})
     }
 
     return (
@@ -188,7 +204,8 @@ export const UIContextProvider = (props) => {
                                     saveCity, saveTag, filter, clearFilter,
                                     mapSettings, centerMap, resetMap, centerToUser,
                                     showServices, toggleService,
-                                    screenSize, setScreenSize}}>
+                                    screenSize, setScreenSize,
+                                    userCoord, setUserCoord}}>
             {props.children}
         </UIContext.Provider>
     );
