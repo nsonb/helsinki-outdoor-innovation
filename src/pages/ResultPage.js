@@ -16,7 +16,6 @@ const ResultPage = () => {
     const { showModal } = useContext(UIContext)
     return (
         <div className='result-page-container'>
-            <HomeButton />
             <ServiceToggle/>
             { showModal && <DetailedInfoModal/>}
             <MapView className='leaflet-container'>

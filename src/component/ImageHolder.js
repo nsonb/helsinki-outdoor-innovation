@@ -52,7 +52,7 @@ const nameCredit = {
     position: 'absolute',
     bottom: '1%',
     right: '1%',
-    fontSize: '0.5rem',
+    fontSize: '0.8rem',
     padding: '5px',
     borderRadius: '5px',
     textDecoration: 'none',
