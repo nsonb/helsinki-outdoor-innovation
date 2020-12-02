@@ -80,7 +80,6 @@ const Loader = () => {
         ]);
       };
       const onError = (error) => {
-        setUserCoord([]);
         console.log(error.message)
       };
 
