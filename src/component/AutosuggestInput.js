@@ -22,7 +22,7 @@ const AutosuggestInput = (props) => {
     placeholders: {
       FI: "Kirjoita tunniste tai liikuntapaikan nimi",
       EN: "Type tag or location name",
-      SV: "Type en tagg eller utemotionsplats namn"  
+      SV: "Skriv in sport eller namnet på en utemotionsplats"  
     }
   }) 
 

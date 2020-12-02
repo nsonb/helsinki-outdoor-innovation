@@ -8,7 +8,7 @@ const FutureWeatherHolder = () => {
     const { currentLang } = useContext(UIContext);
     const [ textContent ] = useState({
         today: {FI: 'Sää tänään', EN: "Today's weather", SV: 'Väder idag'},
-        week: {FI: 'Viikon sää', EN: "Week's weather", SV: 'Väder i veckan'}
+        week: {FI: 'Viikon sää', EN: "Week's weather", SV: 'Väder under veckan'}
     })
     const renderedFuture = sixHours.map((hour, index) => {
         if(hour.time.includes('12:00:00') ) {

@@ -295,7 +295,7 @@ const DetailedInfoModal = () => {
                     <div className='scroll' style={detail_info}>
                         <p>
                             {currentLang === 'SV' ? 
-                            modalContent.desc_sv || (modalContent.desc_en && 'Tyvärr, vi har inte beskrivning på svenska.\n' + modalContent.desc_en) || (modalContent.desc_fi && 'Tyvärr, vi har inte beskrivning på svenska.\n' + modalContent.desc_fi) || 'Tyvärr, vi har inte beskrivning om det här plats.' : 
+                            modalContent.desc_sv || (modalContent.desc_en && 'Tyvärr finns det ingen beskrivning på svenska.\n' + modalContent.desc_en) || (modalContent.desc_fi && 'Tyvärr, vi har inte beskrivning på svenska.\n' + modalContent.desc_fi) || 'Tyvärr finns det ingen beskrivning av den här platsen.' : 
                             (currentLang === 'EN' ? 
                             modalContent.desc_en || (modalContent.desc_fi && 'No descripton in English.\n' + modalContent.desc_fi) || (modalContent.desc_sv && 'No descripton in English.\n' + modalContent.desc_sv) || 'No description.' : 
                             modalContent.desc_fi || (modalContent.desc_en && 'Ei suomenkielistä kuvausta.\n' + modalContent.desc_en) || (modalContent.desc_sv && 'Ei suomenkielistä kuvausta.\n' + modalContent.desc_sv) || 'Paikasta ei löydy kuvausta.')}

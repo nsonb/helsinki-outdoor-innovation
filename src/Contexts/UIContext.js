@@ -43,19 +43,19 @@ export const UIContextProvider = (props) => {
 
     const [ weatherDescriptions ] = useState({
         '01d': {FI: 'Selkeää', EN: 'Clear sky', SV: 'Klar himmel'},
-        '02d': {FI: 'Puolipilvistä', EN: 'Few clouds', SV: 'Få moln'},
+        '02d': {FI: 'Puolipilvistä', EN: 'A few clouds', SV: 'Halvmulet'},
         '03d': {FI: 'Hajanaisia pilviä', EN: 'Scattered clouds', SV: 'Spridda moln'},
-        '04d': {FI: 'Rakoileva pilvipeite', EN: 'Broken clouds', SV: 'Trasiga moln'},
-        '09d': {FI: 'Kevyttä sadetta', EN: 'Shower rain', SV: 'Duschregn'},
+        '04d': {FI: 'Rakoileva pilvipeite', EN: 'Broken clouds', SV: 'Lättande molntäcke'},
+        '09d': {FI: 'Kevyttä sadetta', EN: 'Shower rain', SV: 'Duggregn'},
         '10d': {FI: 'Sadetta', EN: 'Rain', SV: 'Regn'},
         '11d': {FI: 'Ukkosta', EN: 'Thunderstorm', SV: 'Åskvader'},
         '13d': {FI: 'Lumisade', EN: 'Snow', SV: 'Snö'},
         '50d': {FI: 'Sumua', EN: 'Mist', SV: 'Dimma'},
         '01n': {FI: 'Selkeää', EN: 'Clear sky', SV: 'Klar himmel'},
-        '02n': {FI: 'Puolipilvistä', EN: 'Few clouds', SV: 'Få moln'},
+        '02n': {FI: 'Puolipilvistä', EN: 'A few clouds', SV: 'Halvmulet'},
         '03n': {FI: 'Hajanaisia pilviä', EN: 'Scattered clouds', SV: 'Spridda moln'},
-        '04n': {FI: 'Rakoileva pilvipeite', EN: 'Broken clouds', SV: 'Trasiga moln'},
-        '09n': {FI: 'Kevyttä sadetta', EN: 'Shower rain', SV: 'Duschregn'},
+        '04n': {FI: 'Rakoileva pilvipeite', EN: 'Broken clouds', SV: 'Lättande molntäcke'},
+        '09n': {FI: 'Kevyttä sadetta', EN: 'Shower rain', SV: 'Duggregn'},
         '10n': {FI: 'Sadetta', EN: 'Rain', SV: 'Regn'},
         '11n': {FI: 'Ukkosta', EN: 'Thunderstorm', SV: 'Åskvader'},
         '13n': {FI: 'Lumisade', EN: 'Snow', SV: 'Snö'},
@@ -64,13 +64,13 @@ export const UIContextProvider = (props) => {
 
     const [ filter, setFilter ] = useState({
         tags: { 
-            land: {status: false, icon: '', FI: 'Kuivalla maalla', EN: 'Land sports', SV: null},
-            water: {status: false, icon: '', FI: 'Vesiurheilu', EN: 'Water sports', SV: null},
-            animals: {status: false, icon: '', FI: 'Eläinurheilu', EN: 'Animal sports', SV: null},
-            ballgames: {status: false, icon: '', FI: 'Pallopelit', EN: 'Ball games', SV: null},
-            nature: {status: false, icon: '', FI: 'Luonto', EN: 'Nature', SV: null},
-            noEquipment: {status: false, icon: '', FI: 'Ei välineitä', EN: 'No equipment', SV: null},
-            winter: {status: false, icon: '', FI: 'Talviurheilu', EN: 'Winter sports', SV: null},
+            land: {status: false, icon: '', FI: 'Kuivalla maalla', EN: 'Land sports', SV: 'Land sport'},
+            water: {status: false, icon: '', FI: 'Vesiurheilu', EN: 'Water sports', SV: 'Vattensport'},
+            animals: {status: false, icon: '', FI: 'Eläinurheilu', EN: 'Animal sports', SV: 'Sport med djur'},
+            ballgames: {status: false, icon: '', FI: 'Pallopelit', EN: 'Ball games', SV: 'Bollsport'},
+            nature: {status: false, icon: '', FI: 'Luonto', EN: 'Nature', SV: 'Natur'},
+            noEquipment: {status: false, icon: '', FI: 'Ei välineitä', EN: 'No equipment', SV: 'Inga sportutrustning'},
+            winter: {status: false, icon: '', FI: 'Talviurheilu', EN: 'Winter sports', SV: 'Vintersport'},
         },
         cities: {
             helsinki: {status: false, icon: '', FI: 'Helsinki', EN: 'Helsinki', SV: 'Helsingfors'},
@@ -80,6 +80,7 @@ export const UIContextProvider = (props) => {
     })
 
     const [ mapSettings, setMap ] = useState({
+        centerUser: true,
         coord: [60.19, 24.94],
         zoom: 12
     });
@@ -87,12 +88,19 @@ export const UIContextProvider = (props) => {
     const [ showServices, setShowServices ] = useState({
         toilets: {status: false, FI: 'WC:t', EN: 'Toilets', SV: 'Toaletter'},
         transports: {status: false, FI: 'Pysäkit', EN: 'Public transport', SV: 'Hållplatser'},
-        commercial: {status: false, FI: 'Palvelut', EN: 'Services', SV: 'Servicer'},
+        commercial: {status: false, FI: 'Palvelut', EN: 'Services', SV: 'Tjänster'},
         parking: {status: false, FI: 'Pysäköinti', EN: 'Parking', SV: 'Parkering'},
         playgrounds: {status: false, FI: 'Leikkipaikat', EN: 'Playgrounds', SV: 'Lekplatser'}
     })
 
     const [ screenSize, setScreenSize ] = useState([]);
+
+    const [ userCoord, setUserCoordState ] = useState([]);
+
+    const setUserCoord = (coordArr) => {
+        setUserCoordState(coordArr);
+        if (mapSettings.centerUser) setMap({...mapSettings, coord: coordArr})
+    }
 
     const toggleService = (service) => {
         let newData = {...showServices, [service]: {...showServices[service], status: !showServices[service].status}};
@@ -168,18 +176,26 @@ export const UIContextProvider = (props) => {
     }
 
     const centerMap = (coordArr) => {
-        if (coordArr[0] && coordArr[1]) setMap({coord: coordArr, zoom: 13});
+        if (coordArr[0] && coordArr[1]) setMap({...mapSettings, coord: coordArr, zoom: 13});
     }
 
     const resetMap = () => {
+        console.log(userCoord.length > 1 && mapSettings.centerUser)
+        userCoord.length > 1 && mapSettings.centerUser ? 
         setMap({
+            ...mapSettings,
+            coord: userCoord,
+            zoom: 12
+        })
+         : setMap({
+            ...mapSettings,
             coord: [60.19, 24.94],
             zoom: 12
         })
     }
 
-    const centerToUser = (coordArr) => {
-        setMap({...mapSettings, coord: coordArr})
+    const centerToUser = () => {
+        if (userCoord.length > 1) setMap({...mapSettings, coord: userCoord})
     }
 
     return (
@@ -188,7 +204,8 @@ export const UIContextProvider = (props) => {
                                     saveCity, saveTag, filter, clearFilter,
                                     mapSettings, centerMap, resetMap, centerToUser,
                                     showServices, toggleService,
-                                    screenSize, setScreenSize}}>
+                                    screenSize, setScreenSize,
+                                    userCoord, setUserCoord}}>
             {props.children}
         </UIContext.Provider>
     );
