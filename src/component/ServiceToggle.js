@@ -25,7 +25,7 @@ const ServiceToggle = () => {
         <div style={style}  className='secondary-background-color'>
             {Object.keys(showServices).map(k => 
                 <div key={k} onClick={() => toggleService(k)} style={toggleBox}>
-                    <p>{showServices[k][currentLang]}</p>
+                    <p style={{marginRight:'3px', width:'fit-content'}}>{showServices[k][currentLang]}</p>
                     <div className='button toggleSwitch' 
                         style={showServices[k].status ? {...toggleSwitch, flexDirection: 'row-reverse'} : toggleSwitch}>
                         <div className='toggleButton' 
@@ -74,6 +74,7 @@ const toggleButton = {
 const toggleSwitch = {
     display: 'flex',
     width: '3vh',
+    minWidth:'28px',
     height: '2vh',
     borderRadius: '1vh',
     backgroundColor: 'grey',

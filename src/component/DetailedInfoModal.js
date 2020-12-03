@@ -224,7 +224,6 @@ const DetailedInfoModal = () => {
         textDecoration: 'none',
         color: 'gold',
         fontFamily: "'Montserrat', sans-serif",
-        marginLeft: '8px',
     }
 
     const closeButton = {
@@ -296,8 +295,8 @@ const DetailedInfoModal = () => {
                             modalContent.desc_sv || (modalContent.desc_en && 'Tyvärr finns det ingen beskrivning på svenska.\n' + modalContent.desc_en) || (modalContent.desc_fi && 'Tyvärr, vi har inte beskrivning på svenska.\n' + modalContent.desc_fi) || 'Tyvärr finns det ingen beskrivning av den här platsen.' : 
                             (currentLang === 'EN' ? 
                             modalContent.desc_en || (modalContent.desc_fi && 'No descripton in English.\n' + modalContent.desc_fi) || (modalContent.desc_sv && 'No descripton in English.\n' + modalContent.desc_sv) || 'No description.' : 
-                            modalContent.desc_fi || (modalContent.desc_en && 'Ei suomenkielistä kuvausta.\n' + modalContent.desc_en) || (modalContent.desc_sv && 'Ei suomenkielistä kuvausta.\n' + modalContent.desc_sv) || 'Paikasta ei löydy kuvausta.')}
-                            {modalContent.www_fi !== null ?<a style={link} href={modalContent.www_fi} target='_blank'>{' '+modalContent.www_fi}</a> : <div></div>}
+                            modalContent.desc_fi || (modalContent.desc_en && 'Ei suomenkielistä kuvausta.\n' + modalContent.desc_en) || (modalContent.desc_sv && 'Ei suomenkielistä kuvausta.\n' + modalContent.desc_sv) || 'Paikasta ei löydy kuvausta.')}<br/>
+                            {modalContent.www_fi !== null ?<a style={link} href={modalContent.www_fi} target='_blank'>{modalContent.www_fi}</a> : <div></div>}
                         </p>
                         
                     </div>

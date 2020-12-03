@@ -17,21 +17,63 @@
     top: 10vh;
 }
 
-h2 {
-    justify-self: center;
-    text-align: center;
-    font-weight: 900;
-    color:  #FFF9E3;
-    font-size: 2rem;
-    margin: auto;
-    margin-bottom: 0;
+.brand {
+    display: flex;
+    flex-direction: row;
     width: 80%;
+    min-width: 280px;
+    height:40%;
+    color:  #FFF9E3;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.brand h2{
+    display: block;
+    width: 100%;
+    height: 80%;
+    font-size: 5rem;
+    justify-self: center;
+    text-align: left;
+    font-weight: 900;
     min-width: 160px;
     z-index: 50;
+    margin: auto;
+    margin-left: 0;
+    font-family: 'Racing Sans One', cursive;
+}
+
+.brand img{
+    display: flex;
+    height: 80%;
+    max-height: 120px;
+    border-radius: 20px;
+    margin: auto;
+    margin-right: 5px
+}
+
+.brand p{
+    display: block;
+    text-align: left;
+    height: 20%;
+    width: 100%;
+    padding: 8px;
+    margin: 0;
+    margin-right: 8px;
+    font-size: 0.9rem;
 }
 
 @media only screen and (max-width: 600px) {
-    h2 {
-        font-size: 7.5vw;
+    .brand h2 {
+        font-size: 3rem;
+    }
+
+    .brand img{
+        display: flex;
+        height: 80%;
+        max-height: 60px;
+        border-radius: 20px;
+        margin-left: 2px;
+        margin-right: 2px
     }
 }
