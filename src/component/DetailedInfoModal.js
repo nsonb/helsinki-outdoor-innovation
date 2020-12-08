@@ -168,14 +168,14 @@ const DetailedInfoModal = () => {
     }
     const buttonStyle = {
         position:'absolute', 
-        height: '8%',
+        height: '13vh',
         width: '50%',
         minWidth: '120px',
         bottom: '3%', 
         left: '0', 
         right: '0', 
         margin: 'auto', 
-        marginTop: '4%', 
+        marginTop: '2%',
         padding: '10px', 
         textAlign: 'center', 
         justifyItems: 'center',
@@ -306,7 +306,7 @@ const DetailedInfoModal = () => {
                 </div>
                 <button className='button' style={buttonStyle} onClick={openHSL}>
                     <img style={{width: '5rem', height: '2rem'}} src={hslLogo} alt={''}/>
-                    {/*{buttonText[currentLang]}*/}
+                    {buttonText[currentLang]}
                 </button> 
             </div>
         </div>
