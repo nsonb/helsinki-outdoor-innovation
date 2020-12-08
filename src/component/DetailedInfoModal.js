@@ -39,8 +39,8 @@ const DetailedInfoModal = () => {
     const [ weatherIcon, setWeatherIcon ]  = useState(icon01d);
     useEffect(() => {
         let isMounted = true;
-        //getWeatherAt(modalContent.longitude, modalContent.latitude)
-        getWeatherAtDEV(modalContent.longitude, modalContent.latitude)
+        getWeatherAt(modalContent.longitude, modalContent.latitude)
+        //getWeatherAtDEV(modalContent.longitude, modalContent.latitude)
         .then(res => {
             console.log(res);
             if(isMounted) {
