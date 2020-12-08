@@ -197,6 +197,5 @@ const info = {
     alignContent: "center",
     justifyContent: "space-around",
     margin:"auto",
-    backgroundColor: "dimgray",
     borderRadius: "8px"
 }

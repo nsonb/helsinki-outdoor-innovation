@@ -50,7 +50,7 @@ export default ImageHolder;
 
 const nameCredit = {
     position: 'absolute',
-    bottom: '1%',
+    bottom: '3%',
     right: '1%',
     fontSize: '0.8rem',
     padding: '5px',
