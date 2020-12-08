@@ -92,7 +92,7 @@ const containerSearch = {
     width: "100vw",
     top: "0px",
     margin: '0px',
-    marginTop: '8vh',
+    marginTop: '6vh',
     boxShadow: "saddlebrown 2px",
     zIndex: 3
 }

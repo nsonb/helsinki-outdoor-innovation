@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import ImageHolder from '../component/ImageHolder';
 import MiniWeather from '../component/MiniWeather';
 import Search from '../component/Search';
+import appLogo from '../default-img/applogo.jpeg'
 
 // images
 import fall from '../default-img/melonta_kauppatori_Maija_Astikainen-3.jpg';
@@ -26,9 +27,14 @@ const LandingPage = () => {
         <div className='landing-page'> 
             <ImageHolder images = {[spring, summer, fall, winter, garden]} names={['Jussi Hellsten', 'Julia Kivela', 'Maija Astikainen', 'Johanna Vilhunen', 'Sasa Tkalcan']}/>
             <div className='mid-bar'>
-                <h2 className='main-background-color' style={{padding: '10px', borderRadius: '20px'}}>
-                    {heading[currentLang]}
-                </h2>
+                <div className = 'brand main-background-color-shade'>
+                    <img src={appLogo}/>
+                    <div style={{width: '70%', height: '100%', marginLeft: '5px', display: 'flex', flexDirection: 'column'}}>
+                        <h2>Ulkoillen</h2>
+                        <p>{heading[currentLang]}</p>
+                    </div>
+                    
+                </div>
                 <Search/>
             </div>
             <MiniWeather location='top'/>
