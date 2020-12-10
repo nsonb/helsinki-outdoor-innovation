@@ -48,10 +48,8 @@ const AutosuggestInput = (props) => {
 
   const getSuggestionValue = (suggestion) => {
     if (suggestion.category === 'itemNames') {
-      //props.onSubmit(null, '"' + suggestion.id + '"');
       return '"' + suggestion.name + '"';
     } else {
-      //props.onSubmit(null, suggestion.name);
       return suggestion.name;
     }
   }
