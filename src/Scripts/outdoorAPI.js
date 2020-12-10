@@ -174,7 +174,7 @@ export const getBiking = () => {
 }
 
 export const getBoatSports = () => {
-    return Axios.get(baseURL + 'unit/?ontologyword=434+783+677+451+530+643+769')
+    return Axios.get(baseURL + 'unit/?ontologyword=434+783+451+530+643+769')
     .then(res => {
         return res.data;
     })
