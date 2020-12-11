@@ -45,7 +45,7 @@ Weather-icon folder contains all weather icons of the app.
 
 As typically in React, all components of the app are nested inside App component. The pages, mentioned in the previous chapter, are rendered through React router and they each have children they render themselves. The following chart [Image 3] illustrates the components’ relationships to one another. 
 
-![null](./documentation_images/image003.png)
+![null](./documentation_images/image003.jpg)
 
 Image 3. Component tree of the app 
 
@@ -53,13 +53,13 @@ Next pictures [Images 4-7] visualize how these elements are located in the UI.
 
 As can be seen from the diagram and pictures, MiniWeather component is added as a child to every page view instead of App.js. In the following picture [Image 4] it can be seen how Search renders Filter component instead of AutosuggestInput (compared to the picture of result page [Image 5]). 
 
-![null](./documentation_images/image004.png)
+![null](./documentation_images/image004.jpg)
 
 Image 4. Landing page components in place 
 
 In the next picture [Image 5] it can be seen how Search looks when it renders AutosuggestInput, but there is no input in the field. ServiceToggle does not render conditionally, but the style changes so that the element is hidden. Leaflet-based map component MapView renders the same list of locations as ResultList and their children – LocationMarkers and ResultItems – trigger the same event on click. 
 
-![null](./documentation_images/image005.png)
+![null](./documentation_images/image005.jpg)
 
 Image 5. Result page components in place 
 
@@ -71,7 +71,7 @@ Image 6. Info modal of a location
 
 In the WeatherPage [Image 7], the background image is in fact rendered by the CurrentWeather component. FutureWeatherHolder works as a container element for two arrays of FutureWeather components. 
 
-![null](./documentation_images/image007.png)
+![null](./documentation_images/image007.jpg)
 
 Image 7. Weather page components in place 
 
