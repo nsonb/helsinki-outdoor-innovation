@@ -8,6 +8,7 @@ Ulkoillen is a single page React app making use of two third-party APIs. Therefo
 ## App structure 
 
 ![null](./documentation_images/image001.png)
+
 Image 1. App architecture diagram 
 
 The grand-scale architecture of the app is as follows: The user uses Ulkoillen app, which serves content from Servicemap API and OpenWeather API for the user. The user can also be redirected to another service for routing information (HSL Reittiopas) if they so wish. [Image 1] 
@@ -21,6 +22,7 @@ From React 16.8 onwards functional components and hooks have been more supported
 Being a React app, the relevant content mainly exists in the src folder. This documentation also concentrates on that folder. [Image 2]
 
 ![null](./documentation_images/image002.png)
+
 Image 2. Project folder
 
 App.js and Index.js are the engine of a React app. App.js renders the contents of the app and index.js places the App component on the index.html page.  
@@ -44,6 +46,7 @@ Weather-icon folder contains all weather icons of the app.
 As typically in React, all components of the app are nested inside App component. The pages, mentioned in the previous chapter, are rendered through React router and they each have children they render themselves. The following chart [Image 3] illustrates the components’ relationships to one another. 
 
 ![null](./documentation_images/image003.png)
+
 Image 3. Component tree of the app 
 
 Next pictures [Images 4-7] visualize how these elements are located in the UI. 
@@ -51,21 +54,25 @@ Next pictures [Images 4-7] visualize how these elements are located in the UI.
 As can be seen from the diagram and pictures, MiniWeather component is added as a child to every page view instead of App.js. In the following picture [Image 4] it can be seen how Search renders Filter component instead of AutosuggestInput (compared to the picture of result page [Image 5]). 
 
 ![null](./documentation_images/image004.png)
+
 Image 4. Landing page components in place 
 
 In the next picture [Image 5] it can be seen how Search looks when it renders AutosuggestInput, but there is no input in the field. ServiceToggle does not render conditionally, but the style changes so that the element is hidden. Leaflet-based map component MapView renders the same list of locations as ResultList and their children – LocationMarkers and ResultItems – trigger the same event on click. 
 
 ![null](./documentation_images/image005.png)
+
 Image 5. Result page components in place 
 
 The next picture [Image 6] depicts DetailedInfoModal as rendered when user clicks either LocationMarker or ResultItem. The button prompts user about continuing to an external service and opens HSL route planner to a new tab. The component will not render ImageHolder component id the location data has no image. 
 
 ![null](./documentation_images/image006.png)
+
 Image 6. Info modal of a location 
 
 In the WeatherPage [Image 7], the background image is in fact rendered by the CurrentWeather component. FutureWeatherHolder works as a container element for two arrays of FutureWeather components. 
 
 ![null](./documentation_images/image007.png)
+
 Image 7. Weather page components in place 
 
 ## Components 
@@ -79,6 +86,7 @@ The basic structure of the components in this app can be seen in the SampleCompo
 This structure is used as applicable. 
 
 ![null](./documentation_images/image008.png)
+
 Image 8. Sample of a React component structure used in the app 
 
 ### Leaflet map and markers 
@@ -92,6 +100,7 @@ Markers are also used to point different services, like playgrounds, public tran
 The Autosuggest component inside AutosuggestInput is a customized version of an open-source component by a GitHub user. Provided package contains the Autosuggest component as a component to be imported, requiring the attributes shown in the following image [Image 9]. In addition to that, for autosuggest to work it needs to make use of several functions, all of which are also provided in the GitHub repository. Main changes to the original code were altering the component to use Context API state values instead of component state and the effects of choosing a suggested search word. 
 
 ![null](./documentation_images/image009.png)
+
 Image 9. Autosuggest component in use 
 
 ## API calls 
@@ -111,6 +120,7 @@ The current application is designed for both mobile and desktop view, with minim
 CSS Stylesheets include the App.css [Image 10], which covers the styling for some general elements in this application - button, paragraph, background color, fonts, hover, scrollbar, etc - these are generic and universally used for a variety of elements.  
 
 ![null](./documentation_images/image010.png)
+
 Image 10. Snippet from App.css  
 
 Other stylesheets such as Autosuggest.css or CurrentWeather.css cover the stylings for individual React components - they must be imported in the React component before usage. 
@@ -124,7 +134,9 @@ Style objects are one way to use CSS styling in React. Style objects are essenti
 Object stylings are used quite commonly during the latter half of development, which help the stylings of each component separated and the folder hierarchy clean (no JS and CSS files sharing the same folder). 
 
 ![null](./documentation_images/image011.png)
+
 ![null](./documentation_images/image012.png)
+
 Image 11. Style object and use of the object 
 
 ### Inline styling 
@@ -132,6 +144,7 @@ Image 11. Style object and use of the object
 At times, the style object of an element is so simple, or the conditional change is so small that it is more convenient to write the JS object directly into style attribute. In the following code snippet [Image 12] from SampleComponent, conditional styling has been implemented with inline styling instead of style objects. 
 
 ![null](./documentation_images/image013.png)
+
 Image 12. Inline styling with condition 
 
 ## Important references 
